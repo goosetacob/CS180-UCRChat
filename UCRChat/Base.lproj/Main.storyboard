@@ -7,7 +7,7 @@
         <!--timeline-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="TimelineController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -23,8 +23,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="203" y="329" width="195" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loaded by TimelineController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
+                                <rect key="frame" x="206" y="329" width="190" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
         <!--new post-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="NewPostController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -87,7 +87,7 @@
         <!--chat-->
         <scene sceneID="3eL-4v-1hz">
             <objects>
-                <tableViewController id="Poe-AH-3CM" sceneMemberID="viewController">
+                <tableViewController id="Poe-AH-3CM" customClass="ChatController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kez-Zx-J6m">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,13 +99,25 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NgU-wJ-0D2">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NgU-wJ-0D2" id="N98-Gf-2Px">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xe0-QB-dTC">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xe0-QB-dTC" id="FEi-mF-a2L">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Poe-AH-3CM" id="YR7-Fe-RwY"/>
                             <outlet property="delegate" destination="Poe-AH-3CM" id="g2e-ey-EYh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="chat" id="di9-Pu-jco"/>
+                    <tabBarItem key="tabBarItem" title="chat" image="first" id="VZu-Ki-cLK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWc-c0-zCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,7 +126,7 @@
         <!--profile-->
         <scene sceneID="pc0-Zt-qLo">
             <objects>
-                <viewController id="vSN-y2-XSd" sceneMemberID="viewController">
+                <viewController id="vSN-y2-XSd" customClass="ProfileController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ddo-gq-PfR"/>
                         <viewControllerLayoutGuide type="bottom" id="2kI-D4-Y1c"/>
@@ -124,7 +136,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="profile" id="5HM-aL-Bon"/>
+                    <tabBarItem key="tabBarItem" title="profile" image="second" id="dTy-sI-Vak"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YrX-Zw-oko" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

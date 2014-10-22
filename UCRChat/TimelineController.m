@@ -1,25 +1,27 @@
 //
-//  FirstViewController.m
+//  TimelineController.m
 //  UCRChat
 //
-//  Created by Gustavo Blanco on 10/21/14.
+//  Created by Gustavo Blanco on 10/22/14.
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "TimelineViewController.h"
+#import "TimelineController.h"
 
-@interface TimelineViewController ()
+@interface TimelineController ()
 
 @end
 
-@implementation TimelineViewController
+@implementation TimelineController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

@@ -1,25 +1,27 @@
 //
-//  ProfileViewController.m
+//  NewPostController.m
 //  UCRChat
 //
-//  Created by Gustavo Blanco on 10/21/14.
+//  Created by Gustavo Blanco on 10/22/14.
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "NewPostController.h"
 
-@interface ProfileViewController ()
+@interface NewPostController ()
 
 @end
 
-@implementation ProfileViewController
+@implementation NewPostController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
