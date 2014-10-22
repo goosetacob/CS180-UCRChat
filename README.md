@@ -21,11 +21,11 @@ Table of Contents
 We are a group of Computer Engineering students from University of California, Riverside.
 As part of our CS 180: Intro to Software Engineering class we will develop an iOS app as a team.
 
-The team is currently split up into the following tasks:
-Gustavo Blanco
-Hector Dominguez
-Fernando Gonzalez
-Sergio Morales
+The team is currently split up into the following tasks:  
+Gustavo Blanco  
+Hector Dominguez  
+Fernando Gonzalez  
+Sergio Morales  
 
 
 ###2. Screenshots
