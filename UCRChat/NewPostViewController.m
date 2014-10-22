@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "NewPostViewController.h"
 
-@interface SecondViewController ()
+@interface NewPostViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation NewPostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

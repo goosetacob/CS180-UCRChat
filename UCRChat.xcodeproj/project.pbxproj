@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		3A0458BE19F6F062007B44A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458BD19F6F062007B44A0 /* main.m */; };
 		3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C019F6F062007B44A0 /* AppDelegate.m */; };
-		3A0458C419F6F062007B44A0 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C319F6F062007B44A0 /* FirstViewController.m */; };
-		3A0458C719F6F062007B44A0 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C619F6F062007B44A0 /* SecondViewController.m */; };
+		3A0458C419F6F062007B44A0 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C319F6F062007B44A0 /* TimelineViewController.m */; };
+		3A0458C719F6F062007B44A0 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C619F6F062007B44A0 /* NewPostViewController.m */; };
 		3A0458CA19F6F062007B44A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458C819F6F062007B44A0 /* Main.storyboard */; };
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
+		3A28663919F7795200B7C0A8 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A28663819F7795200B7C0A8 /* ChatTableViewController.m */; };
+		3A28663C19F77CCA00B7C0A8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A28663B19F77CCA00B7C0A8 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,16 +35,20 @@
 		3A0458BD19F6F062007B44A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A0458BF19F6F062007B44A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A0458C019F6F062007B44A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3A0458C219F6F062007B44A0 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		3A0458C319F6F062007B44A0 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		3A0458C519F6F062007B44A0 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		3A0458C619F6F062007B44A0 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		3A0458C219F6F062007B44A0 /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		3A0458C319F6F062007B44A0 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		3A0458C519F6F062007B44A0 /* NewPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
+		3A0458C619F6F062007B44A0 /* NewPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
 		3A0458C919F6F062007B44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A0458CB19F6F062007B44A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A0458CE19F6F062007B44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458D919F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
+		3A28663719F7784600B7C0A8 /* ChatTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChatTableViewController.h; path = ../ChatTableViewController.h; sourceTree = "<group>"; };
+		3A28663819F7795200B7C0A8 /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
+		3A28663A19F77CBF00B7C0A8 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		3A28663B19F77CCA00B7C0A8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +92,14 @@
 			children = (
 				3A0458BF19F6F062007B44A0 /* AppDelegate.h */,
 				3A0458C019F6F062007B44A0 /* AppDelegate.m */,
-				3A0458C219F6F062007B44A0 /* FirstViewController.h */,
-				3A0458C319F6F062007B44A0 /* FirstViewController.m */,
-				3A0458C519F6F062007B44A0 /* SecondViewController.h */,
-				3A0458C619F6F062007B44A0 /* SecondViewController.m */,
+				3A0458C219F6F062007B44A0 /* TimelineViewController.h */,
+				3A0458C319F6F062007B44A0 /* TimelineViewController.m */,
+				3A28663719F7784600B7C0A8 /* ChatTableViewController.h */,
+				3A28663819F7795200B7C0A8 /* ChatTableViewController.m */,
+				3A0458C519F6F062007B44A0 /* NewPostViewController.h */,
+				3A0458C619F6F062007B44A0 /* NewPostViewController.m */,
+				3A28663A19F77CBF00B7C0A8 /* ProfileViewController.h */,
+				3A28663B19F77CCA00B7C0A8 /* ProfileViewController.m */,
 				3A0458C819F6F062007B44A0 /* Main.storyboard */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
@@ -225,9 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A0458C719F6F062007B44A0 /* SecondViewController.m in Sources */,
+				3A0458C719F6F062007B44A0 /* NewPostViewController.m in Sources */,
+				3A28663919F7795200B7C0A8 /* ChatTableViewController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
-				3A0458C419F6F062007B44A0 /* FirstViewController.m in Sources */,
+				3A0458C419F6F062007B44A0 /* TimelineViewController.m in Sources */,
+				3A28663C19F77CCA00B7C0A8 /* ProfileViewController.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,10 +363,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -364,10 +378,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

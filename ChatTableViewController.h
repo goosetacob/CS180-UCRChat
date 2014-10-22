@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  ChatTableViewController.h
 //  UCRChat
 //
 //  Created by Gustavo Blanco on 10/21/14.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface ChatTableViewController : UITableView
 
 
 @end
-
