@@ -29,3 +29,6 @@ Sergio Morales
 
 
 ###2. Screenshots
+
+![alt text](http://gdurl.com/ZCbh "SID and Auth highlighted in red")
+
