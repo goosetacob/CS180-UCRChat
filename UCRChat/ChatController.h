@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatController : UITableViewController
+@interface ChatController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

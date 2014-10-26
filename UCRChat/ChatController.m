@@ -13,17 +13,30 @@
 @end
 
 @implementation ChatController
+    NSArray *tableData;
+    
+    - (void)viewDidLoad {
+        [super viewDidLoad];
+        
+        // Initialize table data
+        tableData = [NSArray arrayWithObjects:@"Gustavo Blanco", @"Sergio Morales", @"Fernando Gonzalez", @"Hector Dominguez", nil];
+    }
 
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view, typically from a nib.
-//}
-//
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
+    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+        return [tableData count];
+    }
+
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+        static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        }
+    
+        cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
+        return cell;
+    }
 
 @end
