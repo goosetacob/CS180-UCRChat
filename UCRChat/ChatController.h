@@ -1,5 +1,5 @@
 //
-//  ChatController.h
+//  TimelineController.h
 //  UCRChat
 //
 //  Created by Gustavo Blanco on 10/22/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ChatController : UIViewController
 
 @end

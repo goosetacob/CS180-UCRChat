@@ -13,10 +13,9 @@
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
+		3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB019FDDF8D007A53DD /* ChatController.m */; };
+		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
-		3AFEC3F719F866DC00C42259 /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEC3F419F866DC00C42259 /* NewPostController.m */; };
-		3AFEC3F819F866DC00C42259 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEC3F619F866DC00C42259 /* ProfileController.m */; };
-		3AFEC3FB19F866E400C42259 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEC3FA19F866E400C42259 /* ChatController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,14 +40,12 @@
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458D919F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
+		3A88FEAF19FDDF8D007A53DD /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
+		3A88FEB019FDDF8D007A53DD /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
+		3A88FEB119FDDF8D007A53DD /* FriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsController.h; sourceTree = "<group>"; };
+		3A88FEB219FDDF8D007A53DD /* FriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
-		3AFEC3F319F866DC00C42259 /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
-		3AFEC3F419F866DC00C42259 /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
-		3AFEC3F519F866DC00C42259 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
-		3AFEC3F619F866DC00C42259 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
-		3AFEC3F919F866E400C42259 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
-		3AFEC3FA19F866E400C42259 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,19 +88,17 @@
 			isa = PBXGroup;
 			children = (
 				3A0458BF19F6F062007B44A0 /* AppDelegate.h */,
+				3A88FEAF19FDDF8D007A53DD /* ChatController.h */,
+				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
+				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A0458C019F6F062007B44A0 /* AppDelegate.m */,
-				3AFEC3F919F866E400C42259 /* ChatController.h */,
-				3AFEC3FA19F866E400C42259 /* ChatController.m */,
+				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
+				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
+				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				3A0458C819F6F062007B44A0 /* Main.storyboard */,
-				3AFEC3F319F866DC00C42259 /* NewPostController.h */,
-				3AFEC3F419F866DC00C42259 /* NewPostController.m */,
-				3AFEC3F519F866DC00C42259 /* ProfileController.h */,
-				3AFEC3F619F866DC00C42259 /* ProfileController.m */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
-				3ACB40A319F8631B00E1303A /* TimelineController.h */,
-				3ACB40A419F8650200E1303A /* TimelineController.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -236,11 +231,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
-				3AFEC3F819F866DC00C42259 /* ProfileController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
-				3AFEC3FB19F866E400C42259 /* ChatController.m in Sources */,
-				3AFEC3F719F866DC00C42259 /* NewPostController.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
+				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
+				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

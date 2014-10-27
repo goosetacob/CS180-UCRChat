@@ -1,18 +1,18 @@
 //
-//  ProfileController.m
+//  TimelineController.m
 //  UCRChat
 //
 //  Created by Gustavo Blanco on 10/22/14.
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "ProfileController.h"
+#import "FriendsController.h"
 
-@interface ProfileController ()
+@interface FriendsController ()
 
 @end
 
-@implementation ProfileController
+@implementation FriendsController
 
 - (void)viewDidLoad
 {
