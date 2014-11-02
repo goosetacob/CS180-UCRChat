@@ -217,7 +217,7 @@
                                 <items>
                                     <barButtonItem title=" &lt; Me" width="52" id="Yjl-Og-4Vz">
                                         <connections>
-                                            <segue destination="Yn1-ni-wFV" kind="show" id="5zj-ik-9oE"/>
+                                            <segue destination="Yn1-ni-wFV" kind="show" id="ZOi-GH-JPL"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -249,7 +249,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-Jb-and">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title=" &lt; Me" width="52" id="liC-PQ-Rqp"/>
+                                    <barButtonItem title=" &lt; Me" width="52" id="liC-PQ-Rqp">
+                                        <connections>
+                                            <segue destination="Yn1-ni-wFV" kind="show" id="A9y-4d-oud"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -271,6 +275,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jjr-CZ-NSS"/>
+        <segue reference="ZOi-GH-JPL"/>
     </inferredMetricsTieBreakers>
 </document>
