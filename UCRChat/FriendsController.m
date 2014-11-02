@@ -1,5 +1,5 @@
 //
-//  NewPostController.m
+//  TimelineController.m
 //  UCRChat
 //
 //  Created by Gustavo Blanco on 10/22/14.
@@ -9,11 +9,11 @@
 #import "NewPostController.h"
 #import <Parse/Parse.h>
 
-@interface NewPostController ()
+@interface FriendsController ()
 
 @end
 
-@implementation NewPostController
+@implementation FriendsController
 
 - (void)viewDidLoad
 {
