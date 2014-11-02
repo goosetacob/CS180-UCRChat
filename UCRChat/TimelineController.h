@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface TimelineController : UIViewController
+@interface TimelineController : UIViewController{
+    
+}
+- (IBAction)AddPost:(id)sender;
+
+
 
 @end

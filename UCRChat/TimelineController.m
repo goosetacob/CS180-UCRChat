@@ -19,6 +19,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    //storng objcts to cloud
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,4 +30,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)AddPost:(id)sender {
+    PFObject *User =  [PFObject objectWithClassName:@"User"];
+    User[@"Username"] = @"FERNANDO";
+    [User saveInBackground];
+}
 @end
