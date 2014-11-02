@@ -95,22 +95,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-Td-t60">
-                                <rect key="frame" x="16" y="14" width="320" height="44"/>
+                                <rect key="frame" x="-8" y="28" width="336" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="YAP-sI-sxe">
+                                    <barButtonItem title="Post" width="257" id="YAP-sI-sxe">
                                         <connections>
                                             <segue destination="8rJ-Kc-sve" kind="showDetail" id="lEF-Ov-yb9"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="                Tap here to post" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luN-m6-lOL">
+                                <rect key="frame" x="0.0" y="134" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqz-Ct-wAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="-62"/>
+            <point key="canvasLocation" x="1457" y="-59"/>
         </scene>
         <!--friends-->
         <scene sceneID="HWx-JI-FK9">
