@@ -7,6 +7,7 @@
 //
 
 #import "NewPostController.h"
+#import <Parse/Parse.h>
 
 @interface NewPostController ()
 
@@ -17,7 +18,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //storng objcts to cloud
+    PFObject *User =  [PFObject objectWithClassName:@"User"];
+    User[@"Username"] = @"Hdomi001";
+    
+    //UIImage *img = [UIImage imageNamed:@"Picture"];
+   // NSData *imagedata = UIImageJPEGRepresentation(<#UIImage *image#>, 50);
+    //User[@"Picture"]  = imagedata;
+    [User saveInBackground];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning
