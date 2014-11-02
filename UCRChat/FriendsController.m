@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "NewPostController.h"
+#import "FriendsController.h"
 #import <Parse/Parse.h>
 
 @interface FriendsController ()

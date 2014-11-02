@@ -1,19 +1,19 @@
 //
-//  TimelineController.m
+//  UIViewController+MeController.m
 //  UCRChat
 //
-//  Created by Gustavo Blanco on 10/22/14.
+//  Created by user25108 on 11/1/14.
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "ChatController.h"
+#import "MeController.h"
 #import <Parse/Parse.h>
 
-@interface ChatController ()
+@interface MeController ()
 
 @end
 
-@implementation ChatController
+@implementation MeController
 
 - (void)viewDidLoad
 {

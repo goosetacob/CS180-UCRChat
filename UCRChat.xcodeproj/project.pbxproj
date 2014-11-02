@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30D0BF8E1A05C4E600F84857 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D0BF8D1A05C4E600F84857 /* MeController.m */; };
 		30ED6A6019FDE85F00894D07 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5F19FDE85F00894D07 /* CFNetwork.framework */; };
 		30ED6A6219FDE88A00894D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6119FDE88A00894D07 /* CoreGraphics.framework */; };
 		30ED6A6419FDE89A00894D07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6319FDE89A00894D07 /* CoreLocation.framework */; };
@@ -25,19 +26,6 @@
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
-		3A66D1391A0592C1006C488A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1381A0592C1006C488A /* AudioToolbox.framework */; };
-		3A66D13B1A0592CC006C488A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D13A1A0592CC006C488A /* CFNetwork.framework */; };
-		3A66D13D1A0592D6006C488A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D13C1A0592D6006C488A /* CoreGraphics.framework */; };
-		3A66D13F1A0592DE006C488A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D13E1A0592DE006C488A /* CoreLocation.framework */; };
-		3A66D1411A0592E4006C488A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1401A0592E4006C488A /* libz.dylib */; };
-		3A66D1431A0592EE006C488A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1421A0592EE006C488A /* MobileCoreServices.framework */; };
-		3A66D1451A0592F4006C488A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1441A0592F4006C488A /* QuartzCore.framework */; };
-		3A66D1471A0592FD006C488A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1461A0592FD006C488A /* Security.framework */; };
-		3A66D1491A059303006C488A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D1481A059303006C488A /* StoreKit.framework */; };
-		3A66D14B1A05930C006C488A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D14A1A05930C006C488A /* SystemConfiguration.framework */; };
-		3A66D14F1A059323006C488A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D14C1A059323006C488A /* Bolts.framework */; };
-		3A66D1501A059323006C488A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D14D1A059323006C488A /* Parse.framework */; };
-		3A66D1511A059323006C488A /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A66D14E1A059323006C488A /* ParseFacebookUtils.framework */; };
 		3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB019FDDF8D007A53DD /* ChatController.m */; };
 		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
@@ -54,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30D0BF8C1A05C4E600F84857 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
+		30D0BF8D1A05C4E600F84857 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
 		30ED6A5419FDE00F00894D07 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = SOURCE_ROOT; };
 		30ED6A5519FDE00F00894D07 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = SOURCE_ROOT; };
 		30ED6A5F19FDE85F00894D07 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -176,10 +166,12 @@
 				3A0458BF19F6F062007B44A0 /* AppDelegate.h */,
 				3A88FEAF19FDDF8D007A53DD /* ChatController.h */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
+				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A0458C019F6F062007B44A0 /* AppDelegate.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
+				30D0BF8D1A05C4E600F84857 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
@@ -336,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D0BF8E1A05C4E600F84857 /* MeController.m in Sources */,
 				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
