@@ -8,7 +8,10 @@
 
 #import "NewTimelinePostController.h"
 
+
 @interface NewTimelinePostController ()
+@property (weak, nonatomic) IBOutlet UITextField *post_text;
+- (IBAction)PostButton:(id)sender;
 
 @end
 
@@ -26,4 +29,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)PostButton:(id)sender {
+    PFObject *User =  [PFObjecst objectWithClassName:@"User"];
+    
+    User[@"Username"] = post_text.text;
+    [User saveInBackground];
+}
 @end

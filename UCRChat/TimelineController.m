@@ -31,8 +31,6 @@
 }
 
 - (IBAction)AddPost:(id)sender {
-    PFObject *User =  [PFObject objectWithClassName:@"User"];
-    User[@"Username"] = @"FERNANDO";
-    [User saveInBackground];
+    
 }
 @end
