@@ -42,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562" y="-872"/>
+            <point key="canvasLocation" x="279" y="-644"/>
         </scene>
         <!--timeline-->
         <scene sceneID="wg7-f3-ORb">
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-112"/>
+            <point key="canvasLocation" x="279" y="-11"/>
         </scene>
         <!--friends-->
         <scene sceneID="HWx-JI-FK9">
@@ -119,12 +119,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKJ-wU-N3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="688"/>
+            <point key="canvasLocation" x="279" y="648"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Chat App Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="ChatAppTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -146,7 +146,7 @@
         <!--Me-->
         <scene sceneID="Aix-3e-aHP">
             <objects>
-                <viewController id="Yn1-ni-wFV" sceneMemberID="viewController">
+                <viewController id="Yn1-ni-wFV" customClass="MeController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="00e-YN-AD0"/>
                         <viewControllerLayoutGuide type="bottom" id="MFR-4h-kfL"/>
@@ -167,25 +167,28 @@
                                     <segue destination="fcC-fa-a6c" kind="show" id="dMC-wU-Fcp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub7-eO-A3R">
-                                <rect key="frame" x="34" y="309" width="253" height="55"/>
-                                <color key="backgroundColor" red="0.94247159090909094" green="0.94247159090909094" blue="0.94247159090909094" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="hsR-oh-aUq" kind="show" id="yVk-VF-bKe"/>
-                                </connections>
-                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lX0-fw-sVz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Me" width="295" id="3ke-TL-wsC"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-3C-6PR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-3C-6PR">
                                 <rect key="frame" x="34" y="84" width="69" height="69"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBV-I4-d13">
+                                <rect key="frame" x="31" y="377" width="253" height="55"/>
+                                <color key="backgroundColor" red="0.94247159089999999" green="0.94247159089999999" blue="0.94247159089999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="LogOut">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LogOut:" destination="Yn1-ni-wFV" eventType="touchUpInside" id="KTH-N5-uQV"/>
+                                    <action selector="logOffUser" destination="Yn1-ni-wFV" eventType="touchUpInside" id="eWs-2Q-9Nl"/>
+                                    <action selector="logOutUser" destination="Yn1-ni-wFV" eventType="touchUpInside" id="J42-dj-DEt"/>
+                                    <action selector="logOutUser:" destination="Yn1-ni-wFV" eventType="touchUpInside" id="VnX-aJ-cgF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -198,17 +201,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDi-zj-MpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-456" y="771"/>
+            <point key="canvasLocation" x="279" y="1287"/>
         </scene>
-        <!--View Controller-->
+        <!--User File Controller-->
         <scene sceneID="g5S-A0-6wB">
             <objects>
-                <viewController id="fcC-fa-a6c" sceneMemberID="viewController">
+                <viewController id="fcC-fa-a6c" customClass="UserFileController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tov-iy-SFc"/>
                         <viewControllerLayoutGuide type="bottom" id="5zU-eA-SIx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LYb-mS-DtI">
+                    <view key="view" contentMode="scaleToFill" id="LYb-mS-DtI" customClass="UserFile">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -217,7 +220,7 @@
                                 <items>
                                     <barButtonItem title=" &lt; Me" width="52" id="Yjl-Og-4Vz">
                                         <connections>
-                                            <segue destination="Yn1-ni-wFV" kind="show" id="ZOi-GH-JPL"/>
+                                            <action selector="returnToProfile:" destination="fcC-fa-a6c" id="qVr-Pt-Xh1"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -232,45 +235,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8es-YF-ari" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-449" y="1709"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="x0B-CO-JeU">
-            <objects>
-                <viewController id="hsR-oh-aUq" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dil-Re-757"/>
-                        <viewControllerLayoutGuide type="bottom" id="RQC-z4-2tr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mnt-co-kFI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-Jb-and">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title=" &lt; Me" width="52" id="liC-PQ-Rqp">
-                                        <connections>
-                                            <segue destination="Yn1-ni-wFV" kind="show" id="A9y-4d-oud"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gsa-Jb-and" firstAttribute="top" secondItem="dil-Re-757" secondAttribute="bottom" id="5qY-qS-lhl"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dXy-Kc-rPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="47" y="771"/>
+            <point key="canvasLocation" x="706" y="1287"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Default Profile.png" width="530" height="530"/>
+        <image name="Default Profile" width="530" height="530"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

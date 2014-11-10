@@ -25,10 +25,16 @@
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
-		3A05C0441A05FE1A00E478A7 /* Default Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A05C0431A05FE1A00E478A7 /* Default Profile.png */; };
+		3A05C04C1A06ECBD00E478A7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05C04B1A06ECBD00E478A7 /* Accounts.framework */; };
+		3A05C04E1A06ECD600E478A7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05C04D1A06ECD600E478A7 /* Social.framework */; };
 		3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB019FDDF8D007A53DD /* ChatController.m */; };
 		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
+		3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F31A0EE2D200FAE3A7 /* User.m */; };
+		3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */; };
+		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
+		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
+		3AE4EDDB1A0C213300BAC960 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AE4EDD81A0C213300BAC960 /* TwitterKitResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,13 +73,24 @@
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458D919F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
-		3A05C0431A05FE1A00E478A7 /* Default Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default Profile.png"; path = "../../Desktop/Default Profile.png"; sourceTree = "<group>"; };
+		3A05C04B1A06ECBD00E478A7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3A05C04D1A06ECD600E478A7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3A88FEAF19FDDF8D007A53DD /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
 		3A88FEB019FDDF8D007A53DD /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
 		3A88FEB119FDDF8D007A53DD /* FriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsController.h; sourceTree = "<group>"; };
 		3A88FEB219FDDF8D007A53DD /* FriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsController.m; sourceTree = "<group>"; };
+		3A8A06F31A0EE2D200FAE3A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
+		3A8A06F51A0EE2DD00FAE3A7 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
+		3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAppTabBarController.h; sourceTree = "<group>"; };
+		3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAppTabBarController.m; sourceTree = "<group>"; };
+		3A8A06FA1A102F0D00FAE3A7 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
+		3A8A06FC1A10708100FAE3A7 /* UserFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFileController.h; sourceTree = "<group>"; };
+		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
+		3AE4EDD71A0C213300BAC960 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = SOURCE_ROOT; };
+		3AE4EDD81A0C213300BAC960 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = SOURCE_ROOT; };
+		3AE4EDD91A0C213300BAC960 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A05C04E1A06ECD600E478A7 /* Social.framework in Frameworks */,
+				3A05C04C1A06ECBD00E478A7 /* Accounts.framework in Frameworks */,
 				30ED6A7C19FDF04300894D07 /* Bolts.framework in Frameworks */,
 				30ED6A7D19FDF04300894D07 /* Parse.framework in Frameworks */,
 				30ED6A7B19FDEFE000894D07 /* AudioToolbox.framework in Frameworks */,
@@ -109,6 +128,11 @@
 		30ED6A5319FDDF8800894D07 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				3A05C04D1A06ECD600E478A7 /* Social.framework */,
+				3A05C04B1A06ECBD00E478A7 /* Accounts.framework */,
+				3AE4EDD71A0C213300BAC960 /* TwitterKit.framework */,
+				3AE4EDD81A0C213300BAC960 /* TwitterKitResources.bundle */,
+				3AE4EDD91A0C213300BAC960 /* Fabric.framework */,
 				30ED6A5F19FDE85F00894D07 /* CFNetwork.framework */,
 				30ED6A6119FDE88A00894D07 /* CoreGraphics.framework */,
 				30ED6A6319FDE89A00894D07 /* CoreLocation.framework */,
@@ -134,7 +158,6 @@
 				3A0458D719F6F062007B44A0 /* UCRChatTests */,
 				3A0458B919F6F062007B44A0 /* Products */,
 				30ED6A5319FDDF8800894D07 /* Framework */,
-				3A05C0421A05FDD600E478A7 /* Images */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,18 +173,22 @@
 		3A0458BA19F6F062007B44A0 /* UCRChat */ = {
 			isa = PBXGroup;
 			children = (
-				3A0458BF19F6F062007B44A0 /* AppDelegate.h */,
+				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
 				3A88FEAF19FDDF8D007A53DD /* ChatController.h */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
-				3A0458C019F6F062007B44A0 /* AppDelegate.m */,
+				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
+				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				3A0458C819F6F062007B44A0 /* Main.storyboard */,
+				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
+				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
+				3A8A06F61A0F421100FAE3A7 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 			);
 			path = UCRChat;
@@ -170,6 +197,8 @@
 		3A0458BB19F6F062007B44A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A0458BF19F6F062007B44A0 /* AppDelegate.h */,
+				3A0458C019F6F062007B44A0 /* AppDelegate.m */,
 				3A0458BC19F6F062007B44A0 /* Info.plist */,
 				3A0458BD19F6F062007B44A0 /* main.m */,
 			);
@@ -193,12 +222,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3A05C0421A05FDD600E478A7 /* Images */ = {
+		3A8A06F61A0F421100FAE3A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A05C0431A05FE1A00E478A7 /* Default Profile.png */,
+				3A8A06F51A0EE2DD00FAE3A7 /* User.h */,
+				3A8A06F31A0EE2D200FAE3A7 /* User.m */,
 			);
-			name = Images;
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +241,7 @@
 				3A0458B419F6F062007B44A0 /* Sources */,
 				3A0458B519F6F062007B44A0 /* Frameworks */,
 				3A0458B619F6F062007B44A0 /* Resources */,
+				3AE4EDD61A0C20B000BAC960 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -282,10 +313,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A05C0441A05FE1A00E478A7 /* Default Profile.png in Resources */,
 				3A0458CA19F6F062007B44A0 /* Main.storyboard in Resources */,
 				3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */,
 				3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */,
+				3AE4EDDB1A0C213300BAC960 /* TwitterKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,16 +329,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3AE4EDD61A0C20B000BAC960 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 6ac8df0669028f3b36bfc8d6f7e5737d1a6f0c72 18e7410be49069a9b41dedd08b93d2568e4e85ae3f462590e52d52a199450da5";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A0458B419F6F062007B44A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
+				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
+				3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
+				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
+				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +480,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -448,11 +501,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
