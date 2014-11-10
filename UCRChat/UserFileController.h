@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserFileController : UIViewController
+@interface UserFileController : UIViewController <UIActionSheetDelegate>
 
+-(IBAction)showActionSheet:(id)sender;
 
 @end

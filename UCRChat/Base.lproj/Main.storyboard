@@ -233,6 +233,7 @@
                                 <connections>
                                     <action selector="pp:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Yk9-BL-mnS"/>
                                     <action selector="profilePicture:" destination="fcC-fa-a6c" eventType="touchUpInside" id="kXw-eO-5Xe"/>
+                                    <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Mbt-Pf-Lld"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-y0-5b1">
