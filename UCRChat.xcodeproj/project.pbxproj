@@ -21,7 +21,6 @@
 		30ED6A7D19FDF04300894D07 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5519FDE00F00894D07 /* Parse.framework */; };
 		3A0458BE19F6F062007B44A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458BD19F6F062007B44A0 /* main.m */; };
 		3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C019F6F062007B44A0 /* AppDelegate.m */; };
-		3A0458CA19F6F062007B44A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458C819F6F062007B44A0 /* Main.storyboard */; };
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
@@ -67,7 +66,6 @@
 		3A0458BD19F6F062007B44A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A0458BF19F6F062007B44A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A0458C019F6F062007B44A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3A0458C919F6F062007B44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A0458CB19F6F062007B44A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A0458CE19F6F062007B44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +183,6 @@
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
-				3A0458C819F6F062007B44A0 /* Main.storyboard */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
 				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
 				3A8A06F61A0F421100FAE3A7 /* Model */,
@@ -313,7 +310,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A0458CA19F6F062007B44A0 /* Main.storyboard in Resources */,
 				3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */,
 				3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */,
 				3AE4EDDB1A0C213300BAC960 /* TwitterKitResources.bundle in Resources */,
@@ -381,14 +377,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3A0458C819F6F062007B44A0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A0458C919F6F062007B44A0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
