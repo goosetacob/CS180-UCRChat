@@ -14,9 +14,15 @@
 
 @implementation UserFileController
 
-- (IBAction)returnToProfile:(UIBarButtonItem *)sender {
+- (IBAction)returnToProfile:(UIBarButtonItem *)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-@end
+- (IBAction)profilePicture:(UIButton *)sender
+{
+    
+}
 
+   
+@end
