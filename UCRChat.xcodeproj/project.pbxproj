@@ -27,6 +27,14 @@
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
 		3A05C04C1A06ECBD00E478A7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05C04B1A06ECBD00E478A7 /* Accounts.framework */; };
 		3A05C04E1A06ECD600E478A7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A05C04D1A06ECD600E478A7 /* Social.framework */; };
+		3A279F7C1A10B050007C769E /* Quickblox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F7B1A10B050007C769E /* Quickblox.framework */; };
+		3A279F7E1A10B147007C769E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F7D1A10B147007C769E /* CoreData.framework */; };
+		3A279F801A10B154007C769E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F7F1A10B154007C769E /* CoreMedia.framework */; };
+		3A279F821A10B15C007C769E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F811A10B15C007C769E /* Accelerate.framework */; };
+		3A279F841A10B163007C769E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F831A10B163007C769E /* CoreVideo.framework */; };
+		3A279F861A10B16C007C769E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F851A10B16C007C769E /* AVFoundation.framework */; };
+		3A279F881A10B184007C769E /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F871A10B184007C769E /* libresolv.dylib */; };
+		3A279F8A1A10B1A6007C769E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A279F891A10B1A6007C769E /* libxml2.dylib */; };
 		3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB019FDDF8D007A53DD /* ChatController.m */; };
 		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
 		3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F31A0EE2D200FAE3A7 /* User.m */; };
@@ -75,6 +83,14 @@
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
 		3A05C04B1A06ECBD00E478A7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3A05C04D1A06ECD600E478A7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3A279F7B1A10B050007C769E /* Quickblox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quickblox.framework; path = "../../../Downloads/quickblox-ios-sdk-master/Framework/Quickblox.framework"; sourceTree = "<group>"; };
+		3A279F7D1A10B147007C769E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3A279F7F1A10B154007C769E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		3A279F811A10B15C007C769E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		3A279F831A10B163007C769E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		3A279F851A10B16C007C769E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3A279F871A10B184007C769E /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
+		3A279F891A10B1A6007C769E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		3A88FEAF19FDDF8D007A53DD /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
 		3A88FEB019FDDF8D007A53DD /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
 		3A88FEB119FDDF8D007A53DD /* FriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsController.h; sourceTree = "<group>"; };
@@ -98,20 +114,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A279F8A1A10B1A6007C769E /* libxml2.dylib in Frameworks */,
+				3A279F881A10B184007C769E /* libresolv.dylib in Frameworks */,
+				30ED6A6C19FDE91A00894D07 /* QuartzCore.framework in Frameworks */,
+				3A279F861A10B16C007C769E /* AVFoundation.framework in Frameworks */,
+				3A279F841A10B163007C769E /* CoreVideo.framework in Frameworks */,
+				3A279F821A10B15C007C769E /* Accelerate.framework in Frameworks */,
+				3A279F801A10B154007C769E /* CoreMedia.framework in Frameworks */,
+				3A279F7E1A10B147007C769E /* CoreData.framework in Frameworks */,
+				30ED6A6A19FDE90700894D07 /* MobileCoreServices.framework in Frameworks */,
+				30ED6A7219FDE95200894D07 /* SystemConfiguration.framework in Frameworks */,
+				30ED6A6019FDE85F00894D07 /* CFNetwork.framework in Frameworks */,
 				3A05C04E1A06ECD600E478A7 /* Social.framework in Frameworks */,
 				3A05C04C1A06ECBD00E478A7 /* Accounts.framework in Frameworks */,
 				30ED6A7C19FDF04300894D07 /* Bolts.framework in Frameworks */,
 				30ED6A7D19FDF04300894D07 /* Parse.framework in Frameworks */,
 				30ED6A7B19FDEFE000894D07 /* AudioToolbox.framework in Frameworks */,
-				30ED6A7219FDE95200894D07 /* SystemConfiguration.framework in Frameworks */,
 				30ED6A7019FDE93C00894D07 /* StoreKit.framework in Frameworks */,
 				30ED6A6E19FDE92A00894D07 /* Security.framework in Frameworks */,
-				30ED6A6C19FDE91A00894D07 /* QuartzCore.framework in Frameworks */,
-				30ED6A6A19FDE90700894D07 /* MobileCoreServices.framework in Frameworks */,
 				30ED6A6619FDE8B900894D07 /* libz.dylib in Frameworks */,
+				3A279F7C1A10B050007C769E /* Quickblox.framework in Frameworks */,
 				30ED6A6419FDE89A00894D07 /* CoreLocation.framework in Frameworks */,
 				30ED6A6219FDE88A00894D07 /* CoreGraphics.framework in Frameworks */,
-				30ED6A6019FDE85F00894D07 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +152,14 @@
 		30ED6A5319FDDF8800894D07 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				3A279F851A10B16C007C769E /* AVFoundation.framework */,
+				3A279F831A10B163007C769E /* CoreVideo.framework */,
+				3A279F811A10B15C007C769E /* Accelerate.framework */,
+				3A279F7F1A10B154007C769E /* CoreMedia.framework */,
+				3A279F7D1A10B147007C769E /* CoreData.framework */,
+				3A279F891A10B1A6007C769E /* libxml2.dylib */,
+				3A279F871A10B184007C769E /* libresolv.dylib */,
+				3A279F7B1A10B050007C769E /* Quickblox.framework */,
 				3A05C04D1A06ECD600E478A7 /* Social.framework */,
 				3A05C04B1A06ECBD00E478A7 /* Accounts.framework */,
 				3AE4EDD71A0C213300BAC960 /* TwitterKit.framework */,
@@ -188,7 +220,6 @@
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
-				3A0458C819F6F062007B44A0 /* Main.storyboard */,
 				3A8A06F61A0F421100FAE3A7 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 			);
@@ -435,6 +466,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -470,6 +506,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -488,10 +529,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 					"$(PROJECT_DIR)",
+					"/Users/gustavoblanco/Downloads/quickblox-ios-sdk-master/Framework",
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -509,10 +556,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 					"$(PROJECT_DIR)",
+					"/Users/gustavoblanco/Downloads/quickblox-ios-sdk-master/Framework",
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

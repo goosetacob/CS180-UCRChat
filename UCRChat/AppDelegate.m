@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <Quickblox/Quickblox.h>
 
 @interface AppDelegate ()
 
@@ -18,8 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //Parse Keys
     [Parse setApplicationId:@"M9Ku5LNuT7PkF4j0pR1wGn07CRtUo01naUcBTSm2"
                   clientKey:@"DIpz4zg2WaBfL4xR4mT20K6P5iidUoHyhGzVjQt7"];
+    
+    //QuickBlox Keys
+    [QBApplication sharedApplication].applicationId = 16293;
+    [QBConnection registerServiceKey:@"aBgAADMVXtpFG36"];
+    [QBConnection registerServiceSecret:@"RB48DhEmTxuteWV"];
+    [QBSettings setAccountKey:@"3USBxhgr6vopyBZHMYUD"];
     return YES;
 }
 
