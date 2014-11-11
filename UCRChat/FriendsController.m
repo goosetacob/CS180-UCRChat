@@ -7,7 +7,6 @@
 //
 
 #import "FriendsController.h"
-#import <Parse/Parse.h>
 
 @interface FriendsController ()
 
@@ -15,20 +14,8 @@
 
 @implementation FriendsController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //storng objcts to cloud
-    PFObject *User =  [PFObject objectWithClassName:@"User"];
-    User[@"Username"] = @"Hdomi001";
-    
-    //UIImage *img = [UIImage imageNamed:@"Picture"];
-   // NSData *imagedata = UIImageJPEGRepresentation(<#UIImage *image#>, 50);
-    //User[@"Picture"]  = imagedata;
-    [User saveInBackground];
-    
-    // Do any additional setup after loading the view, typically from a nib.
     
 }
 
