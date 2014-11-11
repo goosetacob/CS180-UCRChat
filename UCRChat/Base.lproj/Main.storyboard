@@ -215,14 +215,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE5-Lg-6Ib">
-                                <rect key="frame" x="24" y="167" width="280" height="40"/>
-                                <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="contentEdgeInsets" minX="-190" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Name">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGz-bg-FsO">
                                 <rect key="frame" x="24" y="75" width="280" height="74"/>
                                 <color key="backgroundColor" red="0.97282608695652173" green="0.97282608695652173" blue="0.97282608695652173" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,14 +223,20 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="actionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="OgM-9e-LlF"/>
-                                    <action selector="profilePicture:" destination="fcC-fa-a6c" eventType="touchUpInside" id="kXw-eO-5Xe"/>
-                                    <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Mbt-Pf-Lld"/>
+                                    <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Hf8-tZ-IAr"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-y0-5b1">
                                 <rect key="frame" x="230" y="84" width="55" height="55"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfK-Re-cme">
+                                <rect key="frame" x="24" y="183" width="280" height="45"/>
+                                <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="-190" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Name">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -250,6 +248,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8es-YF-ari" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="706" y="1287"/>
+        </scene>
+        <!--Name Input Controller-->
+        <scene sceneID="O9e-dS-ftg">
+            <objects>
+                <viewController id="LQH-qK-Pjk" customClass="NameInputController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5fQ-DX-aIz"/>
+                        <viewControllerLayoutGuide type="bottom" id="U6S-h7-lkv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLU-R5-zlk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jml-Wd-geE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Cancel" style="plain" id="Gvx-og-wFD"/>
+                                    <barButtonItem title="Name" width="170" style="plain" id="1Fx-1G-eEt"/>
+                                    <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI"/>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-BS-uei">
+                                <rect key="frame" x="16" y="71" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Z3w-rl-cPx" id="aA6-9N-UFs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBW-GW-yIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Z3w-rl-cPx">
+                    <connections>
+                        <outlet property="delegate" destination="LQH-qK-Pjk" id="egV-2j-zif"/>
+                        <outlet property="searchContentsController" destination="LQH-qK-Pjk" id="bA5-8x-cTG"/>
+                        <outlet property="searchResultsDataSource" destination="LQH-qK-Pjk" id="Pk3-ug-uhw"/>
+                        <outlet property="searchResultsDelegate" destination="LQH-qK-Pjk" id="pSG-Wl-0Fr"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1314" y="1217"/>
         </scene>
     </scenes>
     <resources>

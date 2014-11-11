@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3065DFDB1A107EFE00D73E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3065DFD91A107EFE00D73E26 /* Main.storyboard */; };
+		30AC581E1A11E6E60070D3E0 /* UIViewController+NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */; };
 		30ED6A6019FDE85F00894D07 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5F19FDE85F00894D07 /* CFNetwork.framework */; };
 		30ED6A6219FDE88A00894D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6119FDE88A00894D07 /* CoreGraphics.framework */; };
 		30ED6A6419FDE89A00894D07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6319FDE89A00894D07 /* CoreLocation.framework */; };
@@ -49,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		3065DFDA1A107EFE00D73E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30AC581C1A11E6E60070D3E0 /* UIViewController+NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NameInputController.h"; sourceTree = "<group>"; };
+		30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NameInputController.m"; sourceTree = "<group>"; };
 		30D0BF8C1A05C4E600F84857 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
 		30ED6A5419FDE00F00894D07 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = SOURCE_ROOT; };
 		30ED6A5519FDE00F00894D07 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = SOURCE_ROOT; };
@@ -178,16 +181,18 @@
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
+				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
+				30AC581C1A11E6E60070D3E0 /* UIViewController+NameInputController.h */,
+				30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
+				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
-				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
-				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
 				3A8A06F61A0F421100FAE3A7 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 			);
@@ -358,6 +363,7 @@
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
+				30AC581E1A11E6E60070D3E0 /* UIViewController+NameInputController.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
