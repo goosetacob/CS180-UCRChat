@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "UIViewController+NameInputController.h"
+#import "NameInputController.h"
 
 @interface NameInputController()
 @end
