@@ -7,7 +7,6 @@
 //
 
 #import "FriendsController.h"
-#import <Parse/Parse.h>
 
 @interface FriendsController ()
 

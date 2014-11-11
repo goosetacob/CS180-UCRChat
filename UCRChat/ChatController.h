@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import <Quickblox/Quickblox.h>
-#import "User.h"
 
 @interface ChatController : UIViewController
 
