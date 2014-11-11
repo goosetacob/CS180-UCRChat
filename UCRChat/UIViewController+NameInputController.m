@@ -13,4 +13,12 @@
 
 @implementation NameInputController
 
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidLoad];
+}
+
+- (IBAction)backToUserFileController:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end

@@ -16,7 +16,9 @@
 
 @implementation ChatController
 
-
+-(void) viewDidAppear:(BOOL)animated {
+    [super viewDidLoad];
+}
 
 
 

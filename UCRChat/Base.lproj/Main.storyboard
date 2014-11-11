@@ -223,8 +223,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pp:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Yk9-BL-mnS"/>
-                                    <action selector="profilePicture:" destination="fcC-fa-a6c" eventType="touchUpInside" id="kXw-eO-5Xe"/>
                                     <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Mbt-Pf-Lld"/>
                                 </connections>
                             </button>
@@ -238,6 +236,9 @@
                                 <state key="normal" title="Name">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="LQH-qK-Pjk" kind="show" id="hHH-E7-2aQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,10 +264,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jml-Wd-geE">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jml-Wd-geE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Cancel" style="plain" id="Gvx-og-wFD"/>
+                                    <barButtonItem title="Cancel" style="plain" id="Gvx-og-wFD">
+                                        <connections>
+                                            <action selector="backToUserFileController:" destination="LQH-qK-Pjk" id="PDi-dO-5h6"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Name" width="170" style="plain" id="1Fx-1G-eEt"/>
                                     <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI"/>
                                 </items>
@@ -278,6 +283,9 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jml-Wd-geE" firstAttribute="top" secondItem="5fQ-DX-aIz" secondAttribute="bottom" id="VvJ-S9-AyH"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
