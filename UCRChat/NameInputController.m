@@ -12,17 +12,23 @@
 @end
 
 @implementation NameInputController
+@synthesize name=_name;
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
+    
+    //self.textField.text = [[PFUser currentUser] Name];
+    
 }
 
 - (IBAction)backToUserFileController:(UIBarButtonItem *)sender {
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (IBAction)userNameInput:(UITextField *)sender {
+    
 }
 
 @end

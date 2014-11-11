@@ -47,6 +47,33 @@
 }
 
 -(void) signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    //create Profile on ParseDB
+    PFObject *currentUserInfo = [PFObject objectWithClassName:@"Profile"];
+    currentUserInfo[@"userLoginId"] = [[PFUser currentUser] objectId];
+    [currentUserInfo saveInBackground];
+    
+    //create Friends on ParseDB
+    PFObject *currentUserFriends = [PFObject objectWithClassName:@"Friends"];
+    currentUserFriends[@"userLoginId"] = [[PFUser currentUser] objectId];
+    [currentUserFriends saveInBackground];
+    
+    //create Timeline on ParseDB
+    PFObject *currentUserTimeline = [PFObject objectWithClassName:@"GlobalTimeline"];
+    currentUserTimeline[@"userLoginId"] = [[PFUser currentUser] objectId];
+    [currentUserTimeline saveInBackground];
+    
+    //save all Profile, Friends, & Timeline objectIds
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:[[PFUser currentUser] username] block:^(PFObject *userInfo, NSError *error) {
+        
+        // Now let's update it with some new data. In this case, only cheatMode and score will get sent to the cloud. playerName hasn't changed.
+        userInfo[@"profileObjectId"] = currentUserInfo.objectId;
+        userInfo[@"friendsObjectId"] = currentUserFriends.objectId;
+        userInfo[@"timelineObjectId"] = currentUserTimeline.objectId;
+        [userInfo saveInBackground];
+        
+    }];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -18,6 +18,11 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
+    
+    
+    if(![[ScringoUser currentUser] isAuthenticated]) {
+        
+    }
 }
 
 
