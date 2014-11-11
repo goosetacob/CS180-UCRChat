@@ -1,5 +1,5 @@
 //
-//  UIViewController+NameInputController.m
+//  NameInputController.m
 //  UCRChat
 //
 //  Created by user25108 on 11/10/14.
