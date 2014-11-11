@@ -54,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		3065DFDA1A107EFE00D73E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30AC581C1A11E6E60070D3E0 /* UIViewController+NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NameInputController.h"; sourceTree = "<group>"; };
+		30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NameInputController.m"; sourceTree = "<group>"; };
 		30D0BF8C1A05C4E600F84857 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
 		3A0458B819F6F062007B44A0 /* UCRChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCRChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458BC19F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
+				30AC581E1A11E6E60070D3E0 /* UIViewController+NameInputController.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
