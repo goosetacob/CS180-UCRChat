@@ -7,7 +7,6 @@
 //
 
 #import "TimelineController.h"
-#import <Parse/Parse.h>
 
 @interface TimelineController ()
 
@@ -15,8 +14,7 @@
 
 @implementation TimelineController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     //storng objcts to cloud
