@@ -35,7 +35,7 @@
 		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
-		809C26381A124D06008BDA52 /* UITableViewCell+TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 809C26371A124D06008BDA52 /* UITableViewCell+TableCell.m */; };
+		8042AAA71A12551E003C6DA5 /* UITableViewCell+TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +90,8 @@
 		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
-		809C26361A124D06008BDA52 /* UITableViewCell+TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableViewCell+TableCell.h"; path = "../../CS180-UCRChat Sergio/UCRChat/UITableViewCell+TableCell.h"; sourceTree = "<group>"; };
-		809C26371A124D06008BDA52 /* UITableViewCell+TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableViewCell+TableCell.m"; path = "../../CS180-UCRChat Sergio/UCRChat/UITableViewCell+TableCell.m"; sourceTree = "<group>"; };
+		8042AAA51A12551E003C6DA5 /* UITableViewCell+TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+TableCell.h"; sourceTree = "<group>"; };
+		8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+TableCell.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +178,8 @@
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
 				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
 				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
-				809C26361A124D06008BDA52 /* UITableViewCell+TableCell.h */,
-				809C26371A124D06008BDA52 /* UITableViewCell+TableCell.m */,
+				8042AAA51A12551E003C6DA5 /* UITableViewCell+TableCell.h */,
+				8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
@@ -356,10 +356,10 @@
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
+				8042AAA71A12551E003C6DA5 /* UITableViewCell+TableCell.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
-				809C26381A124D06008BDA52 /* UITableViewCell+TableCell.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
