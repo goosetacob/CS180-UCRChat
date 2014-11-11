@@ -41,6 +41,7 @@
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
 		3AD1E0E41A11E3AB0026B0FD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E0E31A11E3AB0026B0FD /* FacebookSDK.framework */; };
+		3AD1E0E71A11F13A0026B0FD /* UIViewController+NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD1E0E61A11F13A0026B0FD /* UIViewController+NameInputController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
 		3AD1E0E31A11E3AB0026B0FD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3AD1E0E51A11F13A0026B0FD /* UIViewController+NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NameInputController.h"; sourceTree = "<group>"; };
+		3AD1E0E61A11F13A0026B0FD /* UIViewController+NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NameInputController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
+				3AD1E0E51A11F13A0026B0FD /* UIViewController+NameInputController.h */,
+				3AD1E0E61A11F13A0026B0FD /* UIViewController+NameInputController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,

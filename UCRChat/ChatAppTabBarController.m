@@ -13,6 +13,11 @@
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
+                                forKey:@"orientation"];
+    
+    
     //[PFUser logOut];
     
     if (![PFUser currentUser]) {
@@ -48,5 +53,7 @@
 -(void) signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 @end

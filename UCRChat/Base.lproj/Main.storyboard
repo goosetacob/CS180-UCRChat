@@ -236,6 +236,9 @@
                                 <state key="normal" title="Name">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="LQH-qK-Pjk" kind="show" id="hHH-E7-2aQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -261,10 +264,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jml-Wd-geE">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jml-Wd-geE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Cancel" style="plain" id="Gvx-og-wFD"/>
+                                    <barButtonItem title="Cancel" style="plain" id="Gvx-og-wFD">
+                                        <connections>
+                                            <action selector="backToUserFileController:" destination="LQH-qK-Pjk" id="PDi-dO-5h6"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Name" width="170" style="plain" id="1Fx-1G-eEt"/>
                                     <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI"/>
                                 </items>
@@ -273,9 +280,15 @@
                                 <rect key="frame" x="16" y="71" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="userNameInput:" destination="LQH-qK-Pjk" eventType="editingDidEnd" id="AP0-VS-GFU"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jml-Wd-geE" firstAttribute="top" secondItem="5fQ-DX-aIz" secondAttribute="bottom" id="VvJ-S9-AyH"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
