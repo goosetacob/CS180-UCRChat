@@ -17,10 +17,12 @@
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     
-    self.textField.text = [[PFUser currentUser] username];
+    //self.textField.text = [[PFUser currentUser] Name];
+    
 }
 
 - (IBAction)backToUserFileController:(UIBarButtonItem *)sender {
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
