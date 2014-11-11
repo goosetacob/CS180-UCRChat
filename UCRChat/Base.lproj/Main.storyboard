@@ -293,6 +293,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Z3w-rl-cPx" id="aA6-9N-UFs"/>
+                        <outlet property="textField" destination="0VX-BS-uei" id="hBb-IF-msI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBW-GW-yIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
