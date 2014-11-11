@@ -47,6 +47,22 @@
 }
 
 -(void) signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    //create Profile on ParseDB
+    PFObject *currentUserInfo = [PFObject objectWithClassName:@"Profile"];
+    currentUserInfo[@"userLoginId"] = [[PFUser currentUser] objectId];
+    [currentUserInfo saveInBackground];
+    
+    //create Friends on ParseDB
+    PFObject *currentUserFriends = [PFObject objectWithClassName:@"Friends"];
+    currentUserFriends[@"userLoginId"] = [[PFUser currentUser] objectId];
+    [currentUserFriends saveInBackground];
+    
+    //create Friends on ParseDB
+    PFObject *currentUserTimeline = [PFObject objectWithClassName:@"GlobalTimeline"];
+    currentUserTimeline[@"userLoginId"] = [[PFUser currentUser] objectId];
+
+    [currentUserTimeline saveInBackground];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

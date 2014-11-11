@@ -223,7 +223,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Mbt-Pf-Lld"/>
+                                    <action selector="showActionSheet:" destination="fcC-fa-a6c" eventType="touchUpInside" id="Hf8-tZ-IAr"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-y0-5b1">
@@ -293,6 +293,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Z3w-rl-cPx" id="aA6-9N-UFs"/>
+                        <outlet property="textField" destination="0VX-BS-uei" id="hBb-IF-msI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBW-GW-yIc" userLabel="First Responder" sceneMemberID="firstResponder"/>

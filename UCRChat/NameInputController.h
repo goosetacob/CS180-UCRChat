@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface NameInputController : UIViewController
 
+@property (strong, nonatomic) NSString *name;
+@property (retain, nonatomic) IBOutlet UITextField *textField;
+
 @end
+
