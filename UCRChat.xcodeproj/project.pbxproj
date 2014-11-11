@@ -8,19 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3065DFDB1A107EFE00D73E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3065DFD91A107EFE00D73E26 /* Main.storyboard */; };
-		30AC581E1A11E6E60070D3E0 /* UIViewController+NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */; };
-		30ED6A6019FDE85F00894D07 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5F19FDE85F00894D07 /* CFNetwork.framework */; };
-		30ED6A6219FDE88A00894D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6119FDE88A00894D07 /* CoreGraphics.framework */; };
-		30ED6A6419FDE89A00894D07 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6319FDE89A00894D07 /* CoreLocation.framework */; };
-		30ED6A6619FDE8B900894D07 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6519FDE8B900894D07 /* libz.dylib */; };
-		30ED6A6A19FDE90700894D07 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6919FDE90700894D07 /* MobileCoreServices.framework */; };
-		30ED6A6C19FDE91A00894D07 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6B19FDE91A00894D07 /* QuartzCore.framework */; };
-		30ED6A6E19FDE92A00894D07 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6D19FDE92A00894D07 /* Security.framework */; };
-		30ED6A7019FDE93C00894D07 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A6F19FDE93C00894D07 /* StoreKit.framework */; };
-		30ED6A7219FDE95200894D07 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A7119FDE95200894D07 /* SystemConfiguration.framework */; };
-		30ED6A7B19FDEFE000894D07 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A7719FDEED200894D07 /* AudioToolbox.framework */; };
-		30ED6A7C19FDF04300894D07 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5419FDE00F00894D07 /* Bolts.framework */; };
-		30ED6A7D19FDF04300894D07 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED6A5519FDE00F00894D07 /* Parse.framework */; };
+		30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC581D1A11E6E60070D3E0 /* NameInputController.m */; };
 		3A0458BE19F6F062007B44A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458BD19F6F062007B44A0 /* main.m */; };
 		3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C019F6F062007B44A0 /* AppDelegate.m */; };
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
@@ -67,8 +55,8 @@
 
 /* Begin PBXFileReference section */
 		3065DFDA1A107EFE00D73E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		30AC581C1A11E6E60070D3E0 /* UIViewController+NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NameInputController.h"; sourceTree = "<group>"; };
-		30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NameInputController.m"; sourceTree = "<group>"; };
+		30AC581C1A11E6E60070D3E0 /* NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameInputController.h; sourceTree = "<group>"; };
+		30AC581D1A11E6E60070D3E0 /* NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameInputController.m; sourceTree = "<group>"; };
 		30D0BF8C1A05C4E600F84857 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
 		3A0458B819F6F062007B44A0 /* UCRChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCRChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458BC19F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,8 +197,8 @@
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
-				30AC581C1A11E6E60070D3E0 /* UIViewController+NameInputController.h */,
-				30AC581D1A11E6E60070D3E0 /* UIViewController+NameInputController.m */,
+				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
+				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
@@ -389,7 +377,7 @@
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
-				30AC581E1A11E6E60070D3E0 /* UIViewController+NameInputController.m in Sources */,
+				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
