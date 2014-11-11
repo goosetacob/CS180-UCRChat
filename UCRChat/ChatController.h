@@ -1,5 +1,5 @@
 //
-//  TimelineController.h
+//  ChatController.h
 //  UCRChat
 //
 //  Created by Gustavo Blanco on 10/22/14.
