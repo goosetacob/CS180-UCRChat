@@ -273,10 +273,10 @@
             </objects>
             <point key="canvasLocation" x="706" y="1287"/>
         </scene>
-        <!--View Controller-->
+        <!--About Me Controller-->
         <scene sceneID="uyc-KK-QdM">
             <objects>
-                <viewController id="5EK-ay-2Hc" sceneMemberID="viewController">
+                <viewController id="5EK-ay-2Hc" customClass="aboutMeController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x54-Rr-bh3"/>
                         <viewControllerLayoutGuide type="bottom" id="59V-Bx-VzV"/>
@@ -294,7 +294,7 @@
                                 </items>
                             </toolbar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eF6-Gs-Caq">
-                                <rect key="frame" x="16" y="91" width="279" height="128"/>
+                                <rect key="frame" x="-84" y="-95" width="24" height="68"/>
                                 <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -302,7 +302,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vej-RU-XFz" firstAttribute="top" secondItem="Wy0-JX-lGo" secondAttribute="top" id="xq3-qg-FPM"/>
+                            <constraint firstItem="Vej-RU-XFz" firstAttribute="top" secondItem="x54-Rr-bh3" secondAttribute="bottom" id="bff-VO-qRH"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -16,6 +16,7 @@
 		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
 		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
+		3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545DB1A13617800948D1E /* aboutMeController.m */; };
 		3A68523C1A11DBF200211397 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523B1A11DBF200211397 /* CFNetwork.framework */; };
 		3A68523E1A11DBF800211397 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523D1A11DBF700211397 /* Security.framework */; };
 		3A6852401A11DBFF00211397 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */; };
@@ -64,6 +65,8 @@
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458D919F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
+		3A1545DA1A13617800948D1E /* aboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutMeController.h; sourceTree = "<group>"; };
+		3A1545DB1A13617800948D1E /* aboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutMeController.m; sourceTree = "<group>"; };
 		3A68523B1A11DBF200211397 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A68523D1A11DBF700211397 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -177,6 +180,8 @@
 				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
+				3A1545DA1A13617800948D1E /* aboutMeController.h */,
+				3A1545DB1A13617800948D1E /* aboutMeController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
@@ -352,6 +357,7 @@
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
+				3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
