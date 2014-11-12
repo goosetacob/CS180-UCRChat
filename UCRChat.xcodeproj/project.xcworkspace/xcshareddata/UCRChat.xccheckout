@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>635570BB-E3C7-48F1-B49A-26FCCD73EF3E</string>
+	<string>8EC3DB91-A03D-4734-8221-A52D2A22F88F</string>
 	<key>IDESourceControlProjectName</key>
 	<string>UCRChat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>58693A6CCBFB97E672961F1EE4189A288FDB5FA0</key>
-		<string>https://github.com/gusbee/CS180-UCRChat</string>
+		<string>https://github.com/gusbee/CS180-UCRChat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>UCRChat.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/gusbee/CS180-UCRChat</string>
+	<string>https://github.com/gusbee/CS180-UCRChat.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

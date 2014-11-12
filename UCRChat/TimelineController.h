@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface TimelineController : UIViewController{
+@interface TimelineController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     
+    NSArray *PostArray;
+   
 }
-- (IBAction)AddPost:(id)sender;
+@property (retain, nonatomic) IBOutlet UITableView *PostTable;
+
+
 
 
 
