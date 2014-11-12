@@ -47,6 +47,7 @@
     //save all Profile, Friends, & Timeline objectIds
     PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:nil];
+    [userInfo setObject:array forKey:@"Messages"];
     [userInfo setObject:array forKey:@"Friends"];
     [userInfo save];
     

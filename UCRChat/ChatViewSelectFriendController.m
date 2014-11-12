@@ -24,7 +24,12 @@
     
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
+    [self.messageInput setDelegate:self];
     
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserMessage)];
+    
+    self.navigationItem.rightBarButtonItem = anotherButton;
+    [anotherButton release];
     
     // Initialize the refresh control.
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -42,10 +47,14 @@
 }
 
 -(void)getLatest {
-    //find friends on Parse
-    PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:@"messageThreads"];
-    friendMessages = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
-    friendMessages = friendMessages[0];
+    //get row from _Uers table that associates with current user
+    PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
+    
+    //get array of objectId's of message rows the currentUser is in
+    friendMessages = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"messageThreads"], nil];
+
+    NSLog(@" hello : %lu", (unsigned long)friendMessages.count);
+    
     
     [self.friendsTable reloadData];
     [_refreshControl endRefreshing];
@@ -80,7 +89,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    NSLog(@"%lu :: %@",(unsigned long)friendMessages.count, friendMessages);
+    //NSLog(@"%lu :: %@",(unsigned long)friendMessages.count, friendMessages);
     
     
     //FIREGUREOUT LATERS
@@ -91,7 +100,20 @@
 
 -(void) dealloc {
     [friendsTable release];
+    [_messageInput release];
     [super dealloc];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    
+    NSLog(@"%@",@"Helo");
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)saveUserMessage {
+    NSLog(@"%@",@"Hello");
 }
 
 @end
