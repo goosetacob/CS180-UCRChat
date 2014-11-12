@@ -13,6 +13,7 @@
 @end
 
 @implementation UserFileController
+@synthesize currentUserId = _currentUserId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,6 +51,31 @@
     {
         
         NSLog(@"Take Photo Button Clicked");
+        pickPhoto = [[UIImagePickerController alloc] init];
+        pickPhoto.delegate = self;
+        [pickPhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [self presentViewController:pickPhoto animated:YES completion:NULL];
+        //[pickPhoto release];
+        
+        
+        PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
+            // Do something with the returned PFObject in the gameScore variable.
+            NSData *imageData = UIImagePNGRepresentation(image);
+            
+            PFFile *imageFile = [PFFile fileWithName:@"profileimage.png" data:imageData];
+            
+            userPointer[@"picture"] = imageFile;
+            [userPointer saveInBackground];
+            
+            
+            
+            
+            NSLog(@"%@", userPointer);
+        }];
+        [pickPhoto release];
         
     }
     
@@ -57,11 +83,6 @@
     {
         
         NSLog(@"Choose from Photos Button Clicked");
-        pickPhoto = [[UIImagePickerController alloc] init];
-        pickPhoto.delegate = self;
-        [pickPhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
-        [self presentViewController:pickPhoto animated:YES completion:NULL];
-        [pickPhoto release];
     }
     
     else if(buttonIndex == 2)
@@ -70,6 +91,7 @@
         NSLog(@"Cancel Button Clicked");
         
     }
-}
     
+}
+
 @end

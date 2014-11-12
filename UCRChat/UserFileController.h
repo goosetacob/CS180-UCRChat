@@ -12,12 +12,13 @@
 @interface UserFileController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 
 
+    IBOutlet UIImageView *imageView;
     UIImagePickerController *pickPhoto;
     UIImage *image;
-    IBOutlet UIImagePickerController *imageView;
+    //IBOutlet UIImagePickerController *imageC;
 
 }
 -(IBAction)showActionSheet:(id)sender;
--(IBAction)getPhoto;
+@property (strong, nonatomic) NSString *currentUserId;
     
 @end
