@@ -33,7 +33,6 @@
 		3A6852501A11DC6700211397 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68524F1A11DC6700211397 /* Social.framework */; };
 		3A6852521A11DC6D00211397 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6852511A11DC6D00211397 /* StoreKit.framework */; };
 		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
-		3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F31A0EE2D200FAE3A7 /* User.m */; };
 		3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */; };
 		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
@@ -325,8 +324,6 @@
 		3A6852511A11DC6D00211397 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3A88FEB119FDDF8D007A53DD /* FriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsController.h; sourceTree = "<group>"; };
 		3A88FEB219FDDF8D007A53DD /* FriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsController.m; sourceTree = "<group>"; };
-		3A8A06F31A0EE2D200FAE3A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
-		3A8A06F51A0EE2DD00FAE3A7 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
 		3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAppTabBarController.h; sourceTree = "<group>"; };
 		3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAppTabBarController.m; sourceTree = "<group>"; };
 		3A8A06FA1A102F0D00FAE3A7 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
@@ -593,6 +590,7 @@
 				3A68524E1A11DC5E00211397 /* QuartzCore.framework in Frameworks */,
 				3A68524C1A11DC5700211397 /* MobileCoreServices.framework in Frameworks */,
 				3A68524A1A11DC5000211397 /* libz.dylib in Frameworks */,
+				80CB16D41A12118D00472904 /* Parse.framework in Frameworks */,
 				3A6852481A11DC4900211397 /* CoreLocation.framework in Frameworks */,
 				3A6852461A11DC4300211397 /* CoreGraphics.framework in Frameworks */,
 				309BA6B31A120D54005F2A46 /* Bolts.framework in Frameworks */,
@@ -692,6 +690,10 @@
 				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
 				3A8A06F61A0F421100FAE3A7 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
+				8058BB441A12AD1E00F5B286 /* AddPostController.h */,
+				8058BB451A12AD1E00F5B286 /* AddPostController.m */,
+				803FD5D21A130DD800454F6E /* CustomCell.h */,
+				803FD5D31A130DD800454F6E /* CustomCell.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -724,11 +726,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3A8A06F61A0F421100FAE3A7 /* Model */ = {
+		80CB16DB1A1213CA00472904 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3A8A06F51A0EE2DD00FAE3A7 /* User.h */,
-				3A8A06F31A0EE2D200FAE3A7 /* User.m */,
+				80CB16D91A1213C300472904 /* User.m */,
+				80CB16D81A1213C300472904 /* User.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1370,14 +1372,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3065DFD91A107EFE00D73E26 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3065DFDA1A107EFE00D73E26 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

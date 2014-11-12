@@ -9,6 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface TimelineController : UIViewController
+@interface TimelineController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+    
+    NSMutableArray *PostArray;
+    NSArray* Left;
+    NSArray* Right;
+   
+}
+@property (retain, nonatomic) IBOutlet UITableView *PostTable;
+@property (nonatomic, strong) UIRefreshControl * refreshControl;
+
+
+
+
 
 @end
