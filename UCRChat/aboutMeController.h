@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface aboutMeController : UIViewController
+@interface aboutMeController : UIViewController<UIAlertViewDelegate, UITextFieldDelegate>
+@property (strong, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) IBOutlet UITextView *textView;
 
 @end

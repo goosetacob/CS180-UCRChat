@@ -43,6 +43,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    _currentUserId = [[PFUser currentUser] objectId];
+    
+    PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
+        // Do something with the returned PFObject in the gameScore variable.
+        
+        NSString *playerName = userPointer[@"fullName"];
+        NSString *blogg = userPointer[@"aboutMe"];
+        [self.nameView setTitle:playerName forState:UIControlStateNormal];
+        [self.labelView setText:blogg];
+        
+        
+        NSLog(@"%@", userPointer);
+    }];
 }
 
 - (IBAction)logOffUser {
