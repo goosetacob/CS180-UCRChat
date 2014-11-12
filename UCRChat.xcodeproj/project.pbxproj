@@ -30,6 +30,7 @@
 		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
+		803FD5D41A130DD800454F6E /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803FD5D31A130DD800454F6E /* CustomCell.m */; };
 		8058BB461A12AD1E00F5B286 /* AddPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8058BB451A12AD1E00F5B286 /* AddPostController.m */; };
 		80CB16D01A12110500472904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80CB16CF1A12110500472904 /* Main.storyboard */; };
 		80CB16D31A12118D00472904 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CB16D11A12118D00472904 /* Bolts.framework */; };
@@ -85,6 +86,8 @@
 		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
+		803FD5D21A130DD800454F6E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		803FD5D31A130DD800454F6E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		8058BB441A12AD1E00F5B286 /* AddPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostController.h; sourceTree = "<group>"; };
 		8058BB451A12AD1E00F5B286 /* AddPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostController.m; sourceTree = "<group>"; };
 		80CB16CF1A12110500472904 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../Downloads/Main.storyboard; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 				8058BB441A12AD1E00F5B286 /* AddPostController.h */,
 				8058BB451A12AD1E00F5B286 /* AddPostController.m */,
+				803FD5D21A130DD800454F6E /* CustomCell.h */,
+				803FD5D31A130DD800454F6E /* CustomCell.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			files = (
 				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
+				803FD5D41A130DD800454F6E /* CustomCell.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				8058BB461A12AD1E00F5B286 /* AddPostController.m in Sources */,

@@ -24,6 +24,12 @@
     [_Textview release];
     [super dealloc];
 }
+
+- (IBAction)returnToPrevious:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (IBAction)BtnPressed:(id)sender {
     //storng objcts to cloud
     PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
@@ -31,5 +37,6 @@
     GlobalTimeline[@"Post"] = str;
     GlobalTimeline[@"User"] = [PFUser currentUser].username;
     [GlobalTimeline saveInBackground];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

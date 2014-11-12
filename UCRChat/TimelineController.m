@@ -7,21 +7,30 @@
 //
 
 #import "TimelineController.h"
+#import "CustomCell.h"
 
 @interface TimelineController ()
 
 @end
 
 @implementation TimelineController
+@synthesize PostTable;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _PostTable.dataSource = self;
-    _PostTable.delegate = self;
+    //self.view.backgroundColor = [UIColor blackColor];
+    self.PostTable.dataSource = self;
+    self.PostTable.delegate = self;
     
-    // Do any additional setup after loading the view, typically from a nib.
-    //storng objcts to cloud
-    [self performSelector:@selector(retrieveFromParse)];
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(retrieveFromParse) forControlEvents:UIControlEventValueChanged];
+    
+    [self.PostTable addSubview:_refreshControl];
+    [self.PostTable reloadData];
+    
+    [self retrieveFromParse ];
+    
+    
 }
 
 - (void) retrieveFromParse{
@@ -29,9 +38,11 @@
     [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(!error)
         {
-            PostArray = [[NSArray alloc ] initWithArray:objects];
+            PostArray = [[NSMutableArray alloc ] initWithArray:objects];
         }
-        [_PostTable reloadData];
+        
+        [self.PostTable reloadData];
+        [_refreshControl endRefreshing];
     }];
     
 }
@@ -55,30 +66,24 @@
     //setup cell
     PFObject *tempObject = [PostArray objectAtIndex:indexPath.row];
    
+    static NSString *CellIdentifier = @"mycell";
     
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView
+    CustomCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]
+        cell = [[CustomCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
-    
-    // Configure the cell.
-    cell.textLabel.text = [tempObject objectForKey:@"Post"];
-   // cell.textLabel.text = [tempObject objectForKey:@"User"];
 
+    cell.NAME.text = [tempObject objectForKey:@"User"];
+    cell.POST.text = [tempObject objectForKey:@"Post"];
+    cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
+    
     return cell;
 }
-
-
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -86,9 +91,7 @@
 }
 - (void)dealloc {
    
-   // [postText release];
-   // [PostLabel release];
-    [_PostTable release];
+    [PostTable release];
     [super dealloc];
 }
 @end

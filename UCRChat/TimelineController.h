@@ -11,10 +11,13 @@
 
 @interface TimelineController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     
-    NSArray *PostArray;
+    NSMutableArray *PostArray;
+    NSArray* Left;
+    NSArray* Right;
    
 }
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;
+@property (nonatomic, strong) UIRefreshControl * refreshControl;
 
 
 
