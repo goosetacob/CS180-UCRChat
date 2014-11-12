@@ -8,6 +8,7 @@
 
 #import "ChatViewSelectFriendController.h"
 #import "ChatCellSelectFriendController.h"
+#import <Parse/Parse.h>
 
 @interface ChatViewSelectFriendController()
 
@@ -15,37 +16,40 @@
 
 @implementation ChatViewSelectFriendController
 
--(id) initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    
-    if(self) {
-        
-    }
-    return self;
-}
+@synthesize friendsTable;
+
 
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
+    [self.friendsTable setDelegate:self];
+    [self.friendsTable setDataSource:self];
     
-    _friendsArray = [[NSArray alloc] initWithObjects:@"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",nil];
+    
+    // Initialize the refresh control.
+    _refreshControl = [[UIRefreshControl alloc] init];
+    _refreshControl.backgroundColor = [UIColor purpleColor];
+    _refreshControl.tintColor = [UIColor whiteColor];
+    [_refreshControl addTarget:self
+                        action:@selector(getLatest)
+              forControlEvents:UIControlEventValueChanged];
+    
+    [self.friendsTable addSubview:_refreshControl];
+    [self.friendsTable reloadData];
+    
+    [self getLatest];
+    
+}
+
+-(void)getLatest {
+    //find friends on Parse
+    PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:@"messageThreads"];
+    friendMessages = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
+    friendMessages = friendMessages[0];
+    
+    [self.friendsTable reloadData];
+    [_refreshControl endRefreshing];
+    
 }
 
 -(void) didReceiveMemoryWarning {
@@ -59,33 +63,35 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _friendsArray.count;
+    NSLog(@"num friends %lu", (unsigned long)friendMessages.count);
+    return friendMessages.count;
 }
 
-
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"ChatCellSelectFriendController";
-    ChatCellSelectFriendController *cell1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    int row = [indexPath row];
+    static NSString *CellIdentifier = @"messageCell";
+    ChatCellSelectFriendController *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-   
-    
-    if (cell1 == nil) {
-        cell1 = [[UITableViewCell alloc]
+    if (cell == nil) {
+        cell = [[ChatCellSelectFriendController alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
         
-        cell1.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    cell1.name.text = [_friendsArray objectAtIndex:indexPath.row];
-    cell1.message.text = @"Hello World";
-    NSLog(@"%d %@",row, _friendsArray[row]);
+    NSLog(@"%lu :: %@",(unsigned long)friendMessages.count, friendMessages);
     
-    return cell1;
+    
+    //FIREGUREOUT LATERS
+    cell.name.text = @"GUCCI";
+    cell.message.text = @"HelloWorld";
+    return cell;
 }
 
+-(void) dealloc {
+    [friendsTable release];
+    [super dealloc];
+}
 
 @end

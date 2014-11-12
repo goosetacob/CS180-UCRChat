@@ -15,34 +15,42 @@
 @end
 
 @implementation ChatViewController
+@synthesize friendsTable;
 
--(id) initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    
-    if(self) {
-        
-    }
-    return self;
-}
 
 -(void) viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
+    [self.friendsTable setDelegate:self];
+    [self.friendsTable setDataSource:self];
     
     
     // Initialize the refresh control.
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor purpleColor];
-    self.refreshControl.tintColor = [UIColor whiteColor];
-    [self.refreshControl addTarget:self
-                            action:@selector(getLatestLoans)
+    _refreshControl = [[UIRefreshControl alloc] init];
+    _refreshControl.backgroundColor = [UIColor purpleColor];
+    _refreshControl.tintColor = [UIColor whiteColor];
+    [_refreshControl addTarget:self
+                            action:@selector(getLatest)
                   forControlEvents:UIControlEventValueChanged];
     
-    //_friendsArray = [[NSArray alloc] initWithObjects:nil];
+    [self.friendsTable addSubview:_refreshControl];
+    [self.friendsTable reloadData];
     
-     
+    [self getLatest];
+    
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(getLatest) userInfo:nil repeats:YES];
+    
+}
+
+-(void)getLatest {
+    //find friends on Parse
+    PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
+    friends = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
+    friends = friends[0];
+    
+    [self.friendsTable reloadData];
+    [_refreshControl endRefreshing];
+   
 }
 
 -(void) didReceiveMemoryWarning {
@@ -56,50 +64,33 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _friendsArray.count;
+    NSLog(@"num friends %lu", (unsigned long)friends.count);
+    return friends.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"ChatCellController";
+    
+    static NSString *CellIdentifier = @"friendCell";
     ChatCellController *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    NSLog(@"#2   %@", _friendsArray);
-    
-    int row = [indexPath row];
-    
-   
-    
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]
+        cell = [[ChatCellController alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
         
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    [cell.friendName setTitle:[_friendsArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    NSLog(@"%d %@",row, _friendsArray[row]);
+    NSLog(@"%lu :: %@",(unsigned long)friends.count, friends);
     
+    [cell.friendName setTitle:[friends objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     return cell;
 }
 
--(void)getLatestLoans {
-    //find friends on Parse
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userInfo, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        //_friendsArray = userInfo[@"Friends"];
-        if (!error) {
-            _friendsArray = [[NSArray alloc] initWithObjects:userInfo[@"Friends"],nil];
-            NSLog(@"#1  %@", _friendsArray);
-        }
-        
-    }];
-    
-    [self.tableView reloadData];
-    
-    
-    [self.refreshControl endRefreshing];
+-(void) dealloc {
+    [friendsTable release];
+    [super dealloc];
 }
+
 
 @end

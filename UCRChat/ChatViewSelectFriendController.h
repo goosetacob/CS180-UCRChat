@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatViewSelectFriendController : UITableViewController
+@interface ChatViewSelectFriendController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    NSMutableArray *friendMessages;
+}
 
-@property (nonatomic, strong) NSArray *friendsArray;
+@property (retain, nonatomic) IBOutlet UITableView *friendsTable;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
+
