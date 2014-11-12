@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface UserFileController : UIViewController <UIActionSheetDelegate>
+@interface UserFileController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 
+
+    UIImagePickerController *pickPhoto;
+    UIImage *image;
+    IBOutlet UIImagePickerController *imageView;
+
+}
 -(IBAction)showActionSheet:(id)sender;
-
+-(IBAction)getPhoto;
+    
 @end

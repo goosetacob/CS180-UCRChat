@@ -30,5 +30,46 @@
     [actionSheet showInView:self.view];
     [actionSheet release];
 }
-   
+
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imageView setImage:image];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+   [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        
+        NSLog(@"Take Photo Button Clicked");
+        
+    }
+    
+    else if(buttonIndex == 1)
+    {
+        
+        NSLog(@"Choose from Photos Button Clicked");
+        pickPhoto = [[UIImagePickerController alloc] init];
+        pickPhoto.delegate = self;
+        [pickPhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [self presentViewController:pickPhoto animated:YES completion:NULL];
+        [pickPhoto release];
+    }
+    
+    else if(buttonIndex == 2)
+    {
+        
+        NSLog(@"Cancel Button Clicked");
+        
+    }
+}
+    
 @end
