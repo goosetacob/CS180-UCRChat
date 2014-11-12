@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface NameInputController : UIViewController
+@interface NameInputController : UIViewController<UIAlertViewDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) IBOutlet UITextField *textView;
+
 
 @end

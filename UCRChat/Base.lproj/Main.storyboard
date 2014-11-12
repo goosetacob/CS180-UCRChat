@@ -273,16 +273,17 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Name" width="170" style="plain" id="1Fx-1G-eEt"/>
-                                    <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI"/>
+                                    <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI">
+                                        <connections>
+                                            <action selector="saveReturnToUserFileController:" destination="LQH-qK-Pjk" id="emZ-Xm-mUv"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-BS-uei">
                                 <rect key="frame" x="16" y="71" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="userNameInput:" destination="LQH-qK-Pjk" eventType="editingDidEnd" id="AP0-VS-GFU"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,6 +294,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Z3w-rl-cPx" id="aA6-9N-UFs"/>
+                        <outlet property="textView" destination="0VX-BS-uei" id="7FB-fh-bDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GBW-GW-yIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
