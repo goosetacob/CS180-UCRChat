@@ -57,6 +57,7 @@
 
 //get number of rows by counting number of folders
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%lu", (unsigned long)PostArray.count);
     return PostArray.count;
 }
 
