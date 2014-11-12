@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    NSMutableArray *friends;
+    NSMutableArray *friendsName;
+    NSMutableArray *friendsObjectId;
+@public
+    
 }
 
 @property (retain, nonatomic) IBOutlet UITableView *friendsTable;

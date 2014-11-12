@@ -45,8 +45,24 @@
 -(void)getLatest {
     //find friends on Parse
     PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
-    friends = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
-    friends = friends[0];
+    friendsObjectId = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
+    friendsName = [[NSMutableArray alloc] init];
+    
+    //have array of objectId's of friends
+    friendsObjectId = friendsObjectId[0];
+    
+    NSLog(@"preojectID %lu", (unsigned long)friendsObjectId.count);
+    
+    //parse thourgh friends objectId to get name
+    for (int i = 0; i < friendsObjectId.count; i++) {
+        PFObject *fInfo = [PFQuery getObjectOfClass:@"_User" objectId:friendsObjectId[i]];
+        
+        NSLog(@"%@ | %@",friendsObjectId[i], [fInfo objectForKey:@"username"] );
+        [friendsName addObject:[fInfo objectForKey:@"username"]];
+        
+    }
+    
+    NSLog(@"GETLATEST %lu :: %@",(unsigned long)friendsName.count, friendsName);
     
     [self.friendsTable reloadData];
     [_refreshControl endRefreshing];
@@ -64,8 +80,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"num friends %lu", (unsigned long)friends.count);
-    return friends.count;
+    NSLog(@"num friends %lu", (unsigned long)friendsObjectId.count);
+    return friendsObjectId.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,9 +97,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    NSLog(@"%lu :: %@",(unsigned long)friends.count, friends);
+    NSLog(@"%lu :: %@",(unsigned long)friendsName.count, friendsName);
     
-    [cell.friendName setTitle:[friends objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    
+    [cell.friendName setTitle:[friendsName objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     return cell;
 }
 

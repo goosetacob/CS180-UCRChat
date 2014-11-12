@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3065DFDB1A107EFE00D73E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3065DFD91A107EFE00D73E26 /* Main.storyboard */; };
+		3065DFDB1A107EFE00D73E26 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		309BA6B31A120D54005F2A46 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309BA6B11A120D54005F2A46 /* Bolts.framework */; };
 		309BA6B41A120D54005F2A46 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309BA6B21A120D54005F2A46 /* Parse.framework */; };
 		3A0458BE19F6F062007B44A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458BD19F6F062007B44A0 /* main.m */; };
@@ -20,6 +20,10 @@
 		3A1545D31A1302E000948D1E /* ChatCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D21A1302E000948D1E /* ChatCellController.m */; };
 		3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */; };
 		3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */; };
+		3A1545DF1A13F47100948D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545DD1A13F47100948D1E /* Main.storyboard */; };
+		3A1545E21A13F4C500948D1E /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E11A13F4C500948D1E /* CustomCell.m */; };
+		3A1545E51A13F6B100948D1E /* AddPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E41A13F6B100948D1E /* AddPostController.m */; };
+		3A1545E81A13F71000948D1E /* SendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E71A13F71000948D1E /* SendMessage.m */; };
 		3A68523C1A11DBF200211397 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523B1A11DBF200211397 /* CFNetwork.framework */; };
 		3A68523E1A11DBF800211397 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523D1A11DBF700211397 /* Security.framework */; };
 		3A6852401A11DBFF00211397 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */; };
@@ -286,7 +290,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3065DFDA1A107EFE00D73E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		309BA6B11A120D54005F2A46 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = SOURCE_ROOT; };
 		309BA6B21A120D54005F2A46 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = SOURCE_ROOT; };
 		30D0BF8C1A05C4E600F84857 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
@@ -310,6 +313,13 @@
 		3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellSelectFriendController.m; sourceTree = "<group>"; };
 		3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewSelectFriendController.h; sourceTree = "<group>"; };
 		3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewSelectFriendController.m; sourceTree = "<group>"; };
+		3A1545DE1A13F47100948D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A1545E01A13F4C500948D1E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		3A1545E11A13F4C500948D1E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		3A1545E31A13F6B100948D1E /* AddPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostController.h; sourceTree = "<group>"; };
+		3A1545E41A13F6B100948D1E /* AddPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostController.m; sourceTree = "<group>"; };
+		3A1545E61A13F71000948D1E /* SendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessage.h; sourceTree = "<group>"; };
+		3A1545E71A13F71000948D1E /* SendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessage.m; sourceTree = "<group>"; };
 		3A68523B1A11DBF200211397 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A68523D1A11DBF700211397 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -590,7 +600,6 @@
 				3A68524E1A11DC5E00211397 /* QuartzCore.framework in Frameworks */,
 				3A68524C1A11DC5700211397 /* MobileCoreServices.framework in Frameworks */,
 				3A68524A1A11DC5000211397 /* libz.dylib in Frameworks */,
-				80CB16D41A12118D00472904 /* Parse.framework in Frameworks */,
 				3A6852481A11DC4900211397 /* CoreLocation.framework in Frameworks */,
 				3A6852461A11DC4300211397 /* CoreGraphics.framework in Frameworks */,
 				309BA6B31A120D54005F2A46 /* Bolts.framework in Frameworks */,
@@ -665,21 +674,27 @@
 		3A0458BA19F6F062007B44A0 /* UCRChat */ = {
 			isa = PBXGroup;
 			children = (
+				3A1545E31A13F6B100948D1E /* AddPostController.h */,
+				3A1545E61A13F71000948D1E /* SendMessage.h */,
+				3A1545E71A13F71000948D1E /* SendMessage.m */,
 				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
 				3A1545D11A1302E000948D1E /* ChatCellController.h */,
 				3A1545D41A13232200948D1E /* ChatCellSelectFriendController.h */,
 				3A1545CE1A12FF2B00948D1E /* ChatViewController.h */,
 				3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */,
+				3A1545E01A13F4C500948D1E /* CustomCell.h */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3A15456F1A12CB5D00948D1E /* NameInputController.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
+				3A1545E41A13F6B100948D1E /* AddPostController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A1545D21A1302E000948D1E /* ChatCellController.m */,
 				3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */,
 				3A1545CF1A12FF2B00948D1E /* ChatViewController.m */,
 				3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */,
+				3A1545E11A13F4C500948D1E /* CustomCell.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3A1545701A12CB5D00948D1E /* NameInputController.m */,
@@ -687,13 +702,8 @@
 				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
-				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
-				3A8A06F61A0F421100FAE3A7 /* Model */,
+				3A1545DD1A13F47100948D1E /* Main.storyboard */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
-				8058BB441A12AD1E00F5B286 /* AddPostController.h */,
-				8058BB451A12AD1E00F5B286 /* AddPostController.m */,
-				803FD5D21A130DD800454F6E /* CustomCell.h */,
-				803FD5D31A130DD800454F6E /* CustomCell.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -724,15 +734,6 @@
 				3A0458D919F6F062007B44A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		80CB16DB1A1213CA00472904 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				80CB16D91A1213C300472904 /* User.m */,
-				80CB16D81A1213C300472904 /* User.h */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		3AD1E10E1A1244DC0026B0FD /* Resources */ = {
@@ -1226,6 +1227,7 @@
 				3AD1E2251A1244DD0026B0FD /* iPad_ScringoFindFriendsView.xib in Resources */,
 				3AD1E2461A1244DD0026B0FD /* iPad_ScringoOneChatTableHeaderView.xib in Resources */,
 				3AD1E2551A1244DD0026B0FD /* iPad_ScringoQuizUnlockPopup.xib in Resources */,
+				3A1545DF1A13F47100948D1E /* Main.storyboard in Resources */,
 				3AD1E2801A1244DD0026B0FD /* ScringoChatRoomsTopicNativeAppAdCell.xib in Resources */,
 				3AD1E2CB1A1244DD0026B0FD /* ScringoSignInPopup.xib in Resources */,
 				3AD1E2AA1A1244DD0026B0FD /* ScringoMapAnnotationView.xib in Resources */,
@@ -1297,7 +1299,7 @@
 				3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */,
 				3AD1E24C1A1244DD0026B0FD /* iPad_ScringoQuizCell.xib in Resources */,
 				3AD1E28C1A1244DD0026B0FD /* ScringoFeedbackTalkToUs.xib in Resources */,
-				3065DFDB1A107EFE00D73E26 /* Main.storyboard in Resources */,
+				3065DFDB1A107EFE00D73E26 /* (null) in Resources */,
 				3AD1E24A1A1244DD0026B0FD /* iPad_ScringoPanelTableCell.xib in Resources */,
 				3AD1E2B71A1244DD0026B0FD /* ScringoOneChatTableHeaderView.xib in Resources */,
 				3AD1E21B1A1244DD0026B0FD /* iPad_ScringoFeedbackTalkToUs.xib in Resources */,
@@ -1343,13 +1345,15 @@
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */,
-				3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A1545711A12CB5D00948D1E /* NameInputController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
+				3A1545E81A13F71000948D1E /* SendMessage.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
+				3A1545E21A13F4C500948D1E /* CustomCell.m in Sources */,
+				3A1545E51A13F6B100948D1E /* AddPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1378,6 +1382,14 @@
 				3A0458CE19F6F062007B44A0 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		3A1545DD1A13F47100948D1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A1545DE1A13F47100948D1E /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		3AD1E1101A1244DC0026B0FD /* ScringoLocalizable.strings */ = {

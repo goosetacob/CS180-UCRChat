@@ -11,6 +11,6 @@
 @interface ChatCellSelectFriendController : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UIButton *message;
 
 @end

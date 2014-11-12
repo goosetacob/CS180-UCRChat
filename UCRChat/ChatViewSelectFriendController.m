@@ -8,6 +8,7 @@
 
 #import "ChatViewSelectFriendController.h"
 #import "ChatCellSelectFriendController.h"
+#import "SendMessage.h"
 #import <Parse/Parse.h>
 
 @interface ChatViewSelectFriendController()
@@ -25,11 +26,6 @@
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     [self.messageInput setDelegate:self];
-    
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveUserMessage)];
-    
-    self.navigationItem.rightBarButtonItem = anotherButton;
-    [anotherButton release];
     
     // Initialize the refresh control.
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -93,8 +89,9 @@
     
     
     //FIREGUREOUT LATERS
-    cell.name.text = @"GUCCI";
-    cell.message.text = @"HelloWorld";
+    cell.name.text = @"hector";
+    _userMessaged = [[NSString alloc] initWithString:cell.name.text];
+    [cell.message setTitle:@"HelloWorld" forState:UIControlStateNormal];
     return cell;
 }
 
@@ -102,18 +99,6 @@
     [friendsTable release];
     [_messageInput release];
     [super dealloc];
-}
-
--(BOOL) textFieldShouldReturn:(UITextField *)textField {
-    
-    NSLog(@"%@",@"Helo");
-    
-    [textField resignFirstResponder];
-    return YES;
-}
-
--(void)saveUserMessage {
-    NSLog(@"%@",@"Hello");
 }
 
 @end

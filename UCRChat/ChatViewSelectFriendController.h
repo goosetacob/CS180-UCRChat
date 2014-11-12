@@ -15,6 +15,7 @@
 @property (retain, nonatomic) IBOutlet UITableView *friendsTable;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (retain, nonatomic) IBOutlet UITextView *messageInput;
+@property (retain, nonatomic) NSString *userMessaged;
 
 @end
 
