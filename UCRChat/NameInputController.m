@@ -22,12 +22,20 @@
 }
 
 - (IBAction)backToUserFileController:(UIBarButtonItem *)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
-
-- (IBAction)userNameInput:(UITextField *)sender {
+- (IBAction)saveUserNameInput:(UIBarButtonItem *)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId]
+                                 block:^(PFObject *userInfo, NSError *error) {
+        
+        // Now let's update it with some new data.8
+        userInfo[@"fullName"] = self.textField.text;
+        [userInfo saveInBackground];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
     
 }
 
