@@ -8,7 +8,7 @@
 
 #import "FriendsController.h"
 #import <Parse/Parse.h>
-#import "UITableViewCell+TableCell.h"
+#import "TableCell.h"
 
 @interface FriendsController ()
 

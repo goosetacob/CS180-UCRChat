@@ -35,7 +35,8 @@
 		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
-		8042AAA71A12551E003C6DA5 /* UITableViewCell+TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */; };
+		8BC71A461A140F11009756FA /* MyFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC71A441A140F11009756FA /* MyFriends.m */; };
+		8BC71A481A140F22009756FA /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC71A471A140F22009756FA /* TableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +91,12 @@
 		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
-		8042AAA51A12551E003C6DA5 /* UITableViewCell+TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+TableCell.h"; sourceTree = "<group>"; };
-		8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+TableCell.m"; sourceTree = "<group>"; };
+		8BC71A431A140F11009756FA /* MyFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriends.h; sourceTree = "<group>"; };
+		8BC71A441A140F11009756FA /* MyFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriends.m; sourceTree = "<group>"; };
+		8BC71A451A140F11009756FA /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		8BC71A471A140F22009756FA /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		8BC71A491A1412C2009756FA /* facebook-ios-sdk-3.20.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "facebook-ios-sdk-3.20.pkg"; path = "../../Downloads/facebook-ios-sdk-3.20.pkg"; sourceTree = "<group>"; };
+		8BC71A4B1A1412EE009756FA /* Scringo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scringo.framework; path = ../../Downloads/Scringo/Scringo.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +156,8 @@
 		3A0458AF19F6F062007B44A0 = {
 			isa = PBXGroup;
 			children = (
+				8BC71A4B1A1412EE009756FA /* Scringo.framework */,
+				8BC71A491A1412C2009756FA /* facebook-ios-sdk-3.20.pkg */,
 				3A0458BA19F6F062007B44A0 /* UCRChat */,
 				3A0458D719F6F062007B44A0 /* UCRChatTests */,
 				3A0458B919F6F062007B44A0 /* Products */,
@@ -174,21 +181,23 @@
 				3A88FEAF19FDDF8D007A53DD /* ChatController.h */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
+				8BC71A431A140F11009756FA /* MyFriends.h */,
+				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
+				8BC71A451A140F11009756FA /* TableCell.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
-				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
-				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
-				8042AAA51A12551E003C6DA5 /* UITableViewCell+TableCell.h */,
-				8042AAA61A12551E003C6DA5 /* UITableViewCell+TableCell.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
+				8BC71A441A140F11009756FA /* MyFriends.m */,
+				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
+				8BC71A471A140F22009756FA /* TableCell.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
-				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
+				3065DFD91A107EFE00D73E26 /* Main.storyboard */,
 				3A8A06F61A0F421100FAE3A7 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 			);
@@ -350,13 +359,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC71A481A140F22009756FA /* TableCell.m in Sources */,
 				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
-				8042AAA71A12551E003C6DA5 /* UITableViewCell+TableCell.m in Sources */,
+				8BC71A461A140F11009756FA /* MyFriends.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
@@ -501,10 +511,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 					"$(PROJECT_DIR)",
-					"/Users/gustavoblanco/Downloads/quickblox-ios-sdk-master/Framework",
-					/Users/gustavoblanco/Downloads,
-					"/Users/gustavoblanco/Downloads/parse-library-1.5.0",
-					/Users/gustavoblanco/Documents/FacebookSDK,
+					"/Users/user26338/Downloads/quickblox-ios-sdk-master/Framework",
+					/Users/user26338/Downloads,
+					/Users/user26338/Documents/FacebookSDK,
+					/Users/user26338/Downloads/Scringo,
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -527,10 +537,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.4.2",
 					"$(PROJECT_DIR)",
-					"/Users/gustavoblanco/Downloads/quickblox-ios-sdk-master/Framework",
-					/Users/gustavoblanco/Downloads,
-					"/Users/gustavoblanco/Downloads/parse-library-1.5.0",
-					/Users/gustavoblanco/Documents/FacebookSDK,
+					"/Users/user26338/Downloads/quickblox-ios-sdk-master/Framework",
+					/Users/user26338/Downloads,
+					/Users/user26338/Documents/FacebookSDK,
+					/Users/user26338/Downloads/Scringo,
 				);
 				INFOPLIST_FILE = UCRChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
