@@ -11,12 +11,7 @@
 @implementation ChatAppTabBarController : UITabBarController
 
 -(void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [[UIDevice currentDevice] setValue:
-     [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
-                                forKey:@"orientation"];
-    
+    [super viewDidAppear:animated];    
     
     //[PFUser logOut];
     
@@ -70,7 +65,7 @@
     [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userInfo, NSError *error) {
         
         // Now let's update it with some new data. In this case, only cheatMode and score will get sent to the cloud. playerName hasn't changed.
-        NSArray *array = @[@"Gustavo Sierra",@"Fernando Gonzalez",@"Sergio Moralez",@"Hector Dominguez"];
+        NSArray *array = @[];
         userInfo[@"Friends"] = array;
         [userInfo saveInBackground];
         

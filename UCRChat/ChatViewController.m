@@ -31,29 +31,17 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     
-    _refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(retreiveFriendsFromPrase) forControlEvents:UIControlEventValueChanged];
     
-
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestLoans)
+                  forControlEvents:UIControlEventValueChanged];
     
-    /*
-    _friendsArray = [[NSArray alloc] initWithObjects:@"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",
-                      @"Gustavo",
-                      @"Fernando",
-                      @"Sergio",
-                      @"Hector",nil];
-     */
+    //_friendsArray = [[NSArray alloc] initWithObjects:nil];
+    
      
 }
 
@@ -75,6 +63,8 @@
     static NSString *CellIdentifier = @"ChatCellController";
     ChatCellController *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    NSLog(@"#2   %@", _friendsArray);
+    
     int row = [indexPath row];
     
    
@@ -93,7 +83,7 @@
     return cell;
 }
 
--(void) retreiveFriendsFromPrase{
+-(void)getLatestLoans {
     //find friends on Parse
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:[[PFUser currentUser] objectId] block:^(PFObject *userInfo, NSError *error) {
@@ -101,14 +91,15 @@
         //_friendsArray = userInfo[@"Friends"];
         if (!error) {
             _friendsArray = [[NSArray alloc] initWithObjects:userInfo[@"Friends"],nil];
-            NSLog(@"%@", _friendsArray);
+            NSLog(@"#1  %@", _friendsArray);
         }
         
-        [_friendsArray reloadData];
-        [_refreshControl endRefreshing];
     }];
-
+    
+    [self.tableView reloadData];
+    
+    
+    [self.refreshControl endRefreshing];
 }
-
 
 @end
