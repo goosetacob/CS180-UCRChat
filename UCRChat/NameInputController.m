@@ -18,18 +18,17 @@
     [super viewDidLoad];
     _currentUserId = [[PFUser currentUser] objectId];
     
-    PFObject *gameScore = [PFObject objectWithClassName:@"_User"];
+    PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *gameScore, NSError *error) {
+    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
         
-        gameScore[@"aboutMe"] = @"Hector Es Puto";
-        NSString *playerName = gameScore[@"fullName"];
+        NSString *playerName = userPointer[@"fullName"];
         self.textView.text = playerName;
-        [gameScore saveInBackground];
+
         
-        NSLog(@"%@", gameScore);
+        NSLog(@"%@", userPointer);
     }];
     
     
@@ -43,21 +42,21 @@
 
 -(IBAction)saveReturnToUserFileController:(UIBarButtonItem *)sender{
     
-    PFObject *gameScore = [PFObject objectWithClassName:@"_User"];
+    PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *gameScore, NSError *error) {
+    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
         
-        NSString *playerName = gameScore[@"fullName"];
+        NSString *playerName = userPointer[@"fullName"];
         if (![self.textView.text isEqualToString:playerName]){
             
-            gameScore[@"fullName"] = self.textView.text;
-            [gameScore saveInBackground];
+            userPointer[@"fullName"] = self.textView.text;
+            [userPointer saveInBackground];
         }
        
        
-        NSLog(@"%@", gameScore);
+        NSLog(@"%@", userPointer);
     }];
     [self dismissViewControllerAnimated:YES completion:nil];
     
