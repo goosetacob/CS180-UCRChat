@@ -31,9 +31,14 @@
         NSString *playerName = userPointer[@"fullName"];
         NSString *blogg = userPointer[@"aboutMe"];
         [self.nameView setTitle:playerName forState:UIControlStateNormal];
-        [self.labelView setText:blogg];
         
-        
+        [self.aboutMeView setUserInteractionEnabled:NO];
+        [self.aboutMeView.titleLabel setNumberOfLines:0];
+        [self.aboutMeView.titleLabel setLineBreakMode:NSLineBreakByCharWrapping];
+        self.aboutMeView.autoresizesSubviews = YES;
+        self.aboutMeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self.aboutMeView setTitle:blogg forState:UIControlStateNormal];
+    
         NSLog(@"%@", userPointer);
     }];
     
@@ -44,8 +49,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    _currentUserId = [[PFUser currentUser] objectId];
-    
+}
+
+- (IBAction)updateProfile:(UIBarButtonItem *)sender
+{
     PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -55,8 +62,13 @@
         NSString *playerName = userPointer[@"fullName"];
         NSString *blogg = userPointer[@"aboutMe"];
         [self.nameView setTitle:playerName forState:UIControlStateNormal];
-        [self.labelView setText:blogg];
         
+        [self.aboutMeView setUserInteractionEnabled:NO];
+        [self.aboutMeView.titleLabel setNumberOfLines:0];
+        [self.aboutMeView.titleLabel setLineBreakMode:NSLineBreakByCharWrapping];
+        self.aboutMeView.autoresizesSubviews = YES;
+        self.aboutMeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self.aboutMeView setTitle:blogg forState:UIControlStateNormal];
         
         NSLog(@"%@", userPointer);
     }];

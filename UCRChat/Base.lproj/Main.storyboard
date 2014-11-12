@@ -160,7 +160,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lX0-fw-sVz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Me" width="295" style="plain" id="3ke-TL-wsC"/>
+                                    <barButtonItem title="Me" width="295" style="plain" id="3ke-TL-wsC">
+                                        <connections>
+                                            <action selector="updateProfile:" destination="Yn1-ni-wFV" id="WYV-ip-TQ3"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-3C-6PR">
@@ -179,13 +183,14 @@
                                     <action selector="logOutUser:" destination="Yn1-ni-wFV" eventType="touchUpInside" id="VnX-aJ-cgF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Jqc-O9-pfs">
-                                <rect key="frame" x="20" y="186" width="280" height="120"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGQ-WX-Ntb">
+                                <rect key="frame" x="20" y="214" width="280" height="100"/>
                                 <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -196,7 +201,7 @@
                     <navigationItem key="navigationItem" id="APb-BI-zpS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="labelView" destination="Jqc-O9-pfs" id="Y1K-FQ-fri"/>
+                        <outlet property="aboutMeView" destination="AGQ-WX-Ntb" id="aQf-J0-akt"/>
                         <outlet property="nameView" destination="YAf-fm-5UZ" id="agA-aD-Afc"/>
                     </connections>
                 </viewController>
