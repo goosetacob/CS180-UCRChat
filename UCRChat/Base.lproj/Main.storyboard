@@ -293,9 +293,9 @@
                                     <barButtonItem title="Save" id="Qfm-sb-8Z6"/>
                                 </items>
                             </toolbar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eF6-Gs-Caq">
-                                <rect key="frame" x="-84" y="-95" width="24" height="68"/>
-                                <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-qk-vPF">
+                                <rect key="frame" x="20" y="82" width="280" height="150"/>
+                                <color key="backgroundColor" red="0.94099195079999998" green="0.94099195079999998" blue="0.94099195079999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
