@@ -11,4 +11,8 @@
 
 @interface MeController : UIViewController
 
+@property (strong, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) IBOutlet UIButton *nameView;
+@property (retain, nonatomic) IBOutlet UIButton *aboutMeView;
+
 @end

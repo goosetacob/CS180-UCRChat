@@ -1349,6 +1349,7 @@
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A1545711A12CB5D00948D1E /* NameInputController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
+				3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				3A1545E81A13F71000948D1E /* SendMessage.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,

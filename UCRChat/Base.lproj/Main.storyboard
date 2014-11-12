@@ -243,12 +243,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAf-fm-5UZ">
-                                <rect key="frame" x="25" y="76" width="271" height="85"/>
+                            <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAf-fm-5UZ">
+                                <rect key="frame" x="17" y="76" width="280" height="85"/>
                                 <color key="backgroundColor" red="0.96920375631313127" green="0.96920375631313127" blue="0.96920375631313127" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-40" maxY="0.0"/>
-                                <state key="normal" title="User Name">
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="22" maxY="0.0"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -258,7 +258,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lX0-fw-sVz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Me" width="295" style="plain" id="3ke-TL-wsC"/>
+                                    <barButtonItem title="Me" width="295" style="plain" id="3ke-TL-wsC">
+                                        <connections>
+                                            <action selector="updateProfile:" destination="Yn1-ni-wFV" id="WYV-ip-TQ3"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-3C-6PR">
@@ -277,6 +281,14 @@
                                     <action selector="logOutUser:" destination="Yn1-ni-wFV" eventType="touchUpInside" id="VnX-aJ-cgF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGQ-WX-Ntb">
+                                <rect key="frame" x="17" y="210" width="280" height="120"/>
+                                <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -286,6 +298,10 @@
                     <tabBarItem key="tabBarItem" title="Me" image="second" id="xs1-8B-x34"/>
                     <navigationItem key="navigationItem" id="APb-BI-zpS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="aboutMeView" destination="AGQ-WX-Ntb" id="aQf-J0-akt"/>
+                        <outlet property="nameView" destination="YAf-fm-5UZ" id="agA-aD-Afc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDi-zj-MpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,6 +354,16 @@
                                     <segue destination="9GX-mo-iFK" kind="show" id="WXC-qA-Yxp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drN-FW-WPR">
+                                <rect key="frame" x="16" y="266" width="280" height="55"/>
+                                <color key="backgroundColor" red="0.97282608699999995" green="0.97282608699999995" blue="0.97282608699999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="About Me">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5EK-ay-2Hc" kind="show" id="oqn-zL-dTi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -345,10 +371,62 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imageView" destination="Pam-y0-5b1" id="LIP-9H-Pr6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8es-YF-ari" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1606" y="1287"/>
+        </scene>
+        <!--About Me Controller-->
+        <scene sceneID="uyc-KK-QdM">
+            <objects>
+                <viewController id="5EK-ay-2Hc" customClass="aboutMeController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x54-Rr-bh3"/>
+                        <viewControllerLayoutGuide type="bottom" id="59V-Bx-VzV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wy0-JX-lGo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vej-RU-XFz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="gLG-1a-xmC">
+                                        <connections>
+                                            <action selector="cancelToMeController:" destination="5EK-ay-2Hc" id="k1b-ox-bIn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Me" width="180" id="X5X-Vf-oAX"/>
+                                    <barButtonItem title="Save" id="Qfm-sb-8Z6">
+                                        <connections>
+                                            <action selector="saveAboutMe:" destination="5EK-ay-2Hc" id="Wkb-cc-V57"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSo-qk-vPF">
+                                <rect key="frame" x="20" y="82" width="280" height="120"/>
+                                <color key="backgroundColor" red="0.94099195079999998" green="0.94099195079999998" blue="0.94099195079999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vej-RU-XFz" firstAttribute="top" secondItem="x54-Rr-bh3" secondAttribute="bottom" id="bff-VO-qRH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="textView" destination="bSo-qk-vPF" id="b3i-I3-jYO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRL-0r-UIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="1934"/>
         </scene>
         <!--Name Input Controller-->
         <scene sceneID="FAE-57-bhP">

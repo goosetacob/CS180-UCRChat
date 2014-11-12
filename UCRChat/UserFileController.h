@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface UserFileController : UIViewController <UIActionSheetDelegate>
+@interface UserFileController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 
+
+    IBOutlet UIImageView *imageView;
+    UIImagePickerController *pickPhoto;
+    UIImage *image;
+    //IBOutlet UIImagePickerController *imageC;
+
+}
 -(IBAction)showActionSheet:(id)sender;
-
+@property (strong, nonatomic) NSString *currentUserId;
+    
 @end
