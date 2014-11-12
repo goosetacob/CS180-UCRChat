@@ -15,4 +15,8 @@
 @property (retain, nonatomic) IBOutlet UITextField *textView;
 
 
+@property (strong, nonatomic) NSString *name;
+@property (retain, nonatomic) IBOutlet UITextField *textField;
+
 @end
+
