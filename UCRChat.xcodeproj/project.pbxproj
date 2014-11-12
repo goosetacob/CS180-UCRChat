@@ -191,15 +191,15 @@
 				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
 				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
+				8058BB441A12AD1E00F5B286 /* AddPostController.h */,
+				8058BB451A12AD1E00F5B286 /* AddPostController.m */,
+				803FD5D21A130DD800454F6E /* CustomCell.h */,
+				803FD5D31A130DD800454F6E /* CustomCell.m */,
 				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				80CB16CF1A12110500472904 /* Main.storyboard */,
 				80CB16DB1A1213CA00472904 /* Model */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
-				8058BB441A12AD1E00F5B286 /* AddPostController.h */,
-				8058BB451A12AD1E00F5B286 /* AddPostController.m */,
-				803FD5D21A130DD800454F6E /* CustomCell.h */,
-				803FD5D31A130DD800454F6E /* CustomCell.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";

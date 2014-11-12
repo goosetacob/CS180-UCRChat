@@ -15,6 +15,11 @@
 
 @implementation TimelineController
 @synthesize PostTable;
+bool checkedlike = false;
+static int numLikes = 0;
+
+PFObject *tempObject;
+CustomCell *cell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,11 +70,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //setup cell
-    PFObject *tempObject = [PostArray objectAtIndex:indexPath.row];
+     tempObject = [PostArray objectAtIndex:indexPath.row];
    
     static NSString *CellIdentifier = @"mycell";
     
-    CustomCell *cell = [tableView
+    cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[CustomCell alloc]
@@ -78,13 +83,38 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
-
+   
+    [[cell Likebtn] addTarget:self action:@selector(Like:) forControlEvents:UIControlEventTouchUpInside];
+    
     cell.NAME.text = [tempObject objectForKey:@"User"];
     cell.POST.text = [tempObject objectForKey:@"Post"];
     cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
+    numLikes = [[tempObject objectForKey:@"Likes"] intValue];
+    cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
+    
+    
+    
     
     return cell;
 }
+
+- (IBAction)Like:(id)sender {
+    
+    //[tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
+    [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(!error)
+        {
+            
+            
+            
+            [tempObject incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
+            [tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
+            [tempObject saveInBackground];
+             cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tempObject objectForKey:@"Likes"] intValue]];
+        }
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
