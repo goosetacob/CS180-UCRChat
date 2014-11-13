@@ -12,19 +12,24 @@
 		309BA6B41A120D54005F2A46 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309BA6B21A120D54005F2A46 /* Parse.framework */; };
 		3A0458BE19F6F062007B44A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458BD19F6F062007B44A0 /* main.m */; };
 		3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458C019F6F062007B44A0 /* AppDelegate.m */; };
-		3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CB19F6F062007B44A0 /* Images.xcassets */; };
-		3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
 		3A0458DB19F6F062007B44A0 /* UCRChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0458DA19F6F062007B44A0 /* UCRChatTests.m */; };
-		3A1545711A12CB5D00948D1E /* NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545701A12CB5D00948D1E /* NameInputController.m */; };
 		3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545CF1A12FF2B00948D1E /* ChatViewController.m */; };
 		3A1545D31A1302E000948D1E /* ChatCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D21A1302E000948D1E /* ChatCellController.m */; };
 		3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */; };
 		3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */; };
-		3A1545DF1A13F47100948D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545DD1A13F47100948D1E /* Main.storyboard */; };
+		3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545DB1A13617800948D1E /* aboutMeController.m */; };
 		3A1545E21A13F4C500948D1E /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E11A13F4C500948D1E /* CustomCell.m */; };
 		3A1545E51A13F6B100948D1E /* AddPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E41A13F6B100948D1E /* AddPostController.m */; };
 		3A1545E81A13F71000948D1E /* SendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E71A13F71000948D1E /* SendMessage.m */; };
-		3A68523C1A11DBF200211397 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523B1A11DBF200211397 /* CFNetwork.framework */; };
+		3A1545EA1A1423FA00948D1E /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545E91A1423FA00948D1E /* UserFileController.m */; };
+		3A1545EC1A14243000948D1E /* NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545EB1A14243000948D1E /* NameInputController.m */; };
+		3A1545EE1A14248200948D1E /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545ED1A14248200948D1E /* TimelineController.m */; };
+		3A1545F31A14263E00948D1E /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545F21A14263E00948D1E /* MeController.m */; };
+		3A1545F51A1426E700948D1E /* Images.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545F41A1426E700948D1E /* Images.xcassets */; };
+		3A1545F61A14271C00948D1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545F41A1426E700948D1E /* Images.xcassets */; };
+		3A1545F71A14272500948D1E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
+		3A1545F81A14272500948D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545DD1A13F47100948D1E /* Main.storyboard */; };
+		3A68523C1A11DBF200211397 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3A68523E1A11DBF800211397 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523D1A11DBF700211397 /* Security.framework */; };
 		3A6852401A11DBFF00211397 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */; };
 		3A6852421A11DC3100211397 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6852411A11DC3100211397 /* Accounts.framework */; };
@@ -38,9 +43,6 @@
 		3A6852521A11DC6D00211397 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6852511A11DC6D00211397 /* StoreKit.framework */; };
 		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
 		3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */; };
-		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
-		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
-		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
 		3AD1E1051A1242730026B0FD /* Scringo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E1041A1242730026B0FD /* Scringo.framework */; };
 		3AD1E1071A1242890026B0FD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E1061A1242890026B0FD /* CoreText.framework */; };
 		3AD1E1091A1242910026B0FD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E1081A1242910026B0FD /* MapKit.framework */; };
@@ -298,13 +300,11 @@
 		3A0458BD19F6F062007B44A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3A0458BF19F6F062007B44A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A0458C019F6F062007B44A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3A0458CB19F6F062007B44A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A0458CE19F6F062007B44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3A0458D419F6F062007B44A0 /* UCRChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCRChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0458D919F6F062007B44A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A0458DA19F6F062007B44A0 /* UCRChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCRChatTests.m; sourceTree = "<group>"; };
 		3A15456F1A12CB5D00948D1E /* NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameInputController.h; sourceTree = "<group>"; };
-		3A1545701A12CB5D00948D1E /* NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameInputController.m; sourceTree = "<group>"; };
 		3A1545CE1A12FF2B00948D1E /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		3A1545CF1A12FF2B00948D1E /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3A1545D11A1302E000948D1E /* ChatCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellController.h; sourceTree = "<group>"; };
@@ -313,6 +313,8 @@
 		3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellSelectFriendController.m; sourceTree = "<group>"; };
 		3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewSelectFriendController.h; sourceTree = "<group>"; };
 		3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewSelectFriendController.m; sourceTree = "<group>"; };
+		3A1545DA1A13617800948D1E /* aboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutMeController.h; sourceTree = "<group>"; };
+		3A1545DB1A13617800948D1E /* aboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutMeController.m; sourceTree = "<group>"; };
 		3A1545DE1A13F47100948D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A1545E01A13F4C500948D1E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		3A1545E11A13F4C500948D1E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
@@ -320,7 +322,12 @@
 		3A1545E41A13F6B100948D1E /* AddPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostController.m; sourceTree = "<group>"; };
 		3A1545E61A13F71000948D1E /* SendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessage.h; sourceTree = "<group>"; };
 		3A1545E71A13F71000948D1E /* SendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessage.m; sourceTree = "<group>"; };
-		3A68523B1A11DBF200211397 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3A1545E91A1423FA00948D1E /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
+		3A1545EB1A14243000948D1E /* NameInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameInputController.m; sourceTree = "<group>"; };
+		3A1545ED1A14248200948D1E /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
+		3A1545EF1A14253C00948D1E /* NameInputController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameInputController.m; sourceTree = "<group>"; };
+		3A1545F21A14263E00948D1E /* MeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
+		3A1545F41A1426E700948D1E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A68523D1A11DBF700211397 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A6852411A11DC3100211397 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -336,11 +343,8 @@
 		3A88FEB219FDDF8D007A53DD /* FriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsController.m; sourceTree = "<group>"; };
 		3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAppTabBarController.h; sourceTree = "<group>"; };
 		3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatAppTabBarController.m; sourceTree = "<group>"; };
-		3A8A06FA1A102F0D00FAE3A7 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
 		3A8A06FC1A10708100FAE3A7 /* UserFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFileController.h; sourceTree = "<group>"; };
-		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
-		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
 		3AD1E1041A1242730026B0FD /* Scringo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scringo.framework; path = ../../../Downloads/Scringo/Scringo.framework; sourceTree = "<group>"; };
 		3AD1E1061A1242890026B0FD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		3AD1E1081A1242910026B0FD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -609,7 +613,7 @@
 				3AD1E1051A1242730026B0FD /* Scringo.framework in Frameworks */,
 				3A6852401A11DBFF00211397 /* SystemConfiguration.framework in Frameworks */,
 				3A68523E1A11DBF800211397 /* Security.framework in Frameworks */,
-				3A68523C1A11DBF200211397 /* CFNetwork.framework in Frameworks */,
+				3A68523C1A11DBF200211397 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +650,6 @@
 				3A6852411A11DC3100211397 /* Accounts.framework */,
 				3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */,
 				3A68523D1A11DBF700211397 /* Security.framework */,
-				3A68523B1A11DBF200211397 /* CFNetwork.framework */,
 			);
 			name = Framework;
 			path = UCRChat;
@@ -674,21 +677,28 @@
 		3A0458BA19F6F062007B44A0 /* UCRChat */ = {
 			isa = PBXGroup;
 			children = (
+				3A1545ED1A14248200948D1E /* TimelineController.m */,
+				3A1545F41A1426E700948D1E /* Images.xcassets */,
+				3A1545F21A14263E00948D1E /* MeController.m */,
+				3A1545EF1A14253C00948D1E /* NameInputController.m */,
+				3A1545DA1A13617800948D1E /* aboutMeController.h */,
 				3A1545E31A13F6B100948D1E /* AddPostController.h */,
-				3A1545E61A13F71000948D1E /* SendMessage.h */,
-				3A1545E71A13F71000948D1E /* SendMessage.m */,
 				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
 				3A1545D11A1302E000948D1E /* ChatCellController.h */,
 				3A1545D41A13232200948D1E /* ChatCellSelectFriendController.h */,
 				3A1545CE1A12FF2B00948D1E /* ChatViewController.h */,
 				3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */,
 				3A1545E01A13F4C500948D1E /* CustomCell.h */,
+				3A1545EB1A14243000948D1E /* NameInputController.m */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3A15456F1A12CB5D00948D1E /* NameInputController.h */,
+				3A1545E61A13F71000948D1E /* SendMessage.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
+				3A1545DB1A13617800948D1E /* aboutMeController.m */,
 				3A1545E41A13F6B100948D1E /* AddPostController.m */,
+				3A1545E91A1423FA00948D1E /* UserFileController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A1545D21A1302E000948D1E /* ChatCellController.m */,
 				3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */,
@@ -696,11 +706,7 @@
 				3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */,
 				3A1545E11A13F4C500948D1E /* CustomCell.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
-				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
-				3A1545701A12CB5D00948D1E /* NameInputController.m */,
-				3ACB40A419F8650200E1303A /* TimelineController.m */,
-				3A8A06FD1A10708100FAE3A7 /* UserFileController.m */,
-				3A0458CB19F6F062007B44A0 /* Images.xcassets */,
+				3A1545E71A13F71000948D1E /* SendMessage.m */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				3A1545DD1A13F47100948D1E /* Main.storyboard */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
@@ -1071,6 +1077,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1545F71A14272500948D1E /* LaunchScreen.xib in Resources */,
+				3A1545F81A14272500948D1E /* Main.storyboard in Resources */,
+				3A1545F61A14271C00948D1E /* Images.xcassets in Resources */,
 				3AD1E2521A1244DD0026B0FD /* iPad_ScringoQuizScrollScoreView.xib in Resources */,
 				3AD1E21F1A1244DD0026B0FD /* iPad_ScringoFeedLikeTopicCell.xib in Resources */,
 				3AD1E27E1A1244DD0026B0FD /* ScringoChatRoomsTopicImageCell.xib in Resources */,
@@ -1227,7 +1236,6 @@
 				3AD1E2251A1244DD0026B0FD /* iPad_ScringoFindFriendsView.xib in Resources */,
 				3AD1E2461A1244DD0026B0FD /* iPad_ScringoOneChatTableHeaderView.xib in Resources */,
 				3AD1E2551A1244DD0026B0FD /* iPad_ScringoQuizUnlockPopup.xib in Resources */,
-				3A1545DF1A13F47100948D1E /* Main.storyboard in Resources */,
 				3AD1E2801A1244DD0026B0FD /* ScringoChatRoomsTopicNativeAppAdCell.xib in Resources */,
 				3AD1E2CB1A1244DD0026B0FD /* ScringoSignInPopup.xib in Resources */,
 				3AD1E2AA1A1244DD0026B0FD /* ScringoMapAnnotationView.xib in Resources */,
@@ -1259,7 +1267,6 @@
 				3AD1E2C51A1244DD0026B0FD /* ScringoQuizTimeBonusView.xib in Resources */,
 				3AD1E26D1A1244DD0026B0FD /* iPad_ScringoUserSettingsView.xib in Resources */,
 				3AD1E2BC1A1244DD0026B0FD /* ScringoPollAnswerView.xib in Resources */,
-				3A0458CF19F6F062007B44A0 /* LaunchScreen.xib in Resources */,
 				3AD1E2A71A1244DD0026B0FD /* ScringoLikeButton.xib in Resources */,
 				3AD1E2E51A1244DD0026B0FD /* Scringo.bundle in Resources */,
 				3AD1E2281A1244DD0026B0FD /* iPad_ScringoGeneralLoadingView.xib in Resources */,
@@ -1296,7 +1303,6 @@
 				3AD1E23A1A1244DD0026B0FD /* iPad_ScringoNewMessageCell.xib in Resources */,
 				3AD1E2121A1244DD0026B0FD /* iPad_ScringoDefaultNotificationPopup.xib in Resources */,
 				3AD1E2A91A1244DD0026B0FD /* ScringoMainMenuView.xib in Resources */,
-				3A0458CC19F6F062007B44A0 /* Images.xcassets in Resources */,
 				3AD1E24C1A1244DD0026B0FD /* iPad_ScringoQuizCell.xib in Resources */,
 				3AD1E28C1A1244DD0026B0FD /* ScringoFeedbackTalkToUs.xib in Resources */,
 				3065DFDB1A107EFE00D73E26 /* (null) in Resources */,
@@ -1339,21 +1345,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1545F51A1426E700948D1E /* Images.xcassets in Sources */,
+				3A1545F31A14263E00948D1E /* MeController.m in Sources */,
+				3A1545EC1A14243000948D1E /* NameInputController.m in Sources */,
 				3A1545D31A1302E000948D1E /* ChatCellController.m in Sources */,
-				3ACB40A519F8650200E1303A /* TimelineController.m in Sources */,
 				3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */,
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
-				3A1545711A12CB5D00948D1E /* NameInputController.m in Sources */,
+				3A1545EE1A14248200948D1E /* TimelineController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
 				3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */,
-				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				3A1545E81A13F71000948D1E /* SendMessage.m in Sources */,
-				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,
 				3A1545E21A13F4C500948D1E /* CustomCell.m in Sources */,
+				3A1545EA1A1423FA00948D1E /* UserFileController.m in Sources */,
 				3A1545E51A13F6B100948D1E /* AddPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

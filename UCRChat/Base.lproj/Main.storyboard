@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jaq-hk-FI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1694" y="-1329"/>
+            <point key="canvasLocation" x="2506" y="-1329"/>
         </scene>
         <!--Chat View Select Friend Controller-->
         <scene sceneID="kqK-Wz-hRi">
@@ -119,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5N-qh-MJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184" y="-1329"/>
+            <point key="canvasLocation" x="2996" y="-1329"/>
         </scene>
         <!--Send Message-->
         <scene sceneID="cIY-2S-hpv">
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Og-pc-rvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="-1329"/>
+            <point key="canvasLocation" x="3533" y="-1324"/>
         </scene>
         <!--timeline-->
         <scene sceneID="wg7-f3-ORb">
@@ -449,11 +449,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Name" width="170" style="plain" id="1Fx-1G-eEt"/>
-                                    <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI">
-                                        <connections>
-                                            <action selector="saveUserNameInput:" destination="9GX-mo-iFK" id="Epf-Aa-883"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem title="Save" width="66" style="plain" id="UIG-ki-7oI"/>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-BS-uei">
@@ -474,29 +470,6 @@
             </objects>
             <point key="canvasLocation" x="2012" y="1287"/>
         </scene>
-        <!--chat-->
-        <scene sceneID="463-w1-wxe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QkB-4Q-dOw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="chat" image="first" id="RuX-3k-bop"/>
-                    <toolbarItems/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gCr-VK-aKD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Tqb-PW-YXo">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="87G-sc-kIG" kind="relationship" relationship="rootViewController" id="HqW-3R-t2v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AGW-cF-s1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1144" y="-713"/>
-        </scene>
         <!--Chat App Tab Bar Controller-->
         <scene sceneID="h81-xV-2O5">
             <objects>
@@ -509,15 +482,35 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="HZb-vf-waz" kind="relationship" relationship="viewControllers" id="hu3-8I-84R"/>
-                        <segue destination="QkB-4Q-dOw" kind="relationship" relationship="viewControllers" id="HBO-l9-9XN"/>
+                        <segue destination="cXo-43-dzj" kind="relationship" relationship="viewControllers" id="CeG-5Q-9hF"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="3vm-2Y-kdw"/>
+                        <segue destination="HZb-vf-waz" kind="relationship" relationship="viewControllers" id="hu3-8I-84R"/>
                         <segue destination="Yn1-ni-wFV" kind="relationship" relationship="viewControllers" id="8oj-AU-cua"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvd-Ec-Nis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="56" y="343"/>
+        </scene>
+        <!--chat-->
+        <scene sceneID="ccF-eZ-J4L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cXo-43-dzj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="chat" image="first" id="cbs-6u-gfd"/>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LSW-p4-3bS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="87G-sc-kIG" kind="relationship" relationship="rootViewController" id="sqo-46-exW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oo8-qB-nr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="-701"/>
         </scene>
     </scenes>
     <resources>
