@@ -14,6 +14,7 @@
     NSMutableArray *PostArray;
     NSArray* Left;
     NSArray* Right;
+    
    
 }
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;

@@ -17,7 +17,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *NAME;
 @property (retain, nonatomic) IBOutlet UILabel *POST;
 @property (retain, nonatomic) IBOutlet UIImageView *IMG;
-- (IBAction)Like:(id)sender;
+@property (retain, nonatomic) IBOutlet UIButton *Likebtn;
 @property (retain, nonatomic) IBOutlet UILabel *LikeText;
 
 @end
