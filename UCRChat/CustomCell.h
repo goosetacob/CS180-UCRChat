@@ -13,11 +13,10 @@
 {
     NSArray *tempArray;
 }
-
 @property (retain, nonatomic) IBOutlet UILabel *NAME;
-@property (retain, nonatomic) IBOutlet UILabel *POST;
+@property (retain, nonatomic) IBOutlet UILabel *LikeText;
 @property (retain, nonatomic) IBOutlet UIImageView *IMG;
 @property (retain, nonatomic) IBOutlet UIButton *Likebtn;
-@property (retain, nonatomic) IBOutlet UILabel *LikeText;
+@property (retain, nonatomic) IBOutlet UILabel *POST;
 
 @end
