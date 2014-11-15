@@ -19,6 +19,7 @@
 }
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
+- (IBAction)LikeBTNUP:(id)sender;
 
 
 

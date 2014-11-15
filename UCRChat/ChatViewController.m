@@ -30,7 +30,7 @@
     }];
      */
      
-    
+   /*
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     
@@ -48,7 +48,9 @@
     
     [self getLatest];
     
-    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(getLatest) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:15 target:
+    self selector:@selector(getLatest) userInfo:nil repeats:YES];
+    */
     
 }
 

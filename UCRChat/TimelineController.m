@@ -23,7 +23,9 @@ CustomCell *cell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    [self.PostTable setBackgroundColor: [UIColor clearColor]];
+    [self.PostTable setOpaque: NO];
     self.PostTable.dataSource = self;
     self.PostTable.delegate = self;
     
@@ -62,7 +64,7 @@ CustomCell *cell;
 
 //get number of rows by counting number of folders
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%lu", (unsigned long)PostArray.count);
+   // NSLog(@"%lu", (unsigned long)PostArray.count);
     return PostArray.count;
 }
 
@@ -84,7 +86,8 @@ CustomCell *cell;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    [[cell Likebtn] addTarget:self action:@selector(Like:) forControlEvents:UIControlEventTouchUpInside];
+    cell.Likebtn.tag = indexPath.row;
+    [[cell Likebtn] addTarget:self action:@selector(LikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.NAME.text = [tempObject objectForKey:@"User"];
     cell.POST.text = [tempObject objectForKey:@"Post"];
@@ -96,18 +99,28 @@ CustomCell *cell;
     return cell;
 }
 
-- (IBAction)Like:(id)sender {
+- (IBAction)LikeBTNUP:(id)sender {
+    
+    UIButton *LikeButton = (UIButton * )sender;
+    PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
+    NSString *name = [tmp objectForKey:@"User"];
+    NSLog(name);
+    
     
     //[tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
-    [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    {
         if(!error)
         {
-            [tempObject incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
-            [tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
-            [tempObject saveInBackground];
-            cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tempObject objectForKey:@"Likes"] intValue]];
+            [tmp incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
+            [tmp addUniqueObject:tmp.objectId forKey:@"LikesID"];
+            [tmp saveInBackground];
+            cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tmp objectForKey:@"Likes"] intValue]];
         }
     }];
+    
+    
+   
 }
 
 - (void)didReceiveMemoryWarning
