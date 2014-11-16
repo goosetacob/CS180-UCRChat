@@ -83,6 +83,13 @@
     {
         
         NSLog(@"Choose from Photos Button Clicked");
+        pickPhoto = [[UIImagePickerController alloc] init];
+        pickPhoto.delegate = self;
+        pickPhoto.allowsEditing = YES;
+        pickPhoto.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        
+        [self presentViewController:pickPhoto animated:YES completion:NULL];
+        [pickPhoto release];
     }
     
     else if(buttonIndex == 2)
