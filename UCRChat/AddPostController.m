@@ -38,6 +38,7 @@
     GlobalTimeline[@"User"] = [PFUser currentUser].username;
     GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
     [GlobalTimeline saveInBackground];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

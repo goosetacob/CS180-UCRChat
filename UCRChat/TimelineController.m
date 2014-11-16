@@ -15,7 +15,6 @@
 
 @implementation TimelineController
 @synthesize PostTable;
-bool checkedlike = false;
 static int numLikes = 0;
 
 PFObject *tempObject;
@@ -103,24 +102,29 @@ CustomCell *cell;
     
     UIButton *LikeButton = (UIButton * )sender;
     PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
-    NSString *name = [tmp objectForKey:@"User"];
-    NSLog(name);
     
-    
-    //[tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
-    [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    NSArray* tmp_Array = [tmp objectForKey:@"LikesID"] ;
+    bool found = false;
+
+    for(id item in tmp_Array)
     {
-        if(!error)
-        {
-            [tmp incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
-            [tmp addUniqueObject:tmp.objectId forKey:@"LikesID"];
-            [tmp saveInBackground];
-            cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tmp objectForKey:@"Likes"] intValue]];
-        }
-    }];
+        if([item isEqualToString:[PFUser currentUser].username])
+            found = true;
+    }
     
-    
-   
+    if(found == false){
+        [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if(!error)
+             {
+                 [tmp incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
+                 [tmp addUniqueObject:[PFUser currentUser].username forKey:@"LikesID"];
+                 [tmp saveInBackground];
+                    [self.PostTable reloadData];
+             cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tmp objectForKey:@"Likes"] intValue]];
+             }
+         }];
+    }
 }
 
 - (void)didReceiveMemoryWarning
