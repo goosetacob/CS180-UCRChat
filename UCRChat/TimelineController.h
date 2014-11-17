@@ -20,6 +20,11 @@
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
 - (IBAction)LikeBTNUP:(id)sender;
+- (IBAction)commentBTNUP:(id)sender;
+
+//This are data for the Post Controller
+
+
 
 
 

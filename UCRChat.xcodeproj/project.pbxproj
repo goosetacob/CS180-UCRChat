@@ -28,7 +28,6 @@
 		3A1545F51A1426E700948D1E /* Images.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 3A1545F41A1426E700948D1E /* Images.xcassets */; };
 		3A1545F61A14271C00948D1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545F41A1426E700948D1E /* Images.xcassets */; };
 		3A1545F71A14272500948D1E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */; };
-		3A1545F81A14272500948D1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1545DD1A13F47100948D1E /* Main.storyboard */; };
 		3A68523C1A11DBF200211397 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		3A68523E1A11DBF800211397 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523D1A11DBF700211397 /* Security.framework */; };
 		3A6852401A11DBFF00211397 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68523F1A11DBFF00211397 /* SystemConfiguration.framework */; };
@@ -46,6 +45,7 @@
 		3AD1E1071A1242890026B0FD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E1061A1242890026B0FD /* CoreText.framework */; };
 		3AD1E1091A1242910026B0FD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E1081A1242910026B0FD /* MapKit.framework */; };
 		3AD1E10B1A12429C0026B0FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD1E10A1A12429C0026B0FD /* UIKit.framework */; };
+		801AE3621A19800900A259DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 801AE3601A19800900A259DF /* Main.storyboard */; };
 		8020D73A1A17E52A0059D0A0 /* correctSound.aif in Resources */ = {isa = PBXBuildFile; fileRef = 8020D6491A17E5290059D0A0 /* correctSound.aif */; };
 		8020D73B1A17E52A0059D0A0 /* ScringoLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8020D64A1A17E5290059D0A0 /* ScringoLocalizable.strings */; };
 		8020D73C1A17E52A0059D0A0 /* iPad_ScringoActivationRibonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8020D6501A17E5290059D0A0 /* iPad_ScringoActivationRibonView.xib */; };
@@ -279,6 +279,7 @@
 		8020D8201A17E52A0059D0A0 /* Scringo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8020D7381A17E52A0059D0A0 /* Scringo.bundle */; };
 		8020D8211A17E52A0059D0A0 /* Scringo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8020D7391A17E52A0059D0A0 /* Scringo.framework */; };
 		8020D8241A17EA620059D0A0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8020D8231A17EA620059D0A0 /* FacebookSDK.framework */; };
+		8077DA291A1951F100CD0625 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077DA281A1951F100CD0625 /* PostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,7 +316,6 @@
 		3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewSelectFriendController.m; sourceTree = "<group>"; };
 		3A1545DA1A13617800948D1E /* aboutMeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutMeController.h; sourceTree = "<group>"; };
 		3A1545DB1A13617800948D1E /* aboutMeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutMeController.m; sourceTree = "<group>"; };
-		3A1545DE1A13F47100948D1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A1545E01A13F4C500948D1E /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		3A1545E11A13F4C500948D1E /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		3A1545E31A13F6B100948D1E /* AddPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostController.h; sourceTree = "<group>"; };
@@ -348,6 +348,7 @@
 		3AD1E1061A1242890026B0FD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		3AD1E1081A1242910026B0FD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3AD1E10A1A12429C0026B0FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		801AE3611A19800900A259DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8020D6491A17E5290059D0A0 /* correctSound.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = correctSound.aif; sourceTree = "<group>"; };
 		8020D64B1A17E5290059D0A0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ScringoLocalizable.strings; sourceTree = "<group>"; };
 		8020D64C1A17E5290059D0A0 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/ScringoLocalizable.strings; sourceTree = "<group>"; };
@@ -588,6 +589,8 @@
 		8020D7381A17E52A0059D0A0 /* Scringo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Scringo.bundle; path = ../Scringo/Scringo.bundle; sourceTree = "<group>"; };
 		8020D7391A17E52A0059D0A0 /* Scringo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scringo.framework; path = ../Scringo/Scringo.framework; sourceTree = "<group>"; };
 		8020D8231A17EA620059D0A0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		8077DA271A1951F100CD0625 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		8077DA281A1951F100CD0625 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -707,9 +710,11 @@
 				3A1545E91A1423FA00948D1E /* UserFileController.m */,
 				3A1545F41A1426E700948D1E /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
-				3A1545DD1A13F47100948D1E /* Main.storyboard */,
+				801AE3601A19800900A259DF /* Main.storyboard */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 				3A1545EB1A14243000948D1E /* NameInputController.m */,
+				8077DA271A1951F100CD0625 /* PostViewController.h */,
+				8077DA281A1951F100CD0625 /* PostViewController.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -1078,7 +1083,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1545F71A14272500948D1E /* LaunchScreen.xib in Resources */,
-				3A1545F81A14272500948D1E /* Main.storyboard in Resources */,
 				8020D7B91A17E52A0059D0A0 /* ScringoChatRoomsTopicImageCell.xib in Resources */,
 				3A1545F61A14271C00948D1E /* Images.xcassets in Resources */,
 				8020D7B81A17E52A0059D0A0 /* ScringoChatRoomsTopicHeaderView.xib in Resources */,
@@ -1234,6 +1238,7 @@
 				8020D7521A17E52A0059D0A0 /* iPad_ScringoFeedbackPopupClose.xib in Resources */,
 				8020D7C41A17E52A0059D0A0 /* ScringoFeedbackPopupWithRateUs.xib in Resources */,
 				8020D7811A17E52A0059D0A0 /* iPad_ScringoOneChatTableHeaderView.xib in Resources */,
+				801AE3621A19800900A259DF /* Main.storyboard in Resources */,
 				8020D7C11A17E52A0059D0A0 /* ScringoEmailSignUpView.xib in Resources */,
 				8020D7CA1A17E52A0059D0A0 /* ScringoFeedLikeImageCell.xib in Resources */,
 				8020D7C21A17E52A0059D0A0 /* ScringoFeedActivityCell.xib in Resources */,
@@ -1353,6 +1358,7 @@
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */,
+				8077DA291A1951F100CD0625 /* PostViewController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A1545EE1A14248200948D1E /* TimelineController.m in Sources */,
@@ -1392,10 +1398,10 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		3A1545DD1A13F47100948D1E /* Main.storyboard */ = {
+		801AE3601A19800900A259DF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3A1545DE1A13F47100948D1E /* Base */,
+				801AE3611A19800900A259DF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

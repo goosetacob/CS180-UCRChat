@@ -8,17 +8,21 @@
 
 #import "TimelineController.h"
 #import "CustomCell.h"
+#import "PostViewController.h"
 
 @interface TimelineController ()
 
 @end
 
 @implementation TimelineController
-@synthesize PostTable;
+@synthesize PostTable; //PostControllerPIC, PostControllerName, PostControllerPost;
+;
 static int numLikes = 0;
+static NSUInteger numComments = 0;
 
 PFObject *tempObject;
 CustomCell *cell;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,13 +90,18 @@ CustomCell *cell;
     }
     
     cell.Likebtn.tag = indexPath.row;
+    cell.CommentBtn.tag = indexPath.row;
     [[cell Likebtn] addTarget:self action:@selector(LikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
+    [[cell CommentBtn] addTarget:self action:@selector(commentBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.NAME.text = [tempObject objectForKey:@"User"];
     cell.POST.text = [tempObject objectForKey:@"Post"];
     cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
+    NSArray* array = [tempObject objectForKey:@"Comments"];
+    numComments = array.count;
+    cell.CommentBox.text = [NSString stringWithFormat:@"%ld", numComments ];
     
     
     return cell;
@@ -125,6 +134,34 @@ CustomCell *cell;
              }
          }];
     }
+}
+
+
+- (IBAction)commentBTNUP:(id)sender {
+    
+    //UIButton *CommentButton = (UIButton * )sender;
+   // PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
+    NSLog(@"Commet button pressed");
+    
+   [self performSegueWithIdentifier:@"MySegue" sender:sender];
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+   //// if ([[segue identifier] isEqualToString:@"MySegue"])
+   // {
+        NSLog(@"It gets here");
+        //if you need to pass data to the next controller do it here
+        UIButton *CommentButton = (UIButton * )sender;
+        PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
+        
+        PostViewController *SecondController = segue.destinationViewController;
+        SecondController.PARENT_NAME = [tmp objectForKey:@"User"];
+        SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
+        
+   // }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

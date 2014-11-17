@@ -28,8 +28,12 @@
     [_IMG release];
     [_LikeText release];
     [_Likebtn release];
+    [_CommentBox release];
+    [_CommentBtn release];
     [super dealloc];
 }
    
 
+- (IBAction)CommentBtn:(id)sender {
+}
 @end
