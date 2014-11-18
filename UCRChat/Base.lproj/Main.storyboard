@@ -173,23 +173,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZZ-FI-vcw">
-                                <rect key="frame" x="149" y="43" width="22" height="22"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="FbY-iC-dIe" kind="modal" id="cEP-ey-jWJ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0z-JB-qKQ">
-                                <rect key="frame" x="126" y="20" width="69" height="21"/>
+                                <rect key="frame" x="126" y="80" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="138" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-bY-rbl">
-                                <rect key="frame" x="0.0" y="74" width="320" height="446"/>
+                                <rect key="frame" x="0.0" y="135" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" rowHeight="158" id="8Ka-n9-awk" customClass="CustomCell">
@@ -214,7 +205,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBz-VJ-KTK" customClass="mycell">
                                                     <rect key="frame" x="80" y="13" width="109" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -235,7 +226,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXy-cu-6O0" customClass="mycell">
-                                                    <rect key="frame" x="9" y="12" width="56" height="70"/>
+                                                    <rect key="frame" x="4" y="15" width="70" height="70"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="YES"/>
                                                     </accessibility>
@@ -257,11 +248,23 @@
                                                         <segue destination="mln-Rd-cnI" kind="showDetail" identifier="MySegue" id="tlw-Ub-FZP"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-oF-AyY">
+                                                    <rect key="frame" x="260" y="110" width="46" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleColor" red="1" green="0.11047050033964478" blue="0.098680876620050317" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="DeleteBTN:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gNK-xc-XOG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="CommentBox" destination="wsq-i9-jGU" id="R1W-pr-a4e"/>
                                             <outlet property="CommentBtn" destination="2eo-tV-fbj" id="JtZ-UF-5NA"/>
+                                            <outlet property="Delete" destination="epQ-oF-AyY" id="eD2-B8-2nn"/>
                                             <outlet property="IMG" destination="tXy-cu-6O0" id="iDD-eZ-bdZ"/>
                                             <outlet property="LikeText" destination="iZd-hD-NCN" id="Cxc-7s-2t3"/>
                                             <outlet property="Likebtn" destination="C7o-91-ktm" id="UYh-3o-k97"/>
@@ -271,6 +274,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orC-S2-0ZR">
+                                <rect key="frame" x="149" y="105" width="22" height="22"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddActionButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wkf-gz-B7U"/>
+                                    <segue destination="FbY-iC-dIe" kind="showDetail" identifier="Postsegue" id="yaF-LM-8Wg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -280,6 +293,7 @@
                     <navigationItem key="navigationItem" id="Ffm-iS-Nn9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="AddBtn" destination="orC-S2-0ZR" id="ZhD-k7-dwv"/>
                         <outlet property="PostTable" destination="MSS-bY-rbl" id="bia-xo-dcf"/>
                     </connections>
                 </viewController>
@@ -377,7 +391,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK6-Ot-brg">
-                                <rect key="frame" x="0.0" y="152" width="320" height="198"/>
+                                <rect key="frame" x="21" y="115" width="288" height="198"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
@@ -390,24 +404,42 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drm-Dx-L3f">
-                                <rect key="frame" x="7" y="58" width="87" height="84"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXi-TR-nxg">
                                 <rect key="frame" x="102" y="114" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Like">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="Lbtn:" destination="mln-Rd-cnI" eventType="touchUpInside" id="Dwm-Fo-dXE"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoz-nI-cxa">
+                                <rect key="frame" x="197" y="89" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu3-Gs-40I">
+                                <rect key="frame" x="197" y="118" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-Bx-gYQ">
+                                <rect key="frame" x="21" y="68" width="70" height="70"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="chF-D4-yAj"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="CommentLabel" destination="yoz-nI-cxa" id="rBz-j1-rtd"/>
+                        <outlet property="LikeButton" destination="VXi-TR-nxg" id="ELu-Da-Qrb"/>
+                        <outlet property="LikeLabel" destination="gu3-Gs-40I" id="M72-1E-dct"/>
                         <outlet property="PostControllerName" destination="mIF-cr-AOo" id="6KN-Wb-zDy"/>
-                        <outlet property="PostControllerPIC" destination="drm-Dx-L3f" id="rVP-75-6FS"/>
+                        <outlet property="PostControllerPIC" destination="6p3-Bx-gYQ" id="RzB-XX-lrg"/>
                         <outlet property="PostControllerPost" destination="qK6-Ot-brg" id="jsR-bV-zww"/>
                     </connections>
                 </viewController>

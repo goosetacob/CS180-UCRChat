@@ -15,10 +15,11 @@
 @end
 
 @implementation TimelineController
-@synthesize PostTable; //PostControllerPIC, PostControllerName, PostControllerPost;
+@synthesize PostTable;
 ;
 static int numLikes = 0;
 static NSUInteger numComments = 0;
+//static bool result = 0;
 
 PFObject *tempObject;
 CustomCell *cell;
@@ -43,17 +44,29 @@ CustomCell *cell;
     
 }
 
-- (void) retrieveFromParse{
+- (void) retrieveFromParse
+{
     PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
-    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [retrievePosts orderByDescending:@"createdAt"];
+    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
         if(!error)
         {
             PostArray = [[NSMutableArray alloc ] initWithArray:objects];
+            [self.PostTable reloadData];
+            [_refreshControl endRefreshing];
         }
-        
-        [self.PostTable reloadData];
-        [_refreshControl endRefreshing];
+
     }];
+    
+    PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];
+    [retrieve findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if(!error)
+         {
+             userarray = [[NSArray alloc ] initWithArray:objects];
+         }
+     }];
     
 }
 
@@ -91,10 +104,22 @@ CustomCell *cell;
     
     cell.Likebtn.tag = indexPath.row;
     cell.CommentBtn.tag = indexPath.row;
+    cell.Delete.tag = indexPath.row;
     [[cell Likebtn] addTarget:self action:@selector(LikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     [[cell CommentBtn] addTarget:self action:@selector(commentBTNUP:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [[cell Delete] addTarget:self action:@selector(DeleteBTN:) forControlEvents:UIControlEventTouchUpInside];
     cell.NAME.text = [tempObject objectForKey:@"User"];
+
+    //To obtain the full name from the user on this cell
+    NSString* User = [tempObject objectForKey:@"User"];
+    
+    for(PFObject* item in userarray)
+    {
+        if([[item objectForKey:@"username"] isEqualToString:User])
+            cell.NAME.text = item[@"fullName"];
+    }
+    
+    
     cell.POST.text = [tempObject objectForKey:@"Post"];
     cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
@@ -103,6 +128,13 @@ CustomCell *cell;
     numComments = array.count;
     cell.CommentBox.text = [NSString stringWithFormat:@"%ld", numComments ];
     
+    //Check if we already lked the post to change the button text
+    NSArray* temp_array = [tempObject objectForKey:@"LikesID"];
+    for (NSString* Item in temp_array) {
+        if([[PFUser currentUser].username isEqualToString:Item])
+            [cell.Likebtn setTitle:@"Liked" forState:UIControlStateNormal];
+    }
+
     
     return cell;
 }
@@ -112,7 +144,7 @@ CustomCell *cell;
     UIButton *LikeButton = (UIButton * )sender;
     PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
     
-    NSArray* tmp_Array = [tmp objectForKey:@"LikesID"] ;
+    NSMutableArray* tmp_Array = [tmp objectForKey:@"LikesID"] ;
     bool found = false;
 
     for(id item in tmp_Array)
@@ -121,18 +153,45 @@ CustomCell *cell;
             found = true;
     }
     
-    if(found == false){
+    if(found == false)
+    {
+        //Like Feauture
         [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
              if(!error)
              {
+                 
                  [tmp incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
                  [tmp addUniqueObject:[PFUser currentUser].username forKey:@"LikesID"];
                  [tmp saveInBackground];
+                 [LikeButton setTitle:@"Liked" forState:UIControlStateNormal];
                     [self.PostTable reloadData];
              cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tmp objectForKey:@"Likes"] intValue]];
              }
          }];
+    }
+    //Dislike Feauture
+    else
+    {
+        [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+        {
+            if(!error)
+            {
+              [tmp incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:-1]];
+              //Obtain array of LIKESId
+                for(id item in tmp_Array)
+                {
+                    if([item isEqualToString:[PFUser currentUser].username]){
+                        [tmp_Array removeObject: item];
+                        [tmp saveInBackground];
+                        [LikeButton setTitle:@"Like" forState:UIControlStateNormal];
+                        [self.PostTable reloadData];
+
+                    }
+                }
+                
+            }
+        }];
     }
 }
 
@@ -141,26 +200,41 @@ CustomCell *cell;
     
     //UIButton *CommentButton = (UIButton * )sender;
    // PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
-    NSLog(@"Commet button pressed");
+    //NSLog(@"Commet button pressed");
     
    [self performSegueWithIdentifier:@"MySegue" sender:sender];
     
 }
 
+- (IBAction)AddButton:(id)sender {
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   //// if ([[segue identifier] isEqualToString:@"MySegue"])
-   // {
-        NSLog(@"It gets here");
+    if ([[segue identifier] isEqualToString:@"MySegue"]){
+        
         //if you need to pass data to the next controller do it here
         UIButton *CommentButton = (UIButton * )sender;
         PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
-        
         PostViewController *SecondController = segue.destinationViewController;
-        SecondController.PARENT_NAME = [tmp objectForKey:@"User"];
-        SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
         
-   // }
-    
+        //To obtain the full name from the user on this cell
+        NSString* User = [tmp objectForKey:@"User"];
+        
+        for(PFObject* item in userarray)
+        {
+            if([[item objectForKey:@"username"] isEqualToString:User])
+                SecondController.PARENT_NAME = item[@"fullName"];
+        }
+        
+        SecondController.ObjectID = tmp.objectId;//[tmp objectForKey:@"objectId"];
+        SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
+        SecondController.PARENT_LIKE = [NSString stringWithFormat:@"%d",[[tmp objectForKey:@"Likes"] intValue]];
+        
+        NSArray* array = [tmp objectForKey:@"Comments"];
+        int nc = (int)array.count;
+        SecondController.PARENT_COMMENT = [NSString stringWithFormat:@"%d", nc];
+       
+    }
     
 }
 
@@ -172,6 +246,51 @@ CustomCell *cell;
 - (void)dealloc {
     
     [PostTable release];
+    [_AddBtn release];
     [super dealloc];
+}
+- (IBAction)AddActionButton:(id)sender {
+}
+
+#pragma mark - Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
+(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"No button clicked");
+            break;
+        case 1:
+            NSLog(@"Yes button clicked");
+            [deleteObject deleteInBackground];
+            [deleteObject saveInBackground];
+            [self.PostTable reloadData];
+            break;
+            
+        default:
+            break;
+    }
+}
+- (IBAction)DeleteBTN:(id)sender {
+    UIButton *LikeButton = (UIButton * )sender;
+    PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
+    
+    NSString* Post_User = [tmp objectForKey:@"User"] ;
+    if([Post_User isEqualToString:[PFUser currentUser].username])
+    {
+        deleteObject = tmp;
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                                  @"You Sure you want to delete?" message:@"" delegate:self
+                                                 cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [alertView show];
+        [alertView release];
+    }
+    else {
+        UIAlertView* mes=[[UIAlertView alloc] initWithTitle:@"Cannot Delete Post"
+                                                    message:@"Not Original Owner" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        
+        [mes show];
+        [mes release];
+    }
 }
 @end

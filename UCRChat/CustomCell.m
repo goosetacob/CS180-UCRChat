@@ -30,6 +30,7 @@
     [_Likebtn release];
     [_CommentBox release];
     [_CommentBtn release];
+    [_Delete release];
     [super dealloc];
 }
    

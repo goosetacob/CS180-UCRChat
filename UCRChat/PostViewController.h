@@ -11,6 +11,9 @@
 #import <Parse/Parse.h>
 
 @interface PostViewController : UIViewController
+{
+    NSMutableArray* Parray;
+}
 
 @property (retain, nonatomic) IBOutlet UIImageView *PostControllerPIC;
 @property (retain, nonatomic) IBOutlet UILabel *PostControllerName;
@@ -18,5 +21,16 @@
 
 @property (strong, nonatomic) NSString *PARENT_NAME;
 @property (strong, nonatomic) NSString *PARENT_POST;
+@property (strong, nonatomic) NSString *PARENT_LIKE;
+@property (strong, nonatomic) NSString *PARENT_COMMENT;
+@property (strong, nonatomic) NSString *ObjectID;
+
+
+@property (retain, nonatomic) IBOutlet UILabel *CommentLabel;
+@property (retain, nonatomic) IBOutlet UILabel *LikeLabel;
+//- (IBAction)Cbtn:(id)sender;
+- (IBAction)Lbtn:(id)sender;
+//@property (retain, nonatomic) IBOutlet UIButton *CommentButton;
+@property (retain, nonatomic) IBOutlet UIButton *LikeButton;
 
 @end

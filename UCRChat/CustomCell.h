@@ -21,5 +21,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *POST;
 @property (retain, nonatomic) IBOutlet UILabel *CommentBox;
 @property (retain, nonatomic) IBOutlet UIButton *CommentBtn;
+@property (retain, nonatomic) IBOutlet UIButton *Delete;
 
 @end
