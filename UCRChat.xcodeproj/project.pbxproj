@@ -95,8 +95,7 @@
 		8BC71A441A140F11009756FA /* MyFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriends.m; sourceTree = "<group>"; };
 		8BC71A451A140F11009756FA /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		8BC71A471A140F22009756FA /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
-		8BC71A491A1412C2009756FA /* facebook-ios-sdk-3.20.pkg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "facebook-ios-sdk-3.20.pkg"; path = "../../Downloads/facebook-ios-sdk-3.20.pkg"; sourceTree = "<group>"; };
-		8BC71A4B1A1412EE009756FA /* Scringo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scringo.framework; path = ../../Downloads/Scringo/Scringo.framework; sourceTree = "<group>"; };
+		8BC71A4B1A1412EE009756FA /* Scringo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Scringo.framework; path = ../../../Downloads/Scringo/Scringo.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +133,7 @@
 		30ED6A5319FDDF8800894D07 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				8BC71A4B1A1412EE009756FA /* Scringo.framework */,
 				309BA6B11A120D54005F2A46 /* Bolts.framework */,
 				309BA6B21A120D54005F2A46 /* Parse.framework */,
 				3A6852511A11DC6D00211397 /* StoreKit.framework */,
@@ -156,8 +156,6 @@
 		3A0458AF19F6F062007B44A0 = {
 			isa = PBXGroup;
 			children = (
-				8BC71A4B1A1412EE009756FA /* Scringo.framework */,
-				8BC71A491A1412C2009756FA /* facebook-ios-sdk-3.20.pkg */,
 				3A0458BA19F6F062007B44A0 /* UCRChat */,
 				3A0458D719F6F062007B44A0 /* UCRChatTests */,
 				3A0458B919F6F062007B44A0 /* Products */,

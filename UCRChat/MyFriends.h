@@ -17,7 +17,12 @@
     NSArray *Title;
     NSArray *Description;
     NSMutableArray *allObjects;
+    NSMutableArray *Friends;
 }
+
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
+
+- (IBAction) addFriend;
+
 
 @end
