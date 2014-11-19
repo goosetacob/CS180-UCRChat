@@ -229,6 +229,12 @@
                                             <action selector="returnToProfile:" destination="fcC-fa-a6c" id="qVr-Pt-Xh1"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Refresh" width="230" id="9od-tX-Shj">
+                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="28"/>
+                                        <connections>
+                                            <action selector="refresh:" destination="fcC-fa-a6c" id="rj7-po-5Hn"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGz-bg-FsO">
@@ -266,6 +272,9 @@
                                     <segue destination="5EK-ay-2Hc" kind="show" id="oqn-zL-dTi"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-h4-8Qe">
+                                <rect key="frame" x="24" y="350" width="240" height="128"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -275,6 +284,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageView" destination="Pam-y0-5b1" id="LIP-9H-Pr6"/>
+                        <outlet property="photoScrollView" destination="hQc-h4-8Qe" id="9IR-wM-Mja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8es-YF-ari" userLabel="First Responder" sceneMemberID="firstResponder"/>
