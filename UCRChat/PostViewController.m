@@ -49,34 +49,8 @@
     
     
     /*Proccsng for th picture */
-    PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];
-    [retrieve findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if(!error)
-             userarray = [[NSArray alloc ] initWithArray:objects];
-     }];
     
-    NSString* User = [UserObject objectForKey:@"User"];
-    PFFile* PICTURE = nil;
-    for(PFObject* item in userarray)
-    {
-        if([[item objectForKey:@"username"] isEqualToString:User])
-        {
-            PICTURE = [item objectForKey:@"picture"];
-            
-            if(PICTURE)
-            {
-                [PICTURE getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    UIImage *thumbnailImage = [UIImage imageWithData:data];
-                    PostControllerPIC.image = thumbnailImage;
-                    
-                }];
-            }
-            else PostControllerPIC.image = [UIImage imageNamed:@"Default Profile.jpg"];
-            [Loading release];
-            break;
-        }
-    }
+    PostControllerPIC.image = [UIImage imageNamed:@"Default Profile.jpg"];
 }
 
 - (void)didReceiveMemoryWarning

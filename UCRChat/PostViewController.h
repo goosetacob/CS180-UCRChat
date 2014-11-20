@@ -16,7 +16,7 @@
     NSArray* userarray;
 }
 
-@property (retain, nonatomic) IBOutlet UIImageView *PostControllerPIC;
+@property (retain, nonatomic) IBOutlet PFImageView *PostControllerPIC;
 @property (retain, nonatomic) IBOutlet UILabel *PostControllerName;
 @property (retain, nonatomic) IBOutlet UILabel *PostControllerPost;
 
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSString *PARENT_POST;
 @property (strong, nonatomic) NSString *ObjectID;
 @property (strong, nonatomic) PFObject *UserObject;
-@property (strong, nonatomic) UIImage  *ProfilePicture;
+@property (strong, nonatomic) PFImageView  *ProfilePicture;
 
 
 @property (retain, nonatomic) IBOutlet UILabel *CommentLabel;
