@@ -677,10 +677,6 @@
 		3A0458BA19F6F062007B44A0 /* UCRChat */ = {
 			isa = PBXGroup;
 			children = (
-				3A1545ED1A14248200948D1E /* TimelineController.m */,
-				3A1545F41A1426E700948D1E /* Images.xcassets */,
-				3A1545F21A14263E00948D1E /* MeController.m */,
-				3A1545EF1A14253C00948D1E /* NameInputController.m */,
 				3A1545DA1A13617800948D1E /* aboutMeController.h */,
 				3A1545E31A13F6B100948D1E /* AddPostController.h */,
 				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
@@ -689,7 +685,6 @@
 				3A1545CE1A12FF2B00948D1E /* ChatViewController.h */,
 				3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */,
 				3A1545E01A13F4C500948D1E /* CustomCell.h */,
-				3A1545EB1A14243000948D1E /* NameInputController.m */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3A15456F1A12CB5D00948D1E /* NameInputController.h */,
@@ -698,7 +693,6 @@
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
 				3A1545DB1A13617800948D1E /* aboutMeController.m */,
 				3A1545E41A13F6B100948D1E /* AddPostController.m */,
-				3A1545E91A1423FA00948D1E /* UserFileController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A1545D21A1302E000948D1E /* ChatCellController.m */,
 				3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */,
@@ -706,10 +700,16 @@
 				3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */,
 				3A1545E11A13F4C500948D1E /* CustomCell.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
+				3A1545F21A14263E00948D1E /* MeController.m */,
+				3A1545EF1A14253C00948D1E /* NameInputController.m */,
 				3A1545E71A13F71000948D1E /* SendMessage.m */,
+				3A1545ED1A14248200948D1E /* TimelineController.m */,
+				3A1545E91A1423FA00948D1E /* UserFileController.m */,
+				3A1545F41A1426E700948D1E /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				3A1545DD1A13F47100948D1E /* Main.storyboard */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
+				3A1545EB1A14243000948D1E /* NameInputController.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";

@@ -42,14 +42,14 @@
     
 }
 
--(void)getLatest {
+-(void)getLatest {/*
     //find friends on Parse
     PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
     friendsObjectId = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
     friendsName = [[NSMutableArray alloc] init];
     
     //have array of objectId's of friends
-    friendsObjectId = friendsObjectId[0];
+    //friendsObjectId = friendsObjectId[0];
     
     NSLog(@"preojectID %lu", (unsigned long)friendsObjectId.count);
     
@@ -63,9 +63,10 @@
     }
     
     NSLog(@"GETLATEST %lu :: %@",(unsigned long)friendsName.count, friendsName);
-    
+    */
     [self.friendsTable reloadData];
     [_refreshControl endRefreshing];
+                   
    
 }
 

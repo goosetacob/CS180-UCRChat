@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import <Scringo/Scringo.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
