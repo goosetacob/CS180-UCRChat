@@ -27,6 +27,7 @@ CustomCell *cell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor lightGrayColor];
     [self.PostTable setBackgroundColor: [UIColor clearColor]];
     [self.PostTable setOpaque: NO];
@@ -126,24 +127,20 @@ CustomCell *cell;
         {
             cell.NAME.text = item[@"fullName"];
             PICTURE = [item objectForKey:@"picture"];
-            if(PICTURE != NULL) picfound = true;
-            else picfound = false;
+            if(PICTURE)
+            {
+                [PICTURE getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    UIImage *thumbnailImage = [UIImage imageWithData:data];
+                    [cell.IMG setImage:thumbnailImage];
+                }];
+            }
+            
+            else cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
             break;
         }
     }
-    if(picfound)
-    {
-        [PICTURE getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            UIImage *thumbnailImage = [UIImage imageWithData:data];
-            
-            [cell.IMG setImage:thumbnailImage];
-        }];
-    }
-    else cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
-    //[cell.LoadingPicture release];
     
     cell.POST.text = [tempObject objectForKey:@"Post"];
-   // cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
     NSArray* array = [tempObject objectForKey:@"Comments"];
@@ -219,13 +216,7 @@ CustomCell *cell;
 
 
 - (IBAction)commentBTNUP:(id)sender {
-    
-    //UIButton *CommentButton = (UIButton * )sender;
-   // PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
-    //NSLog(@"Commet button pressed");
-    
    [self performSegueWithIdentifier:@"MySegue" sender:sender];
-    
 }
 
 - (IBAction)AddButton:(id)sender {
@@ -251,7 +242,6 @@ CustomCell *cell;
             }
         }
         
-        //SecondController.ObjectID = tmp.objectId;
         SecondController.UserObject = tmp;
         SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
         
