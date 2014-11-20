@@ -1,5 +1,5 @@
 //
-//  NameInputController.m
+//  UIViewController+NameInputController.m
 //  UCRChat
 //
 //  Created by user25108 on 11/10/14.
@@ -26,14 +26,16 @@
         
         NSString *playerName = userPointer[@"fullName"];
         self.textView.text = playerName;
-
+        
         
         NSLog(@"%@", userPointer);
     }];
 }
 
 - (IBAction)backToUserFileController:(UIBarButtonItem *)sender {
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(IBAction)saveReturnToUserFileController:(UIBarButtonItem *)sender{
@@ -50,7 +52,8 @@
             userPointer[@"fullName"] = self.textView.text;
             [userPointer saveInBackground];
         }
-       
+        
+        
         NSLog(@"%@", userPointer);
     }];
     [self dismissViewControllerAnimated:YES completion:nil];

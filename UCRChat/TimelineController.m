@@ -23,6 +23,19 @@ CustomCell *cell;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.view.backgroundColor = [UIColor blackColor];
+    self.PostTable.dataSource = self;
+    self.PostTable.delegate = self;
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(retrieveFromParse) forControlEvents:UIControlEventValueChanged];
+    
+    [self.PostTable addSubview:_refreshControl];
+    [self.PostTable reloadData];
+    
+    [self retrieveFromParse ];
+    
+    
 }
 
 - (void) retrieveFromParse{
@@ -57,12 +70,12 @@ CustomCell *cell;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //setup cell
-     tempObject = [PostArray objectAtIndex:indexPath.row];
-   
+    tempObject = [PostArray objectAtIndex:indexPath.row];
+    
     static NSString *CellIdentifier = @"mycell";
     
     cell = [tableView
-                             dequeueReusableCellWithIdentifier:CellIdentifier];
+            dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[CustomCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
@@ -70,7 +83,7 @@ CustomCell *cell;
         
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
-   
+    
     [[cell Likebtn] addTarget:self action:@selector(Like:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.NAME.text = [tempObject objectForKey:@"User"];
@@ -78,8 +91,6 @@ CustomCell *cell;
     cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
-    
-    
     
     
     return cell;
@@ -91,13 +102,10 @@ CustomCell *cell;
     [tempObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(!error)
         {
-            
-            
-            
             [tempObject incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
             [tempObject addUniqueObject:[PFUser currentUser].objectId forKey:@"LikesID"];
             [tempObject saveInBackground];
-             cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tempObject objectForKey:@"Likes"] intValue]];
+            cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tempObject objectForKey:@"Likes"] intValue]];
         }
     }];
 }
@@ -108,7 +116,7 @@ CustomCell *cell;
     // Dispose of any resources that can be recreated.
 }
 - (void)dealloc {
-   
+    
     [PostTable release];
     [super dealloc];
 }

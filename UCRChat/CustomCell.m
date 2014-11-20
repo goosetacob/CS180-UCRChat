@@ -26,8 +26,6 @@
     [_NAME release];
     [_POST release];
     [_IMG release];
-    [_IMG release];
-    [_IMG release];
     [_LikeText release];
     [_Likebtn release];
     [super dealloc];

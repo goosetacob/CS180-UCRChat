@@ -8,6 +8,7 @@
 
 #import "ChatViewController.h"
 #import "ChatCellController.h"
+#import <Scringo/Scringo.h>
 #import <Parse/Parse.h>
 
 @interface ChatViewController()
@@ -21,6 +22,15 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     
+    /*
+    [Scringo initWithAppId:@"TEST_APP" completion:^{
+        [Scringo openMenuWithNavigationController:nil withScringoNavControllerEnabled:YES];
+        // Add test users to show some dummy traffic
+        [Scringo setTestMode:YES];
+    }];
+     */
+     
+    
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
     
@@ -30,8 +40,8 @@
     _refreshControl.backgroundColor = [UIColor purpleColor];
     _refreshControl.tintColor = [UIColor whiteColor];
     [_refreshControl addTarget:self
-                            action:@selector(getLatest)
-                  forControlEvents:UIControlEventValueChanged];
+                        action:@selector(getLatest)
+              forControlEvents:UIControlEventValueChanged];
     
     [self.friendsTable addSubview:_refreshControl];
     [self.friendsTable reloadData];
@@ -65,6 +75,7 @@
     NSLog(@"GETLATEST %lu :: %@",(unsigned long)friendsName.count, friendsName);
     */
     [self.friendsTable reloadData];
+     
     [_refreshControl endRefreshing];
                    
    
