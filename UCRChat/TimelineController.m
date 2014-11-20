@@ -35,6 +35,8 @@ CustomCell *cell;
     
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(retrieveFromParse) forControlEvents:UIControlEventValueChanged];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
+    
     
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
@@ -102,6 +104,10 @@ CustomCell *cell;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
+    //loading indicator
+    //[self.view addSubview: cell.LoadingPicture];
+    //[cell.LoadingPicture startAnimating];
+    
     cell.Likebtn.tag = indexPath.row;
     cell.CommentBtn.tag = indexPath.row;
     cell.Delete.tag = indexPath.row;
@@ -112,16 +118,32 @@ CustomCell *cell;
 
     //To obtain the full name from the user on this cell
     NSString* User = [tempObject objectForKey:@"User"];
-    
+    bool picfound = false;
+    PFFile* PICTURE = nil;
     for(PFObject* item in userarray)
     {
         if([[item objectForKey:@"username"] isEqualToString:User])
+        {
             cell.NAME.text = item[@"fullName"];
+            PICTURE = [item objectForKey:@"picture"];
+            if(PICTURE != NULL) picfound = true;
+            else picfound = false;
+            break;
+        }
     }
-    
+    if(picfound)
+    {
+        [PICTURE getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            UIImage *thumbnailImage = [UIImage imageWithData:data];
+            
+            [cell.IMG setImage:thumbnailImage];
+        }];
+    }
+    else cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
+    //[cell.LoadingPicture release];
     
     cell.POST.text = [tempObject objectForKey:@"Post"];
-    cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
+   // cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
     NSArray* array = [tempObject objectForKey:@"Comments"];
@@ -219,20 +241,31 @@ CustomCell *cell;
         
         //To obtain the full name from the user on this cell
         NSString* User = [tmp objectForKey:@"User"];
+        PFFile* ProfilePIC = nil;
         
         for(PFObject* item in userarray)
         {
-            if([[item objectForKey:@"username"] isEqualToString:User])
+            if([[item objectForKey:@"username"] isEqualToString:User]){
                 SecondController.PARENT_NAME = item[@"fullName"];
+                 ProfilePIC = item[@"picture"];
+            }
         }
         
-        SecondController.ObjectID = tmp.objectId;//[tmp objectForKey:@"objectId"];
+        //SecondController.ObjectID = tmp.objectId;
+        SecondController.UserObject = tmp;
         SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
-        SecondController.PARENT_LIKE = [NSString stringWithFormat:@"%d",[[tmp objectForKey:@"Likes"] intValue]];
         
-        NSArray* array = [tmp objectForKey:@"Comments"];
-        int nc = (int)array.count;
-        SecondController.PARENT_COMMENT = [NSString stringWithFormat:@"%d", nc];
+        if(ProfilePIC)
+        {
+            [ProfilePIC getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                UIImage *thumbnailImage = [UIImage imageWithData:data];
+                UIImageView *thumbnailImageView = [[UIImageView alloc] initWithImage:thumbnailImage];
+                
+                
+                SecondController.ProfilePicture = thumbnailImageView.image;
+            }];
+        }
+        else SecondController.ProfilePicture =  [UIImage imageNamed:@"Default Profile.jpg"];
        
     }
     

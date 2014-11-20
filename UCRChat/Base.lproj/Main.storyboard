@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jet-vR-SkM">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
@@ -429,6 +430,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-Bx-gYQ">
                                 <rect key="frame" x="21" y="68" width="70" height="70"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hBR-Ob-Pin">
+                                <rect key="frame" x="46" y="93" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -438,6 +442,7 @@
                         <outlet property="CommentLabel" destination="yoz-nI-cxa" id="rBz-j1-rtd"/>
                         <outlet property="LikeButton" destination="VXi-TR-nxg" id="ELu-Da-Qrb"/>
                         <outlet property="LikeLabel" destination="gu3-Gs-40I" id="M72-1E-dct"/>
+                        <outlet property="Loading" destination="hBR-Ob-Pin" id="Cha-sM-slL"/>
                         <outlet property="PostControllerName" destination="mIF-cr-AOo" id="6KN-Wb-zDy"/>
                         <outlet property="PostControllerPIC" destination="6p3-Bx-gYQ" id="RzB-XX-lrg"/>
                         <outlet property="PostControllerPost" destination="qK6-Ot-brg" id="jsR-bV-zww"/>

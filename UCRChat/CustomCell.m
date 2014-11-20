@@ -31,6 +31,7 @@
     [_CommentBox release];
     [_CommentBtn release];
     [_Delete release];
+    [_LoadingPicture release];
     [super dealloc];
 }
    

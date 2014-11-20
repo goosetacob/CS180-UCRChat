@@ -13,6 +13,7 @@
 @interface PostViewController : UIViewController
 {
     NSMutableArray* Parray;
+    NSArray* userarray;
 }
 
 @property (retain, nonatomic) IBOutlet UIImageView *PostControllerPIC;
@@ -21,9 +22,9 @@
 
 @property (strong, nonatomic) NSString *PARENT_NAME;
 @property (strong, nonatomic) NSString *PARENT_POST;
-@property (strong, nonatomic) NSString *PARENT_LIKE;
-@property (strong, nonatomic) NSString *PARENT_COMMENT;
 @property (strong, nonatomic) NSString *ObjectID;
+@property (strong, nonatomic) PFObject *UserObject;
+@property (strong, nonatomic) UIImage  *ProfilePicture;
 
 
 @property (retain, nonatomic) IBOutlet UILabel *CommentLabel;
@@ -32,5 +33,6 @@
 - (IBAction)Lbtn:(id)sender;
 //@property (retain, nonatomic) IBOutlet UIButton *CommentButton;
 @property (retain, nonatomic) IBOutlet UIButton *LikeButton;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *Loading;
 
 @end

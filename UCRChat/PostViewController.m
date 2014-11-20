@@ -13,36 +13,70 @@
 @end
 
 @implementation PostViewController
-@synthesize PostControllerPIC, PostControllerName, CommentLabel, ObjectID, LikeLabel, PostControllerPost, PARENT_NAME, PARENT_POST, PARENT_LIKE, PARENT_COMMENT, LikeButton;
+@synthesize PostControllerPIC, PostControllerName, CommentLabel, ObjectID, LikeLabel, PostControllerPost, PARENT_NAME, PARENT_POST, LikeButton, UserObject, ProfilePicture, Loading;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PostControllerName.text = PARENT_NAME;
-    PostControllerPost.text = PARENT_POST;
-    CommentLabel.text = PARENT_COMMENT;
-    LikeLabel.text = PARENT_LIKE;
-    PostControllerPIC.image = [UIImage imageNamed:@"Default Profile.jpg"];
     
-    PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
-    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if(!error)
-             Parray = [[NSMutableArray alloc ] initWithArray:objects];
-     }];
+    //loading indicator
+    [self.view addSubview: Loading];
+    [Loading startAnimating];
     
-    for(PFObject* item in Parray)
+    bool found = false;
+    
+    //Check if we already lked the post to change the button text
+    NSArray* temp_array = [UserObject objectForKey:@"LikesID"];
+    for (NSString* Item2 in temp_array)
     {
-        if([item.objectId isEqualToString:ObjectID])
+        if([[PFUser currentUser].username isEqualToString:Item2])
         {
-            //Check if we already lked the post to change the button text
-            NSArray* temp_array = [item objectForKey:@"LikesID"];
-            for (NSString* Item2 in temp_array) {
-                if([[PFUser currentUser].username isEqualToString:Item2])
-                    [LikeButton setTitle:@"Liked" forState:UIControlStateNormal];
-            }
+            found = true;
+            break;
         }
     }
-
+    
+    if(found) [LikeButton setTitle:@"Liked" forState:UIControlStateNormal];
+    else [LikeButton setTitle:@"Like" forState:UIControlStateNormal];
+    
+    //assign the labels its upated data
+    PostControllerName.text = PARENT_NAME;
+    PostControllerPost.text = PARENT_POST;
+    //Getting the ize of the comment array
+     NSArray* array = [UserObject objectForKey:@"Comments"];
+    CommentLabel.text = [NSString stringWithFormat:@"%ld", array.count ];
+    //assining the number of likes
+    LikeLabel.text = [NSString stringWithFormat:@"%d", [[UserObject objectForKey:@"Likes"] intValue] ];
+    
+    
+    /*Proccsng for th picture */
+    PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];
+    [retrieve findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if(!error)
+             userarray = [[NSArray alloc ] initWithArray:objects];
+     }];
+    
+    NSString* User = [UserObject objectForKey:@"User"];
+    PFFile* PICTURE = nil;
+    for(PFObject* item in userarray)
+    {
+        if([[item objectForKey:@"username"] isEqualToString:User])
+        {
+            PICTURE = [item objectForKey:@"picture"];
+            
+            if(PICTURE)
+            {
+                [PICTURE getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    UIImage *thumbnailImage = [UIImage imageWithData:data];
+                    PostControllerPIC.image = thumbnailImage;
+                    
+                }];
+            }
+            else PostControllerPIC.image = [UIImage imageNamed:@"Default Profile.jpg"];
+            [Loading release];
+            break;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +96,7 @@
     
     [LikeLabel release];
     [LikeButton release];
+    [Loading release];
     [super dealloc];
 }
 
@@ -69,73 +104,59 @@
 }
 
 - (IBAction)Lbtn:(id)sender {
-    UIButton *LButton = (UIButton * )sender;
     
-    PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
-    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if(!error)
-             Parray = [[NSMutableArray alloc ] initWithArray:objects];
-     }];
-    
-    for(PFObject* item in Parray)
+    //ParseObecjt now has the object we are goind to update.
+    NSMutableArray* tmp_Array = [UserObject objectForKey:@"LikesID"] ;
+    bool found = false;
+    //obtains the Likes array nd checks if the user liked thi post
+    for(id item in tmp_Array)
     {
-        //is the current object
-        if([item.objectId isEqualToString:ObjectID])
-        {
-            //Get the object array of likes to see if we already liked it or not
-            NSMutableArray* tmp_Array = [item objectForKey:@"LikesID"] ;
-            bool found = false;
-            
-            //check if we already liked it
-            for(id item2 in tmp_Array)
-            {
-                if([item2 isEqualToString:[PFUser currentUser].username])
-                    found = true;
-                
-                
-            }
-            
-            //If we have not liked it then we are going to likee it and add to the array
-            if(found == false)
-            {
-                //Like Feauture
-                [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                 {
-                     if(!error)
-                     {
-                         [item incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
-                         [item addUniqueObject:[PFUser currentUser].username forKey:@"LikesID"];
-                         [item saveInBackground];
-                         [LButton setTitle:@"Liked" forState:UIControlStateNormal];
-                     }
-                 }];
-            }
-            //Dislike Feauture
-            else
-            {
-                [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                 {
-                     if(!error)
-                     {
-                         [item incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:-1]];
-                         //Obtain array of LIKESId
-                         for(id i in tmp_Array)
-                         {
-                             if([i isEqualToString:[PFUser currentUser].username]){
-                                 [tmp_Array removeObject: i];
-                                 [item saveInBackground];
-                                 [LButton setTitle:@"Like" forState:UIControlStateNormal];
-                             }
-                         }
-                         
-                     }
-                 }];
-            }
-            LikeLabel.text = [NSString stringWithFormat:@"%d",[[item objectForKey:@"Likes"]intValue]];
-            break;
-        }
+        if([item isEqualToString:[PFUser currentUser].username])
+            found = true;
     }
+    
+    //If the user has not liked the post then it ikes the posts updats the likes array with it name and updates the number of ikes by one
+    if(found == false)
+    {
+        //Like Feauture
+        [UserObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if(!error)
+             {
+                 NSLog(@"Not found in the Array");
+                 [UserObject incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:1]];
+                 [UserObject addUniqueObject:[PFUser currentUser].username forKey:@"LikesID"];
+                 [UserObject saveInBackground];
+                 [LikeButton setTitle:@"Liked" forState:UIControlStateNormal];
+                 LikeLabel.text = [NSString stringWithFormat:@"%d", [[UserObject objectForKey:@"Likes"] intValue]];
+             }
+         }];
+        found = true;
+    }
+    //Dislike Feauture
+    //If the user has alredy liked the post, then it removes itself fro the likes array and updates the number of likes minus one and changes the button label to like from liked
+    else
+    {
+        [UserObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if(!error)
+             {
+                 [UserObject incrementKey:@"Likes" byAmount:[NSNumber numberWithInt:-1]];
+                 //Obtain array of LIKESId
+                 for(id item in tmp_Array)
+                 {
+                     if([item isEqualToString:[PFUser currentUser].username]){
+                         [tmp_Array removeObject: item];
+                         [UserObject saveInBackground];
+                         [LikeButton setTitle:@"Like" forState:UIControlStateNormal];
+                         LikeLabel.text = [NSString stringWithFormat:@"%d", [[UserObject objectForKey:@"Likes"] intValue]];
+                    }
+                 }
+                 
+             }
+         }];
+    }
+
 
 }
 @end
