@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3065DFDB1A107EFE00D73E26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3065DFD91A107EFE00D73E26 /* Main.storyboard */; };
-		308C24D11A1C95D000CAA323 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 308C24D01A1C95D000CAA323 /* MBProgressHUD.m */; };
+		309372B91A1DA7C800266B8B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 309372B81A1DA7C800266B8B /* MBProgressHUD.m */; };
 		309BA6B31A120D54005F2A46 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309BA6B11A120D54005F2A46 /* Bolts.framework */; };
 		309BA6B41A120D54005F2A46 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309BA6B21A120D54005F2A46 /* Parse.framework */; };
 		30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AC581D1A11E6E60070D3E0 /* NameInputController.m */; };
@@ -53,8 +53,8 @@
 
 /* Begin PBXFileReference section */
 		3065DFDA1A107EFE00D73E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		308C24CF1A1C95D000CAA323 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "../../MBProgressHUD-master/MBProgressHUD.h"; sourceTree = "<group>"; };
-		308C24D01A1C95D000CAA323 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = "../../MBProgressHUD-master/MBProgressHUD.m"; sourceTree = "<group>"; };
+		309372B71A1DA7C800266B8B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		309372B81A1DA7C800266B8B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		309BA6B11A120D54005F2A46 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.4.2/Bolts.framework"; sourceTree = SOURCE_ROOT; };
 		309BA6B21A120D54005F2A46 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.4.2/Parse.framework"; sourceTree = SOURCE_ROOT; };
 		30AC581C1A11E6E60070D3E0 /* NameInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameInputController.h; sourceTree = "<group>"; };
@@ -188,9 +188,9 @@
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
 				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
-				308C24CF1A1C95D000CAA323 /* MBProgressHUD.h */,
 				3A1545DA1A13617800948D1E /* aboutMeController.h */,
-				308C24D01A1C95D000CAA323 /* MBProgressHUD.m */,
+				309372B71A1DA7C800266B8B /* MBProgressHUD.h */,
+				309372B81A1DA7C800266B8B /* MBProgressHUD.m */,
 				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
@@ -370,7 +370,7 @@
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
-				308C24D11A1C95D000CAA323 /* MBProgressHUD.m in Sources */,
+				309372B91A1DA7C800266B8B /* MBProgressHUD.m in Sources */,
 				3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
