@@ -76,7 +76,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XJb-XJ-uwG" kind="show" id="mi3-n1-49q"/>
+                                    <segue destination="XJb-XJ-uwG" kind="show" identifier="friendRequests" id="mi3-n1-49q"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="40" sectionFooterHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="DQr-4g-vFx">
@@ -113,7 +113,6 @@
                                             <outlet property="DescriptionLabel" destination="QXr-o4-V0D" id="ZTr-YX-95a"/>
                                             <outlet property="ThumbImage" destination="aZl-8h-UVc" id="bLi-mO-jif"/>
                                             <outlet property="TitleLabel" destination="HEG-JL-3H7" id="oTg-4D-WgX"/>
-                                            <segue destination="i3N-0N-QVU" kind="show" id="a8B-OO-Roz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,6 +128,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="myTableView" destination="DQr-4g-vFx" id="87l-O0-2W2"/>
+                        <segue destination="i3N-0N-QVU" kind="show" identifier="friendsInfo" id="UT4-Yq-VPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKi-5s-wun" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,7 +138,7 @@
         <!--friendRequests-->
         <scene sceneID="4rW-Cm-31J">
             <objects>
-                <viewController id="XJb-XJ-uwG" userLabel="friendRequests" sceneMemberID="viewController">
+                <viewController id="XJb-XJ-uwG" userLabel="friendRequests" customClass="FriendRequests" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o3g-ZM-3Qf"/>
                         <viewControllerLayoutGuide type="bottom" id="kfd-k2-4TZ"/>
@@ -153,6 +153,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-jj-V3n">
+                                <rect key="frame" x="16" y="50" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToMyFriends:" destination="XJb-XJ-uwG" eventType="touchDown" id="phY-po-LcY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -390,7 +399,7 @@
         <!--friendsInfo-->
         <scene sceneID="7fx-D2-N04">
             <objects>
-                <viewController title="friendsInfo" id="i3N-0N-QVU" sceneMemberID="viewController">
+                <viewController title="friendsInfo" id="i3N-0N-QVU" customClass="friendsInfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Pg-GP-r8y"/>
                         <viewControllerLayoutGuide type="bottom" id="M6d-w1-gha"/>
@@ -400,43 +409,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI7-rR-K60">
-                                <rect key="frame" x="16" y="28" width="141" height="21"/>
+                                <rect key="frame" x="16" y="50" width="141" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7A-Cj-GcD">
-                                <rect key="frame" x="199" y="66" width="99" height="21"/>
+                                <rect key="frame" x="199" y="79" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-8E-3ly">
-                                <rect key="frame" x="199" y="95" width="67" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-8E-3ly">
+                                <rect key="frame" x="199" y="108" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ImT-Vl-FFd">
-                                <rect key="frame" x="0.0" y="168" width="320" height="351"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" id="EGa-nf-5c9">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EGa-nf-5c9" id="tLF-Jo-rFW">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgc-Gm-puV">
-                                <rect key="frame" x="10" y="55" width="150" height="85"/>
+                                <rect key="frame" x="11" y="79" width="150" height="85"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdW-zt-eBA">
+                                <rect key="frame" x="16" y="12" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToMyFriends:" destination="i3N-0N-QVU" eventType="touchUpInside" id="Bgd-Zo-qiT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="friendDescriptionLabel" destination="qeL-8E-3ly" id="hwt-NJ-rpl"/>
+                        <outlet property="friendThumbImage" destination="wgc-Gm-puV" id="K5K-or-Rzd"/>
+                        <outlet property="friendTitleLabel" destination="R7A-Cj-GcD" id="0WH-Bj-zRK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBP-we-lbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -445,7 +455,7 @@
         <!--addFriends-->
         <scene sceneID="Zew-Ss-crb">
             <objects>
-                <viewController title="addFriends" id="LxH-EZ-kvP" sceneMemberID="viewController">
+                <viewController title="addFriends" id="LxH-EZ-kvP" customClass="addFriend" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SNs-js-f7g"/>
                         <viewControllerLayoutGuide type="bottom" id="MwV-js-xH2"/>
@@ -460,10 +470,60 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTV-ly-PHS">
+                                <rect key="frame" x="16" y="57" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToFriends:" destination="LxH-EZ-kvP" eventType="touchDown" id="Igd-mj-7BU"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bbd-oi-XmI">
+                                <rect key="frame" x="0.0" y="95" width="320" height="336"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell2" rowHeight="93" id="g7i-Zs-AOT" customClass="TableCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g7i-Zs-AOT" id="QFg-JY-MC6">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-NP-lL1">
+                                                    <rect key="frame" x="19" y="10" width="139" height="75"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="834-cy-NbN">
+                                                    <rect key="frame" x="189" y="10" width="46" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cID-iq-YmE">
+                                                    <rect key="frame" x="189" y="39" width="42" height="30"/>
+                                                    <state key="normal" title="+ Add">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ThumbImage" destination="3sE-NP-lL1" id="2C4-l3-Yzt"/>
+                                            <outlet property="TitleLabel" destination="834-cy-NbN" id="BMQ-Yz-BWi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LxH-EZ-kvP" id="1QY-CH-e1x"/>
+                                    <outlet property="delegate" destination="LxH-EZ-kvP" id="z3s-jf-nOk"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="addFriendTableView" destination="bbd-oi-XmI" id="QnO-eN-AYk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNO-HV-zxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -29,12 +29,14 @@
 		3A6852501A11DC6700211397 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A68524F1A11DC6700211397 /* Social.framework */; };
 		3A6852521A11DC6D00211397 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6852511A11DC6D00211397 /* StoreKit.framework */; };
 		3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB019FDDF8D007A53DD /* ChatController.m */; };
-		3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A88FEB219FDDF8D007A53DD /* FriendsController.m */; };
 		3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F31A0EE2D200FAE3A7 /* User.m */; };
 		3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */; };
 		3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FA1A102F0D00FAE3A7 /* MeController.m */; };
 		3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A06FD1A10708100FAE3A7 /* UserFileController.m */; };
 		3ACB40A519F8650200E1303A /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACB40A419F8650200E1303A /* TimelineController.m */; };
+		8B9DBC781A1C5AE100DE8000 /* FriendRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DBC771A1C5AE100DE8000 /* FriendRequests.m */; };
+		8B9DBC7B1A1C663500DE8000 /* addFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DBC7A1A1C663500DE8000 /* addFriend.m */; };
+		8B9DBC7E1A1C66A500DE8000 /* friendsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DBC7D1A1C66A500DE8000 /* friendsInfo.m */; };
 		8BC71A461A140F11009756FA /* MyFriends.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC71A441A140F11009756FA /* MyFriends.m */; };
 		8BC71A481A140F22009756FA /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC71A471A140F22009756FA /* TableCell.m */; };
 /* End PBXBuildFile section */
@@ -80,8 +82,6 @@
 		3A6852511A11DC6D00211397 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3A88FEAF19FDDF8D007A53DD /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
 		3A88FEB019FDDF8D007A53DD /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
-		3A88FEB119FDDF8D007A53DD /* FriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsController.h; sourceTree = "<group>"; };
-		3A88FEB219FDDF8D007A53DD /* FriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsController.m; sourceTree = "<group>"; };
 		3A8A06F31A0EE2D200FAE3A7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
 		3A8A06F51A0EE2DD00FAE3A7 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
 		3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAppTabBarController.h; sourceTree = "<group>"; };
@@ -91,6 +91,12 @@
 		3A8A06FD1A10708100FAE3A7 /* UserFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFileController.m; sourceTree = "<group>"; };
 		3ACB40A319F8631B00E1303A /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		3ACB40A419F8650200E1303A /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
+		8B9DBC761A1C5AE100DE8000 /* FriendRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequests.h; sourceTree = "<group>"; };
+		8B9DBC771A1C5AE100DE8000 /* FriendRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequests.m; sourceTree = "<group>"; };
+		8B9DBC791A1C663500DE8000 /* addFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addFriend.h; sourceTree = "<group>"; };
+		8B9DBC7A1A1C663500DE8000 /* addFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFriend.m; sourceTree = "<group>"; };
+		8B9DBC7C1A1C66A500DE8000 /* friendsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendsInfo.h; sourceTree = "<group>"; };
+		8B9DBC7D1A1C66A500DE8000 /* friendsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendsInfo.m; sourceTree = "<group>"; };
 		8BC71A431A140F11009756FA /* MyFriends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriends.h; sourceTree = "<group>"; };
 		8BC71A441A140F11009756FA /* MyFriends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriends.m; sourceTree = "<group>"; };
 		8BC71A451A140F11009756FA /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
@@ -177,18 +183,22 @@
 			children = (
 				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
 				3A88FEAF19FDDF8D007A53DD /* ChatController.h */,
-				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
-				8BC71A431A140F11009756FA /* MyFriends.h */,
 				30AC581C1A11E6E60070D3E0 /* NameInputController.h */,
-				8BC71A451A140F11009756FA /* TableCell.h */,
 				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
+				8BC71A451A140F11009756FA /* TableCell.h */,
+				8BC71A431A140F11009756FA /* MyFriends.h */,
+				8B9DBC761A1C5AE100DE8000 /* FriendRequests.h */,
+				8B9DBC791A1C663500DE8000 /* addFriend.h */,
+				8B9DBC7C1A1C66A500DE8000 /* friendsInfo.h */,
+				8B9DBC7D1A1C66A500DE8000 /* friendsInfo.m */,
+				8B9DBC7A1A1C663500DE8000 /* addFriend.m */,
+				8B9DBC771A1C5AE100DE8000 /* FriendRequests.m */,
+				8BC71A441A140F11009756FA /* MyFriends.m */,
+				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A88FEB019FDDF8D007A53DD /* ChatController.m */,
-				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
-				3A8A06FA1A102F0D00FAE3A7 /* MeController.m */,
-				8BC71A441A140F11009756FA /* MyFriends.m */,
 				30AC581D1A11E6E60070D3E0 /* NameInputController.m */,
 				8BC71A471A140F22009756FA /* TableCell.m */,
 				3ACB40A419F8650200E1303A /* TimelineController.m */,
@@ -362,10 +372,12 @@
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A8A06F41A0EE2D200FAE3A7 /* User.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
+				8B9DBC7B1A1C663500DE8000 /* addFriend.m in Sources */,
+				8B9DBC781A1C5AE100DE8000 /* FriendRequests.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A88FEB319FDDF8D007A53DD /* ChatController.m in Sources */,
 				8BC71A461A140F11009756FA /* MyFriends.m in Sources */,
-				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
+				8B9DBC7E1A1C66A500DE8000 /* friendsInfo.m in Sources */,
 				3A8A06FE1A10708100FAE3A7 /* UserFileController.m in Sources */,
 				30AC581E1A11E6E60070D3E0 /* NameInputController.m in Sources */,
 				3A8A06FB1A102F0D00FAE3A7 /* MeController.m in Sources */,

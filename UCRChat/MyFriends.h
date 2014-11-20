@@ -12,12 +12,11 @@
 
 @interface MyFriends : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    NSArray *Images;
-    NSArray *userArray;
-    NSArray *Title;
-    NSArray *Description;
-    NSMutableArray *allObjects;
+    // Contains friends to list in TableView
     NSMutableArray *Friends;
+    
+    // Contains currently selected friend
+    NSString *selectedFriend;
 }
 
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
