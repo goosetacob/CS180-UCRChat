@@ -17,6 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _currentUserId = [[PFUser currentUser] objectId];
+    
+    PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
+        // Do something with the returned PFObject in the gameScore variable.
+        PFFile *pictureFile = userPointer[@"picture"];
+        [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+            UIImage *tempImage = [UIImage imageWithData:data];
+            [imageView setImage:tempImage];
+        }];
+        
+        NSLog(@"%@", userPointer);
+    }];
+    
 }
 
 - (IBAction)returnToProfile:(UIBarButtonItem *)sender
@@ -38,26 +55,15 @@
 {
     image = [info objectForKey:UIImagePickerControllerOriginalImage];
     [imageView setImage:image];
+    
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(640, 640));
+    [image drawInRect: CGRectMake(0, 0, 640, 640)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     [self dismissViewControllerAnimated:YES completion:NULL];
     NSData *imageData = UIImagePNGRepresentation(image);
     [self uploadImage:imageData];
-    
-    /*
-    PFObject *userPointer = [PFObject objectWithClassName:@"_User"];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:_currentUserId block:^(PFObject *userPointer, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        NSData *imageData = UIImagePNGRepresentation(image);
-        
-        PFFile *imageFile = [PFFile fileWithName:@"profileimage.jpg" data:imageData];
-        
-        userPointer[@"picture"] = imageFile;
-        [userPointer saveInBackground];
-        
-        
-        NSLog(@"%@", userPointer);
-    }];*/
 }
 
  
@@ -76,6 +82,12 @@
         pickPhoto.delegate = self;
         [pickPhoto setSourceType:UIImagePickerControllerSourceTypeCamera];
         [self presentViewController:pickPhoto animated:YES completion:NULL];
+        
+        // Resize image
+        UIGraphicsBeginImageContext(CGSizeMake(640, 640));
+        [image drawInRect: CGRectMake(0, 0, 640, 640)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
         [pickPhoto release];
         
     }
@@ -99,6 +111,7 @@
         NSLog(@"Cancel Button Clicked");
         
     }
+    
     
 }
 
@@ -139,8 +152,9 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-    } progressBlock:^(int percentDone) {
-        // Update your progress spinner here. percentDone will be between 0 and 100.
+    }
+    progressBlock:^(int percentDone) {
+        //Update your progress spinner here. percentDone will be between 0 and 100.
         HUD.progress = (float)percentDone/100;
     }];
 }

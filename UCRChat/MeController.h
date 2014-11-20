@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface MeController : UIViewController
+@interface MeController : UIViewController<UIImagePickerControllerDelegate,UIImagePickerControllerDelegate >{
+    
+    IBOutlet UIImageView *imageView;
+    
+}
 
 @property (strong, nonatomic) NSString *currentUserId;
 @property (retain, nonatomic) IBOutlet UIButton *nameView;
 @property (retain, nonatomic) IBOutlet UIButton *aboutMeView;
+
 
 @end

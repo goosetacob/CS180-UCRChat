@@ -202,6 +202,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="aboutMeView" destination="AGQ-WX-Ntb" id="aQf-J0-akt"/>
+                        <outlet property="imageView" destination="Oxi-3C-6PR" id="yfB-jm-iQi"/>
                         <outlet property="nameView" destination="YAf-fm-5UZ" id="agA-aD-Afc"/>
                     </connections>
                 </viewController>
