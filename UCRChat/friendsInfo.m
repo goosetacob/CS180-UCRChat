@@ -38,11 +38,21 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    self.friendTitleLabel.text = [(id)friend_data objectForKey:@"fullName" ];
+    self.friendDescriptionLabel.text = [(id)friend_data objectForKey:@"aboutMe" ];
+    
+    //self.friendTitleLabel.text = [(id)friend_data objectForKey:@"fullName" ];
+}
 // We will use this method to receive data from the main 'Friends' tab.
 - (void)setMyObjectHere:(id)data
 {
-    NSLog( @"friendsInfo/setMyObjectHere: %@", [data  objectForKey:@"fullName" ]);
-    NSLog( @"friendsInfo/setMyObjectHere: %@", [data  objectForKey:@"aboutMe" ]);
+    friend_data = data;
+    
+    
+    //NSLog( @"friendsInfo/setMyObjectHere: %@", [data  objectForKey:@"fullName" ]);
+    //NSLog( @"friendsInfo/setMyObjectHere: %@", [data  objectForKey:@"aboutMe" ]);
     //NSLog( @"friendsInfo/setMyObjectHere: %@", [data  objectForKey:@"fullName" ]);
 
     friendTitleLabel.text = [data  objectForKey:@"fullName" ];

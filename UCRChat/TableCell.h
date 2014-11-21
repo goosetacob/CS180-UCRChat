@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface TableCell : UITableViewCell
+{
+   PFObject *user; // The user associated with the cell
+}
+
+- (PFObject *) getUser;
+- (void) setUser: (PFObject *)userobject;
 
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *DescriptionLabel;

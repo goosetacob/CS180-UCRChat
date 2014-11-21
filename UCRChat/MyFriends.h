@@ -21,7 +21,6 @@
 
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
-- (IBAction) addFriend;
 
 
 @end

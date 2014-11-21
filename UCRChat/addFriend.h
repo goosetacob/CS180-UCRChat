@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "TableCell.h"
 
 
 @interface addFriend : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     NSMutableArray *addFriendsArray;
-    PFObject *selectedFriend;
+    NSArray *friends;
 }
 
+- (void) setMyObjectHere:(NSArray*)friend_list;
 
 @property (retain, nonatomic) IBOutlet UITableView *addFriendTableView;
 

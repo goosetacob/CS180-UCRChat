@@ -21,6 +21,15 @@
 
 }
 
+- (PFObject *) getUser
+{
+    return self->user;
+}
+
+- (void) setUser: (PFObject *)userobject
+{
+    self->user = userobject;
+}
 
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated
 {

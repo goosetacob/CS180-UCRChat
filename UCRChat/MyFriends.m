@@ -24,32 +24,6 @@
 @synthesize myTableView;
 
 
-- (IBAction) addFriend
-{
-    //[self performSegueWithIdentifier:@"addFriends" sender:self];
-    
-}
-
-// Gets a full list of Users from Parse
-- (void) retrieveFromParse
-{
-    PFQuery *ret = [PFQuery queryWithClassName:@"_User"];
-    [ret findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        if( !error )
-        {
-            //userArray = [ [NSArray alloc] initWithArray:objects ];
-        }
-        else
-        {
-            NSLog( @"ERROR querying data!");
-        }
-        
-    }];
-    
-    [self.myTableView reloadData];
-}
-
 - (void) retrieveFriends
 {
     // Get ObjectID of current user
@@ -169,7 +143,7 @@
         addFriend *vc = [segue destinationViewController];
         
 
-        [vc setMyObjectHere:@"in addFriends view!"];
+        [vc setMyObjectHere:Friends];
     }
     
     // Send friendInformation

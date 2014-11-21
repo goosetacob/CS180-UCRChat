@@ -7,8 +7,6 @@
 //
 
 #import "addFriend.h"
-#import <Parse/Parse.h>
-#import "TableCell.h"
 
 @interface addFriend ()
 
@@ -19,7 +17,7 @@
 
 @synthesize addFriendTableView;
 
-// Gets a full list of Users from Parse
+// Generate an array of available friends to add
 - (void) retrieveFromParse
 {
     PFQuery *ret = [PFQuery queryWithClassName:@"_User"];
@@ -27,18 +25,30 @@
         
         if( !error )
         {
-            [addFriendsArray addObjectsFromArray:objects ];
-            while( [self tableView:addFriendTableView numberOfRowsInSection:0] != [addFriendsArray count])
+            // Traverse through all available users in Parse
+            for( PFObject *user in objects)
             {
-                [self.addFriendTableView reloadData ];
+                // We only want users who are not your friend yet
+                NSInteger exists = 0;
+                for( NSString *friend in friends)
+                {
+                    if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] )
+                        exists = 1;
+                }
+                
+                if( exists == 0 )
+                    [addFriendsArray addObject:user];
             }
-            NSLog( @"addFriends/Size of all users: %lu", objects.count );
         }
         else
         {
             NSLog( @"ERROR querying data!");
         }
+
         
+        // Reload the tableView ONLY when you've finished getting your array
+        [self.addFriendTableView reloadData ];
+
     }];
     
 }
@@ -46,8 +56,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Set delegates
     [addFriendTableView setDataSource:self];
     [addFriendTableView setDelegate:self];
+    
+    // Initialize all arrays
     addFriendsArray = [[NSMutableArray alloc] init];
     
     // Do any additional setup after loading the view.
@@ -61,26 +74,31 @@
 }
 
 
+// Sends the view back to friends list
 - (IBAction)backToFriends:(UIBarButtonItem *)sender
 {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 
+// Sends a friend request
 - (IBAction)sendFriendRequest:(UIBarButtonItem *)sender
 {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.addFriendTableView];
+    NSIndexPath *indexPath = [self.addFriendTableView indexPathForRowAtPoint:buttonPosition];
     
+    UITableViewCell *cell = [self.addFriendTableView cellForRowAtIndexPath:indexPath];
+    
+    NSLog( @"User name in cell: %@", [[(TableCell*)cell getUser] objectForKey:@"fullName"]);
     
 }
 
-// We will use this method to receive data from the main 'Friends' tab.
-- (void)setMyObjectHere:(id)data
+
+- (void)setMyObjectHere:(NSArray*)friend_list
 {
-    selectedFriend = data;
+    friends = friend_list;
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -89,10 +107,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
-    //return Friends.count;
-    
-    NSLog( @"addFriends/numberofRows: %lu", addFriendsArray.count );
     return addFriendsArray.count;
 }
 
@@ -117,20 +131,17 @@
     {
         cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
     }
-    
-    if( indexPath.row > addFriendsArray.count )
-    {
-        NSLog(@"indexPath row is bigger than addFriendsArray...aborting...");
-        return cell;
-        
-    }
+
     // Populate cell using Friend information at specific row
     PFObject *object = [addFriendsArray objectAtIndex:indexPath.row];
     
-    NSLog(@"tableview/addFriends: %@", [object objectForKey:@"fullName"] );
+    //NSLog(@"tableview/addFriends: %@", [object objectForKey:@"fullName"] );
+
     cell.TitleLabel.text = [object objectForKey:@"fullName"];
     cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     //cell.ThumbImage.image = [object objectForKey:@"picture"];
+    
+    [cell setUser:object ];
     
     return cell;
 }

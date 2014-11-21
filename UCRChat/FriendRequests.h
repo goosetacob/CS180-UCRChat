@@ -10,4 +10,8 @@
 
 @interface FriendRequests : UIViewController
 
+
+
+- (void) setMyObjectHere:(NSString*)userr_info;
+
 @end
