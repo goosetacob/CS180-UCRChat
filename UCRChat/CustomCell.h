@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+
+
 @interface  CustomCell: UITableViewCell
 {
     NSArray *tempArray;
-    
 }
+@property bool NewUser;
 @property (retain, nonatomic) IBOutlet UILabel *NAME;
 @property (retain, nonatomic) IBOutlet UILabel *LikeText;
 @property (retain, nonatomic) IBOutlet PFImageView *IMG;
@@ -23,5 +25,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *CommentBtn;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *LoadingPicture;
 @property (retain, nonatomic) IBOutlet UIButton *Delete;
+@property (retain, nonatomic) IBOutlet UIView *ColorView;
+@property (retain, nonatomic) IBOutlet UILabel *Date;
 
 @end

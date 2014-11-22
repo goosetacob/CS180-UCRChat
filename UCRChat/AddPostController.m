@@ -11,6 +11,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.tabBarController.selectedIndex = 4;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +38,7 @@
     GlobalTimeline[@"Post"] = str;
     GlobalTimeline[@"User"] = [PFUser currentUser].username;
     GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
+    GlobalTimeline[@"Refresh"] = [NSNumber numberWithInt:0];
     [GlobalTimeline saveInBackground];
     
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -17,6 +17,7 @@
     NSArray* Left;
     NSArray* Right;
     PFObject* deleteObject;
+    NSInteger oldsize;
 }
 
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;

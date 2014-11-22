@@ -10,6 +10,9 @@
 #import <Parse/Parse.h>
 
 @interface AddPostController : UIViewController
+{
+    NSMutableArray* PostArray;
+}
 @property (retain, nonatomic) IBOutlet UIButton *DonePost;
 - (IBAction)BtnPressed:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextView *Textview;

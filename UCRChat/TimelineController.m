@@ -9,19 +9,21 @@
 #import "TimelineController.h"
 #import "CustomCell.h"
 #import "PostViewController.h"
+#import "UserImage.h"
 
 @interface TimelineController ()
 
 @end
 
+
 @implementation TimelineController
 @synthesize PostTable;
-;
 static int numLikes = 0;
 static NSUInteger numComments = 0;
 
 PFObject *tempObject;
 CustomCell *cell;
+NSMutableArray* SavedPictures = nil;
 
 
 - (void)viewDidLoad {
@@ -34,18 +36,50 @@ CustomCell *cell;
     self.PostTable.delegate = self;
     
     _refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(retrieveFromParse) forControlEvents:UIControlEventValueChanged];
-    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
+    [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
     
     
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
     
-    [self retrieveFromParse ];
+    
+   // [self retrieveFromParse ];
     
     
 }
 
+- (void) PullParse
+{
+    PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
+    [retrievePosts orderByDescending:@"createdAt"];
+    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if(!error)
+         {
+             PostArray = [[NSMutableArray alloc ] initWithArray:objects];
+             [self.PostTable reloadData];
+             [_refreshControl endRefreshing];
+         }
+         
+     }];
+    
+    PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];
+    [retrieve findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if(!error)
+         {
+             userarray = [[NSArray alloc ] initWithArray:objects];
+         }
+     }];
+    
+    for(PFObject* i in PostArray)
+    {
+        i[@"Refresh"] = [NSNumber numberWithInt:0];
+        [i saveInBackground];
+        
+    }
+}
 - (void) retrieveFromParse
 {
     PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
@@ -70,6 +104,13 @@ CustomCell *cell;
          }
      }];
     
+    for(PFObject* i in PostArray)
+    {
+        [i incrementKey:@"Refresh" byAmount:[NSNumber numberWithInt:1]];
+        [i saveInBackground];
+
+    }
+    
 }
 
 
@@ -89,6 +130,10 @@ CustomCell *cell;
 //setup cells in tableView
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [PostTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [PostTable setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
+    CGFloat cellcolor = 1.0 - (CGFloat)indexPath.row / 20.0;
+    cell.ColorView.backgroundColor = [UIColor colorWithWhite:cellcolor alpha:1.0];
     //setup cell
     tempObject = [PostArray objectAtIndex:indexPath.row];
     
@@ -127,11 +172,81 @@ CustomCell *cell;
         }
     }
     
+    
     if(PICTURE) {
-        NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-        NSData* idata = [NSData dataWithContentsOfURL:imageURL];
-        cell.IMG.image = [UIImage imageWithData:idata];
+        if([tempObject[@"Refresh"]intValue] < 1 || [tempObject[@"Refresh"]intValue] % 10 == 0){
+            NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+            NSData* idata = [NSData dataWithContentsOfURL:imageURL];
+            cell.IMG.image = [UIImage imageWithData:idata];
+        
+            UserImages *UserPic = [[UserImages alloc] init];
+            UserPic.objectID = tempObject.objectId;
+            UserPic.Image = [UIImage imageWithData:idata];
+            [SavedPictures addObject:UserPic];
+            }
     }
+    if([tempObject[@"Refresh"]intValue] >= 1)
+    {
+        for(UserImages* item in SavedPictures)
+        {
+            if([item.objectID isEqualToString:tempObject.objectId]){
+                NSLog(@"Object found");
+                cell.IMG.image = item.Image;
+                break;
+            }
+        }
+    }
+    
+    //Obtain date of posts and output the date according to its date posted
+    
+    //date creted
+    NSDate *CreatedAT = tempObject.createdAt;
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MM dd, YYYY";
+    NSString* datetemp = [formatter stringFromDate:CreatedAT];
+    
+    //Todays Date
+    NSDate *currDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"MM dd, YYYY";
+    NSString* TodayDate = [dateFormatter stringFromDate:currDate];
+    
+    if([datetemp isEqualToString:TodayDate])
+    {
+        
+        //currnt hour
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:currDate];
+        NSInteger hour  = [components hour];
+        NSInteger min   = [components minute];
+        
+        
+        //post hour
+        calendar = [NSCalendar currentCalendar];
+        components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:CreatedAT];
+        NSInteger hour2 = [components hour];
+        NSInteger min2  = [components minute];
+        
+        NSInteger Hours = hour - hour2;
+        NSInteger Minutes = min - min2;
+        NSString* str = nil;
+        if(Hours > 0) {
+             str = [NSString stringWithFormat: @"%ld", Hours];
+             str = [str stringByAppendingString:@" hrs Ago"];
+        }
+        else {
+             str = [NSString stringWithFormat: @"%ld", Minutes];
+             str = [str stringByAppendingString:@" mins Ago"];
+        }
+        cell.Date.text = str;
+        
+    }
+    else
+    {
+        cell.Date.text = datetemp;
+    }
+    
+    
     cell.POST.text = [tempObject objectForKey:@"Post"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
@@ -266,6 +381,14 @@ CustomCell *cell;
             NSLog(@"Yes button clicked");
             [deleteObject deleteInBackground];
             [deleteObject saveInBackground];
+            
+            
+            for(PFObject* item in PostArray)
+            {
+                item[@"Refresh"] =[NSNumber numberWithInt:0];
+                [item saveInBackground];
+            }
+            
             [self.PostTable reloadData];
             break;
             

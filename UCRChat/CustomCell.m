@@ -8,13 +8,16 @@
 
 #import "CustomCell.h"
 @implementation CustomCell
+@synthesize NewUser;
 
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
+    NewUser = true;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if(self){};
+    
     return self;
 }
 
@@ -33,6 +36,8 @@
     [_CommentBtn release];
     [_Delete release];
     [_LoadingPicture release];
+    [_ColorView release];
+    [_Date release];
     [super dealloc];
 }
    

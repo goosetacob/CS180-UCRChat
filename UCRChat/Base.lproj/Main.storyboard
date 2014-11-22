@@ -178,7 +178,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" rowHeight="158" id="8Ka-n9-awk" customClass="CustomCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" rowHeight="158" id="8Ka-n9-awk" customClass="CustomCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ka-n9-awk" id="pch-o1-edb">
@@ -249,13 +249,21 @@
                                                         <action selector="DeleteBTN:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gNK-xc-XOG"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn0-za-7qb">
+                                                    <rect key="frame" x="250" y="5" width="50" height="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.65595329354618837" green="0.79884524540222746" blue="0.96739130429999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.030468140160020762" green="0.04165394506999736" blue="0.83152173910000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="19" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="ColorView" destination="pch-o1-edb" id="dpz-ub-0Uk"/>
                                             <outlet property="CommentBox" destination="wsq-i9-jGU" id="R1W-pr-a4e"/>
                                             <outlet property="CommentBtn" destination="2eo-tV-fbj" id="JtZ-UF-5NA"/>
+                                            <outlet property="Date" destination="Jn0-za-7qb" id="ckR-bo-Oks"/>
                                             <outlet property="Delete" destination="epQ-oF-AyY" id="eD2-B8-2nn"/>
                                             <outlet property="IMG" destination="tXy-cu-6O0" id="iDD-eZ-bdZ"/>
                                             <outlet property="LikeText" destination="iZd-hD-NCN" id="Cxc-7s-2t3"/>
