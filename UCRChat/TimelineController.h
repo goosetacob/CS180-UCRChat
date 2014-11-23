@@ -13,6 +13,7 @@
     
     NSMutableArray *PostArray;
     NSMutableArray *NewPostArray;
+    NSMutableArray* SavedPictures;
     NSArray *userarray;
     NSArray* Left;
     NSArray* Right;
@@ -23,7 +24,8 @@
 @property (retain, nonatomic) IBOutlet UITableView *PostTable;
 @property (nonatomic, strong) UIRefreshControl * refreshControl;
 - (IBAction)LikeBTNUP:(id)sender;
-- (IBAction)commentBTNUP:(id)sender;
+//- (IBAction)commentBTNUP:(id)sender;
+- (IBAction)DislikeBTNUP:(id)sender;
 
 
 @property (retain, nonatomic) IBOutlet UIButton *AddBtn;

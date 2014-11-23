@@ -38,7 +38,7 @@
     GlobalTimeline[@"Post"] = str;
     GlobalTimeline[@"User"] = [PFUser currentUser].username;
     GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
-    GlobalTimeline[@"Refresh"] = [NSNumber numberWithInt:0];
+    //GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
     [GlobalTimeline saveInBackground];
     
     [self dismissViewControllerAnimated:YES completion:nil];

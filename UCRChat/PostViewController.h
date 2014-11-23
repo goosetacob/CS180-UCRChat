@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSString *PARENT_POST;
 @property (strong, nonatomic) NSString *ObjectID;
 @property (strong, nonatomic) PFObject *UserObject;
-@property (strong, nonatomic) PFImageView  *ProfilePicture;
+@property (strong, nonatomic) UIImage  *ProfilePicture;
 
 
 @property (retain, nonatomic) IBOutlet UILabel *CommentLabel;

@@ -32,12 +32,11 @@
     [_IMG release];
     [_LikeText release];
     [_Likebtn release];
-    [_CommentBox release];
-    [_CommentBtn release];
     [_Delete release];
-    [_LoadingPicture release];
     [_ColorView release];
     [_Date release];
+    [_Dislikebtn release];
+    [_DislikeText release];
     [super dealloc];
 }
    

@@ -19,12 +19,19 @@
 @implementation TimelineController
 @synthesize PostTable;
 static int numLikes = 0;
-static NSUInteger numComments = 0;
+static int numDislikes = 0;
 
 PFObject *tempObject;
 CustomCell *cell;
-NSMutableArray* SavedPictures = nil;
 
+
+- (id)initWithCoder: (NSCoder *) aDecoder{
+    
+    if(self = [super initWithCoder:aDecoder]){
+        SavedPictures = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,17 +41,15 @@ NSMutableArray* SavedPictures = nil;
     [self.PostTable setOpaque: NO];
     self.PostTable.dataSource = self;
     self.PostTable.delegate = self;
+    self.PostTable.contentInset = UIEdgeInsetsMake(0, 0, 45, 0);
     
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
-    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
-    
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
     
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
-    
-    
-   // [self retrieveFromParse ];
     
     
 }
@@ -73,12 +78,35 @@ NSMutableArray* SavedPictures = nil;
          }
      }];
     
-    for(PFObject* i in PostArray)
+    bool Found = false;
+    for(PFObject* i in userarray)
     {
-        i[@"Refresh"] = [NSNumber numberWithInt:0];
-        [i saveInBackground];
+        PFFile* PICTURE = [i objectForKey:@"picture"];
+        NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+        NSData* idata = [NSData dataWithContentsOfURL:imageURL];
         
+        //Check if theres a user already saved
+        for(UserImages* check in SavedPictures)
+        {
+            //if found then just update the picture
+            if([i[@"username"] isEqualToString:check.objectID])
+            {
+                Found = true;
+                check.Image = [UIImage imageWithData:idata];
+                break;
+            }
+        }
+        
+        //if its not ssaved then add it to the list
+        if(!Found){
+        
+            UserImages *UserPic = [[UserImages alloc] init];
+            UserPic.objectID = [i objectForKey:@"username"];
+            UserPic.Image = [UIImage imageWithData:idata];
+            [SavedPictures addObject:UserPic];
+        }
     }
+  
 }
 - (void) retrieveFromParse
 {
@@ -103,13 +131,6 @@ NSMutableArray* SavedPictures = nil;
              userarray = [[NSArray alloc ] initWithArray:objects];
          }
      }];
-    
-    for(PFObject* i in PostArray)
-    {
-        [i incrementKey:@"Refresh" byAmount:[NSNumber numberWithInt:1]];
-        [i saveInBackground];
-
-    }
     
 }
 
@@ -150,52 +171,33 @@ NSMutableArray* SavedPictures = nil;
     }
     
     cell.Likebtn.tag = indexPath.row;
-    cell.CommentBtn.tag = indexPath.row;
+    cell.Dislikebtn.tag = indexPath.row;
     cell.Delete.tag = indexPath.row;
     [[cell Likebtn] addTarget:self action:@selector(LikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
-    [[cell CommentBtn] addTarget:self action:@selector(commentBTNUP:) forControlEvents:UIControlEventTouchUpInside];
+    [[cell Dislikebtn] addTarget:self action:@selector(DislikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     [[cell Delete] addTarget:self action:@selector(DeleteBTN:) forControlEvents:UIControlEventTouchUpInside];
-    cell.NAME.text = [tempObject objectForKey:@"User"];
 
     //To obtain the full name from the user on this cell
     NSString* User = [tempObject objectForKey:@"User"];
-    //cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
+    cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
 
-    PFFile* PICTURE = nil;
     for(PFObject* item in userarray)
     {
         if([[item objectForKey:@"username"] isEqualToString:User])
         {
             cell.NAME.text = item[@"fullName"];
-            PICTURE = [item objectForKey:@"picture"];
             break;
         }
     }
     
-    
-    if(PICTURE) {
-        if([tempObject[@"Refresh"]intValue] < 1 || [tempObject[@"Refresh"]intValue] % 10 == 0){
-            NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-            NSData* idata = [NSData dataWithContentsOfURL:imageURL];
-            cell.IMG.image = [UIImage imageWithData:idata];
-        
-            UserImages *UserPic = [[UserImages alloc] init];
-            UserPic.objectID = tempObject.objectId;
-            UserPic.Image = [UIImage imageWithData:idata];
-            [SavedPictures addObject:UserPic];
-            }
-    }
-    if([tempObject[@"Refresh"]intValue] >= 1)
+    for(UserImages* x in SavedPictures)
     {
-        for(UserImages* item in SavedPictures)
-        {
-            if([item.objectID isEqualToString:tempObject.objectId]){
-                NSLog(@"Object found");
-                cell.IMG.image = item.Image;
-                break;
-            }
+        if([tempObject[@"User"] isEqualToString:x.objectID]){
+            cell.IMG.image = x.Image;
         }
     }
+    
+   
     
     //Obtain date of posts and output the date according to its date posted
     
@@ -250,21 +252,28 @@ NSMutableArray* SavedPictures = nil;
     cell.POST.text = [tempObject objectForKey:@"Post"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
-    NSArray* array = [tempObject objectForKey:@"Comments"];
-    numComments = array.count;
-    cell.CommentBox.text = [NSString stringWithFormat:@"%ld", numComments ];
+    numDislikes = [[tempObject objectForKey:@"Dislikes"] intValue];
+    cell.DislikeText.text = [NSString stringWithFormat:@"%d", numDislikes ];
     
     //Check if we already lked the post to change the button text
     NSArray* temp_array = [tempObject objectForKey:@"LikesID"];
+    NSArray* temp2_array = [tempObject objectForKey:@"DislikesID"];
     for (NSString* Item in temp_array) {
         if([[PFUser currentUser].username isEqualToString:Item])
             [cell.Likebtn setTitle:@"Liked" forState:UIControlStateNormal];
+    }
+    for (NSString* Item in temp2_array) {
+        if([[PFUser currentUser].username isEqualToString:Item])
+            [cell.Dislikebtn setTitle:@"Disliked" forState:UIControlStateNormal];
     }
 
     
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"CellSegue" sender:indexPath];
+}
 - (IBAction)LikeBTNUP:(id)sender {
     
     UIButton *LikeButton = (UIButton * )sender;
@@ -321,20 +330,16 @@ NSMutableArray* SavedPictures = nil;
     }
 }
 
-
-- (IBAction)commentBTNUP:(id)sender {
-   [self performSegueWithIdentifier:@"MySegue" sender:sender];
-}
-
-- (IBAction)AddButton:(id)sender {
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"MySegue"]){
+    if ([[segue identifier] isEqualToString:@"CellSegue"]){
+        
+       // NSIndexPath * indexPath = (NSIndexPath *) sender;
+        NSIndexPath *indexPath = [self.PostTable indexPathForCell:sender];
+        PFObject * tmp = [PostArray objectAtIndex:indexPath.row];
         
         //if you need to pass data to the next controller do it here
-        UIButton *CommentButton = (UIButton * )sender;
-        PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
+      //  UIButton *CommentButton = (UIButton * )sender;
+       // PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
         PostViewController *SecondController = segue.destinationViewController;
         
         //To obtain the full name from the user on this cell
@@ -348,6 +353,13 @@ NSMutableArray* SavedPictures = nil;
             }
         }
         
+        for(UserImages* x in SavedPictures)
+        {
+            if([tmp[@"User"] isEqualToString:x.objectID]){
+                SecondController.ProfilePicture = x.Image;
+            }
+        }
+       
         SecondController.UserObject = tmp;
         SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
         
@@ -382,13 +394,6 @@ NSMutableArray* SavedPictures = nil;
             [deleteObject deleteInBackground];
             [deleteObject saveInBackground];
             
-            
-            for(PFObject* item in PostArray)
-            {
-                item[@"Refresh"] =[NSNumber numberWithInt:0];
-                [item saveInBackground];
-            }
-            
             [self.PostTable reloadData];
             break;
             
@@ -418,4 +423,62 @@ NSMutableArray* SavedPictures = nil;
         [mes release];
     }
 }
+
+- (IBAction)DislikeBTNUP:(id)sender {
+    
+    UIButton *DislikeButton = (UIButton * )sender;
+    PFObject *tmp = [PostArray objectAtIndex:DislikeButton.tag];
+    
+    NSMutableArray* tmp_Array = [tmp objectForKey:@"DislikesID"] ;
+    bool found = false;
+    
+    for(id item in tmp_Array)
+    {
+        if([item isEqualToString:[PFUser currentUser].username])
+            found = true;
+    }
+    
+    if(found == false)
+    {
+        //Like Feauture
+        [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if(!error)
+             {
+                 
+                 [tmp incrementKey:@"Dislikes" byAmount:[NSNumber numberWithInt:1]];
+                 [tmp addUniqueObject:[PFUser currentUser].username forKey:@"DislikesID"];
+                 [tmp saveInBackground];
+                 [DislikeButton setTitle:@"Disliked" forState:UIControlStateNormal];
+                 [self.PostTable reloadData];
+                 cell.LikeText.text = [NSString stringWithFormat:@"%d", [[tmp objectForKey:@"Dislikes"] intValue]];
+             }
+         }];
+    }
+    //Dislike Feauture
+    else
+    {
+        [tmp saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if(!error)
+             {
+                 [tmp incrementKey:@"Dislikes" byAmount:[NSNumber numberWithInt:-1]];
+                 //Obtain array of LIKESId
+                 for(id item in tmp_Array)
+                 {
+                     if([item isEqualToString:[PFUser currentUser].username]){
+                         [tmp_Array removeObject: item];
+                         [tmp saveInBackground];
+                         [DislikeButton setTitle:@"Dislike" forState:UIControlStateNormal];
+                         [self.PostTable reloadData];
+                         
+                     }
+                 }
+                 
+             }
+         }];
+    }
+
+}
+
 @end

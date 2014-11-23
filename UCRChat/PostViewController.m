@@ -18,10 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //loading indicator
-    [self.view addSubview: Loading];
-    [Loading startAnimating];
-    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper.jpg"]];
     bool found = false;
     
     //Check if we already lked the post to change the button text
@@ -50,7 +47,7 @@
     
     /*Proccsng for th picture */
     
-    PostControllerPIC.image = [UIImage imageNamed:@"Default Profile.jpg"];
+    PostControllerPIC.image = ProfilePicture;
 }
 
 - (void)didReceiveMemoryWarning

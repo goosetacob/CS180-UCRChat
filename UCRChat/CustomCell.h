@@ -21,11 +21,10 @@
 @property (retain, nonatomic) IBOutlet PFImageView *IMG;
 @property (retain, nonatomic) IBOutlet UIButton *Likebtn;
 @property (retain, nonatomic) IBOutlet UILabel *POST;
-@property (retain, nonatomic) IBOutlet UILabel *CommentBox;
-@property (retain, nonatomic) IBOutlet UIButton *CommentBtn;
-@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *LoadingPicture;
 @property (retain, nonatomic) IBOutlet UIButton *Delete;
 @property (retain, nonatomic) IBOutlet UIView *ColorView;
 @property (retain, nonatomic) IBOutlet UILabel *Date;
+@property (retain, nonatomic) IBOutlet UIButton *Dislikebtn;
+@property (retain, nonatomic) IBOutlet UILabel *DislikeText;
 
 @end

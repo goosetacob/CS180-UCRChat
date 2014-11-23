@@ -174,8 +174,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="138" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-bY-rbl">
-                                <rect key="frame" x="0.0" y="64" width="320" height="517"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-bY-rbl">
+                                <rect key="frame" x="0.0" y="64" width="320" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" rowHeight="158" id="8Ka-n9-awk" customClass="CustomCell">
@@ -191,7 +191,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="0.17676638109967724" green="0.29883378837933494" blue="0.83152173913043481" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBz-VJ-KTK" customClass="mycell">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBz-VJ-KTK" customClass="mycell">
                                                     <rect key="frame" x="80" y="13" width="109" height="21"/>
                                                     <color key="tintColor" red="1" green="0.1104705003" blue="0.098680876619999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="12"/>
@@ -199,15 +199,9 @@
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZd-hD-NCN">
-                                                    <rect key="frame" x="270" y="15" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7o-91-ktm">
-                                                    <rect key="frame" x="222" y="15" width="40" height="19"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="3" y="93" width="40" height="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Like">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -221,26 +215,9 @@
                                                         <bool key="isElement" value="YES"/>
                                                     </accessibility>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsq-i9-jGU">
-                                                    <rect key="frame" x="16" y="107" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eo-tV-fbj">
-                                                    <rect key="frame" x="6" y="83" width="59" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="Comment">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="commentBTNUP:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="rK0-Dp-iLU"/>
-                                                        <segue destination="mln-Rd-cnI" kind="showDetail" identifier="MySegue" id="tlw-Ub-FZP"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-oF-AyY">
                                                     <rect key="frame" x="241" y="107" width="79" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Delete">
                                                         <color key="titleColor" red="1" green="0.11047050033964478" blue="0.098680876620050317" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,21 +232,44 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZd-hD-NCN">
+                                                    <rect key="frame" x="48" y="92" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrt-EH-KrO">
+                                                    <rect key="frame" x="3" y="110" width="42" height="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <state key="normal" title="Dislike">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="DislikeBTNUP:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="TWM-UW-LGo"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dislikes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toc-3S-wgs">
+                                                    <rect key="frame" x="48" y="109" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.030468140160020762" green="0.04165394506999736" blue="0.83152173910000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="19" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="ColorView" destination="pch-o1-edb" id="dpz-ub-0Uk"/>
-                                            <outlet property="CommentBox" destination="wsq-i9-jGU" id="R1W-pr-a4e"/>
-                                            <outlet property="CommentBtn" destination="2eo-tV-fbj" id="JtZ-UF-5NA"/>
                                             <outlet property="Date" destination="Jn0-za-7qb" id="ckR-bo-Oks"/>
                                             <outlet property="Delete" destination="epQ-oF-AyY" id="eD2-B8-2nn"/>
+                                            <outlet property="DislikeText" destination="toc-3S-wgs" id="Oqa-PI-XjX"/>
+                                            <outlet property="Dislikebtn" destination="Jrt-EH-KrO" id="uuy-mp-dxD"/>
                                             <outlet property="IMG" destination="tXy-cu-6O0" id="iDD-eZ-bdZ"/>
                                             <outlet property="LikeText" destination="iZd-hD-NCN" id="Cxc-7s-2t3"/>
                                             <outlet property="Likebtn" destination="C7o-91-ktm" id="UYh-3o-k97"/>
                                             <outlet property="NAME" destination="oBz-VJ-KTK" id="8MF-qI-nQw"/>
                                             <outlet property="POST" destination="GgW-QP-s0b" id="CYK-9f-Z31"/>
+                                            <segue destination="mln-Rd-cnI" kind="showDetail" identifier="CellSegue" id="NMw-y6-Zpj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -393,14 +393,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK6-Ot-brg">
-                                <rect key="frame" x="21" y="115" width="288" height="198"/>
+                                <rect key="frame" x="21" y="141" width="288" height="200"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -431,9 +431,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-Bx-gYQ">
                                 <rect key="frame" x="21" y="68" width="70" height="70"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hBR-Ob-Pin">
-                                <rect key="frame" x="46" y="93" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -443,7 +440,6 @@
                         <outlet property="CommentLabel" destination="yoz-nI-cxa" id="rBz-j1-rtd"/>
                         <outlet property="LikeButton" destination="VXi-TR-nxg" id="ELu-Da-Qrb"/>
                         <outlet property="LikeLabel" destination="gu3-Gs-40I" id="M72-1E-dct"/>
-                        <outlet property="Loading" destination="hBR-Ob-Pin" id="Cha-sM-slL"/>
                         <outlet property="PostControllerName" destination="mIF-cr-AOo" id="6KN-Wb-zDy"/>
                         <outlet property="PostControllerPIC" destination="6p3-Bx-gYQ" id="RzB-XX-lrg"/>
                         <outlet property="PostControllerPost" destination="qK6-Ot-brg" id="jsR-bV-zww"/>
