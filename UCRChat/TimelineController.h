@@ -31,5 +31,9 @@
 @property (retain, nonatomic) IBOutlet UIButton *AddBtn;
 - (IBAction)AddActionButton:(id)sender;
 - (IBAction)DeleteBTN:(id)sender;
+@property (retain, nonatomic) IBOutlet UIButton *Barbutton;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navibar;
+@property (retain, nonatomic) IBOutlet UIButton *AppName;
+
 
 @end

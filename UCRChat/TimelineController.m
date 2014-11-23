@@ -17,7 +17,7 @@
 
 
 @implementation TimelineController
-@synthesize PostTable;
+@synthesize PostTable, Barbutton, AddBtn, navibar;
 static int numLikes = 0;
 static int numDislikes = 0;
 
@@ -43,6 +43,17 @@ CustomCell *cell;
     self.PostTable.delegate = self;
     self.PostTable.contentInset = UIEdgeInsetsMake(0, 0, 45, 0);
     
+    [AddBtn setImage:[UIImage imageNamed:@"comment-icon.jpg"] forState:UIControlStateNormal];
+    [Barbutton setImage:[UIImage imageNamed:@"camera.jpg"] forState:UIControlStateNormal];
+    
+    [Barbutton setTitle:@"  Photo" forState:UIControlStateNormal];
+    [self.navigationItem setHidesBackButton:YES];
+    
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.23 green:0.349 blue:0.596 alpha:0.5]];
+    
+
+
+    
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
     [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
@@ -56,6 +67,7 @@ CustomCell *cell;
 
 - (void) PullParse
 {
+   
     PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
     [retrievePosts orderByDescending:@"createdAt"];
     [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -106,7 +118,7 @@ CustomCell *cell;
             [SavedPictures addObject:UserPic];
         }
     }
-  
+   
 }
 - (void) retrieveFromParse
 {
@@ -375,7 +387,10 @@ CustomCell *cell;
 - (void)dealloc {
     
     [PostTable release];
-    [_AddBtn release];
+    [AddBtn release];
+    [Barbutton release];
+    [navibar release];
+    [_AppName release];
     [super dealloc];
 }
 - (IBAction)AddActionButton:(id)sender {
