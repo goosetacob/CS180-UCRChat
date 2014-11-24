@@ -35,4 +35,9 @@
 @property (retain, nonatomic) IBOutlet UIButton *LikeButton;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *Loading;
 
+
+//TableView information
+@property (retain, nonatomic) IBOutlet UITableView *CommentView;
+
+
 @end

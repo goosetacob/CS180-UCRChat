@@ -1,19 +1,18 @@
 //
-//  UITableViewCell+CustomCell.m
+//  UITableViewCell+CustomCell2.m
 //  UCRChat
 //
-//  Created by user24887 on 11/11/14.
+//  Created by user24887 on 11/23/14.
 //  Copyright (c) 2014 me.gustavob. All rights reserved.
 //
 
-#import "CustomCell.h"
-@implementation CustomCell
-@synthesize NewUser;
+#import "CustomCell2.h"
+
+@implementation CustomCell2
 
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    NewUser = true;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if(self){};
@@ -27,21 +26,15 @@
 }
 
 - (void)dealloc {
-    [_NAME release];
-    [_POST release];
-    [_IMG release];
-    [_LikeText release];
-    [_Likebtn release];
-    [_Delete release];
-    [_ColorView release];
     [_Date release];
-    [_Dislikebtn release];
-    [_DislikeText release];
-    [_PICPOST release];
     [super dealloc];
 }
-   
+- (IBAction)LikeCick:(id)sender {
+}
 
-- (IBAction)CommentBtn:(id)sender {
+- (IBAction)DislikeClick:(id)sender {
+}
+
+- (IBAction)DeleteClick:(id)sender {
 }
 @end

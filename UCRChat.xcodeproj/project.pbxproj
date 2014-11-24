@@ -281,6 +281,8 @@
 		8020D8241A17EA620059D0A0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8020D8231A17EA620059D0A0 /* FacebookSDK.framework */; };
 		804C3B481A1FDA12004ADBAC /* UserImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C3B471A1FDA12004ADBAC /* UserImage.m */; };
 		8077DA291A1951F100CD0625 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077DA281A1951F100CD0625 /* PostViewController.m */; };
+		80ACCBEA1A23BBB7008C8B32 /* MultimediaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */; };
+		80C1C5BB1A22AD4200A32C67 /* AddMultiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -594,6 +596,10 @@
 		804C3B471A1FDA12004ADBAC /* UserImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserImage.m; sourceTree = "<group>"; };
 		8077DA271A1951F100CD0625 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		8077DA281A1951F100CD0625 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		80ACCBE81A23BBB7008C8B32 /* MultimediaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultimediaPost.h; sourceTree = "<group>"; };
+		80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultimediaPost.m; sourceTree = "<group>"; };
+		80C1C5B91A22AD4200A32C67 /* AddMultiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMultiPost.h; sourceTree = "<group>"; };
+		80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMultiPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -720,6 +726,10 @@
 				8077DA281A1951F100CD0625 /* PostViewController.m */,
 				804C3B461A1FDA12004ADBAC /* UserImage.h */,
 				804C3B471A1FDA12004ADBAC /* UserImage.m */,
+				80C1C5B91A22AD4200A32C67 /* AddMultiPost.h */,
+				80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */,
+				80ACCBE81A23BBB7008C8B32 /* MultimediaPost.h */,
+				80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -1357,12 +1367,14 @@
 			files = (
 				3A1545F51A1426E700948D1E /* Images.xcassets in Sources */,
 				3A1545F31A14263E00948D1E /* MeController.m in Sources */,
+				80ACCBEA1A23BBB7008C8B32 /* MultimediaPost.m in Sources */,
 				3A1545EC1A14243000948D1E /* NameInputController.m in Sources */,
 				3A1545D31A1302E000948D1E /* ChatCellController.m in Sources */,
 				3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */,
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
 				3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */,
+				80C1C5BB1A22AD4200A32C67 /* AddMultiPost.m in Sources */,
 				8077DA291A1951F100CD0625 /* PostViewController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,

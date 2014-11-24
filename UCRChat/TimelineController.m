@@ -10,6 +10,7 @@
 #import "CustomCell.h"
 #import "PostViewController.h"
 #import "UserImage.h"
+#import "MultimediaPost.h"
 
 @interface TimelineController ()
 
@@ -29,6 +30,7 @@ CustomCell *cell;
     
     if(self = [super initWithCoder:aDecoder]){
         SavedPictures = [[NSMutableArray alloc] init];
+        MultimediaPosts = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -143,6 +145,57 @@ CustomCell *cell;
              userarray = [[NSArray alloc ] initWithArray:objects];
          }
      }];
+    /*
+    NSNumber* mybool = 0;
+    for(PFObject* items in PostArray)
+    {
+        mybool = items[@"PhotoPost"];
+        if([mybool boolValue] == true)
+        {
+            PFFile* PICTURE = [items objectForKey:@"picture"];
+           // NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+           // NSData* idata = [NSData dataWithContentsOfURL:imageURL];
+            
+            MultimediaPost* UserPost = [[MultimediaPost alloc] init];
+            //UserPost.objectID = [items objectForKey:@"username"];
+            //UserPost.Image = [UIImage imageWithData:idata];
+            //[MultimediaPosts addObject:UserPost];
+        }
+    }
+    */
+    bool Found = false;
+    for(PFObject* i in PostArray)
+    {
+        NSNumber* mybool = i[@"PhotoPost"];
+        if([mybool boolValue] == true)
+        {
+            PFFile* PICTURE = [i objectForKey:@"MultimediaPost"];
+            NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+            NSData* idata = [NSData dataWithContentsOfURL:imageURL];
+            
+            //Check if theres a user already saved
+            for(MultimediaPost* check in MultimediaPosts)
+            {
+                //if found then just update the picture
+                if([i[@"User"] isEqualToString:check.UserID] && [i.objectId isEqualToString:check.objectID])
+                {
+                    Found = true;
+                    check.Image = [UIImage imageWithData:idata];
+                    break;
+                }
+            }
+            
+            //if its not saved then add it to the list
+            if(!Found){
+                
+                MultimediaPost *UserPic = [[MultimediaPost alloc] init];
+                UserPic.UserID = [i objectForKey:@"User"];
+                UserPic.objectID = i.objectId;
+                UserPic.Image = [UIImage imageWithData:idata];
+                [MultimediaPosts addObject:UserPic];
+            }
+        }
+    }
     
 }
 
@@ -166,11 +219,19 @@ CustomCell *cell;
     [PostTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [PostTable setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
     CGFloat cellcolor = 1.0 - (CGFloat)indexPath.row / 20.0;
+   
     cell.ColorView.backgroundColor = [UIColor colorWithWhite:cellcolor alpha:1.0];
     //setup cell
     tempObject = [PostArray objectAtIndex:indexPath.row];
     
-    static NSString *CellIdentifier = @"mycell";
+    static NSString *CellIdentifier = nil;
+    NSNumber* mybool = tempObject[@"PhotoPost"];
+    bool paidBoolean = [mybool boolValue];
+    
+    if(paidBoolean == false) CellIdentifier = @"mycell";
+    else CellIdentifier = @"mycell2";
+        
+
     
     cell = [tableView
             dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -188,7 +249,7 @@ CustomCell *cell;
     [[cell Likebtn] addTarget:self action:@selector(LikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     [[cell Dislikebtn] addTarget:self action:@selector(DislikeBTNUP:) forControlEvents:UIControlEventTouchUpInside];
     [[cell Delete] addTarget:self action:@selector(DeleteBTN:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     //To obtain the full name from the user on this cell
     NSString* User = [tempObject objectForKey:@"User"];
     cell.IMG.image = [UIImage imageNamed:@"Default Profile.jpg"];
@@ -206,10 +267,10 @@ CustomCell *cell;
     {
         if([tempObject[@"User"] isEqualToString:x.objectID]){
             cell.IMG.image = x.Image;
+            break;
         }
     }
     
-   
     
     //Obtain date of posts and output the date according to its date posted
     
@@ -260,8 +321,20 @@ CustomCell *cell;
         cell.Date.text = datetemp;
     }
     
+    if(paidBoolean == false)
+        cell.POST.text = [tempObject objectForKey:@"Post"];
+    else{
+       
+        //cell.PICPOST.image = nil;
+        for(MultimediaPost* x in MultimediaPosts)
+        {
+            if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID]){
+                cell.PICPOST.image = x.Image;
+                break;
+            }
+        }
+    }
     
-    cell.POST.text = [tempObject objectForKey:@"Post"];
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
     numDislikes = [[tempObject objectForKey:@"Dislikes"] intValue];
@@ -278,6 +351,7 @@ CustomCell *cell;
         if([[PFUser currentUser].username isEqualToString:Item])
             [cell.Dislikebtn setTitle:@"Disliked" forState:UIControlStateNormal];
     }
+ 
 
     
     return cell;

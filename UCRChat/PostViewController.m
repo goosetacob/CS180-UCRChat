@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper.jpg"]];
     bool found = false;
     
     //Check if we already lked the post to change the button text
@@ -68,6 +69,7 @@
     [LikeLabel release];
     [LikeButton release];
     [Loading release];
+    [_CommentView release];
     [super dealloc];
 }
 
