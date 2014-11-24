@@ -56,7 +56,8 @@
     
     //storng objcts to cloud
     PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
-    if(_Photo.image != nil){
+    if(_Photo.image != nil)
+    {
         //PFFile *send = [PFFile fileWithName:_Photo data:imageData];
         NSData* data = UIImageJPEGRepresentation(_Photo.image, 0.5f);
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
@@ -79,7 +80,8 @@
         GlobalTimeline[@"User"] = [PFUser currentUser].username;
         GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
         GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:YES];
+        GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
+        GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:YES];
         [GlobalTimeline saveInBackground];
     }
     
