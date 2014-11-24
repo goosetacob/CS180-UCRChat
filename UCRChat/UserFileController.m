@@ -120,62 +120,33 @@
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
     
     //HUD creation here (see example for code)
+    // Show progress
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"Uploading";
+    [HUD show:YES];
     
     // Save PFFile
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            // Hide old HUD, show completed HUD (see example for code)
-            
             PFObject *userPhoto = [PFUser currentUser];
             userPhoto[@"picture"] = imageFile;
             [userPhoto saveInBackground];
-            //[userPhoto setObject:imageFile forKey:@"picture"];
+            [userPhoto setObject:imageFile forKey:@"picture"];
+            [HUD hide:YES];
             
             // Set the access control list to current user for security purposes
             //userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
             
             //PFUser *user = [PFUser currentUser];
            // [userPhoto setObject:user forKey:@"user"];
-            
-            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    [self refresh:nil];
-                }
-                else{
-                    // Log details of the failure
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
-            }];
         }
         else{
             [HUD hide:YES];
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-    }
-    progressBlock:^(int percentDone) {
-        //Update your progress spinner here. percentDone will be between 0 and 100.
-        HUD.progress = (float)percentDone/100;
     }];
 }
-
-- (void)hudWasHidden:(MBProgressHUD *)hud {
-    // Remove HUD from screen when the HUD hides
-    [HUD removeFromSuperview];
-    HUD = nil;
-}
-
--(IBAction)refresh:(id)sender
-{
-    refreshHUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:refreshHUD];
-    
-    // Register for HUD callbacks so we can remove it from the window at the right time
-    refreshHUD.delegate = self;
-    
-    // Show the HUD while the provided method executes in a new thread
-    [refreshHUD show:YES];
-}
-
 
 @end

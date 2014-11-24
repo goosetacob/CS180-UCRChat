@@ -67,6 +67,11 @@
         
         NSString *playerName = userPointer[@"fullName"];
         NSString *blogg = userPointer[@"aboutMe"];
+        PFFile *pictureFile = userPointer[@"picture"];
+        [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+            UIImage *tempImage = [UIImage imageWithData:data];
+            [imageView setImage:tempImage];
+        }];
         [self.nameView setTitle:playerName forState:UIControlStateNormal];
         
         [self.aboutMeView setUserInteractionEnabled:NO];
