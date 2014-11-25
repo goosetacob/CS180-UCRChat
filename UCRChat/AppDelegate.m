@@ -22,9 +22,6 @@
     [Parse setApplicationId:@"M9Ku5LNuT7PkF4j0pR1wGn07CRtUo01naUcBTSm2"
                   clientKey:@"DIpz4zg2WaBfL4xR4mT20K6P5iidUoHyhGzVjQt7"];
     
-    //Scringo Keys
-    [Scringo initWithAppId:@"pWou0UNMoD0P4ZmdHA5N3UzCFFE7QerO" completion:nil];
-    
     return YES;
 }
 

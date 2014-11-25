@@ -8,7 +8,6 @@
 
 #import "ChatViewController.h"
 #import "ChatCellController.h"
-#import <Scringo/Scringo.h>
 #import <Parse/Parse.h>
 
 @interface ChatViewController()
@@ -21,14 +20,6 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    
-    /*
-    [Scringo initWithAppId:@"TEST_APP" completion:^{
-        [Scringo openMenuWithNavigationController:nil withScringoNavControllerEnabled:YES];
-        // Add test users to show some dummy traffic
-        [Scringo setTestMode:YES];
-    }];
-     */
      
     
     [self.friendsTable setDelegate:self];
@@ -52,16 +43,19 @@
     
 }
 
--(void)getLatest {/*
+-(void)getLatest {
     //find friends on Parse
+    
+    //create a Prase object with all of the users objectId
     PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
     friendsObjectId = [[NSMutableArray alloc] initWithObjects:[userInfo objectForKey:@"Friends"], nil];
+    
     friendsName = [[NSMutableArray alloc] init];
     
     //have array of objectId's of friends
-    //friendsObjectId = friendsObjectId[0];
+    friendsObjectId = friendsObjectId[0];
     
-    NSLog(@"preojectID %lu", (unsigned long)friendsObjectId.count);
+    NSLog(@"projectID %lu", (unsigned long)friendsObjectId.count);
     
     //parse thourgh friends objectId to get name
     for (int i = 0; i < friendsObjectId.count; i++) {
@@ -72,8 +66,9 @@
         
     }
     
+    
     NSLog(@"GETLATEST %lu :: %@",(unsigned long)friendsName.count, friendsName);
-    */
+    
     [self.friendsTable reloadData];
      
     [_refreshControl endRefreshing];
