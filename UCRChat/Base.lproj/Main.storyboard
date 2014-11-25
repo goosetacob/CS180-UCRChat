@@ -409,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="141"/>
+            <point key="canvasLocation" x="1426" y="139"/>
         </scene>
         <!--Add Post Controller-->
         <scene sceneID="zOm-jB-fsl">

@@ -11,6 +11,8 @@
 #import "PostViewController.h"
 #import "UserImage.h"
 #import "MultimediaPost.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface TimelineController ()
 
@@ -145,28 +147,12 @@ CustomCell *cell;
              userarray = [[NSArray alloc ] initWithArray:objects];
          }
      }];
-    /*
-    NSNumber* mybool = 0;
-    for(PFObject* items in PostArray)
-    {
-        mybool = items[@"PhotoPost"];
-        if([mybool boolValue] == true)
-        {
-            PFFile* PICTURE = [items objectForKey:@"picture"];
-           // NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-           // NSData* idata = [NSData dataWithContentsOfURL:imageURL];
-            
-            MultimediaPost* UserPost = [[MultimediaPost alloc] init];
-            //UserPost.objectID = [items objectForKey:@"username"];
-            //UserPost.Image = [UIImage imageWithData:idata];
-            //[MultimediaPosts addObject:UserPost];
-        }
-    }
-    */
+   
     bool Found = false;
     for(PFObject* i in PostArray)
     {
         NSNumber* mybool = i[@"PhotoPost"];
+        NSNumber* videobool = i[@"VidePost"];
         if([mybool boolValue] == true)
         {
             PFFile* PICTURE = [i objectForKey:@"MultimediaPost"];
@@ -192,6 +178,35 @@ CustomCell *cell;
                 UserPic.UserID = [i objectForKey:@"User"];
                 UserPic.objectID = i.objectId;
                 UserPic.Image = [UIImage imageWithData:idata];
+                [MultimediaPosts addObject:UserPic];
+            }
+        }
+        else  if([videobool boolValue] == true)
+        {
+            
+            PFFile* Video = [i objectForKey:@"MultimediaPost"];
+            NSURL* VideoURL = [[NSURL alloc] initWithString:Video.url];
+            
+            //Check if theres a user already saved
+            for(MultimediaPost* check in MultimediaPosts)
+            {
+                //if found then just update the picture
+                if([i[@"User"] isEqualToString:check.UserID] && [i.objectId isEqualToString:check.objectID])
+                {
+                    Found = true;
+                    check.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:VideoURL];
+                    break;
+                }
+            }
+            
+            //if its not saved then add it to the list
+            if(!Found){
+                
+                MultimediaPost *UserPic = [[MultimediaPost alloc] init];
+                UserPic.UserID = [i objectForKey:@"User"];
+                UserPic.objectID = i.objectId;
+                UserPic.Image = nil;
+                UserPic.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:VideoURL];
                 [MultimediaPosts addObject:UserPic];
             }
         }
@@ -225,12 +240,14 @@ CustomCell *cell;
     tempObject = [PostArray objectAtIndex:indexPath.row];
     
     static NSString *CellIdentifier = nil;
-    NSNumber* mybool = tempObject[@"PhotoPost"];
-    bool paidBoolean = [mybool boolValue];
+    NSNumber* mybool =  tempObject[@"PhotoPost"];
+    NSNumber* mybool2 = tempObject[@"VideoPost"];
+    bool paidBoolean =  [mybool boolValue];
+    bool paidBoolean2 = [mybool2 boolValue];
     
-    if(paidBoolean == false) CellIdentifier = @"mycell";
-    else CellIdentifier = @"mycell2";
-        
+    if(paidBoolean == false && paidBoolean2 == false) CellIdentifier = @"mycell";
+    else if(paidBoolean == true && paidBoolean2 == false) CellIdentifier = @"mycell2";
+    else if(paidBoolean == false && paidBoolean2 == true) CellIdentifier = @"mycell2";
 
     
     cell = [tableView
@@ -321,15 +338,31 @@ CustomCell *cell;
         cell.Date.text = datetemp;
     }
     
-    if(paidBoolean == false)
+    if(paidBoolean == false && paidBoolean2 == false)
         cell.POST.text = [tempObject objectForKey:@"Post"];
-    else{
+    else if(paidBoolean == true && paidBoolean2 == false)
+    {
        
-        //cell.PICPOST.image = nil;
         for(MultimediaPost* x in MultimediaPosts)
         {
             if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID]){
                 cell.PICPOST.image = x.Image;
+                break;
+            }
+        }
+    }
+    else if(paidBoolean == false && paidBoolean2 == true)
+    {
+        NSLog(@"looking for Video");
+        for(MultimediaPost* x in MultimediaPosts)
+        {
+            if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID])
+            {
+                x.VideoPost.shouldAutoplay = NO;
+                
+                UIImage *thumbnail = [x.VideoPost thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+                cell.PICPOST.image = thumbnail;
+                NSLog(@"Got Video Picture");
                 break;
             }
         }
