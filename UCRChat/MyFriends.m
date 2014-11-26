@@ -40,46 +40,56 @@
              
              // If you move to a view and back, we might be trying to load the same friends again.
              // If this happens, do not populate the Friends array anymore.
-             if( [object[@"Friends"] count ] < Friends.count )
-                 return;
+             //if( [object[@"Friends"] count ] < Friends.count )
+               //  return;
              
-             
-             for (NSString *friend in object[@"Friends"]) {
-                 // Query a second time to get one specific friend ObjectId
-                 [query getObjectInBackgroundWithId:friend block:^(PFObject *object, NSError *error)
+
+             for (NSUInteger i = 0; i < [object[@"Friends"] count]; ++i)
+             {
+                
+                 NSString *friend = object[@"Friends"][i];
+                 
+                 // Make another query for each friend objectId obtained from the friends array.=
+                 PFQuery *friendQuery = [PFQuery queryWithClassName:@"_User"];
+                 
+                 // Query a second time to get one specific friend ObjectId.
+                 [friendQuery getObjectInBackgroundWithId:friend block:^(PFObject *fobject, NSError *error)
                   {
                       // We've grabbed on PFObject from our array of friends. Now we parse through our Friends array
-                      // and run some checks.
                       if (!error)
                       {
-                          
+                          // Compare new PFObject to our current list of friends
                           NSInteger exists = 0;
                           for( PFObject* j in Friends )
                           {
-                              if( j.objectId == object.objectId )
+                              if( j.objectId == fobject.objectId )
                                   exists = 1;
                           }
                           
                           // If we have a unique friend, add it to our Friend array
                           if( exists == 0 )
-                              [Friends addObject:object ];
+                              [Friends addObject:fobject ];
                           
-                      } else {
+                          // This is critical for making sure our cells are correctly up-to-date on screen!
+                          [self.myTableView reloadData];
+
+                      }
+                      else
+                      {
                           // Log details of the failure
                           NSLog(@"Error: %@ %@", error, [error userInfo]);
                       }
                       
-                      
-                      // This is critical for making sure our cells are correctly up-to-date on screen!
-                      [self.myTableView reloadData];
                   }];
                  
 
              }
              
-             
-             
-         } else {
+
+
+         }
+         else
+         {
              // Log details of the failure
              NSLog(@"Error: %@ %@", error, [error userInfo]);
          }
@@ -96,11 +106,11 @@
     
     // Initialize mutable arrays!
     Friends = [[NSMutableArray alloc] init];
-    //allObjects = [[NSMutableArray alloc] init];
     
     // Populate Friend array using current user's data
     [self retrieveFriends];
     
+
     //[self performSelector:@selector(retrieveFromParse)];
     // Update list of friends every minute
     /////////// This duplicates friends for some reason!!!
@@ -122,8 +132,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure your segue name in storyboard is the same as this line
-    
     // Send current user's info to keep track of friend requests
     if ([[segue identifier] isEqualToString:@"friendRequests"])
     {
@@ -178,16 +186,22 @@
         cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
     }
     
-    if( indexPath.row > Friends.count )
-        return cell;
+    //if( indexPath.row > Friends.count )
+        //return cell;
 
     // Populate cell using Friend information at specific row
     PFObject *object = [Friends objectAtIndex:indexPath.row];
     
     cell.TitleLabel.text = [object objectForKey:@"fullName"];
     cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
-    //cell.ThumbImage.image = [object objectForKey:@"picture"];
     
+    
+    PFFile *imagefile = [object objectForKey:@"picture"];
+    NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
+    NSData* image = [NSData dataWithContentsOfURL:imageURL ];
+    
+    cell.ThumbImage.image = [UIImage imageWithData:image];
+ 
     return cell;
 }
 

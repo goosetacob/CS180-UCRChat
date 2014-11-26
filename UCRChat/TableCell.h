@@ -11,11 +11,11 @@
 
 @interface TableCell : UITableViewCell
 {
-   PFObject *user; // The user associated with the cell
+   PFUser *user; // The user associated with the cell
 }
 
-- (PFObject *) getUser;
-- (void) setUser: (PFObject *)userobject;
+- (PFUser *) getUser;
+- (void) setUser: (PFUser *)userobject;
 
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *DescriptionLabel;

@@ -21,12 +21,12 @@
 
 }
 
-- (PFObject *) getUser
+- (PFUser *) getUser
 {
     return self->user;
 }
 
-- (void) setUser: (PFObject *)userobject
+- (void) setUser: (PFUser *)userobject
 {
     self->user = userobject;
 }

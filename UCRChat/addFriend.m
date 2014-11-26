@@ -32,7 +32,8 @@
                 NSInteger exists = 0;
                 for( NSString *friend in friends)
                 {
-                    if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] )
+                    // Exclude the current user as a possible friend as well
+                    if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] || [user.objectId isEqualToString:[PFUser currentUser].objectId] )
                         exists = 1;
                 }
                 
@@ -85,13 +86,61 @@
 // Sends a friend request
 - (IBAction)sendFriendRequest:(UIBarButtonItem *)sender
 {
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.addFriendTableView];
+    // Determine what cell we are in based off button press
+    CGPoint buttonPosition = [(id)sender convertPoint:CGPointZero toView:self.addFriendTableView];
     NSIndexPath *indexPath = [self.addFriendTableView indexPathForRowAtPoint:buttonPosition];
     
-    UITableViewCell *cell = [self.addFriendTableView cellForRowAtIndexPath:indexPath];
+    // Now that we have the cell, we know what user to send a friend request to.
+    TableCell *cell = (TableCell*)[self.addFriendTableView cellForRowAtIndexPath:indexPath];
+    PFUser *user_to_add = [cell getUser];
     
-    NSLog( @"User name in cell: %@", [[(TableCell*)cell getUser] objectForKey:@"fullName"]);
+    // Check the list of friend requests
+    PFUser *current = [PFUser currentUser];
+    NSInteger request_exists = 0;
     
+    // Make sure the request hasn't already been sent or if they're not friends already
+    for( NSString *request in user_to_add[@"friendRequests"])
+    {
+        if( [request isEqualToString: current.objectId] )
+            request_exists = 1;
+    }
+    for( NSString *friends_in_request in user_to_add[@"Friends"])
+    {
+        if( [friends_in_request isEqualToString: current.objectId] )
+            request_exists = 1;
+    }
+
+    //}
+    
+    // Add user to array of friend requests and save object
+    if( request_exists == 0)
+    {
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        [query getObjectInBackgroundWithId:user_to_add.objectId block:^(PFObject *object, NSError *error) {
+            if( !error )
+            {
+                NSLog(@"%@", object);
+                NSLog(@"Friend request sent!");
+                if( [object[@"friendRequests"] count] == 0)
+                    [object addUniqueObject:current.objectId forKey:@"friendRequests"];//object[@"friendRequests"][0] = current.objectId;
+                else
+                    [object addUniqueObject:current.objectId forKey:@"friendRequests"];//[object[@"friendRequests"] addObject:current.objectId ];
+
+                
+                    /*
+                     if( [object[@"friendRequests"] count] == 0)
+                     [object addUniqueObject:current.objectId forKey:@"friendRequests"];
+                     else
+                     [object addUniqueObject:current.objectId forKey:@"friendRequests"];
+                     */
+                // Save updated user to Parse
+                [object saveInBackground];
+            }
+        }];
+
+    }
+    else
+        NSLog(@"Already sent a friend request!");
 }
 
 
