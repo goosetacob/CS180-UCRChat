@@ -60,18 +60,17 @@ CustomCell *cell;
     
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(retrieveFromParse) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
     
+    [self PullParse];
+    [self PullParse];
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
-    
     
 }
 
 - (void) PullParse
 {
-   
     PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
     [retrievePosts orderByDescending:@"createdAt"];
     [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -93,127 +92,139 @@ CustomCell *cell;
              userarray = [[NSArray alloc ] initWithArray:objects];
          }
      }];
-    
-    bool Found = false;
-    for(PFObject* i in userarray)
-    {
-        PFFile* PICTURE = [i objectForKey:@"picture"];
-        NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-        NSData* idata = [NSData dataWithContentsOfURL:imageURL];
-        
-        //Check if theres a user already saved
-        for(UserImages* check in SavedPictures)
-        {
-            //if found then just update the picture
-            if([i[@"username"] isEqualToString:check.objectID])
-            {
-                Found = true;
-                check.Image = [UIImage imageWithData:idata];
-                break;
-            }
-        }
-        
-        //if its not ssaved then add it to the list
-        if(!Found){
-        
-            UserImages *UserPic = [[UserImages alloc] init];
-            UserPic.objectID = [i objectForKey:@"username"];
-            UserPic.Image = [UIImage imageWithData:idata];
-            [SavedPictures addObject:UserPic];
-        }
-    }
+    [self Pull_Profile_pics];
+    [self Pull_Mutimedia_data];
+    [self.PostTable reloadData];
    
 }
-- (void) retrieveFromParse
-{
-    PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
-    [retrievePosts orderByDescending:@"createdAt"];
-    [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-    {
-        if(!error)
-        {
-            PostArray = [[NSMutableArray alloc ] initWithArray:objects];
-            [self.PostTable reloadData];
-            [_refreshControl endRefreshing];
-        }
 
-    }];
+- (void) Pull_Profile_pics
+{
+    bool found_object = false; //To be used when we look if we already downloaded multiedia data object
+    PFFile* PICTURE = nil; // Place holder for the file downloaded
+    NSURL* imageURL = nil; //Place holder URL of file to be downloaded
+    NSData* idata = nil; // Place holder The data for the file
     
-    PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];
-    [retrieve findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if(!error)
-         {
-             userarray = [[NSArray alloc ] initWithArray:objects];
-         }
-     }];
-   
-    bool Found = false;
-    for(PFObject* i in PostArray)
+    //Begin search
+    for(PFObject* object in userarray)
     {
-        NSNumber* mybool = i[@"PhotoPost"];
-        NSNumber* videobool = i[@"VidePost"];
-        if([mybool boolValue] == true)
+        //Check if theres a user already saved with an image
+        for(UserImages* check in SavedPictures)
         {
-            PFFile* PICTURE = [i objectForKey:@"MultimediaPost"];
-            NSURL* imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-            NSData* idata = [NSData dataWithContentsOfURL:imageURL];
-            
-            //Check if theres a user already saved
-            for(MultimediaPost* check in MultimediaPosts)
+            //if found then just update the picture-------------------------
+            if([object[@"username"] isEqualToString:check.objectID])
             {
-                //if found then just update the picture
-                if([i[@"User"] isEqualToString:check.UserID] && [i.objectId isEqualToString:check.objectID])
-                {
-                    Found = true;
-                    check.Image = [UIImage imageWithData:idata];
-                    break;
-                }
+                found_object = true;                                        //Check for Uploading Date Then replace if neccessary (Major speed change)
+                //check.Image = [UIImage imageWithData:idata];
+                break;
             }
-            
-            //if its not saved then add it to the list
-            if(!Found){
+           // ---------------------------------------------------------------
+        }
+         //If the User Picture was not in our array then we need to add it
+         if(found_object == false)
+         {
+             //download the pic and add the information to our array
+             PICTURE = [object objectForKey:@"picture"];
+             imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+             idata = [NSData dataWithContentsOfURL:imageURL];
+             
+             //Creating the nw user onto our array
+             UserImages *UserPic = [[UserImages alloc] init];
+             UserPic.objectID = [object objectForKey:@"username"];
+             UserPic.Image = [UIImage imageWithData:idata];
+             [SavedPictures addObject:UserPic];
+         }
+    }
+
+}
+- (void) Pull_Mutimedia_data
+{
+    //To be used when we look if we arady downloaded multiedia data object
+    bool found_object = false;
+    PFFile* PICTURE = nil; // Place holder for the file downloaded
+    NSURL* imageURL = nil; //Place holder URL of file to be downloaded
+    NSData* idata = nil; // Place holder The data for the file
+    
+    //Begin search
+    for(PFObject* object in PostArray)
+    {
+        //To be used to check if the object is a photo object
+        NSNumber* Photo = object[@"PhotoPost"];
+        
+        //If the value it true then we are dealing with Photo file
+        //We re going to check now if we have downloaded the the latest photo
+        //or have not downloaded yet.
+        if([Photo boolValue] == true)
+        {
+            //We are goin to check if we have the object saved in our system
+            for(MultimediaPost* Post in MultimediaPosts)
+            {
+                //If we do own the object the we will check if we have the latest photo else we replace it
+                 if([object[@"User"] isEqualToString:Post.UserID] && [object.objectId isEqualToString:Post.objectID])
+                 {
+                     found_object = true;
+                     break;
+                 }
+            }
+            //If the Picture was not in our array then we need to add it
+            if(found_object == false)
+            {
+                //download the pic and add the information to our array
+                PICTURE = [object objectForKey:@"MultimediaPost"];
+                imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+                idata = [NSData dataWithContentsOfURL:imageURL];
                 
+                //creating the new object wit the data
                 MultimediaPost *UserPic = [[MultimediaPost alloc] init];
-                UserPic.UserID = [i objectForKey:@"User"];
-                UserPic.objectID = i.objectId;
+                UserPic.UserID = [object objectForKey:@"User"];
+                UserPic.objectID = object.objectId;
                 UserPic.Image = [UIImage imageWithData:idata];
                 [MultimediaPosts addObject:UserPic];
             }
+            //resetting the found for next object to be search
+            found_object = false;
         }
-        else  if([videobool boolValue] == true)
+        
+        //Now time to hanle Video downoads
+        NSNumber* Video = object[@"VideoPost"];
+        found_object = false; //Resetting our found variable
+        
+        //If the value it true then we are dealing with Video file
+        //We re going to check now if we have downloaded the the latest Video
+        //or have not downloaded yet.
+        if([Video boolValue] == true)
         {
-            
-            PFFile* Video = [i objectForKey:@"MultimediaPost"];
-            NSURL* VideoURL = [[NSURL alloc] initWithString:Video.url];
-            
-            //Check if theres a user already saved
-            for(MultimediaPost* check in MultimediaPosts)
+            //We are goin to check if we have the object saved in our system
+            for(MultimediaPost* Post in MultimediaPosts)
             {
-                //if found then just update the picture
-                if([i[@"User"] isEqualToString:check.UserID] && [i.objectId isEqualToString:check.objectID])
+                //If we do own the object then We are done
+                if([object[@"User"] isEqualToString:Post.UserID] && [object.objectId isEqualToString:Post.objectID])
                 {
-                    Found = true;
-                    check.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:VideoURL];
+                    found_object = true;
                     break;
                 }
             }
             
-            //if its not saved then add it to the list
-            if(!Found){
+            //If the Video was not in our array then we need to add it
+            if(found_object == false)
+            {
+                //download the Video and add the information to our array
+                PICTURE = [object objectForKey:@"MultimediaPost"];
+                imageURL = [[NSURL alloc] initWithString:PICTURE.url];
                 
+                //creating the new object wit the data
                 MultimediaPost *UserPic = [[MultimediaPost alloc] init];
-                UserPic.UserID = [i objectForKey:@"User"];
-                UserPic.objectID = i.objectId;
+                UserPic.UserID = [object objectForKey:@"User"];
+                UserPic.objectID = object.objectId;
                 UserPic.Image = nil;
-                UserPic.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:VideoURL];
+                UserPic.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:imageURL];
                 [MultimediaPosts addObject:UserPic];
             }
+            found_object = false;
         }
     }
     
 }
-
 
 
 //get number of sections in tableview
@@ -351,9 +362,10 @@ CustomCell *cell;
             }
         }
     }
-    else if(paidBoolean == false && paidBoolean2 == true)
+    
+   else if(paidBoolean == false && paidBoolean2 == true)
     {
-        NSLog(@"looking for Video");
+        NSLog(@"looking for Video for ID: %@", tempObject.objectId);
         for(MultimediaPost* x in MultimediaPosts)
         {
             if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID])
@@ -368,6 +380,7 @@ CustomCell *cell;
         }
     }
     
+
     numLikes = [[tempObject objectForKey:@"Likes"] intValue];
     cell.LikeText.text = [NSString stringWithFormat:@"%d", numLikes ];
     numDislikes = [[tempObject objectForKey:@"Dislikes"] intValue];
