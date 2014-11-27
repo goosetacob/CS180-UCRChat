@@ -18,7 +18,7 @@
                                 forKey:@"orientation"];
     
     
-    //[PFUser logOut];
+    //s[PFUser logOut];
     
     if (![PFUser currentUser]) {
         PFLogInViewController *login = [[PFLogInViewController alloc] init];
@@ -28,6 +28,20 @@
         [self presentViewController:login animated:YES completion:nil];
         [login release];
     }
+    
+    
+    /*PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:[PFUser currentUser].objectId block:^(PFObject *object, NSError *error) {
+        
+        if( !error )
+        {
+            //[object addObject:@"helllo" forKey:@"fullName"];
+            NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:object[@"friendRequests"]];
+            [arr addObject:@"helloooooo"];
+            object[@"friendRequests"] = arr;
+            [object saveInBackground];
+        }
+    }];*/
 }
 
 -(void) viewDidUnload {

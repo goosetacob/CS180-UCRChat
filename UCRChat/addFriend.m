@@ -96,26 +96,50 @@
     
     // Check the list of friend requests
     PFUser *current = [PFUser currentUser];
-    NSInteger request_exists = 0;
+    __block NSInteger request_exists = 0;
+    __block PFUser *user_to_add_friend_class;
     
-    // Make sure the request hasn't already been sent or if they're not friends already
-    for( NSString *request in user_to_add[@"friendRequests"])
+    // We query Parse for the friends list by supplying the friendClassId of the user-to-be-added, which we got from clicking on the cell.
+    PFQuery *friends_query = [PFQuery queryWithClassName:@"Friends"];
+    [friends_query getObjectInBackgroundWithId:user_to_add[@"friendClassId"] block:^(PFObject *object, NSError *error)
     {
-        if( [request isEqualToString: current.objectId] )
-            request_exists = 1;
-    }
-    for( NSString *friends_in_request in user_to_add[@"Friends"])
-    {
-        if( [friends_in_request isEqualToString: current.objectId] )
-            request_exists = 1;
-    }
+        if( !error )
+        {
+            user_to_add_friend_class = (PFUser*)object;
+            
+            // Make sure the request hasn't already been sent or if they're not friends already
+            for( NSString *request in object[@"friendRequests"])
+            {
+                if( [request isEqualToString: current.objectId] )
+                    request_exists = 1;
+                
+                // "Friend request already sent!"
+            }
+            for( NSString *friends_in_request in user_to_add[@"Friends"])
+            {
+                if( [friends_in_request isEqualToString: current.objectId] )
+                    request_exists = 1;
+            }
+            
+            if( request_exists == 0)
+            {
+                NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:object[@"friendRequests"]];
+                [arr addObject:current.objectId];
+                object[@"friendRequests"] = arr;
+                [object saveInBackground];
+            }
+            else
+                NSLog(@"Already sent a friend request!");
+        }
+        else
+            NSLog(@"Error querying in Parse!");
+    }];
 
-    //}
     
     // Add user to array of friend requests and save object
-    if( request_exists == 0)
+    /*if( request_exists == 0)
     {
-        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
         [query getObjectInBackgroundWithId:user_to_add.objectId block:^(PFObject *object, NSError *error) {
             if( !error )
             {
@@ -127,20 +151,19 @@
                     [object addUniqueObject:current.objectId forKey:@"friendRequests"];//[object[@"friendRequests"] addObject:current.objectId ];
 
                 
-                    /*
+                    //////
                      if( [object[@"friendRequests"] count] == 0)
                      [object addUniqueObject:current.objectId forKey:@"friendRequests"];
                      else
                      [object addUniqueObject:current.objectId forKey:@"friendRequests"];
-                     */
+                    /////
                 // Save updated user to Parse
                 [object saveInBackground];
             }
         }];
 
-    }
-    else
-        NSLog(@"Already sent a friend request!");
+    }*/
+
 }
 
 
@@ -188,9 +211,14 @@
 
     cell.TitleLabel.text = [object objectForKey:@"fullName"];
     cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
-    //cell.ThumbImage.image = [object objectForKey:@"picture"];
     
-    [cell setUser:object ];
+    PFFile *imagefile = [object objectForKey:@"picture"];
+    NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
+    NSData* image = [NSData dataWithContentsOfURL:imageURL ];
+    
+    cell.ThumbImage.image = [UIImage imageWithData:image];
+    
+    [cell setUser:(PFUser*)object ];
     
     return cell;
 }
