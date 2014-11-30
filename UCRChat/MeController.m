@@ -83,6 +83,7 @@
         
         NSLog(@"%@", userPointer);
     }];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"facetime://3239072717"]];
 }
 
 - (IBAction)logOffUser {
