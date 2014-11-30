@@ -283,6 +283,9 @@
 		8077DA291A1951F100CD0625 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077DA281A1951F100CD0625 /* PostViewController.m */; };
 		80ACCBEA1A23BBB7008C8B32 /* MultimediaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */; };
 		80C1C5BB1A22AD4200A32C67 /* AddMultiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */; };
+		80C772261A26EB40008BA441 /* PhotoViewPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C772251A26EB40008BA441 /* PhotoViewPost.m */; };
+		80ED44921A2A8DBD0029F4C1 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ED44911A2A8DBD0029F4C1 /* PostComment.m */; };
+		80ED44951A2A976B0029F4C1 /* CommentPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ED44941A2A976B0029F4C1 /* CommentPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -600,6 +603,12 @@
 		80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultimediaPost.m; sourceTree = "<group>"; };
 		80C1C5B91A22AD4200A32C67 /* AddMultiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMultiPost.h; sourceTree = "<group>"; };
 		80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMultiPost.m; sourceTree = "<group>"; };
+		80C772241A26EB40008BA441 /* PhotoViewPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewPost.h; sourceTree = "<group>"; };
+		80C772251A26EB40008BA441 /* PhotoViewPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewPost.m; sourceTree = "<group>"; };
+		80ED44901A2A8DBD0029F4C1 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
+		80ED44911A2A8DBD0029F4C1 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
+		80ED44931A2A976B0029F4C1 /* CommentPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentPost.h; sourceTree = "<group>"; };
+		80ED44941A2A976B0029F4C1 /* CommentPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentPost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,47 +698,34 @@
 		3A0458BA19F6F062007B44A0 /* UCRChat */ = {
 			isa = PBXGroup;
 			children = (
+				80C772231A26DB57008BA441 /* Timeline */,
 				3A1545DA1A13617800948D1E /* aboutMeController.h */,
-				3A1545E31A13F6B100948D1E /* AddPostController.h */,
 				3A8A06F71A0F586200FAE3A7 /* ChatAppTabBarController.h */,
 				3A1545D11A1302E000948D1E /* ChatCellController.h */,
 				3A1545D41A13232200948D1E /* ChatCellSelectFriendController.h */,
 				3A1545CE1A12FF2B00948D1E /* ChatViewController.h */,
 				3A1545D61A13232200948D1E /* ChatViewSelectFriendController.h */,
-				3A1545E01A13F4C500948D1E /* CustomCell.h */,
 				3A88FEB119FDDF8D007A53DD /* FriendsController.h */,
 				30D0BF8C1A05C4E600F84857 /* MeController.h */,
 				3A15456F1A12CB5D00948D1E /* NameInputController.h */,
 				3A1545E61A13F71000948D1E /* SendMessage.h */,
-				3ACB40A319F8631B00E1303A /* TimelineController.h */,
 				3A8A06FC1A10708100FAE3A7 /* UserFileController.h */,
 				3A1545DB1A13617800948D1E /* aboutMeController.m */,
-				3A1545E41A13F6B100948D1E /* AddPostController.m */,
 				3A8A06F81A0F586200FAE3A7 /* ChatAppTabBarController.m */,
 				3A1545D21A1302E000948D1E /* ChatCellController.m */,
 				3A1545D51A13232200948D1E /* ChatCellSelectFriendController.m */,
 				3A1545CF1A12FF2B00948D1E /* ChatViewController.m */,
 				3A1545D71A13232200948D1E /* ChatViewSelectFriendController.m */,
-				3A1545E11A13F4C500948D1E /* CustomCell.m */,
 				3A88FEB219FDDF8D007A53DD /* FriendsController.m */,
 				3A1545F21A14263E00948D1E /* MeController.m */,
 				3A1545EF1A14253C00948D1E /* NameInputController.m */,
 				3A1545E71A13F71000948D1E /* SendMessage.m */,
-				3A1545ED1A14248200948D1E /* TimelineController.m */,
 				3A1545E91A1423FA00948D1E /* UserFileController.m */,
 				3A1545F41A1426E700948D1E /* Images.xcassets */,
 				3A0458CD19F6F062007B44A0 /* LaunchScreen.xib */,
 				801AE3601A19800900A259DF /* Main.storyboard */,
 				3A0458BB19F6F062007B44A0 /* Supporting Files */,
 				3A1545EB1A14243000948D1E /* NameInputController.m */,
-				8077DA271A1951F100CD0625 /* PostViewController.h */,
-				8077DA281A1951F100CD0625 /* PostViewController.m */,
-				804C3B461A1FDA12004ADBAC /* UserImage.h */,
-				804C3B471A1FDA12004ADBAC /* UserImage.m */,
-				80C1C5B91A22AD4200A32C67 /* AddMultiPost.h */,
-				80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */,
-				80ACCBE81A23BBB7008C8B32 /* MultimediaPost.h */,
-				80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */,
 			);
 			path = UCRChat;
 			sourceTree = "<group>";
@@ -1006,6 +1002,33 @@
 				8020D6C01A17E5290059D0A0 /* iPad_ScringoWelcomePopupView.xib */,
 			);
 			path = iPad;
+			sourceTree = "<group>";
+		};
+		80C772231A26DB57008BA441 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				80ED44901A2A8DBD0029F4C1 /* PostComment.h */,
+				80ED44911A2A8DBD0029F4C1 /* PostComment.m */,
+				80C772241A26EB40008BA441 /* PhotoViewPost.h */,
+				80C772251A26EB40008BA441 /* PhotoViewPost.m */,
+				3A1545E31A13F6B100948D1E /* AddPostController.h */,
+				3A1545E01A13F4C500948D1E /* CustomCell.h */,
+				3ACB40A319F8631B00E1303A /* TimelineController.h */,
+				3A1545E41A13F6B100948D1E /* AddPostController.m */,
+				3A1545E11A13F4C500948D1E /* CustomCell.m */,
+				3A1545ED1A14248200948D1E /* TimelineController.m */,
+				8077DA271A1951F100CD0625 /* PostViewController.h */,
+				8077DA281A1951F100CD0625 /* PostViewController.m */,
+				804C3B461A1FDA12004ADBAC /* UserImage.h */,
+				804C3B471A1FDA12004ADBAC /* UserImage.m */,
+				80C1C5B91A22AD4200A32C67 /* AddMultiPost.h */,
+				80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */,
+				80ACCBE81A23BBB7008C8B32 /* MultimediaPost.h */,
+				80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */,
+				80ED44931A2A976B0029F4C1 /* CommentPost.h */,
+				80ED44941A2A976B0029F4C1 /* CommentPost.m */,
+			);
+			name = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1373,13 +1396,16 @@
 				3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */,
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,
+				80C772261A26EB40008BA441 /* PhotoViewPost.m in Sources */,
 				3A1545D01A12FF2B00948D1E /* ChatViewController.m in Sources */,
 				80C1C5BB1A22AD4200A32C67 /* AddMultiPost.m in Sources */,
 				8077DA291A1951F100CD0625 /* PostViewController.m in Sources */,
 				3A0458C119F6F062007B44A0 /* AppDelegate.m in Sources */,
+				80ED44951A2A976B0029F4C1 /* CommentPost.m in Sources */,
 				3A0458BE19F6F062007B44A0 /* main.m in Sources */,
 				3A1545EE1A14248200948D1E /* TimelineController.m in Sources */,
 				3A88FEB419FDDF8D007A53DD /* FriendsController.m in Sources */,
+				80ED44921A2A8DBD0029F4C1 /* PostComment.m in Sources */,
 				3A1545DC1A13617800948D1E /* aboutMeController.m in Sources */,
 				804C3B481A1FDA12004ADBAC /* UserImage.m in Sources */,
 				3A1545E81A13F71000948D1E /* SendMessage.m in Sources */,

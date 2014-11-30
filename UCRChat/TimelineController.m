@@ -7,8 +7,10 @@
 //
 
 #import "TimelineController.h"
+#import "AddPostController.h"
 #import "CustomCell.h"
 #import "PostViewController.h"
+#import "PhotoViewPost.h"
 #import "UserImage.h"
 #import "MultimediaPost.h"
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -66,7 +68,6 @@ CustomCell *cell;
     [self PullParse];
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
-    
 }
 
 - (void) PullParse
@@ -463,40 +464,92 @@ CustomCell *cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"CellSegue"]){
+    
+    
+    NSIndexPath *indexPath = [self.PostTable indexPathForCell:sender];
+    PFObject * tmp = [PostArray objectAtIndex:indexPath.row];
+    
+    if ([[segue identifier] isEqualToString:@"Postsegue"])
+    {
+        //Creating the controller vieww where i will send the information
+        AddPostController *PostController = segue.destinationViewController;
+        PostController.Identifier = @"Postsegue";
         
-       // NSIndexPath * indexPath = (NSIndexPath *) sender;
-        NSIndexPath *indexPath = [self.PostTable indexPathForCell:sender];
-        PFObject * tmp = [PostArray objectAtIndex:indexPath.row];
-        
-        //if you need to pass data to the next controller do it here
-      //  UIButton *CommentButton = (UIButton * )sender;
-       // PFObject *tmp = [PostArray objectAtIndex:CommentButton.tag];
+    }
+    if ([[segue identifier] isEqualToString:@"CellSegue"])
+    {
+       
         PostViewController *SecondController = segue.destinationViewController;
         
         //To obtain the full name from the user on this cell
         NSString* User = [tmp objectForKey:@"User"];
-        
+        int check = 0;
         for(PFObject* item in userarray)
         {
             if([[item objectForKey:@"username"] isEqualToString:User]){
                 SecondController.PARENT_NAME = item[@"fullName"];
-                break;
+                check++;
             }
+            if([item.objectId isEqualToString:[PFUser currentUser].objectId]){
+                SecondController.CurrentUserNAME = item[@"fullName"];
+                check++;
+            }
+            if(check == 2) break;
         }
         
+        check = 0;
         for(UserImages* x in SavedPictures)
         {
             if([tmp[@"User"] isEqualToString:x.objectID]){
                 SecondController.ProfilePicture = x.Image;
+                check++;
             }
+            
+            if([[PFUser currentUser].username isEqualToString:x.objectID]){
+                SecondController.CurrentUserImage = x.Image;
+                check++;
+            }
+            if(check == 2) break;
         }
        
         SecondController.UserObject = tmp;
         SecondController.PARENT_POST = [tmp objectForKey:@"Post"];
+        SecondController.CurrentObject = tmp;
         
     }
-    
+    if ([[segue identifier] isEqualToString:@"PhotoSegue"])
+     {
+           PhotoViewPost *SecondController = segue.destinationViewController;
+         //To obtain the full name from the user on this cell
+         NSString* User = [tmp objectForKey:@"User"];
+         
+         for(PFObject* item in userarray)
+         {
+             if([[item objectForKey:@"username"] isEqualToString:User]){
+                 SecondController.PARENT_NAME = item[@"fullName"];
+                 break;
+             }
+         }
+         
+         for(UserImages* x in SavedPictures)
+         {
+             if([tmp[@"User"] isEqualToString:x.objectID]){
+                 SecondController.Picture = x.Image;
+                 break;
+             }
+         }
+         
+         SecondController.UserObject = tmp;
+         
+         for(MultimediaPost* o in MultimediaPosts)
+         {
+             if([tmp.objectId isEqualToString:o.objectID]){
+                 SecondController.PARENT_POST = o.Image;
+                 SecondController.POST = o.Image;
+                 break;
+             }
+         }
+     }
 }
 
 - (void)didReceiveMemoryWarning

@@ -58,7 +58,6 @@
     PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
     if(_Photo.image != nil)
     {
-        //PFFile *send = [PFFile fileWithName:_Photo data:imageData];
         NSData* data = UIImageJPEGRepresentation(_Photo.image, 0.5f);
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
     

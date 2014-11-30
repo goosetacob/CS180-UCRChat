@@ -9,6 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "PostComment.h"
 
 @interface PostViewController : UIViewController
 {
@@ -26,12 +27,15 @@
 @property (strong, nonatomic) PFObject *UserObject;
 @property (strong, nonatomic) UIImage  *ProfilePicture;
 
+//Commenting purposes
+@property (strong, nonatomic) NSString *CurrentUserNAME;
+@property (strong, nonatomic) UIImage  *CurrentUserImage;
+@property (strong, nonatomic) PFObject  *CurrentObject;;
+
 
 @property (retain, nonatomic) IBOutlet UILabel *CommentLabel;
 @property (retain, nonatomic) IBOutlet UILabel *LikeLabel;
-//- (IBAction)Cbtn:(id)sender;
 - (IBAction)Lbtn:(id)sender;
-//@property (retain, nonatomic) IBOutlet UIButton *CommentButton;
 @property (retain, nonatomic) IBOutlet UIButton *LikeButton;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *Loading;
 

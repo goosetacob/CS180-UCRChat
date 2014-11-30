@@ -29,4 +29,11 @@
 @property (retain, nonatomic) IBOutlet UIImageView *PICPOST;
 
 
+//Comments cells
+@property (retain, nonatomic) IBOutlet UIImageView *Commenter_Profile_Picture;
+@property (retain, nonatomic) IBOutlet UILabel *Commenter_TextPost;
+@property (retain, nonatomic) IBOutlet UILabel *Commenter_Name;
+@property (retain, nonatomic) IBOutlet UIImageView *Comenter_PhotoPost;
+
+
 @end

@@ -12,5 +12,5 @@
 @interface UserImages : NSObject
 @property (retain, nonatomic) NSString* objectID;
 @property (retain, nonatomic) UIImage* Image;
-//@property (retain, nonatomic) PFImageView* IMAGE;
+
 @end

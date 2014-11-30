@@ -38,6 +38,10 @@
     [_Dislikebtn release];
     [_DislikeText release];
     [_PICPOST release];
+    [_Commenter_Profile_Picture release];
+    [_Commenter_TextPost release];
+    [_Commenter_Name release];
+    [_Comenter_PhotoPost release];
     [super dealloc];
 }
    

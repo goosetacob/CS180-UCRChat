@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper.jpg"]];
+    
     bool found = false;
     
     //Check if we already lked the post to change the button text
@@ -51,6 +51,19 @@
     PostControllerPIC.image = ProfilePicture;
 }
 
+//sending the seugue nformatoion to the view controller
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"sendID"])
+    {
+        //Creating the controller vieww where i will send the information
+        PostComment *PostController = segue.destinationViewController;
+        PostController.CommentID = UserObject.objectId;
+        PostController.CurrentUserNAME = self.CurrentUserNAME;
+        PostController.CurrentUserImage = self.CurrentUserImage;
+        PostController.CurrentObject = self.CurrentObject;
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

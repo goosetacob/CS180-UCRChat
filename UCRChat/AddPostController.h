@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "CommentPost.h"
 
 @interface AddPostController : UIViewController
 {
@@ -16,5 +17,11 @@
 @property (retain, nonatomic) IBOutlet UIButton *DonePost;
 - (IBAction)BtnPressed:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextView *Textview;
+
+@property(retain, nonatomic) NSString* Identifier;
+@property(retain, nonatomic) NSString* UserID;
+@property (strong, nonatomic) NSString *CurrentUserNAME;
+@property (strong, nonatomic) UIImage  *CurrentUserImage;
+@property (strong, nonatomic) PFObject  *CurrentObject;
 
 @end

@@ -34,17 +34,42 @@
 
 
 - (IBAction)BtnPressed:(id)sender {
-    //storng objcts to cloud
-    PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
-    NSString *str = [[NSString alloc] initWithFormat:_Textview.text];
-    if([str length] != 0) {
-        GlobalTimeline[@"Post"] = str;
-        GlobalTimeline[@"User"] = [PFUser currentUser].username;
-        GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
-        GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
-        [GlobalTimeline saveInBackground];
+    
+    if([self.Identifier isEqualToString:@"Postsegue"]){
+        //storng objcts to cloud
+        PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
+        NSString *str = [[NSString alloc] initWithFormat:_Textview.text];
+        if([str length] != 0) {
+            GlobalTimeline[@"Post"] = str;
+            GlobalTimeline[@"User"] = [PFUser currentUser].username;
+            GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
+            GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
+            [GlobalTimeline saveInBackground];
+        }
+    }
+    if([self.Identifier isEqualToString:@"CommentPost"])
+    {
+        NSString *str = [[NSString alloc] initWithFormat:_Textview.text];
+        PFObject* MyComment = [PFObject objectWithClassName:@"PostCommentObject"];
+        if([str length] != 0) {
+            
+            //First we need to create the object to be inserted into the array of commets
+            MyComment[@"Name"] = self.CurrentUserNAME;
+            MyComment[@"TextComment"] = str;
+            
+            NSData* data = UIImageJPEGRepresentation(self.CurrentUserImage, 0.5f);
+            PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
+            MyComment[@"ProfilePicture"] = imageFile;
+            
+            //Then we need to get the array andd add to to the array list
+            [MyComment save];
+            
+            //NSLog(@"================ Mycomment ID: %@", MyComment.objectId);
+            [self.CurrentObject addUniqueObject:MyComment.objectId forKey:@"Comments"];
+            [self.CurrentObject saveInBackground];
+        }
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
