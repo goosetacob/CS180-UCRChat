@@ -25,7 +25,6 @@
 
 
 
-
 - (void) getFriends
 {
     // Get ObjectID of current user
@@ -92,11 +91,16 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    // Initialize mutable arrays
     if(Friends.count <= 0)
         Friends = [[NSMutableArray alloc] init];
     
+    // Refresh array everytime view reloads
     [Friends removeAllObjects];
+    
+    // Grab list of friends and refresh tableview
     [self getFriends];
+    [myTableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -106,29 +110,7 @@
     [myTableView setDataSource:self];
     [myTableView setDelegate:self];
     
-    // Initialize mutable arrays!
-
     
-    // Populate Friend array using current user's data
-    //[self getFriends/*retrieveFriends*/];
-    
-
-    //[self performSelector:@selector(retrieveFromParse)];
-    // Update list of friends every minute
-    /////////// This duplicates friends for some reason!!!
-    //[NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(retrieveFriends) userInfo:nil repeats:YES];
-    
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
-    return Friends.count;
 }
 
 
@@ -166,7 +148,19 @@
     }
 }
 
+#pragma tableView datasrouce and delegate methods
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
+    return Friends.count;
+}
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -175,6 +169,11 @@
     
     // Perform segue when cell has been clicked. Friend data will be sent
     [self performSegueWithIdentifier:@"friendsInfo" sender:self];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Section ...";
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -188,20 +187,16 @@
         cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
     }
     
-    //if( indexPath.row > Friends.count )
-        //return cell;
-
     // Populate cell using Friend information at specific row
     PFObject *object = [Friends objectAtIndex:indexPath.row];
     
     cell.TitleLabel.text = [object objectForKey:@"fullName"];
-    cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
+    cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
     PFFile *imagefile = [object objectForKey:@"picture"];
     NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
     NSData* image = [NSData dataWithContentsOfURL:imageURL ];
-    
     cell.ThumbImage.image = [UIImage imageWithData:image];
  
     return cell;

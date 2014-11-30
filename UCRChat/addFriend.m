@@ -32,13 +32,15 @@
                 NSInteger exists = 0;
                 for( NSString *friend in friends)
                 {
-                    // Exclude the current user as a possible friend as well
+                    // Exclude existing friends
                     if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] )
                         exists = 1;
                 }
                 
+                // Exclude the current user as well
                 if( [user.objectId isEqualToString:[PFUser currentUser].objectId])
                     exists = 1;
+                
                 if( exists == 0 )
                     [addFriendsArray addObject:user];
             }
@@ -136,35 +138,6 @@
         else
             NSLog(@"Error querying in Parse!");
     }];
-
-    
-    // Add user to array of friend requests and save object
-    /*if( request_exists == 0)
-    {
-        PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-        [query getObjectInBackgroundWithId:user_to_add.objectId block:^(PFObject *object, NSError *error) {
-            if( !error )
-            {
-                NSLog(@"%@", object);
-                NSLog(@"Friend request sent!");
-                if( [object[@"friendRequests"] count] == 0)
-                    [object addUniqueObject:current.objectId forKey:@"friendRequests"];//object[@"friendRequests"][0] = current.objectId;
-                else
-                    [object addUniqueObject:current.objectId forKey:@"friendRequests"];//[object[@"friendRequests"] addObject:current.objectId ];
-
-                
-                    //////
-                     if( [object[@"friendRequests"] count] == 0)
-                     [object addUniqueObject:current.objectId forKey:@"friendRequests"];
-                     else
-                     [object addUniqueObject:current.objectId forKey:@"friendRequests"];
-                    /////
-                // Save updated user to Parse
-                [object saveInBackground];
-            }
-        }];
-
-    }*/
 
 }
 

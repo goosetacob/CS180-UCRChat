@@ -90,7 +90,6 @@
     TableCell *cell = (TableCell*)[self.friendRequestsTableView cellForRowAtIndexPath:indexPath];
     PFUser *accept_user = [cell getUser];
     
-    NSLog(@"Accepting a friend %@!", accept_user);
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query getObjectInBackgroundWithId:accept_user[@"friendClassId"] block:^(PFObject *object, NSError *error) {
         if( !error )
@@ -145,7 +144,7 @@
     TableCell *cell = (TableCell*)[self.friendRequestsTableView cellForRowAtIndexPath:indexPath];
     PFUser *decline_user = [cell getUser];
     
-    NSLog(@"Declining a friend %@!", decline_user[@"fullName"]);
+
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
     [query getObjectInBackgroundWithId:decline_user[@"friendClassId"] block:^(PFObject *object, NSError *error) {
         if( !error )

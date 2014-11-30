@@ -56,10 +56,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="Search for friends" translatesAutoresizingMaskIntoConstraints="NO" id="9we-4d-Ykj">
-                                <rect key="frame" x="16" y="48" width="285" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSu-LL-QQM">
                                 <rect key="frame" x="202" y="25" width="97" height="30"/>
                                 <state key="normal" title="+ Add Friends">
@@ -119,6 +115,10 @@
                                     <outlet property="delegate" destination="W5Q-7r-5he" id="JTQ-u0-65c"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="Search for friends" translatesAutoresizingMaskIntoConstraints="NO" id="9we-4d-Ykj">
+                                <rect key="frame" x="16" y="48" width="285" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.476105801" green="0.80978260869999996" blue="0.76186857569999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -191,6 +191,9 @@
                                                         <action selector="acceptFriendRequest:" destination="XJb-XJ-uwG" eventType="touchDown" id="Zc5-sw-ALh"/>
                                                     </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-Zv-SFX">
+                                                    <rect key="frame" x="8" y="8" width="127" height="111"/>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbi-SY-d7I">
                                                     <rect key="frame" x="231" y="89" width="62" height="30"/>
                                                     <state key="normal" title="Decline -">
@@ -200,9 +203,6 @@
                                                         <action selector="declineFriendRequest:" destination="XJb-XJ-uwG" eventType="touchDown" id="ajn-nL-Hkr"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="LJv-Zv-SFX">
-                                                    <rect key="frame" x="8" y="8" width="127" height="111"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
