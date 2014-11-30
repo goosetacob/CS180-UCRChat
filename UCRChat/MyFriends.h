@@ -19,6 +19,8 @@
     NSString *selectedFriend;
 }
 
+
+@property (nonatomic) BOOL *reload_friends;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 

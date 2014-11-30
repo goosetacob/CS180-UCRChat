@@ -33,10 +33,12 @@
                 for( NSString *friend in friends)
                 {
                     // Exclude the current user as a possible friend as well
-                    if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] || [user.objectId isEqualToString:[PFUser currentUser].objectId] )
+                    if ( [user.objectId isEqualToString: [(PFObject *)friend objectId]] )
                         exists = 1;
                 }
                 
+                if( [user.objectId isEqualToString:[PFUser currentUser].objectId])
+                    exists = 1;
                 if( exists == 0 )
                     [addFriendsArray addObject:user];
             }

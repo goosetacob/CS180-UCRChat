@@ -24,77 +24,6 @@
 @synthesize myTableView;
 
 
-- (void) retrieveFriends
-{
-    // Get ObjectID of current user
-    NSString *currId = [PFUser currentUser ].objectId;
-    
-    
-    // Query objectID to grab Friends array
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query getObjectInBackgroundWithId:currId block:^(PFObject *object, NSError *error)
-     {
-         if (!error) {
-             // Do something with the found friend array
-             
-             
-             // If you move to a view and back, we might be trying to load the same friends again.
-             // If this happens, do not populate the Friends array anymore.
-             //if( [object[@"Friends"] count ] < Friends.count )
-               //  return;
-             
-
-             for (NSUInteger i = 0; i < [object[@"Friends"] count]; ++i)
-             {
-                
-                 NSString *friend = object[@"Friends"][i];
-                 
-                 // Make another query for each friend objectId obtained from the friends array.=
-                 PFQuery *friendQuery = [PFQuery queryWithClassName:@"_User"];
-                 
-                 // Query a second time to get one specific friend ObjectId.
-                 [friendQuery getObjectInBackgroundWithId:friend block:^(PFObject *fobject, NSError *error)
-                  {
-                      // We've grabbed on PFObject from our array of friends. Now we parse through our Friends array
-                      if (!error)
-                      {
-                          // Compare new PFObject to our current list of friends
-                          NSInteger exists = 0;
-                          for( PFObject* j in Friends )
-                          {
-                              if( j.objectId == fobject.objectId )
-                                  exists = 1;
-                          }
-                          
-                          // If we have a unique friend, add it to our Friend array
-                          if( exists == 0 )
-                              [Friends addObject:fobject ];
-                          
-                          // This is critical for making sure our cells are correctly up-to-date on screen!
-                          [self.myTableView reloadData];
-
-                      }
-                      else
-                      {
-                          // Log details of the failure
-                          NSLog(@"Error: %@ %@", error, [error userInfo]);
-                      }
-                      
-                  }];
-                 
-
-             }
-             
-
-
-         }
-         else
-         {
-             // Log details of the failure
-             NSLog(@"Error: %@ %@", error, [error userInfo]);
-         }
-     }];
-}
 
 
 - (void) getFriends
@@ -127,7 +56,7 @@
                           NSInteger exists = 0;
                           for( PFObject* j in Friends )
                           {
-                              if( j.objectId == fobject.objectId )
+                              if( [(NSString*)j.objectId isEqualToString:fobject.objectId] )
                                   exists = 1;
                           }
                           
@@ -161,6 +90,14 @@
      }];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    if(Friends.count <= 0)
+        Friends = [[NSMutableArray alloc] init];
+    
+    [Friends removeAllObjects];
+    [self getFriends];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -170,10 +107,10 @@
     [myTableView setDelegate:self];
     
     // Initialize mutable arrays!
-    Friends = [[NSMutableArray alloc] init];
+
     
     // Populate Friend array using current user's data
-    [self getFriends/*retrieveFriends*/];
+    //[self getFriends/*retrieveFriends*/];
     
 
     //[self performSelector:@selector(retrieveFromParse)];
@@ -204,7 +141,7 @@
         FriendRequests *vc = [segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
-        NSString *currId = [PFUser currentUser ].objectId;
+        NSString *currId = [PFUser currentUser ][@"friendClassId"];
 
         [vc setMyObjectHere:currId];
     }
@@ -225,7 +162,7 @@
         // Get reference to the destination view controller
         friendsInfo *vc = [segue destinationViewController];
         
-        [vc setMyObjectHere:selectedFriend];
+        [vc setMyObjectHere:selectedFriend andArray: Friends];
     }
 }
 

@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyFriends.h"
 
 @interface friendsInfo : UIViewController
 {
     NSString *friend_data;
+    NSMutableArray *friends_array;
 }
 @property (strong, nonatomic) IBOutlet UILabel *friendTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *friendDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *friendThumbImage;
 
-- (void) setMyObjectHere:(NSString*)friend_info;
+- (void) setMyObjectHere:(NSString*)friend_info andArray: (NSMutableArray*) arr;
 @end

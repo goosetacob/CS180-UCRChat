@@ -8,6 +8,7 @@
 
 #import "friendsInfo.h"
 #import <Parse/Parse.h>
+#import "MyFriends.h"
 
 @interface friendsInfo ()
 
@@ -38,6 +39,56 @@
     
 }
 
+- (IBAction)removeFriend:(UIBarButtonItem *)sender
+{
+    /*
+     ViewControllerB *viewControllerB = [[ViewControllerB alloc] initWithNib:@"ViewControllerB" bundle:nil];
+     viewControllerB.isSomethingEnabled = YES;
+     [self pushViewController:viewControllerB animated:YES];
+     */
+    PFUser *current = [PFUser currentUser];
+    for( id object in friends_array)
+    {
+        //NSLog(@"%@", object);
+        //NSLog(@"%@", friends_array);
+        if( [[(id)object objectForKey: @"username" ]  isEqualToString:[(id)friend_data objectForKey:@"username"]] )
+        {
+            //[friends_array removeObject:object ];
+            PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+            [query getObjectInBackgroundWithId:[object objectForKey:@"friendClassId"] block:^(PFObject *fobject, NSError *error) {
+                if( !error )
+                {
+                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:fobject[@"Friends"]];
+                    NSLog(@"Size of user array before: %lu", arr.count);
+                    [arr removeObject:current.objectId];
+                    NSLog(@"Size of user array after: %lu", arr.count);
+                    fobject[@"Friends"] = arr;
+                    [fobject saveInBackground];
+                }
+                else
+                    NSLog(@"Error querying Parse!");
+            }];
+            
+            PFQuery *query2 = [PFQuery queryWithClassName:@"Friends"];
+            [query2 getObjectInBackgroundWithId:[current objectForKey:@"friendClassId"] block:^(PFObject *fobject, NSError *error) {
+                if( !error )
+                {
+                    NSMutableArray *arr = [[NSMutableArray alloc] initWithArray:fobject[@"Friends"]];
+                    NSLog(@"Size of user array before: %lu", arr.count);
+                    [arr removeObject:[object objectId]];
+                    NSLog(@"Size of user array after: %lu", arr.count);
+                    fobject[@"Friends"] = arr;
+                    [fobject saveInBackground];
+                }
+                else
+                    NSLog(@"Error querying Parse!");
+            }];
+            
+            
+        }
+    }
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     self.friendTitleLabel.text = [(id)friend_data objectForKey:@"fullName" ];
@@ -50,9 +101,10 @@
 
 }
 // We will use this method to receive data from the main 'Friends' tab.
-- (void)setMyObjectHere:(id)data
+- (void)setMyObjectHere:(id)data andArray:(NSMutableArray *)arr
 {
     friend_data = data;
+    friends_array = arr;
 }
 /*
 #pragma mark - Navigation

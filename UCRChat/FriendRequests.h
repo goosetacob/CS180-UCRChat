@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "TableCell.h"
 
-@interface FriendRequests : UIViewController
-
-
+@interface FriendRequests : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    NSMutableArray *friend_requests;
+}
 
 - (void) setMyObjectHere:(NSString*)userr_info;
+
+@property (retain, nonatomic) IBOutlet UITableView *friendRequestsTableView;
 
 @end

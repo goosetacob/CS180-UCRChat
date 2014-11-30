@@ -18,7 +18,7 @@
                                 forKey:@"orientation"];
     
     
-    //s[PFUser logOut];
+    //[PFUser logOut];
     
     if (![PFUser currentUser]) {
         PFLogInViewController *login = [[PFLogInViewController alloc] init];
