@@ -371,16 +371,15 @@ CustomCell *cell;
     
    else if(paidBoolean == false && paidBoolean2 == true)
     {
-        NSLog(@"looking for Video for ID: %@", tempObject.objectId);
         for(MultimediaPost* x in MultimediaPosts)
         {
             if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID])
             {
                 x.Movie.shouldAutoplay = NO;
-                
+               
                 UIImage *thumbnail = [x.Movie thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
                 cell.PICPOST.image = thumbnail;
-                NSLog(@"Got Video Picture");
+ 
                 break;
             }
         }
@@ -528,23 +527,36 @@ CustomCell *cell;
          //To obtain the full name from the user on this cell
          NSString* User = [tmp objectForKey:@"User"];
          
+         int check = 0;
          for(PFObject* item in userarray)
          {
              if([[item objectForKey:@"username"] isEqualToString:User]){
                  SecondController.PARENT_NAME = item[@"fullName"];
-                 break;
+                 check++;
              }
+             if([item.objectId isEqualToString:[PFUser currentUser].objectId]){
+                 SecondController.CurrentUserNAME = item[@"fullName"];
+                 check++;
+             }
+             if(check == 2) break;
          }
          
+         check = 0;
          for(UserImages* x in SavedPictures)
          {
              if([tmp[@"User"] isEqualToString:x.objectID]){
                  SecondController.Picture = x.Image;
-                 break;
+                 check++;
              }
+             if([[PFUser currentUser].username isEqualToString:x.objectID]){
+                 SecondController.CurrentUserImage = x.Image;
+                 check++;
+             }
+             if(check == 2) break;
          }
          
          SecondController.UserObject = tmp;
+         SecondController.CurrentObject = tmp;
          NSNumber* mybool =  tmp[@"PhotoPost"];
          NSNumber* mybool2 = tmp[@"VideoPost"];
          bool Photo =  [mybool boolValue];

@@ -40,7 +40,6 @@ CustomCell *cell;
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullData) forControlEvents:UIControlEventValueChanged];
     
-   // [self PullData];
     
     [self.Comment_Table addSubview:_refreshControl];
     [self.Comment_Table reloadData];
@@ -112,12 +111,14 @@ CustomCell *cell;
     NSString* CellIdentifier = nil;
     NSNumber* TextBool = CurrentObject[@"Text"];
     NSNumber* ImageBool = CurrentObject[@"Photo"];
+    NSNumber* VideoBool = CurrentObject[@"Video"];
     bool Text =  [TextBool boolValue];
     bool Photo =  [ImageBool boolValue];
+    bool Video = [VideoBool boolValue];
     
     if(Text) CellIdentifier = @"CommentSegue";
     else if(Photo) CellIdentifier = @"CommentPhotoSegue";
-    //else CellIdentifier = @"CommentSegue";
+    else if(Video) CellIdentifier = @"CommentPhotoSegue";
     
     cell = [tableView
             dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -139,15 +140,61 @@ CustomCell *cell;
    
     if([CellIdentifier isEqualToString:@"CommentSegue"])
         cell.Commenter_TextPost.text = [CurrentObject objectForKey:@"TextComment"];
-    else{
+    else if(Photo){
         PICTURE = [CurrentObject objectForKey:@"ImageComment"];
         imageURL = [[NSURL alloc] initWithString:PICTURE.url];
         idata = [NSData dataWithContentsOfURL:imageURL];
 
         cell.Commenter_PhotoPost.image = [UIImage imageWithData:idata];
     }
+    else if(Video)
+    {
+        /*
+        PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
+        NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
+        
+        MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
+        
+        CGRect frame = CGRectMake(20, 200, 20 + 250, 200 + 150);
+        movie.scalingMode = MPMovieScalingModeAspectFit;
+        movie.shouldAutoplay = YES;
+        [[movie view] setFrame:frame];
+        [[self view] addSubview: [movie view]];
+        [movie prepareToPlay];
+         */
+        PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
+        NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
+        
+        MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
+        movie.shouldAutoplay = NO;
+        
+        UIImage *thumbnail = [movie thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+        cell.Commenter_PhotoPost.image = thumbnail;
+    }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Put your action logic here by using its index "indexPath.row".
+    PFObject* CurrentObject = [CPostArray objectAtIndex:indexPath.row];
+    NSNumber* VideoBool = CurrentObject[@"Video"];
+    bool Video =  [VideoBool boolValue];
+
+    if(Video){
+        PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
+        NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
+        
+        MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
+        movie.controlStyle = MPMovieControlStyleDefault;
+        movie.shouldAutoplay = YES;
+        [[self view] addSubview: [movie view]];
+        [movie setFullscreen:YES animated:YES];
+        [movie play];
+    }
+
+    
 }
 
 //sending the seugue nformatoion to the view controller

@@ -31,4 +31,9 @@
 @property (strong, nonatomic) PFObject *UserObject;
 @property (strong, nonatomic) UIImage  *Picture;
 
+//Commenting purposes
+@property (strong, nonatomic) NSString *CurrentUserNAME;
+@property (strong, nonatomic) UIImage  *CurrentUserImage;
+@property (strong, nonatomic) PFObject  *CurrentObject;;
+
 @end
