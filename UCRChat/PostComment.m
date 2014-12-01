@@ -40,7 +40,6 @@ CustomCell *cell;
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullData) forControlEvents:UIControlEventValueChanged];
     
-    
     [self.Comment_Table addSubview:_refreshControl];
     [self.Comment_Table reloadData];
 }
@@ -149,19 +148,6 @@ CustomCell *cell;
     }
     else if(Video)
     {
-        /*
-        PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
-        NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
-        
-        MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
-        
-        CGRect frame = CGRectMake(20, 200, 20 + 250, 200 + 150);
-        movie.scalingMode = MPMovieScalingModeAspectFit;
-        movie.shouldAutoplay = YES;
-        [[movie view] setFrame:frame];
-        [[self view] addSubview: [movie view]];
-        [movie prepareToPlay];
-         */
         PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
         NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
         
@@ -191,6 +177,7 @@ CustomCell *cell;
         movie.shouldAutoplay = YES;
         [[self view] addSubview: [movie view]];
         [movie setFullscreen:YES animated:YES];
+        [movie prepareToPlay];
         [movie play];
     }
 

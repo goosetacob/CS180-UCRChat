@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(Update_info) userInfo:nil repeats:YES];
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
     
     bool found = false;
@@ -49,6 +49,12 @@
     /*Proccsng for th picture */
     
     PostControllerPIC.image = ProfilePicture;
+}
+
+- (void) Update_info{
+    LikeLabel.text = [NSString stringWithFormat:@"%d", [[UserObject objectForKey:@"Likes"] intValue] ];
+    NSArray* tmp = [UserObject objectForKey:@"Comments"];
+    CommentLabel.text = [NSString stringWithFormat:@"%d", (int) tmp.count];
 }
 
 //sending the seugue nformatoion to the view controller
