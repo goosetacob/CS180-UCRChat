@@ -15,10 +15,15 @@
     // Contains friends to list in TableView
     NSMutableArray *Friends;
     
+    // Contains list of Groups for separate Friends
+    NSMutableArray *Groups;
+    
     // Contains currently selected friend
     NSString *selectedFriend;
 }
 
+@property (retain, nonatomic) IBOutlet UITextField *groupName;
+- (IBAction)enteredNewGroup:(id)sender;
 
 @property (nonatomic) BOOL *reload_friends;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;

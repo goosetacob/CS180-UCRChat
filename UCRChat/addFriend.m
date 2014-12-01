@@ -152,6 +152,11 @@
     return 1;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Available";
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return addFriendsArray.count;
@@ -188,11 +193,13 @@
     cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
     PFFile *imagefile = [object objectForKey:@"picture"];
-    NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
-    NSData* image = [NSData dataWithContentsOfURL:imageURL ];
+    if( imagefile != nil )
+    {
+        NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
+        NSData* image = [NSData dataWithContentsOfURL:imageURL ];
     
-    cell.ThumbImage.image = [UIImage imageWithData:image];
-    
+        cell.ThumbImage.image = [UIImage imageWithData:image];
+    }
     [cell setUser:(PFUser*)object ];
     
     return cell;

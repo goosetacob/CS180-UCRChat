@@ -115,16 +115,21 @@
                                     <outlet property="delegate" destination="W5Q-7r-5he" id="JTQ-u0-65c"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="Search for friends" translatesAutoresizingMaskIntoConstraints="NO" id="9we-4d-Ykj">
-                                <rect key="frame" x="16" y="48" width="285" height="44"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Create a new group" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMC-fZ-aoo">
+                                <rect key="frame" x="45" y="54" width="230" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                                <connections>
+                                    <action selector="enteredNewGroup:" destination="W5Q-7r-5he" eventType="editingDidEnd" id="ppu-BJ-Uy5"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.476105801" green="0.80978260869999996" blue="0.76186857569999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" id="tAJ-h0-hN0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="groupName" destination="gMC-fZ-aoo" id="v3o-iJ-Yzp"/>
                         <outlet property="myTableView" destination="DQr-4g-vFx" id="87l-O0-2W2"/>
                         <segue destination="i3N-0N-QVU" kind="show" identifier="friendsInfo" id="UT4-Yq-VPH"/>
                     </connections>
@@ -478,8 +483,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-8E-3ly">
-                                <rect key="frame" x="150" y="108" width="300" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-8E-3ly">
+                                <rect key="frame" x="150" y="108" width="154" height="73"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -496,19 +501,6 @@
                                     <action selector="backToMyFriends:" destination="i3N-0N-QVU" eventType="touchUpInside" id="Bgd-Zo-qiT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9E-Zd-7Ak">
-                                <rect key="frame" x="35" y="234" width="250" height="100"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Friend's Timeline information will be displayed here.">
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG9-Kx-Q4M">
                                 <rect key="frame" x="235" y="45" width="69" height="30"/>
                                 <state key="normal" title="- Unfriend">
@@ -518,14 +510,54 @@
                                     <action selector="removeFriend:" destination="i3N-0N-QVU" eventType="touchDown" id="ldq-5Y-i2H"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joined Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5w-Io-axL">
+                                <rect key="frame" x="106" y="198" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVY-NR-3Cx">
+                                <rect key="frame" x="106" y="220" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h7-rp6">
+                                <rect key="frame" x="0.0" y="288" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="i3N-0N-QVU" id="sC9-ip-prA"/>
+                                    <outlet property="delegate" destination="i3N-0N-QVU" id="ViO-P6-I1S"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add to Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeR-R8-5ri">
+                                <rect key="frame" x="106" y="259" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joined:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbX-Gb-4Yg">
+                                <rect key="frame" x="32" y="198" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqN-6x-a9f">
+                                <rect key="frame" x="32" y="220" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.47610580099913202" green="0.80978260869999996" blue="0.76186857566057231" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="friendDescriptionLabel" destination="qeL-8E-3ly" id="hwt-NJ-rpl"/>
+                        <outlet property="friendJoinedDate" destination="A5w-Io-axL" id="Ljm-zs-hXg"/>
+                        <outlet property="friendNumberOfFriends" destination="GVY-NR-3Cx" id="G3i-vS-7PQ"/>
                         <outlet property="friendThumbImage" destination="wgc-Gm-puV" id="K5K-or-Rzd"/>
                         <outlet property="friendTitleLabel" destination="R7A-Cj-GcD" id="0WH-Bj-zRK"/>
+                        <outlet property="selectedGroup" destination="acO-h7-rp6" id="LCQ-6g-6h2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBP-we-lbn" userLabel="First Responder" sceneMemberID="firstResponder"/>

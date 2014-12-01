@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "MyFriends.h"
 
-@interface friendsInfo : UIViewController
+@interface friendsInfo : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     NSString *friend_data;
     NSMutableArray *friends_array;
+    NSMutableArray *groups_array;
+    
 }
 @property (strong, nonatomic) IBOutlet UILabel *friendTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *friendDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *friendThumbImage;
+@property (retain, nonatomic) IBOutlet UILabel *friendJoinedDate;
+@property (retain, nonatomic) IBOutlet UILabel *friendNumberOfFriends;
 
-- (void) setMyObjectHere:(NSString*)friend_info andArray: (NSMutableArray*) arr;
+@property (retain, nonatomic) IBOutlet UIPickerView *selectedGroup;
+
+- (void) setMyObjectHere:(NSString*)friend_info andArray: (NSMutableArray*) arr withGroups: (NSMutableArray*) Groups;
 @end

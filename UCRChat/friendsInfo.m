@@ -17,13 +17,20 @@
 @implementation friendsInfo
 
 
+@synthesize selectedGroup;
+@synthesize friendNumberOfFriends;
+@synthesize friendJoinedDate;
 @synthesize friendTitleLabel;
 @synthesize friendDescriptionLabel;
 @synthesize friendThumbImage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    [selectedGroup setDelegate:self];
+    [selectedGroup setDataSource:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +89,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    
     self.friendTitleLabel.text = [(id)friend_data objectForKey:@"fullName" ];
     self.friendDescriptionLabel.text = [(id)friend_data objectForKey:@"aboutMe" ];
     PFFile *imagefile = [(id)friend_data objectForKey:@"picture"];
@@ -89,13 +97,43 @@
     NSData* image = [NSData dataWithContentsOfURL:imageURL ];
     
     self.friendThumbImage.image = [UIImage imageWithData:image];
+   
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query getObjectInBackgroundWithId:[(id)friend_data objectForKey:@"friendClassId"] block:^(PFObject *object, NSError *error) {
+        if( !error )
+        {
+            self.friendNumberOfFriends.text = [NSString stringWithFormat: @"%ld", [(NSMutableArray*)object[@"Friends"] count]];
+            self.friendJoinedDate.text = [formatter stringFromDate: object.createdAt];
 
+            NSLog(@"%@", object.createdAt);
+        }
+    }];
 }
 // We will use this method to receive data from the main 'Friends' tab.
-- (void)setMyObjectHere:(id)data andArray:(NSMutableArray *)arr
+- (void)setMyObjectHere:(id)data andArray:(NSMutableArray *)arr withGroups:(NSMutableArray *)Groups
 {
     friend_data = data;
     friends_array = arr;
+    groups_array = Groups;
+}
+
+
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 3;//groups_array.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return @"Example";
 }
 /*
 #pragma mark - Navigation
@@ -107,4 +145,10 @@
 }
 */
 
+- (void)dealloc {
+    [friendJoinedDate release];
+    [friendNumberOfFriends release];
+    [selectedGroup release];
+    [super dealloc];
+}
 @end

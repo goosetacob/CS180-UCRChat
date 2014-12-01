@@ -22,8 +22,7 @@
 
 
 @synthesize myTableView;
-
-
+@synthesize groupName;
 
 - (void) getFriends
 {
@@ -95,8 +94,13 @@
     if(Friends.count <= 0)
         Friends = [[NSMutableArray alloc] init];
     
+    if(Groups.count <= 0)
+        Groups = [[NSMutableArray alloc] init];
+    
+    
     // Refresh array everytime view reloads
     [Friends removeAllObjects];
+    [Groups removeAllObjects];
     
     // Grab list of friends and refresh tableview
     [self getFriends];
@@ -144,7 +148,7 @@
         // Get reference to the destination view controller
         friendsInfo *vc = [segue destinationViewController];
         
-        [vc setMyObjectHere:selectedFriend andArray: Friends];
+        [vc setMyObjectHere:selectedFriend andArray: Friends withGroups: Groups];
     }
 }
 
@@ -153,13 +157,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
+    //return 1 + Groups.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
-    return Friends.count;
+
+    //if( section == 0 )
+        return Friends.count;
+    //else
+      //  return 1;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,33 +182,38 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Section ...";
+    //if( section == 0)
+        return @"All Friends";
+    //else
+      //  return Groups[section];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TableCell";
-    TableCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath ];
+    //if( indexPath.section == 0 && indexPath.row < Friends.count )
+    //{
+        static NSString *CellIdentifier = @"TableCell";
+        TableCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath ];
     
-    // If we have no cells, initialize it
-    if( !cell )
-    {
-        cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
-    }
+        // If we have no cells, initialize it
+        if( !cell )
+        {
+            cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
+        }
     
-    // Populate cell using Friend information at specific row
-    PFObject *object = [Friends objectAtIndex:indexPath.row];
+        // Populate cell using Friend information at specific row
+        PFObject *object = [Friends objectAtIndex:indexPath.row];
     
-    cell.TitleLabel.text = [object objectForKey:@"fullName"];
+        cell.TitleLabel.text = [object objectForKey:@"fullName"];
     
-    cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
+        cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
-    PFFile *imagefile = [object objectForKey:@"picture"];
-    NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
-    NSData* image = [NSData dataWithContentsOfURL:imageURL ];
-    cell.ThumbImage.image = [UIImage imageWithData:image];
- 
-    return cell;
+        PFFile *imagefile = [object objectForKey:@"picture"];
+        NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
+        NSData* image = [NSData dataWithContentsOfURL:imageURL ];
+        cell.ThumbImage.image = [UIImage imageWithData:image];
+        return cell;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -217,4 +231,13 @@
  }
  */
 
+- (IBAction)enteredNewGroup:(id)sender {
+    [Groups addObject:groupName.text];
+}
+
+
+- (void)dealloc {
+    [groupName release];
+    [super dealloc];
+}
 @end
