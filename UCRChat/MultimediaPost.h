@@ -16,6 +16,7 @@
 @property (retain, nonatomic) NSString* UserID;
 @property (retain, nonatomic) NSString* objectID;
 @property (retain, nonatomic) UIImage* Image;
-@property (retain, nonatomic) MPMoviePlayerController *VideoPost;
+@property (retain, nonatomic) NSURL *VideoURL;
+@property (retain, nonatomic) MPMoviePlayerController *Movie;
 
 @end

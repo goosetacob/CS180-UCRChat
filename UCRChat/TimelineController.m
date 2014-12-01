@@ -68,8 +68,7 @@ CustomCell *cell;
     [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
     
-    //[self PullParse];
-    //[self PullParse];
+  
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
 }
@@ -225,7 +224,8 @@ CustomCell *cell;
                 UserPic.UserID = [object objectForKey:@"User"];
                 UserPic.objectID = object.objectId;
                 UserPic.Image = nil;
-                UserPic.VideoPost = [[MPMoviePlayerController alloc]initWithContentURL:imageURL];
+                UserPic.VideoURL = imageURL;
+                UserPic.Movie = [[MPMoviePlayerController alloc]initWithContentURL:imageURL];
                 [MultimediaPosts addObject:UserPic];
             }
             found_object = false;
@@ -376,9 +376,9 @@ CustomCell *cell;
         {
             if([tempObject[@"User"] isEqualToString:x.UserID] && [tempObject.objectId isEqualToString:x.objectID])
             {
-                x.VideoPost.shouldAutoplay = NO;
+                x.Movie.shouldAutoplay = NO;
                 
-                UIImage *thumbnail = [x.VideoPost thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+                UIImage *thumbnail = [x.Movie thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
                 cell.PICPOST.image = thumbnail;
                 NSLog(@"Got Video Picture");
                 break;
@@ -524,7 +524,7 @@ CustomCell *cell;
     }
     if ([[segue identifier] isEqualToString:@"PhotoSegue"])
      {
-           PhotoViewPost *SecondController = segue.destinationViewController;
+        PhotoViewPost *SecondController = segue.destinationViewController;
          //To obtain the full name from the user on this cell
          NSString* User = [tmp objectForKey:@"User"];
          
@@ -545,13 +545,18 @@ CustomCell *cell;
          }
          
          SecondController.UserObject = tmp;
+         NSNumber* mybool =  tmp[@"PhotoPost"];
+         NSNumber* mybool2 = tmp[@"VideoPost"];
+         bool Photo =  [mybool boolValue];
+         bool Video = [mybool2 boolValue];
          
          for(MultimediaPost* o in MultimediaPosts)
          {
              if([tmp.objectId isEqualToString:o.objectID]){
                  SecondController.PARENT_POST = o.Image;
-                 SecondController.POST = o.Image;
-                 break;
+                 if(Photo) SecondController.POST = o.Image;
+                 else if(Video) SecondController.VideoURL = o.VideoURL;
+                break;
              }
          }
      }

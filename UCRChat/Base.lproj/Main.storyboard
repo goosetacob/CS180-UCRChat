@@ -314,7 +314,7 @@
                                                     <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5k-QG-uIe">
-                                                    <rect key="frame" x="250" y="5" width="50" height="13"/>
+                                                    <rect key="frame" x="251" y="5" width="50" height="13"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -349,6 +349,13 @@
                                             <outlet property="PICPOST" destination="Sjf-mI-YOi" id="hOS-YB-Hpd"/>
                                             <segue destination="bux-hb-8ST" kind="showDetail" identifier="PhotoSegue" id="Trz-hu-im5"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Khw-eD-Pka">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Khw-eD-Pka" id="5h7-Q2-G4Z">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

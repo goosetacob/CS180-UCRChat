@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface PhotoViewPost : UIViewController
 - (IBAction)Back:(id)sender;
@@ -25,6 +27,7 @@
 @property (strong, nonatomic) NSString *PARENT_NAME;
 @property (strong, nonatomic) UIImage  *PARENT_POST;
 @property (strong, nonatomic) UIImage  *POST;
+@property (retain, nonatomic) NSURL *VideoURL;
 @property (strong, nonatomic) PFObject *UserObject;
 @property (strong, nonatomic) UIImage  *Picture;
 

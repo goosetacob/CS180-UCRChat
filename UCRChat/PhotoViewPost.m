@@ -15,7 +15,12 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
 
-    _Post.image = _POST;
+    NSNumber* mybool =  _UserObject[@"PhotoPost"];
+    NSNumber* mybool2 = _UserObject[@"VideoPost"];
+    bool Photo =  [mybool boolValue];
+    bool Video = [mybool2 boolValue];
+    
+   
     _ProfilePicture.image = _Picture;
     _Name.text = _PARENT_NAME;
     
@@ -40,7 +45,21 @@
     _CommentText.text = [NSString stringWithFormat:@"%ld", array.count ];
     //assining the number of likes
     _LikeText.text = [NSString stringWithFormat:@"%d", [[_UserObject objectForKey:@"Likes"] intValue] ];
-
+    
+    if(Photo) _Post.image = _POST;
+    else if(Video){
+        if(_VideoURL != nil){
+            MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:_VideoURL];
+           
+            CGRect frame = CGRectMake(20, 200, 20 + 250, 200 + 150);
+            movie.scalingMode = MPMovieScalingModeAspectFit;
+            
+            [[movie view] setFrame:frame];
+            [[self view] addSubview: [movie view]];
+            [movie prepareToPlay];
+            [movie play];
+        }
+    }
 }
 
 - (IBAction)Back:(id)sender {
