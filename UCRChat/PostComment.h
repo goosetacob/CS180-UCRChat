@@ -21,6 +21,8 @@
 @property (strong, nonatomic) UIImage  *CurrentUserImage;
 @property (strong, nonatomic) PFObject  *CurrentObject;;
 
+@property (nonatomic, strong) UIRefreshControl * refreshControl;
+
 
 - (IBAction)backbtn:(id)sender;
 

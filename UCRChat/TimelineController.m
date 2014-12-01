@@ -17,7 +17,6 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface TimelineController ()
-
 @end
 
 
@@ -38,9 +37,17 @@ CustomCell *cell;
     }
     return self;
 }
-
+-(void) viewWillAppear: (BOOL) animated {
+    [self PullParse];
+    [self.PostTable reloadData];
+    [self PullParse];
+    [self.PostTable reloadData];
+    [self PullParse];
+    [self.PostTable reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [PostArray removeAllObjects];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor lightGrayColor];
     [self.PostTable setBackgroundColor: [UIColor clearColor]];
@@ -57,15 +64,12 @@ CustomCell *cell;
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.23 green:0.349 blue:0.596 alpha:0.5]];
     
-
-
-    
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(PullParse) forControlEvents:UIControlEventValueChanged];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(PullParse) userInfo:nil repeats:YES];
     
-    [self PullParse];
-    [self PullParse];
+    //[self PullParse];
+    //[self PullParse];
     [self.PostTable addSubview:_refreshControl];
     [self.PostTable reloadData];
 }
@@ -126,14 +130,17 @@ CustomCell *cell;
          {
              //download the pic and add the information to our array
              PICTURE = [object objectForKey:@"picture"];
-             imageURL = [[NSURL alloc] initWithString:PICTURE.url];
-             idata = [NSData dataWithContentsOfURL:imageURL];
+             if(PICTURE){
+                 imageURL = [[NSURL alloc] initWithString:PICTURE.url];
+                 idata = [NSData dataWithContentsOfURL:imageURL];
+            
              
-             //Creating the nw user onto our array
-             UserImages *UserPic = [[UserImages alloc] init];
-             UserPic.objectID = [object objectForKey:@"username"];
-             UserPic.Image = [UIImage imageWithData:idata];
-             [SavedPictures addObject:UserPic];
+                 //Creating the nw user onto our array
+                 UserImages *UserPic = [[UserImages alloc] init];
+                 UserPic.objectID = [object objectForKey:@"username"];
+                 UserPic.Image = [UIImage imageWithData:idata];
+                 [SavedPictures addObject:UserPic];
+             }
          }
     }
 
@@ -245,9 +252,7 @@ CustomCell *cell;
     
     [PostTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [PostTable setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
-    CGFloat cellcolor = 1.0 - (CGFloat)indexPath.row / 20.0;
-   
-    cell.ColorView.backgroundColor = [UIColor colorWithWhite:cellcolor alpha:1.0];
+    
     //setup cell
     tempObject = [PostArray objectAtIndex:indexPath.row];
     

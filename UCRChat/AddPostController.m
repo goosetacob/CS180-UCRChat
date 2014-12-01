@@ -62,11 +62,12 @@
             NSData* data = UIImageJPEGRepresentation(self.CurrentUserImage, 0.5f);
             PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
             MyComment[@"ProfilePicture"] = imageFile;
-            
+            MyComment[@"Text"] = [NSNumber numberWithBool:YES];
+            MyComment[@"Photo"] = [NSNumber numberWithBool:NO];
+            MyComment[@"Video"] = [NSNumber numberWithBool:NO];
             //Then we need to get the array andd add to to the array list
             [MyComment save];
             
-            //NSLog(@"================ Mycomment ID: %@", MyComment.objectId);
             [self.CurrentObject addUniqueObject:MyComment.objectId forKey:@"Comments"];
             [self.CurrentObject saveInBackground];
         }

@@ -33,7 +33,7 @@
 @property (retain, nonatomic) IBOutlet UIImageView *Commenter_Profile_Picture;
 @property (retain, nonatomic) IBOutlet UILabel *Commenter_TextPost;
 @property (retain, nonatomic) IBOutlet UILabel *Commenter_Name;
-@property (retain, nonatomic) IBOutlet UIImageView *Comenter_PhotoPost;
+@property (retain, nonatomic) IBOutlet UIImageView *Commenter_PhotoPost;
 
 
 @end

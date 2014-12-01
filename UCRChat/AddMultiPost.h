@@ -24,4 +24,11 @@ UINavigationControllerDelegate>
 - (IBAction)TakeVid:(id)sender;
 - (IBAction)SelecVid:(id)sender;
 
+//Commenting Purposes
+@property(retain, nonatomic) NSString* Identifier;
+@property(retain, nonatomic) NSString* UserID;
+@property (strong, nonatomic) NSString *CurrentUserNAME;
+@property (strong, nonatomic) UIImage  *CurrentUserImage;
+@property (strong, nonatomic) PFObject  *CurrentObject;
+
 @end

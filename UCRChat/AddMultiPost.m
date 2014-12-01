@@ -54,36 +54,65 @@
 
 - (IBAction)SUMIT:(id)sender {
     
-    //storng objcts to cloud
-    PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
-    if(_Photo.image != nil)
+    if([self.Identifier isEqualToString:@"MultimediaComment"])
     {
-        NSData* data = UIImageJPEGRepresentation(_Photo.image, 0.5f);
-        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
-    
-        GlobalTimeline[@"MultimediaPost"] = imageFile;
-        GlobalTimeline[@"User"] = [PFUser currentUser].username;
-        GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:YES];
-        GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
-        [GlobalTimeline saveInBackground];
-    }
-    if(_VideoPost != nil)
-    {
-        //PFFile *send = [PFFile fileWithName:_Photo data:imageData];
-        NSData* videoData = [NSData dataWithContentsOfURL:_URL];
-        PFFile *VideoFile = [PFFile fileWithName:@"video.mov" data: videoData];
+        if(_Photo.image != nil)
+        {
+            PFObject* MyComment = [PFObject objectWithClassName:@"PostCommentObject"];
+            NSData* data = UIImageJPEGRepresentation(_Photo.image, 0.5f);
+            PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
+            
+            //First we need to create the object to be inserted into the array of commets
+            MyComment[@"Name"] = self.CurrentUserNAME;
+            MyComment[@"ImageComment"] = imageFile;
+            
+            data = UIImageJPEGRepresentation(self.CurrentUserImage, 0.5f);
+            imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
+            MyComment[@"ProfilePicture"] = imageFile;
+            MyComment[@"Text"] = [NSNumber numberWithBool:NO];
+            MyComment[@"Photo"] = [NSNumber numberWithBool:YES];
+            MyComment[@"Video"] = [NSNumber numberWithBool:NO];
+            
+            //Then we need to get the array andd add to to the array list
+            [MyComment save];
+            
+            [self.CurrentObject addUniqueObject:MyComment.objectId forKey:@"Comments"];
+            [self.CurrentObject saveInBackground];
+        }
         
-        GlobalTimeline[@"MultimediaPost"] = VideoFile;
-        GlobalTimeline[@"User"] = [PFUser currentUser].username;
-        GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
-        GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
-        GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:YES];
-        [GlobalTimeline saveInBackground];
     }
+    else{
+        //storng objcts to cloud
+        PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
+        if(_Photo.image != nil)
+        {
+            NSData* data = UIImageJPEGRepresentation(_Photo.image, 0.5f);
+            PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:data];
+        
+            GlobalTimeline[@"MultimediaPost"] = imageFile;
+            GlobalTimeline[@"User"] = [PFUser currentUser].username;
+            GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:YES];
+            GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
+            [GlobalTimeline saveInBackground];
+        }
+        else if(_VideoPost != nil)
+        {
+            //PFFile *send = [PFFile fileWithName:_Photo data:imageData];
+            NSData* videoData = [NSData dataWithContentsOfURL:_URL];
+            PFFile *VideoFile = [PFFile fileWithName:@"video.mov" data: videoData];
+            
+            GlobalTimeline[@"MultimediaPost"] = VideoFile;
+            GlobalTimeline[@"User"] = [PFUser currentUser].username;
+            GlobalTimeline[@"Likes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
+            GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
+            GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:YES];
+            [GlobalTimeline saveInBackground];
+        }
     
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

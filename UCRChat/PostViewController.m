@@ -62,6 +62,8 @@
         PostController.CurrentUserNAME = self.CurrentUserNAME;
         PostController.CurrentUserImage = self.CurrentUserImage;
         PostController.CurrentObject = self.CurrentObject;
+        
+       // NSLog(@"To Post Comment: %@", self.CurrentUserImage)
     }
 }
 - (void)didReceiveMemoryWarning
