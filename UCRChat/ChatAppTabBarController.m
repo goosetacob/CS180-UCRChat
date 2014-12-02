@@ -18,7 +18,7 @@
                                 forKey:@"orientation"];
     
     
-    //[PFUser logOut];
+    [PFUser logOut];
     
     if (![PFUser currentUser]) {
         PFLogInViewController *login = [[PFLogInViewController alloc] init];
@@ -60,8 +60,34 @@
     //create Friends on ParseDB
     PFObject *currentUserTimeline = [PFObject objectWithClassName:@"GlobalTimeline"];
     currentUserTimeline[@"userLoginId"] = [[PFUser currentUser] objectId];
+    
+    UIImage *image;
+    image = [UIImage imageNamed:@"second"];
+    UIGraphicsBeginImageContext(CGSizeMake(640, 640));
+    [image drawInRect: CGRectMake(0, 0, 640, 640)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData *imageAsset = UIImagePNGRepresentation(image);
+    PFFile *defaultImage = [PFFile fileWithName:@"defaultImage.jpg" data:imageAsset];
+    
 
     [currentUserTimeline saveInBackground];
+    
+    // Save PFFile
+    [defaultImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            PFObject *userPhoto = [PFUser currentUser];
+            userPhoto[@"picture"] = defaultImage;
+            [userPhoto saveInBackground];
+            [userPhoto setObject:defaultImage forKey:@"picture"];
+            NSLog(@"Saved image I think");
+        
+        }
+        else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
