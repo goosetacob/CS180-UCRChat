@@ -356,7 +356,27 @@ CustomCell *cell;
     }
     
     if(paidBoolean == false && paidBoolean2 == false)
-        cell.POST.text = [tempObject objectForKey:@"Post"];
+    {
+        
+        NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+        bool found = false;
+        NSArray *matches = [linkDetector matchesInString:[tempObject objectForKey:@"Post"] options:0 range:NSMakeRange(0, [[tempObject objectForKey:@"Post"] length])];
+        for (NSTextCheckingResult *match in matches)
+        {
+            if ([match resultType] == NSTextCheckingTypeLink) {
+                NSURL *url = [match URL];
+                
+                NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:[tempObject objectForKey:@"Post"]];
+                [str addAttribute: NSLinkAttributeName value:url range: match.range];
+                cell.POST.attributedText = str;
+                found = true;
+                break;
+            }
+        }
+        if(!found)cell.POST.text = [tempObject objectForKey:@"Post"];
+    }
+    
+    
     else if(paidBoolean == true && paidBoolean2 == false)
     {
        

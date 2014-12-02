@@ -19,7 +19,7 @@
 
 @property (retain, nonatomic) IBOutlet PFImageView *PostControllerPIC;
 @property (retain, nonatomic) IBOutlet UILabel *PostControllerName;
-@property (retain, nonatomic) IBOutlet UILabel *PostControllerPost;
+@property (retain, nonatomic) IBOutlet UITextView  *PostControllerPost;
 
 @property (strong, nonatomic) NSString *PARENT_NAME;
 @property (strong, nonatomic) NSString *PARENT_POST;

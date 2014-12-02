@@ -19,7 +19,7 @@
     [super viewDidLoad];
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(Update_info) userInfo:nil repeats:YES];
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
-    
+    PostControllerPost.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
     bool found = false;
     
     //Check if we already lked the post to change the button text
@@ -38,7 +38,26 @@
     
     //assign the labels its upated data
     PostControllerName.text = PARENT_NAME;
-    PostControllerPost.text = PARENT_POST;
+    bool Objectfound = false;
+    NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+    NSArray *matches = [linkDetector matchesInString:PARENT_POST options:0 range:NSMakeRange(0, [PARENT_POST length])];
+    for (NSTextCheckingResult *match in matches)
+    {
+        if ([match resultType] == NSTextCheckingTypeLink) {
+            NSURL *url = [match URL];
+            
+            NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:PARENT_POST];
+            [str addAttribute: NSLinkAttributeName value:url range: match.range];
+            PostControllerPost.attributedText = str;
+            
+            Objectfound = true;
+            break;
+        }
+    }
+    if(!Objectfound) PostControllerPost.text = PARENT_POST;
+    
+    
+    
     //Getting the ize of the comment array
      NSArray* array = [UserObject objectForKey:@"Comments"];
     CommentLabel.text = [NSString stringWithFormat:@"%ld", array.count ];
@@ -50,7 +69,10 @@
     
     PostControllerPIC.image = ProfilePicture;
 }
-
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)url inRange:(NSRange)characterRange
+{
+    return YES;
+}
 - (void) Update_info{
     LikeLabel.text = [NSString stringWithFormat:@"%d", [[UserObject objectForKey:@"Likes"] intValue] ];
     NSArray* tmp = [UserObject objectForKey:@"Comments"];

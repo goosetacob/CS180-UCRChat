@@ -20,7 +20,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *LikeText;
 @property (retain, nonatomic) IBOutlet PFImageView *IMG;
 @property (retain, nonatomic) IBOutlet UIButton *Likebtn;
-@property (retain, nonatomic) IBOutlet UILabel *POST;
+@property (retain, nonatomic) IBOutlet UITextView *POST;
 @property (retain, nonatomic) IBOutlet UIButton *Delete;
 @property (retain, nonatomic) IBOutlet UIView *ColorView;
 @property (retain, nonatomic) IBOutlet UILabel *Date;
@@ -31,7 +31,7 @@
 
 //Comments cells
 @property (retain, nonatomic) IBOutlet UIImageView *Commenter_Profile_Picture;
-@property (retain, nonatomic) IBOutlet UILabel *Commenter_TextPost;
+@property (retain, nonatomic) IBOutlet UITextView *Commenter_TextPost;
 @property (retain, nonatomic) IBOutlet UILabel *Commenter_Name;
 @property (retain, nonatomic) IBOutlet UIImageView *Commenter_PhotoPost;
 

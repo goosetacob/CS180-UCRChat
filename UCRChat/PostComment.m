@@ -101,9 +101,9 @@ CustomCell *cell;
 
     [self.Comment_Table setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [self.Comment_Table setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
-    CGFloat cellcolor = 1.0 - (CGFloat)indexPath.row / 20.0;
+    //CGFloat cellcolor = 1.0 - (CGFloat)indexPath.row / 20.0;
     
-    cell.ColorView.backgroundColor = [UIColor colorWithWhite:cellcolor alpha:1.0];
+    //cell.ColorView.backgroundColor = [UIColor colorWithWhite:cellcolor alpha:1.0];
     
     PFObject* CurrentObject = [CPostArray objectAtIndex:indexPath.row];
     
@@ -137,8 +137,25 @@ CustomCell *cell;
     cell.Commenter_Name.text = [CurrentObject objectForKey:@"Name"];
     
    
-    if([CellIdentifier isEqualToString:@"CommentSegue"])
-        cell.Commenter_TextPost.text = [CurrentObject objectForKey:@"TextComment"];
+    if([CellIdentifier isEqualToString:@"CommentSegue"]){
+        
+        bool found = false;
+        NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+        NSArray *matches = [linkDetector matchesInString:[CurrentObject objectForKey:@"TextComment"] options:0 range:NSMakeRange(0, [[CurrentObject objectForKey:@"TextComment"] length])];
+        for (NSTextCheckingResult *match in matches)
+        {
+            if ([match resultType] == NSTextCheckingTypeLink) {
+                NSURL *url = [match URL];
+                
+                NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:[CurrentObject objectForKey:@"TextComment"]];
+                [str addAttribute: NSLinkAttributeName value:url range: match.range];
+                cell.Commenter_TextPost.attributedText = str;
+                found = true;
+                break;
+            }
+        }
+        if(!found) cell.Commenter_TextPost.text = [CurrentObject objectForKey:@"TextComment"];
+    }
     else if(Photo){
         PICTURE = [CurrentObject objectForKey:@"ImageComment"];
         imageURL = [[NSURL alloc] initWithString:PICTURE.url];
@@ -171,14 +188,22 @@ CustomCell *cell;
     if(Video){
         PFFile* VIDEO = [CurrentObject objectForKey:@"VideoComment"];
         NSURL* VideoURL = [[NSURL alloc] initWithString:VIDEO.url];
-        
-        MPMoviePlayerController* movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
-        movie.controlStyle = MPMovieControlStyleDefault;
-        movie.shouldAutoplay = YES;
-        [[self view] addSubview: [movie view]];
-        [movie setFullscreen:YES animated:YES];
-        [movie prepareToPlay];
-        [movie play];
+        if(VideoURL){
+            movie = [[MPMoviePlayerController alloc] initWithContentURL:VideoURL];
+            movie.controlStyle = MPMovieControlStyleDefault;
+            movie.shouldAutoplay = YES;
+            [[self view] addSubview: [movie view]];
+            [movie setFullscreen:YES animated:YES];
+            [movie prepareToPlay];
+            [movie play];
+        }
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:
+                                  @"Eroor playing video" message:@"Please Retry" delegate:self
+                                                 cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
     }
 
     

@@ -12,7 +12,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.tabBarController.selectedIndex = 4;
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
-    
+    _Textview.dataDetectorTypes = UIDataDetectorTypeLink;
     [_Textview becomeFirstResponder];
 }
 

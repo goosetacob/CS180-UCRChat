@@ -184,13 +184,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Ka-n9-awk" id="pch-o1-edb">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgW-QP-s0b" customClass="mycell">
-                                                    <rect key="frame" x="80" y="26" width="232" height="95"/>
-                                                    <string key="text">hhahhdhfhfhchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchchcjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkjkhchchchchchchchchchchchchchch</string>
-                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="0.17676638109967724" green="0.29883378837933494" blue="0.83152173913043481" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBz-VJ-KTK" customClass="mycell">
                                                     <rect key="frame" x="80" y="13" width="109" height="21"/>
                                                     <color key="tintColor" red="1" green="0.1104705003" blue="0.098680876619999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -254,6 +247,20 @@
                                                         <action selector="DeleteBTN:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gNK-xc-XOG"/>
                                                     </connections>
                                                 </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzx-q7-1Kp">
+                                                    <rect key="frame" x="80" y="35" width="232" height="80"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut ">
+                                                            <attributes>
+                                                                <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.030468140160020762" green="0.04165394506999736" blue="0.83152173910000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,7 +275,7 @@
                                             <outlet property="LikeText" destination="iZd-hD-NCN" id="Cxc-7s-2t3"/>
                                             <outlet property="Likebtn" destination="C7o-91-ktm" id="UYh-3o-k97"/>
                                             <outlet property="NAME" destination="oBz-VJ-KTK" id="8MF-qI-nQw"/>
-                                            <outlet property="POST" destination="GgW-QP-s0b" id="CYK-9f-Z31"/>
+                                            <outlet property="POST" destination="Nzx-q7-1Kp" id="1Xd-TU-kfH"/>
                                             <segue destination="mln-Rd-cnI" kind="showDetail" identifier="CellSegue" id="NMw-y6-Zpj"/>
                                         </connections>
                                     </tableViewCell>
@@ -462,6 +469,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                         </subviews>
                         <accessibility key="accessibilityConfiguration">
@@ -671,20 +679,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK6-Ot-brg">
-                                <rect key="frame" x="21" y="150" width="288" height="400"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXi-TR-nxg">
                                 <rect key="frame" x="102" y="114" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -711,6 +705,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-Bx-gYQ">
                                 <rect key="frame" x="21" y="69" width="70" height="70"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-gw-9zU">
+                                <rect key="frame" x="21" y="150" width="288" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -722,7 +732,7 @@
                         <outlet property="LikeLabel" destination="gu3-Gs-40I" id="M72-1E-dct"/>
                         <outlet property="PostControllerName" destination="mIF-cr-AOo" id="6KN-Wb-zDy"/>
                         <outlet property="PostControllerPIC" destination="6p3-Bx-gYQ" id="RzB-XX-lrg"/>
-                        <outlet property="PostControllerPost" destination="qK6-Ot-brg" id="jsR-bV-zww"/>
+                        <outlet property="PostControllerPost" destination="jcb-gw-9zU" id="QfV-2j-DPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yq4-6y-WrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -768,25 +778,26 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlF-EH-jyN">
                                                     <rect key="frame" x="13" y="8" width="70" height="70"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-97-qk0">
-                                                    <rect key="frame" x="97" y="30" width="220" height="105"/>
-                                                    <string key="text">haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa haaaaaaaaaaaaaaaaaa</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcf-1H-USI">
                                                     <rect key="frame" x="110" y="1" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qz7-xG-TkH">
+                                                    <rect key="frame" x="97" y="30" width="220" height="105"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="Commenter_Name" destination="jcf-1H-USI" id="is6-Cy-lkP"/>
                                             <outlet property="Commenter_Profile_Picture" destination="mlF-EH-jyN" id="TWQ-R1-3HP"/>
-                                            <outlet property="Commenter_TextPost" destination="Osc-97-qk0" id="aia-da-zte"/>
+                                            <outlet property="Commenter_TextPost" destination="Qz7-xG-TkH" id="8T7-WY-2Ku"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentPhotoSegue" rowHeight="169" id="FHy-JY-jO2" customClass="CustomCell">
@@ -1204,8 +1215,8 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yaF-LM-8Wg"/>
-        <segue reference="lnm-T1-SPn"/>
-        <segue reference="Cxq-fl-gup"/>
+        <segue reference="PHT-HY-kIE"/>
+        <segue reference="dOS-X9-v5r"/>
+        <segue reference="YxC-ju-zbo"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,10 +10,13 @@
 #import <Parse/Parse.h>
 #import "CommentPost.h"
 #import "CustomCell.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface PostComment : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     NSMutableArray* CPostArray;
+    MPMoviePlayerController* movie;
 }
 @property (retain, nonatomic) IBOutlet UITableView *Comment_Table;
 @property (retain, nonatomic) NSString *CommentID;
