@@ -24,6 +24,7 @@
 @synthesize myTableView;
 @synthesize groupName;
 
+
 - (void) getFriends
 {
     // Get ObjectID of current user
@@ -69,7 +70,7 @@
                       else
                       {
                           // Log details of the failure
-                          NSLog(@"Error: %@ %@", error, [error userInfo]);
+                          NSLog(@"Frend Parse Error: %@ %@", error, [error userInfo]);
                       }
                       
                   }];
@@ -88,6 +89,39 @@
      }];
 }
 
+
+- (void) getGroups
+{
+    // Get Groups objectId through Friends data
+    PFQuery *friend_query = [PFQuery queryWithClassName:@"Friends"];
+    NSMutableArray *group_ids = [[NSMutableArray alloc] init ];
+  
+    [friend_query getObjectInBackgroundWithId:[PFUser currentUser][@"friendClassId"] block:^(PFObject *object, NSError *error) {
+        if (! error  )
+        {
+            [group_ids addObjectsFromArray:object[@"groupIds"]];
+            
+            // Traverse all groups once we grabbed our array from Friend data
+            for( NSString* group_id in group_ids )
+            {
+                PFQuery *query = [PFQuery queryWithClassName:@"Groups"];
+                [query getObjectInBackgroundWithId:group_id block:^(PFObject *object, NSError *error) {
+                    if( !error )
+                    {
+                        [Groups addObject:object];
+                        [myTableView reloadData];
+                    }
+                    else
+                        NSLog(@"groupIds: Error querying Parse!");
+                }];
+            }
+        }
+        else
+            NSLog(@"Friends: Error querying Parse!");
+    }];
+    
+
+}
 - (void) viewDidAppear:(BOOL)animated
 {
     // Initialize mutable arrays
@@ -102,9 +136,9 @@
     [Friends removeAllObjects];
     [Groups removeAllObjects];
     
-    // Grab list of friends and refresh tableview
+    // Grab list of friends
     [self getFriends];
-    [myTableView reloadData];
+    [self getGroups];
 }
 
 - (void)viewDidLoad {
@@ -157,18 +191,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
-    //return 1 + Groups.count;
+    //return 2;
+    return 1 + Groups.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
 
-    //if( section == 0 )
+    if( section == 0 )
         return Friends.count;
-    //else
-      //  return 1;
+    else
+        return 0;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,10 +216,10 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    //if( section == 0)
+    if( section == 0)
         return @"All Friends";
-    //else
-      //  return Groups[section];
+    else
+        return [Groups[section-1] objectForKey:@"groupName"];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,13 +265,41 @@
  }
  */
 
-- (IBAction)enteredNewGroup:(id)sender {
-    [Groups addObject:groupName.text];
-}
-
-
 - (void)dealloc {
     [groupName release];
     [super dealloc];
 }
+
+- (IBAction)addGroup:(id)sender {
+    // Dismiss the keboard
+    [groupName resignFirstResponder];
+    
+    // Save group in Parse
+    PFObject *new_group = [PFObject objectWithClassName:@"Groups"];
+    new_group[@"groupName"] = groupName.text;
+    
+    NSMutableArray *groups = [[NSMutableArray alloc] init];
+    PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+    [query getObjectInBackgroundWithId:[PFUser currentUser][@"friendClassId"] block:^(PFObject *object, NSError *error) {
+        if( !error )
+        {
+            // Assigning Friend objectId to group row
+            new_group[@"friendClassId"] = object.objectId;
+            [new_group save]; // Save synchronously because groupIds depends on this
+            [Groups addObject:new_group];
+            
+            // Saving group objectId to grops array in Friends
+            [groups addObjectsFromArray:object[@"groupIds"]];
+            [groups addObject:new_group.objectId];
+            object[@"groupIds"] = groups;
+            [object saveInBackground];
+        }
+        else
+            NSLog(@"Error querying Parse!");
+    }];
+    groupName.text = @"";
+    [myTableView reloadData];
+}
+
+
 @end

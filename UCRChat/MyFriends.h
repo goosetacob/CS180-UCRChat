@@ -22,10 +22,9 @@
     NSString *selectedFriend;
 }
 
+- (IBAction)addGroup:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextField *groupName;
-- (IBAction)enteredNewGroup:(id)sender;
 
-@property (nonatomic) BOOL *reload_friends;
 @property (retain, nonatomic) IBOutlet UITableView *myTableView;
 
 

@@ -17,7 +17,6 @@
      [NSNumber numberWithInteger: UIInterfaceOrientationLandscapeLeft]
                                 forKey:@"orientation"];
     
-    
     //[PFUser logOut];
     
     if (![PFUser currentUser]) {

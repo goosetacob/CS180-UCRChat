@@ -89,7 +89,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    
+    // Set Name, About Me, and Image
     self.friendTitleLabel.text = [(id)friend_data objectForKey:@"fullName" ];
     self.friendDescriptionLabel.text = [(id)friend_data objectForKey:@"aboutMe" ];
     PFFile *imagefile = [(id)friend_data objectForKey:@"picture"];
@@ -98,6 +98,7 @@
     
     self.friendThumbImage.image = [UIImage imageWithData:image];
    
+    // Set date joined
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat: @"yyyy-MM-dd"];
     PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
@@ -106,10 +107,12 @@
         {
             self.friendNumberOfFriends.text = [NSString stringWithFormat: @"%ld", [(NSMutableArray*)object[@"Friends"] count]];
             self.friendJoinedDate.text = [formatter stringFromDate: object.createdAt];
-
-            NSLog(@"%@", object.createdAt);
         }
+        else
+            NSLog(@"Error querying Parse!");
     }];
+    
+    
 }
 // We will use this method to receive data from the main 'Friends' tab.
 - (void)setMyObjectHere:(id)data andArray:(NSMutableArray *)arr withGroups:(NSMutableArray *)Groups
@@ -117,6 +120,7 @@
     friend_data = data;
     friends_array = arr;
     groups_array = Groups;
+
 }
 
 
@@ -126,14 +130,15 @@
     return 1;
 }
 
+
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 3;//groups_array.count;
+    return groups_array.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return @"Example";
+    return [groups_array[row] objectForKey:@"groupName"];
 }
 /*
 #pragma mark - Navigation
