@@ -95,7 +95,38 @@
             GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
             GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:YES];
             GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
-            [GlobalTimeline saveInBackground];
+            [GlobalTimeline save];
+            
+            NSString *friendId = [PFUser currentUser ][@"friendClassId"];
+            
+            // Query objectID to grab Friends array
+            PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
+            [query getObjectInBackgroundWithId:friendId block:^(PFObject *object, NSError *error)
+             {
+                 if (!error)
+                 {
+                     // Do something with the found friend array
+                     NSArray* temp = [object objectForKey:@"Friends"];
+                     for(NSString* item in temp)
+                     {
+                         // Query objectID to grab Friends array
+                         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+                         [query getObjectInBackgroundWithId:item block:^(PFObject *object, NSError *error)
+                          {
+                              if (!error) {
+                                  // Do something with the found friend array
+                                  bool found = false;
+                                  NSString* name = [object objectForKey:@"fullName"];
+                                  [GlobalTimeline addUniqueObject:name forKey:@"Visibility"];
+                                  [GlobalTimeline save];
+                              }
+                          }];
+                     }
+                     [GlobalTimeline addUniqueObject:[PFUser currentUser][@"fullName"] forKey:@"Visibility"];
+                     [GlobalTimeline save];
+                 }
+             }];
+            
         }
         else if(_VideoPost != nil)
         {

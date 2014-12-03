@@ -87,23 +87,26 @@ CustomCell *cell;
              PostArray = [[NSMutableArray alloc ] initWithArray:objects];
              dispatch_async(dispatch_get_main_queue(), ^{
                 
-                 
+                
+                 // going to look for the objects to be displayed and only grabbing the users
+                 //friends or his posts and ave dthem into the myFriends Array
                  for(PFObject* item in PostArray)
                  {
-                     
-                    
                      bool found_user = false;
-                     if([item[@"User"] isEqualToString:friendId])  found_user = true;
-                     else {
+                     if([item[@"User"] isEqualToString:friendId]) found_user = true;
+                     else
+                     {
                          for(NSString* string in item[@"Visibility"])
                          {
-                             if([string isEqualToString:friendName])
+                            if([string isEqualToString:friendName])
                              {
                                  found_user = true;
                                  break;
                              }
                          }
                      }
+                     
+                     
                      bool insert = false;
                      if(found_user && item != nil)
                      {
@@ -120,8 +123,7 @@ CustomCell *cell;
                          
                          insert = false;
                      }
-                   
-                     found_user = false;
+                        found_user = false;
                      
                  }
  
