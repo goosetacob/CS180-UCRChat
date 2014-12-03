@@ -18,7 +18,7 @@
                                 forKey:@"orientation"];
     
     
-    [PFUser logOut];
+    //[PFUser logOut];
     
     if (![PFUser currentUser]) {
         PFLogInViewController *login = [[PFLogInViewController alloc] init];
@@ -61,33 +61,50 @@
     PFObject *currentUserTimeline = [PFObject objectWithClassName:@"GlobalTimeline"];
     currentUserTimeline[@"userLoginId"] = [[PFUser currentUser] objectId];
     
-    UIImage *image;
-    image = [UIImage imageNamed:@"second"];
+    [currentUserTimeline saveInBackground];
+    
+    //Fernando
+    image = [UIImage imageNamed:@"test"];
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+    //UIGraphicsBeginImageContext(CGSizeMake(640, 640));
+    //[imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    //UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    //UIGraphicsEndImageContext();
     UIGraphicsBeginImageContext(CGSizeMake(640, 640));
     [image drawInRect: CGRectMake(0, 0, 640, 640)];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    NSData *imageAsset = UIImagePNGRepresentation(image);
-    PFFile *defaultImage = [PFFile fileWithName:@"defaultImage.jpg" data:imageAsset];
-    
-
-    [currentUserTimeline saveInBackground];
-    
-    // Save PFFile
-    [defaultImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            PFObject *userPhoto = [PFUser currentUser];
-            userPhoto[@"picture"] = defaultImage;
-            [userPhoto saveInBackground];
-            [userPhoto setObject:defaultImage forKey:@"picture"];
-            NSLog(@"Saved image I think");
+    if (imageView.image) {
+        NSData *imageAsset = UIImagePNGRepresentation(imageView.image);
+        PFFile *defaultImage = [PFFile fileWithName:@"testing.png" data:imageAsset];
         
-        }
-        else{
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+        MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.labelText = @"Uploading";
+        [HUD show:YES];
+        
+        // Save PFFile
+        [defaultImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                PFObject *userPhoto = [PFUser currentUser];
+                userPhoto[@"picture"] = defaultImage;
+                [userPhoto saveInBackground];
+                [userPhoto setObject:defaultImage forKey:@"picture"];
+                NSLog(@"Saved image I think");
+                [HUD hide:YES];
+                
+            }
+            else{
+                [HUD hide:YES];
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+    else{
+         NSLog(@"Shit went down");
+    }
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
+#include <stdlib.h>
 
-@interface ChatAppTabBarController : UITabBarController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface ChatAppTabBarController : UITabBarController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MBProgressHUDDelegate>{
+    
+    MBProgressHUD *refreshHUD;
+    UIImage *image;
+}
 
 @end
