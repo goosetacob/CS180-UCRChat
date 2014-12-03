@@ -202,7 +202,9 @@
     if( section == 0 )
         return Friends.count;
     else
-        return 0;
+    {
+        return [[Groups[section-1] objectForKey:@"friendClassIdSet"] count ];
+    }
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -224,29 +226,48 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //if( indexPath.section == 0 && indexPath.row < Friends.count )
-    //{
-        static NSString *CellIdentifier = @"TableCell";
-        TableCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath ];
+    static NSString *CellIdentifier = @"TableCell";
+    TableCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath ];
     
-        // If we have no cells, initialize it
-        if( !cell )
-        {
-            cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
-        }
+    // If we have no cells, initialize it
+    if( !cell )
+    {
+        cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
+    }
     
+    id object = nil;
+    if( indexPath.section == 0 )
+    {
         // Populate cell using Friend information at specific row
-        PFObject *object = [Friends objectAtIndex:indexPath.row];
+        object = [Friends objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        
+        
+        NSString* object_id = [[[Groups objectAtIndex:indexPath.section-1] objectForKey:@"friendClassIdSet"] objectAtIndex:indexPath.row ];
+        
+        for( PFObject *friend_ids in Friends)
+        {
+            if( [[friend_ids objectId] isEqualToString:object_id] )
+                object = friend_ids;
+        }
+    }
+        
+    cell.TitleLabel.text = [object objectForKey:@"fullName"];
     
-        cell.TitleLabel.text = [object objectForKey:@"fullName"];
+    cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
-        cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
     
-        PFFile *imagefile = [object objectForKey:@"picture"];
+    PFFile *imagefile = [object objectForKey:@"picture"];
+    if( imagefile != nil )
+    {
         NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
         NSData* image = [NSData dataWithContentsOfURL:imageURL ];
         cell.ThumbImage.image = [UIImage imageWithData:image];
-        return cell;
+    
+    }
+    return cell;
     
 }
 
