@@ -15,6 +15,7 @@
     NSMutableArray *NewPostArray;
     NSMutableArray* SavedPictures;
     NSMutableArray* MultimediaPosts;
+    NSMutableArray* MyFriends;
     NSArray *userarray;
     NSArray* Left;
     NSArray* Right;

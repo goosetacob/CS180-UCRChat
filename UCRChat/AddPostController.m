@@ -1,10 +1,22 @@
 #import "AddPostController.h"
+#import "Visibility.h"
 
 @interface AddPostController ()
 
 @end
 
 @implementation AddPostController
+
+
+- (id)initWithCoder: (NSCoder *) aDecoder{
+    
+    if(self = [super initWithCoder:aDecoder]){
+    }
+    return self;
+}
+- (void) viewWillAppear: (BOOL) animated{
+    
+    }
 
 - (void)viewDidLoad
 {
@@ -14,6 +26,8 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
     _Textview.dataDetectorTypes = UIDataDetectorTypeLink;
     [_Textview becomeFirstResponder];
+    
+    if([self.Identifier isEqualToString:@"CommentPost"]) _VisiblityBTN.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -25,13 +39,23 @@
 - (void)dealloc {
     [_DonePost release];
     [_Textview release];
+    [_VisiblityBTN release];
     [super dealloc];
 }
 
 - (IBAction)returnToPrevious:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+//sending the seugue nformatoion to the view controller
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"VisibilitySegue"])
+    {
+        //Creating the controller vieww where i will send the information
+        Visibility *PostController = segue.destinationViewController;
+        PostController.CurrentUser = [PFUser currentUser].objectId;
+    }
+}
 
 - (IBAction)BtnPressed:(id)sender {
     
@@ -46,7 +70,16 @@
             GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
             GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
             GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
-            [GlobalTimeline saveInBackground];
+            [GlobalTimeline save];
+        
+            NSLog(@"---------------------------------------------Visibility Array %@", _VisibilityArray);
+            for(NSString* item in _VisibilityArray)
+            {
+                [GlobalTimeline addUniqueObject:item forKey:@"Visibility"];
+                [GlobalTimeline save];
+            }
+           
+            
         }
     }
     if([self.Identifier isEqualToString:@"CommentPost"])
@@ -73,6 +106,26 @@
         }
     }
     
+   // UINavigationController * navigationController = self.navigationController;
+    //[navigationController popToRootViewControllerAnimated:NO];
+    //[navigationController pushViewController:someOtherViewController animated:YES];
+    //[[self navigationController] popToRootViewControllerAnimated:NO];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+   // [[self navigationController] popViewControllerAnimated:true ];
+   // UINavigationController *navController = self.navigationController;
+   // Visibility* temp = [[Visibility alloc] initWithNibName:Visibility bundle:nil];
+    
+    // retain ourselves so that the controller will still exist once it's popped off
+    [[self retain] autorelease];
+    [[self navigationController] popViewControllerAnimated:NO ];
+
+    // Pop this controller and replace with another
+    //[navController popViewControllerAnimated:NO];//not to see pop
+    
+   // [navController pushViewController:temp animated:NO];
+}
+
+- (IBAction)Cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

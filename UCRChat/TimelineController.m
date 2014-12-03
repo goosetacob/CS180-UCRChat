@@ -34,6 +34,7 @@ CustomCell *cell;
     if(self = [super initWithCoder:aDecoder]){
         SavedPictures = [[NSMutableArray alloc] init];
         MultimediaPosts = [[NSMutableArray alloc] init];
+        MyFriends = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -47,7 +48,7 @@ CustomCell *cell;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [PostArray removeAllObjects];
+    [MyFriends removeAllObjects];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor lightGrayColor];
     [self.PostTable setBackgroundColor: [UIColor clearColor]];
@@ -75,6 +76,8 @@ CustomCell *cell;
 
 - (void) PullParse
 {
+    NSString *friendId = [PFUser currentUser ].username;
+    NSString *friendName = [PFUser currentUser][@"fullName"];
     PFQuery *retrievePosts = [PFQuery queryWithClassName:@"GlobalTimeline"];
     [retrievePosts orderByDescending:@"createdAt"];
     [retrievePosts findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
@@ -82,8 +85,50 @@ CustomCell *cell;
          if(!error)
          {
              PostArray = [[NSMutableArray alloc ] initWithArray:objects];
-             [self.PostTable reloadData];
-             [_refreshControl endRefreshing];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                 
+                 for(PFObject* item in PostArray)
+                 {
+                     
+                    
+                     bool found_user = false;
+                     if([item[@"User"] isEqualToString:friendId])  found_user = true;
+                     else {
+                         for(NSString* string in item[@"Visibility"])
+                         {
+                             if([string isEqualToString:friendName])
+                             {
+                                 found_user = true;
+                                 break;
+                             }
+                         }
+                     }
+                     bool insert = false;
+                     if(found_user && item != nil)
+                     {
+                         for(PFObject* x in MyFriends)
+                         {
+                             if([x.objectId isEqualToString: item.objectId])
+                             {
+                                 insert = true;
+                                 break;
+                             }
+                         }
+                         if(!insert)
+                             [MyFriends addObject:item];
+                         
+                         insert = false;
+                     }
+                   
+                     found_user = false;
+                     
+                 }
+ 
+                 [self.PostTable reloadData];
+                 [_refreshControl endRefreshing];
+             });
+             
          }
          
      }];
@@ -96,6 +141,7 @@ CustomCell *cell;
              userarray = [[NSArray alloc ] initWithArray:objects];
          }
      }];
+    
     [self Pull_Profile_pics];
     [self Pull_Mutimedia_data];
     [self.PostTable reloadData];
@@ -153,7 +199,7 @@ CustomCell *cell;
     NSData* idata = nil; // Place holder The data for the file
     
     //Begin search
-    for(PFObject* object in PostArray)
+    for(PFObject* object in MyFriends)
     {
         //To be used to check if the object is a photo object
         NSNumber* Photo = object[@"PhotoPost"];
@@ -243,8 +289,8 @@ CustomCell *cell;
 
 //get number of rows by counting number of folders
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   // NSLog(@"%lu", (unsigned long)PostArray.count);
-    return PostArray.count;
+  
+    return MyFriends.count;
 }
 
 //setup cells in tableView
@@ -252,9 +298,10 @@ CustomCell *cell;
     
     [PostTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [PostTable setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
+
     
     //setup cell
-    tempObject = [PostArray objectAtIndex:indexPath.row];
+    tempObject = [MyFriends objectAtIndex:indexPath.row];
     
     static NSString *CellIdentifier = nil;
     NSNumber* mybool =  tempObject[@"PhotoPost"];
@@ -434,7 +481,7 @@ CustomCell *cell;
 - (IBAction)LikeBTNUP:(id)sender {
     
     UIButton *LikeButton = (UIButton * )sender;
-    PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
+    PFObject *tmp = [MyFriends objectAtIndex:LikeButton.tag];
     
     NSMutableArray* tmp_Array = [tmp objectForKey:@"LikesID"] ;
     bool found = false;
@@ -491,7 +538,7 @@ CustomCell *cell;
     
     
     NSIndexPath *indexPath = [self.PostTable indexPathForCell:sender];
-    PFObject * tmp = [PostArray objectAtIndex:indexPath.row];
+    PFObject * tmp = [MyFriends objectAtIndex:indexPath.row];
     
     if ([[segue identifier] isEqualToString:@"Postsegue"])
     {
@@ -633,7 +680,7 @@ CustomCell *cell;
 }
 - (IBAction)DeleteBTN:(id)sender {
     UIButton *LikeButton = (UIButton * )sender;
-    PFObject *tmp = [PostArray objectAtIndex:LikeButton.tag];
+    PFObject *tmp = [MyFriends objectAtIndex:LikeButton.tag];
     
     NSString* Post_User = [tmp objectForKey:@"User"] ;
     if([Post_User isEqualToString:[PFUser currentUser].username])
@@ -657,7 +704,7 @@ CustomCell *cell;
 - (IBAction)DislikeBTNUP:(id)sender {
     
     UIButton *DislikeButton = (UIButton * )sender;
-    PFObject *tmp = [PostArray objectAtIndex:DislikeButton.tag];
+    PFObject *tmp = [MyFriends objectAtIndex:DislikeButton.tag];
     
     NSMutableArray* tmp_Array = [tmp objectForKey:@"DislikesID"] ;
     bool found = false;

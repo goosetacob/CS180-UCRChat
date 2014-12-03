@@ -280,6 +280,7 @@
 		8020D8211A17E52A0059D0A0 /* Scringo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8020D7391A17E52A0059D0A0 /* Scringo.framework */; };
 		8020D8241A17EA620059D0A0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8020D8231A17EA620059D0A0 /* FacebookSDK.framework */; };
 		804C3B481A1FDA12004ADBAC /* UserImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 804C3B471A1FDA12004ADBAC /* UserImage.m */; };
+		806044691A2DBA810095B20F /* Visibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 806044681A2DBA810095B20F /* Visibility.m */; };
 		8077DA291A1951F100CD0625 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8077DA281A1951F100CD0625 /* PostViewController.m */; };
 		80ACCBEA1A23BBB7008C8B32 /* MultimediaPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */; };
 		80C1C5BB1A22AD4200A32C67 /* AddMultiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C1C5BA1A22AD4200A32C67 /* AddMultiPost.m */; };
@@ -597,6 +598,8 @@
 		8020D8231A17EA620059D0A0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		804C3B461A1FDA12004ADBAC /* UserImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserImage.h; sourceTree = "<group>"; };
 		804C3B471A1FDA12004ADBAC /* UserImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserImage.m; sourceTree = "<group>"; };
+		806044671A2DBA810095B20F /* Visibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visibility.h; sourceTree = "<group>"; };
+		806044681A2DBA810095B20F /* Visibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Visibility.m; sourceTree = "<group>"; };
 		8077DA271A1951F100CD0625 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		8077DA281A1951F100CD0625 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		80ACCBE81A23BBB7008C8B32 /* MultimediaPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultimediaPost.h; sourceTree = "<group>"; };
@@ -1027,6 +1030,8 @@
 				80ACCBE91A23BBB7008C8B32 /* MultimediaPost.m */,
 				80ED44931A2A976B0029F4C1 /* CommentPost.h */,
 				80ED44941A2A976B0029F4C1 /* CommentPost.m */,
+				806044671A2DBA810095B20F /* Visibility.h */,
+				806044681A2DBA810095B20F /* Visibility.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1393,6 +1398,7 @@
 				80ACCBEA1A23BBB7008C8B32 /* MultimediaPost.m in Sources */,
 				3A1545EC1A14243000948D1E /* NameInputController.m in Sources */,
 				3A1545D31A1302E000948D1E /* ChatCellController.m in Sources */,
+				806044691A2DBA810095B20F /* Visibility.m in Sources */,
 				3A1545D91A13232200948D1E /* ChatViewSelectFriendController.m in Sources */,
 				3A1545D81A13232200948D1E /* ChatCellSelectFriendController.m in Sources */,
 				3A8A06F91A0F586200FAE3A7 /* ChatAppTabBarController.m in Sources */,

@@ -162,6 +162,80 @@
             </objects>
             <point key="canvasLocation" x="2049" y="-701"/>
         </scene>
+        <!--Post Visibility-->
+        <scene sceneID="H8h-f4-6Iu">
+            <objects>
+                <viewController title="Post Visibility" id="m38-XA-iUI" customClass="Visibility" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RPG-Qx-xla"/>
+                        <viewControllerLayoutGuide type="bottom" id="wQM-ll-4IC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V78-fw-eS5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSu-vg-R1B">
+                                <rect key="frame" x="0.0" y="203" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="m38-XA-iUI" id="WUz-Nv-rj1"/>
+                                    <outlet property="delegate" destination="m38-XA-iUI" id="WI5-Od-V4F"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wv9-z4-pca">
+                                <rect key="frame" x="137" y="134" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.26711989730000002" green="0.60156676310000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Add:" destination="m38-XA-iUI" eventType="touchUpInside" id="k7L-A8-cvs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZE-5V-NgR">
+                                <rect key="frame" x="16" y="28" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Back:" destination="m38-XA-iUI" eventType="touchUpInside" id="3Ac-dd-ZgJ"/>
+                                    <segue destination="FbY-iC-dIe" kind="show" identifier="DoneVisibilityView" id="2uq-Ug-iOr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10A-f5-G9J">
+                                <rect key="frame" x="50" y="453" width="46" height="30"/>
+                                <state key="normal" title="ALL">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="All:" destination="m38-XA-iUI" eventType="touchUpInside" id="JR8-jl-Rhf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97o-4u-Zaf">
+                                <rect key="frame" x="225" y="453" width="46" height="30"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Clear:" destination="m38-XA-iUI" eventType="touchUpInside" id="UtQ-cV-17f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.95240719680214814" blue="0.87654320987654322" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ABs-wm-qQB"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="NamePicker" destination="MSu-vg-R1B" id="Z94-Vj-Xrz"/>
+                        <outlet property="SegueViewController" destination="V78-fw-eS5" id="fgD-9P-36H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRT-iL-fff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2550" y="-498"/>
+        </scene>
         <!--Timeline Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -451,7 +525,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="returnToPrevious:" destination="FbY-iC-dIe" eventType="touchUpInside" id="MLp-Kn-5NS"/>
+                                    <action selector="Cancel:" destination="FbY-iC-dIe" eventType="touchUpInside" id="VCY-Gq-Asp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYY-c8-NbE">
@@ -462,24 +536,37 @@
                                 </state>
                                 <connections>
                                     <action selector="BtnPressed:" destination="FbY-iC-dIe" eventType="touchUpInside" id="eA8-Zp-efs"/>
+                                    <segue destination="8rJ-Kc-sve" kind="showDetail" id="RUC-Qm-evq"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIS-f9-RzB">
-                                <rect key="frame" x="0.0" y="90" width="320" height="170"/>
+                                <rect key="frame" x="0.0" y="157" width="320" height="144"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoR-pJ-eRZ">
+                                <rect key="frame" x="130" y="81" width="60" height="30"/>
+                                <state key="normal" title="Visibility">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="m38-XA-iUI" kind="show" identifier="VisibilitySegue" id="W8Z-kG-Ntu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" none="YES" keyboardKey="YES"/>
                         </accessibility>
                     </view>
+                    <navigationItem key="navigationItem" id="HaO-z1-lOR"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="DonePost" destination="DYY-c8-NbE" id="Kot-iC-saX"/>
                         <outlet property="Textview" destination="aIS-f9-RzB" id="Dp6-aR-sC5"/>
+                        <outlet property="VisiblityBTN" destination="zoR-pJ-eRZ" id="eY2-5v-Wcy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAk-iX-tzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1215,7 +1302,8 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PHT-HY-kIE"/>
+        <segue reference="RUC-Qm-evq"/>
+        <segue reference="2uq-Ug-iOr"/>
         <segue reference="dOS-X9-v5r"/>
         <segue reference="YxC-ju-zbo"/>
     </inferredMetricsTieBreakers>

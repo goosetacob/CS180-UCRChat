@@ -14,8 +14,10 @@
 {
     NSMutableArray* PostArray;
 }
+@property (retain, nonatomic) IBOutlet UIButton *VisiblityBTN;
 @property (retain, nonatomic) IBOutlet UIButton *DonePost;
 - (IBAction)BtnPressed:(id)sender;
+- (IBAction)Cancel:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextView *Textview;
 
 @property(retain, nonatomic) NSString* Identifier;
@@ -23,5 +25,8 @@
 @property (strong, nonatomic) NSString *CurrentUserNAME;
 @property (strong, nonatomic) UIImage  *CurrentUserImage;
 @property (strong, nonatomic) PFObject  *CurrentObject;
+
+//Visibility array
+@property (retain, nonatomic) NSMutableArray* VisibilityArray;
 
 @end
