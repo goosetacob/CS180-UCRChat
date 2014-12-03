@@ -87,7 +87,7 @@ CustomCell *cell;
          if(!error)
          {
              PostArray = [[NSMutableArray alloc ] initWithArray:objects];
-             MyFriends  = PostArray;
+            // MyFriends  = PostArray;
             // dispatch_async(dispatch_get_main_queue(), ^{
                 
                 

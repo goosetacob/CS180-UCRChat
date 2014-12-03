@@ -21,8 +21,8 @@ UINavigationControllerDelegate>
 @property (retain, nonatomic) NSURL* URL;
 - (IBAction)TakePic:(id)sender;
 - (IBAction)SelectPic:(id)sender;
-- (IBAction)TakeVid:(id)sender;
-- (IBAction)SelecVid:(id)sender;
+- (IBAction)VisiblityBTN:(id)sender;
+@property (retain, nonatomic) IBOutlet UIButton *VButton;
 
 //Commenting Purposes
 @property(retain, nonatomic) NSString* Identifier;
@@ -30,5 +30,8 @@ UINavigationControllerDelegate>
 @property (strong, nonatomic) NSString *CurrentUserNAME;
 @property (strong, nonatomic) UIImage  *CurrentUserImage;
 @property (strong, nonatomic) PFObject  *CurrentObject;
+
+//Visibility array
+extern NSArray* VFriends;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AddMultiPost.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "Visibility.h"
 
 
 @interface AddMultiPost ()
@@ -30,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor colorWithRed:0.427 green:0.517 blue:0.705 alpha:1.0];
-    
+    if([self.Identifier isEqualToString:@"MultimediaComment"]) _VButton.hidden = YES;
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -46,6 +47,7 @@
 
 - (void)dealloc {
     [_Photo release];
+    [_VButton release];
     [super dealloc];
 }
 - (IBAction)BackBTN:(id)sender {
@@ -53,6 +55,7 @@
 }
 
 - (IBAction)SUMIT:(id)sender {
+    
     
     if([self.Identifier isEqualToString:@"MultimediaComment"])
     {
@@ -97,35 +100,12 @@
             GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
             [GlobalTimeline save];
             
-            NSString *friendId = [PFUser currentUser ][@"friendClassId"];
             
-            // Query objectID to grab Friends array
-            PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
-            [query getObjectInBackgroundWithId:friendId block:^(PFObject *object, NSError *error)
-             {
-                 if (!error)
-                 {
-                     // Do something with the found friend array
-                     NSArray* temp = [object objectForKey:@"Friends"];
-                     for(NSString* item in temp)
-                     {
-                         // Query objectID to grab Friends array
-                         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-                         [query getObjectInBackgroundWithId:item block:^(PFObject *object, NSError *error)
-                          {
-                              if (!error) {
-                                  // Do something with the found friend array
-                                  bool found = false;
-                                  NSString* name = [object objectForKey:@"fullName"];
-                                  [GlobalTimeline addUniqueObject:name forKey:@"Visibility"];
-                                  [GlobalTimeline save];
-                              }
-                          }];
-                     }
-                     [GlobalTimeline addUniqueObject:[PFUser currentUser][@"fullName"] forKey:@"Visibility"];
-                     [GlobalTimeline save];
-                 }
-             }];
+            for(NSString* item in VFriends)
+            {
+                [GlobalTimeline addUniqueObject:item forKey:@"Visibility"];
+                [GlobalTimeline save];
+            }
             
         }
         else if(_VideoPost != nil)
@@ -140,7 +120,13 @@
             GlobalTimeline[@"Dislikes"] = [NSNumber numberWithInt:0];
             GlobalTimeline[@"PhotoPost"] = [NSNumber numberWithBool:NO];
             GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:YES];
-            [GlobalTimeline saveInBackground];
+            [GlobalTimeline save];
+            
+            for(NSString* item in VFriends)
+            {
+                [GlobalTimeline addUniqueObject:item forKey:@"Visibility"];
+                [GlobalTimeline save];
+            }
         }
     
     }
@@ -199,5 +185,19 @@
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
+}
+//sending the seugue nformatoion to the view controller
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"PhotoVisibility"])
+    {
+        //Creating the controller vieww where i will send the information
+        Visibility *PostController = segue.destinationViewController;
+        PostController.CurrentUser = [PFUser currentUser].objectId;
+    }
+}
+
+//PhotoVisibility
+- (IBAction)VisiblityBTN:(id)sender {
 }
 @end
