@@ -13,6 +13,7 @@
 @interface AddPostController : UIViewController
 {
     NSMutableArray* PostArray;
+    PFObject *GlobalTimeline;
 }
 @property (retain, nonatomic) IBOutlet UIButton *VisiblityBTN;
 @property (retain, nonatomic) IBOutlet UIButton *DonePost;
@@ -27,6 +28,6 @@
 @property (strong, nonatomic) PFObject  *CurrentObject;
 
 //Visibility array
-@property (retain, nonatomic) NSMutableArray* VisibilityArray;
+extern NSArray* VFriends;
 
 @end

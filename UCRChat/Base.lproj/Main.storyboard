@@ -201,7 +201,6 @@
                                 </state>
                                 <connections>
                                     <action selector="Back:" destination="m38-XA-iUI" eventType="touchUpInside" id="3Ac-dd-ZgJ"/>
-                                    <segue destination="FbY-iC-dIe" kind="show" identifier="DoneVisibilityView" id="2uq-Ug-iOr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10A-f5-G9J">
@@ -553,7 +552,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="m38-XA-iUI" kind="show" identifier="VisibilitySegue" id="W8Z-kG-Ntu"/>
+                                    <segue destination="m38-XA-iUI" kind="presentation" identifier="VisibilitySegue" id="W8Z-kG-Ntu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1302,8 +1301,8 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yaF-LM-8Wg"/>
         <segue reference="RUC-Qm-evq"/>
-        <segue reference="2uq-Ug-iOr"/>
         <segue reference="dOS-X9-v5r"/>
         <segue reference="YxC-ju-zbo"/>
     </inferredMetricsTieBreakers>

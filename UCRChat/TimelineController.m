@@ -45,10 +45,12 @@ CustomCell *cell;
     [self.PostTable reloadData];
     [self PullParse];
     [self.PostTable reloadData];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [MyFriends removeAllObjects];
+    [PostArray removeAllObjects];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor lightGrayColor];
     [self.PostTable setBackgroundColor: [UIColor clearColor]];
@@ -85,7 +87,8 @@ CustomCell *cell;
          if(!error)
          {
              PostArray = [[NSMutableArray alloc ] initWithArray:objects];
-             dispatch_async(dispatch_get_main_queue(), ^{
+             MyFriends  = PostArray;
+            // dispatch_async(dispatch_get_main_queue(), ^{
                 
                 
                  // going to look for the objects to be displayed and only grabbing the users
@@ -124,15 +127,14 @@ CustomCell *cell;
                          insert = false;
                      }
                         found_user = false;
-                     
                  }
- 
-                 [self.PostTable reloadData];
-                 [_refreshControl endRefreshing];
-             });
-             
-         }
+
+            // });
          
+         }
+             
+         [self.PostTable reloadData];
+         [_refreshControl endRefreshing];
      }];
     
     PFQuery *retrieve = [PFQuery queryWithClassName:@"_User"];

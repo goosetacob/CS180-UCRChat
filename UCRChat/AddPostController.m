@@ -61,7 +61,7 @@
     
     if([self.Identifier isEqualToString:@"Postsegue"]){
         //storng objcts to cloud
-        PFObject *GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
+        GlobalTimeline =  [PFObject objectWithClassName:@"GlobalTimeline"];
         NSString *str = [[NSString alloc] initWithFormat:_Textview.text];
         if([str length] != 0) {
             GlobalTimeline[@"Post"] = str;
@@ -72,8 +72,8 @@
             GlobalTimeline[@"VideoPost"] = [NSNumber numberWithBool:NO];
             [GlobalTimeline save];
         
-            NSLog(@"---------------------------------------------Visibility Array %@", _VisibilityArray);
-            for(NSString* item in _VisibilityArray)
+            NSLog(@"---------------------------------------------Visibility Array %@", VFriends);
+            for(NSString* item in VFriends)
             {
                 [GlobalTimeline addUniqueObject:item forKey:@"Visibility"];
                 [GlobalTimeline save];
@@ -106,23 +106,8 @@
         }
     }
     
-   // UINavigationController * navigationController = self.navigationController;
-    //[navigationController popToRootViewControllerAnimated:NO];
-    //[navigationController pushViewController:someOtherViewController animated:YES];
-    //[[self navigationController] popToRootViewControllerAnimated:NO];
-    //[self dismissViewControllerAnimated:YES completion:nil];
-   // [[self navigationController] popViewControllerAnimated:true ];
-   // UINavigationController *navController = self.navigationController;
-   // Visibility* temp = [[Visibility alloc] initWithNibName:Visibility bundle:nil];
-    
-    // retain ourselves so that the controller will still exist once it's popped off
-    [[self retain] autorelease];
-    [[self navigationController] popViewControllerAnimated:NO ];
-
-    // Pop this controller and replace with another
-    //[navController popViewControllerAnimated:NO];//not to see pop
-    
-   // [navController pushViewController:temp animated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+   
 }
 
 - (IBAction)Cancel:(id)sender {

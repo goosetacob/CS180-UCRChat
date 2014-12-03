@@ -8,7 +8,7 @@
 
 #import "Visibility.h"
 #import "AddPostController.h"
-
+NSArray* VFriends;
 @implementation Visibility
 
 - (instancetype)init
@@ -100,7 +100,7 @@
     return Friends[row];
 }
 
-
+/*
 //sending the seugue nformatoion to the view controller
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -117,9 +117,15 @@
         }
        // }];
 }
-
+*/
 - (IBAction)Back:(id)sender {
-   // [[self navigationController] popViewControllerAnimated:true];
+   // AddPostController* postcontroller = [[AddPostController alloc] initWithNibName:@"AddPostController" bundle:nil];
+   // NSLog(@"Self-------------------------------> %@", [self.SegueViewController class]);
+    
+    VFriends = VisibleFriends;
+    //[[self navigationController] popViewControllerAnimated:true];
+    //[self popoverPresentationController];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)Add:(id)sender {
     [VisibleFriends addObject: [self pickerView:_NamePicker titleForRow:CurrentRow forComponent:0]];
