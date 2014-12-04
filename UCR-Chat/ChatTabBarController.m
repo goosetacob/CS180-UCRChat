@@ -19,7 +19,7 @@
     
     
     
-    //[PFUser logOut];
+    [PFUser logOut];
     
     if (![PFUser currentUser]) {
         //init login view
