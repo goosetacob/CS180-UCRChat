@@ -24,6 +24,7 @@
 @synthesize friendDescriptionLabel;
 @synthesize friendThumbImage;
 @synthesize friendGroups;
+@synthesize phoneNumber = _phoneNumber;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +32,16 @@
     // Do any additional setup after loading the view.
     [selectedGroup setDelegate:self];
     [selectedGroup setDataSource:self];
+    
+}
+
+-(IBAction)callFriend:(UIButton *)sender
+{
+    NSString *videoCall = @"facetime://";
+    _phoneNumber = [(id)friend_data objectForKey:@"additional"];
+    videoCall = [videoCall stringByAppendingString:_phoneNumber];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoCall]];
+    NSLog(@" %@", _phoneNumber);
     
 }
 

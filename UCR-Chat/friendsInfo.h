@@ -27,6 +27,7 @@
 
 @property (retain, nonatomic) IBOutlet UIPickerView *selectedGroup;
 @property (retain, nonatomic) IBOutlet UILabel *friendGroups;
+@property (strong, nonatomic) NSString *phoneNumber;
 - (IBAction)addFriendToGroup:(id)sender;
 
 - (void) setMyObjectHere:(NSString*)friend_info andArray: (NSMutableArray*) arr withGroups: (NSMutableArray*) Groups;
