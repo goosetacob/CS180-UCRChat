@@ -1,0 +1,16 @@
+PODS:
+  - BORChat (0.1.0)
+  - BWSelectViewController (0.4.3)
+  - JGScrollableTableViewCell (1.1)
+
+DEPENDENCIES:
+  - BORChat
+  - BWSelectViewController
+  - JGScrollableTableViewCell
+
+SPEC CHECKSUMS:
+  BORChat: af92df982e6e6d9b8fd27ec21aaf0a309f2e05a8
+  BWSelectViewController: d1871257a78d980a52aa543804eed8a85c2f75d0
+  JGScrollableTableViewCell: 265a759e28c27167435068a665e4af662d0a5c96
+
+COCOAPODS: 0.35.0
