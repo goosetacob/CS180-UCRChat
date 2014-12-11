@@ -32,6 +32,7 @@
 		3A3727EE1A2FF29B0043FCF5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3727EB1A2FF29B0043FCF5 /* Bolts.framework */; };
 		3A3727EF1A2FF29B0043FCF5 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3727EC1A2FF29B0043FCF5 /* Parse.framework */; };
 		3A3727F01A2FF29B0043FCF5 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3727ED1A2FF29B0043FCF5 /* ParseUI.framework */; };
+		3AEE40A81A35B34300FB24D0 /* ChatCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEE40A71A35B34300FB24D0 /* ChatCellController.m */; };
 		3AFA9CBF1A244BCD00978251 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CBE1A244BCD00978251 /* main.m */; };
 		3AFA9CC21A244BCD00978251 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CC11A244BCD00978251 /* AppDelegate.m */; };
 		3AFA9CC51A244BCD00978251 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CC41A244BCD00978251 /* ChatController.m */; };
@@ -40,7 +41,6 @@
 		3AFA9CCD1A244BCD00978251 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFA9CCB1A244BCD00978251 /* LaunchScreen.xib */; };
 		3AFA9CD91A244BCD00978251 /* UCR_ChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CD81A244BCD00978251 /* UCR_ChatTests.m */; };
 		3AFA9CE41A245F0800978251 /* ChatFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CE31A245F0800978251 /* ChatFriendsController.m */; };
-		3AFA9CE91A253DA400978251 /* ChatCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CE61A253DA400978251 /* ChatCellController.m */; };
 		3AFA9CEA1A253DA400978251 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFA9CE81A253DA400978251 /* ChatViewController.m */; };
 		3AFC263D1A269623008912B8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFC263C1A269623008912B8 /* Accounts.framework */; };
 		3AFC263F1A269631008912B8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFC263E1A269631008912B8 /* AudioToolbox.framework */; };
@@ -117,6 +117,8 @@
 		3A3727EB1A2FF29B0043FCF5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.5.0/Bolts.framework"; sourceTree = "<group>"; };
 		3A3727EC1A2FF29B0043FCF5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.5.0/Parse.framework"; sourceTree = "<group>"; };
 		3A3727ED1A2FF29B0043FCF5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "parse-library-1.5.0/ParseUI.framework"; sourceTree = "<group>"; };
+		3AEE40A61A35B34300FB24D0 /* ChatCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellController.h; sourceTree = "<group>"; };
+		3AEE40A71A35B34300FB24D0 /* ChatCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellController.m; sourceTree = "<group>"; };
 		3AFA9CB91A244BCD00978251 /* UCR-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UCR-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA9CBD1A244BCD00978251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AFA9CBE1A244BCD00978251 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -132,8 +134,6 @@
 		3AFA9CD81A244BCD00978251 /* UCR_ChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UCR_ChatTests.m; sourceTree = "<group>"; };
 		3AFA9CE21A245F0800978251 /* ChatFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFriendsController.h; sourceTree = "<group>"; };
 		3AFA9CE31A245F0800978251 /* ChatFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFriendsController.m; sourceTree = "<group>"; };
-		3AFA9CE51A253DA400978251 /* ChatCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellController.h; sourceTree = "<group>"; };
-		3AFA9CE61A253DA400978251 /* ChatCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellController.m; sourceTree = "<group>"; };
 		3AFA9CE71A253DA400978251 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		3AFA9CE81A253DA400978251 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		3AFC263C1A269623008912B8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -344,11 +344,11 @@
 		3AFC263B1A265B63008912B8 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				3AFA9CE51A253DA400978251 /* ChatCellController.h */,
+				3AEE40A61A35B34300FB24D0 /* ChatCellController.h */,
 				3AFA9CC31A244BCD00978251 /* ChatController.h */,
 				3AFA9CE21A245F0800978251 /* ChatFriendsController.h */,
 				3AFA9CE71A253DA400978251 /* ChatViewController.h */,
-				3AFA9CE61A253DA400978251 /* ChatCellController.m */,
+				3AEE40A71A35B34300FB24D0 /* ChatCellController.m */,
 				3AFA9CC41A244BCD00978251 /* ChatController.m */,
 				3AFA9CE31A245F0800978251 /* ChatFriendsController.m */,
 				3AFA9CE81A253DA400978251 /* ChatViewController.m */,
@@ -513,7 +513,7 @@
 				3A3727EA1A2FEC430043FCF5 /* addFriend.m in Sources */,
 				3A3727E31A2FEB950043FCF5 /* friendsInfo.m in Sources */,
 				3A3727D41A2FE6D10043FCF5 /* MBProgressHUD.m in Sources */,
-				3AFA9CE91A253DA400978251 /* ChatCellController.m in Sources */,
+				3AEE40A81A35B34300FB24D0 /* ChatCellController.m in Sources */,
 				3AFC265E1A2C0056008912B8 /* ChatTabBarController.m in Sources */,
 				3A3727D51A2FE6D10043FCF5 /* MeController.m in Sources */,
 				3A3727BD1A2FDA460043FCF5 /* AddMultiPost.m in Sources */,

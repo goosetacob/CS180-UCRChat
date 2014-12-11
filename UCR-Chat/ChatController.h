@@ -1,4 +1,4 @@
-//
+////
 //  ViewController.h
 //  UCR-Chat
 //
@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <BORChat/BORChatRoom.h>
+#import <BWSelectViewController/BWSelectViewController.h>
 #import <Parse/Parse.h>
 
 
-@interface ChatController : BORChatRoom
+@interface ChatController : BORChatRoom {
+    NSDate *chatViewStarted;
+    PFObject *messagesInfo;
+    NSMutableArray *chatMembersToRemove;
+}
 
 @property(nonatomic) NSString *chattingWith;
 

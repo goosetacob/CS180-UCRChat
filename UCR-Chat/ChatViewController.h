@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ChatController.h"
 #import <BWSelectViewController/BWSelectViewController.h>
+#import <Parse/Parse.h>
 
 @interface ChatViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *labelName;
     NSMutableArray *messageObjectId;
     NSMutableArray *newChatMembers;
+    PFObject *currentUserData;
+    PFObject *currentUserMessages;
+    PFObject *currentUserFriends;
 @public
     
 }

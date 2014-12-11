@@ -8,7 +8,7 @@
 
 #import "ChatViewController.h"
 #import "ChatCellController.h"
-#import <Parse/Parse.h>
+
 
 @interface ChatViewController()
 
@@ -20,7 +20,11 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-     
+    
+    //immediately get the current users data (_User, Friends, & Messages) from Parse;
+    currentUserData = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
+    currentUserMessages = [PFQuery getObjectOfClass:@"Messages" objectId:currentUserData[@"messageClassId"]];
+    currentUserFriends = [PFQuery getObjectOfClass:@"Friends" objectId:currentUserData[@"friendClassId"]];
     
     [self.friendsTable setDelegate:self];
     [self.friendsTable setDataSource:self];
@@ -46,11 +50,13 @@
 -(void)getLatest {
     labelName = [[NSMutableArray alloc] init];
     
-    //create a Prase object with all of the Users Info
-    PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
-    PFObject *userMessageInfo = [PFQuery getObjectOfClass:@"Messages" objectId:userInfo[@"messageClassId"]];
+    currentUserMessages = [PFQuery getObjectOfClass:@"Messages" objectId:currentUserData[@"messageClassId"]];
+    currentUserFriends = [PFQuery getObjectOfClass:@"Friends" objectId:currentUserData[@"friendClassId"]];
+    
+    //get the current Users messages
+    //PFObject *userMessageInfo = [PFQuery getObjectOfClass:@"Messages" objectId:currentUserData[@"messageClassId"]];
     //array of Messages the current user is involved in
-    messageObjectId = userMessageInfo[@"messageIds"];
+    messageObjectId = currentUserMessages[@"messageIds"];
     
     //parse through all of the messageThreads the user is involved in
     for(int i = 0; i < messageObjectId.count; i++) {
@@ -68,8 +74,6 @@
         for (int j = 0; j < currentMessageUsers.count; j++) {
             //only append name if it's now currentUsers Name
             if (![[[PFUser currentUser] objectId] isEqualToString:currentMessageUsers[j]]) {
-                NSLog(@" %@", currentMessageUsers[j]);
-                NSLog(@" %@", [[PFUser currentUser] objectId]);
                 //get the users name
                 PFObject *tempCurrentMessageUser = [PFQuery getObjectOfClass:@"_User" objectId:currentMessageUsers[j]];
             
@@ -80,14 +84,9 @@
                 }
             }
         }
-        
-        NSLog(@" messageLabel %@", messageLabel);
     
         [labelName addObject:messageLabel];
     }
-    
-    NSLog(@" messageObjectId %@", messageObjectId);
-    NSLog(@" labelName %@", labelName);
     
     [self.friendsTable reloadData];
     [_refreshControl endRefreshing];
@@ -106,7 +105,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"num friends %lu", (unsigned long)friendsObjectId.count);
     return messageObjectId.count;
 }
 
@@ -123,9 +121,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    NSLog(@"%lu :: %@",(unsigned long)labelName.count, labelName);
-    
-    
     [cell.friendName setTitle:[labelName objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     return cell;
 }
@@ -135,11 +130,10 @@
         //find the ObjId of the matching converstaion
         int index = 0;
         
-        //create a Prase object with all of the Users Info
-        PFObject *userInfo = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
-        PFObject *userMessageInfo = [PFQuery getObjectOfClass:@"Messages" objectId:userInfo[@"messageClassId"]];
+        //get the current Users messages
+        //PFObject *userMessageInfo = [PFQuery getObjectOfClass:@"Messages" objectId:currentUserData[@"messageClassId"]];
         //array of Messages the current user is involved in
-        messageObjectId = userMessageInfo[@"messageIds"];
+        messageObjectId = currentUserMessages[@"messageIds"];
         //parse through all of the messageThreads the user is involved in
         for(; index < messageObjectId.count; index++) {
             PFObject *messagesInfo = [PFQuery getObjectOfClass:@"messageThreads" objectId:messageObjectId[index]];
@@ -153,8 +147,6 @@
             for (int j = 0; j < currentMessageUsers.count; j++) {
                 //only append name if it's now currentUsers Name
                 if (![[[PFUser currentUser] objectId] isEqualToString:currentMessageUsers[j]]) {
-                    NSLog(@" %@", currentMessageUsers[j]);
-                    NSLog(@" %@", [[PFUser currentUser] objectId]);
                     //get the users name
                     PFObject *tempCurrentMessageUser = [PFQuery getObjectOfClass:@"_User" objectId:currentMessageUsers[j]];
                     //append the new name to the end of the messageLabel
@@ -177,12 +169,10 @@
 - (IBAction)createNewChat:(UIBarButtonItem *)sender {
     BWSelectViewController *vc = [[BWSelectViewController alloc] init];
     
-    //get all of the current users information
-    PFObject *user = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
     //get all of the users chat available friends
-    PFObject *userFriends = [PFQuery getObjectOfClass:@"Friends" objectId:user[@"friendClassId"]];
+    //PFObject *userFriends = [PFQuery getObjectOfClass:@"Friends" objectId:currentUserData[@"friendClassId"]];
     NSMutableArray *userFriendsObjectId = [[NSMutableArray alloc] init];
-    userFriendsObjectId = userFriends[@"Friends"];
+    userFriendsObjectId = currentUserFriends[@"Friends"];
     //create array with all of the users friends real names
     NSMutableArray *userFriendsNames = [[NSMutableArray alloc] init];
     for (int i = 0; i < userFriendsObjectId.count; i++) {
@@ -196,20 +186,18 @@
     
     [vc setDidSelectBlock:^(NSArray *selectedIndexPaths, BWSelectViewController *controller) {
         newChatMembers = selectedIndexPaths;
-        NSLog(@"newChatMembers %@", newChatMembers);
     }];
     
-    vc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(createChat)];
+    vc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Create" style:UIBarButtonItemStylePlain target:self action:@selector(createChat)];
     
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void) createChat {
     //get list of friends the user picked from
-    PFObject *user = [PFQuery getObjectOfClass:@"_User" objectId:[[PFUser currentUser] objectId]];
-    PFObject *userFriends = [PFQuery getObjectOfClass:@"Friends" objectId:user[@"friendClassId"]];
+    //PFObject *userFriends = [PFQuery getObjectOfClass:@"Friends" objectId:currentUserData[@"friendClassId"]];
     NSMutableArray *userFriendsObjectId = [[NSMutableArray alloc] init];
-    userFriendsObjectId = userFriends[@"Friends"];
+    userFriendsObjectId = currentUserFriends[@"Friends"];
     
     //create array of friends the user chose
     NSMutableArray *chosenFriendsObjectId = [[NSMutableArray alloc] init];
@@ -241,7 +229,6 @@
             PFObject *chosenUserInfo = [PFQuery getObjectOfClass:@"_User" objectId:chosenFriendsObjectId[i]];
             PFObject *tempUserMessageInfo = [PFQuery getObjectOfClass:@"Messages" objectId:chosenUserInfo[@"messageClassId"]];
             [tempUserMessageInfo[@"messageIds"] addObject:[newMessageThread objectId]];
-            NSLog(@" chosenUserInfo: %@", chosenUserInfo[@"messageIds"]);
             [tempUserMessageInfo saveInBackground];
         }
     }
