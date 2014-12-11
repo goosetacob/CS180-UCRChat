@@ -39,9 +39,11 @@
 {
     NSString *videoCall = @"facetime://";
     _phoneNumber = [(id)friend_data objectForKey:@"additional"];
+    if (_phoneNumber == nil) {
+        
+    }
     videoCall = [videoCall stringByAppendingString:_phoneNumber];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:videoCall]];
-    NSLog(@" %@", _phoneNumber);
     
 }
 
