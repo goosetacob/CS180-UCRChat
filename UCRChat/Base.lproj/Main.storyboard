@@ -135,7 +135,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.476105801" green="0.80978260869999996" blue="0.76186857569999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" id="tAJ-h0-hN0"/>
+                    <tabBarItem key="tabBarItem" title="friends" image="first" id="VsT-eW-jXp"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="groupName" destination="gMC-fZ-aoo" id="v3o-iJ-Yzp"/>
@@ -481,7 +481,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend's Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI7-rR-K60">
-                                <rect key="frame" x="16" y="50" width="115" height="21"/>
+                                <rect key="frame" x="16" y="54" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -502,7 +502,7 @@
                                 <rect key="frame" x="12" y="79" width="127" height="111"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdW-zt-eBA">
-                                <rect key="frame" x="16" y="12" width="35" height="30"/>
+                                <rect key="frame" x="16" y="28" width="35" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -511,7 +511,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG9-Kx-Q4M">
-                                <rect key="frame" x="235" y="45" width="69" height="30"/>
+                                <rect key="frame" x="235" y="28" width="69" height="30"/>
                                 <state key="normal" title="- Unfriend">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -532,7 +532,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acO-h7-rp6">
-                                <rect key="frame" x="5" y="327" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="335" width="320" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="i3N-0N-QVU" id="sC9-ip-prA"/>
                                     <outlet property="delegate" destination="i3N-0N-QVU" id="ViO-P6-I1S"/>
@@ -569,12 +569,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBD-wi-HHL">
-                                <rect key="frame" x="119" y="481" width="93" height="30"/>
+                                <rect key="frame" x="119" y="489" width="93" height="30"/>
                                 <state key="normal" title="Add to Group">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="addFriendToGroup:" destination="i3N-0N-QVU" eventType="touchUpInside" id="7yw-8h-c6P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bai-qB-3tw">
+                                <rect key="frame" x="235" y="45" width="61" height="30"/>
+                                <state key="normal" title="- Groups">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeFriendFromGroups:" destination="i3N-0N-QVU" eventType="touchUpInside" id="z3H-Pq-bJY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -593,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBP-we-lbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="650"/>
+            <point key="canvasLocation" x="404" y="684"/>
         </scene>
         <!--addFriends-->
         <scene sceneID="Zew-Ss-crb">

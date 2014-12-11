@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "MyFriends.h"
 
+BOOL done_loading;
+
 @interface friendsInfo ()
 
 @end
@@ -55,32 +57,32 @@
         // Find the user to be deleted by checking usernames
         if( [[(id)object objectForKey: @"username" ]  isEqualToString:[(id)friend_data objectForKey:@"username"]] )
         {
-            // Remove friend object from Groups in Parse
-            for( PFObject* groups in current_groups_array )
+            // Go through all groups that the user-to-be-removed-from-groups is in
+            for( id group in current_groups_array )
             {
-                // Traverse all current groups that the current user is in
-                PFQuery *group_query = [PFQuery queryWithClassName:@"Groups"];
-                [group_query getObjectInBackgroundWithId:groups.objectId block:^(PFObject *object, NSError *error) {
-                    if( !error )
-                    {
-                        // Now we look for any groups that the user-to-be-deleted is in
-                        for( NSString* friend_object_id in object[@"friendClassIdSet"])
-                        {
-                            if( [friend_object_id isEqualToString:[(id)friend_data objectForKey:@"objectId"]])
-                            {
-                                NSMutableArray *friends_in_group = [[NSMutableArray alloc] initWithArray:object[@"friendClassIdSet"]];
-                                [friends_in_group removeObject:friend_object_id];
-                                
-                                object[@"friendClassIdSet"] = friends_in_group;
-                                [object saveInBackground];
-                                break;
-                            }
-                        }
-                    }
-                }];
-            
+                // Get the group from Parse
+                PFQuery *query = [PFQuery queryWithClassName:@"Groups"];
+                [
+                 query getObjectInBackgroundWithId:[(PFObject*)group objectId] block:^(PFObject *object, NSError *error) {
+                     if( !error )
+                     {
+                         // Update it's friendClassIdSet array by removing the objectId of the friend
+                         NSMutableArray *friendSet = [[NSMutableArray alloc] initWithArray:object[@"friendClassIdSet"]];
+                         for( NSString* friend_id in friendSet )
+                         {
+                             if( [friend_id isEqualToString:[(id)friend_data objectId]] )
+                             {
+                                 [friendSet removeObject:friend_id];
+                                 break;
+                             }
+                         }
+                         object[@"friendClassIdSet"] = friendSet;
+                         [object saveInBackground];
+                     }
+                     else
+                         NSLog(@"Error querying Parse!");
+                 }];
             }
-            
             // Remove current user from friend object in Parse
             PFQuery *query = [PFQuery queryWithClassName:@"Friends"];
             [query getObjectInBackgroundWithId:[object objectForKey:@"friendClassId"] block:^(PFObject *fobject, NSError *error) {
@@ -115,7 +117,7 @@
         }
     }
     
-    
+    done_loading = true;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -186,11 +188,11 @@
 }
 
 // We will use this method to receive data from the main 'Friends' tab.
-- (void)setMyObjectHere:(id)data andArray:(NSMutableArray *)arr withGroups:(NSMutableArray *)Groups
+- (void)setMyObjectHere:(const NSString*)data andArray:(const NSMutableArray *)arr withGroups:(const NSMutableArray *)Groups
 {
-    friend_data = data;
-    friends_array = arr;
-    groups_array = Groups;
+    friend_data = (NSString*) data;;
+    friends_array = /*(NSMutableArray*) arr;*/[[NSMutableArray alloc] initWithArray:(NSMutableArray*)arr ];
+    groups_array = /*(NSMutableArray*) Groups;*/[[NSMutableArray alloc] initWithArray:(NSMutableArray*)Groups ];
 
 }
 
@@ -260,9 +262,43 @@
     else if( cga.count > 1)
         friendGroups.text = [cga componentsJoinedByString:@", "];
 
+    done_loading = true;
     [selectedGroup reloadAllComponents];
 }
-          
+
+- (IBAction)removeFriendFromGroups:(id)sender
+{
+    // Go through all groups that the user-to-be-removed-from-groups is in
+    for( id group in current_groups_array )
+    {
+        // Get the group from Parse
+        PFQuery *query = [PFQuery queryWithClassName:@"Groups"];
+        [
+         query getObjectInBackgroundWithId:[(PFObject*)group objectId] block:^(PFObject *object, NSError *error) {
+            if( !error )
+            {
+                // Update it's friendClassIdSet array by removing the objectId of the friend
+                NSMutableArray *friendSet = [[NSMutableArray alloc] initWithArray:object[@"friendClassIdSet"]];
+                for( NSString* friend_id in friendSet )
+                {
+                    if( [friend_id isEqualToString:[(id)friend_data objectId]] )
+                    {
+                        [friendSet removeObject:friend_id];
+                        break;
+                    }
+                }
+                object[@"friendClassIdSet"] = friendSet;
+                [object saveInBackground];
+            }
+            else
+                NSLog(@"Error querying Parse!");
+        }];
+    }
+    
+    done_loading = true;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
     // Refresh picker v
 /*

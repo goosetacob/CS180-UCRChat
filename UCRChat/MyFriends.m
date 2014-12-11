@@ -13,10 +13,12 @@
 #import <Parse/Parse.h>
 #import "TableCell.h"
 
+BOOL done_loading = true;
 
 @interface MyFriends ()
 
 @end
+
 
 @implementation MyFriends
 
@@ -27,6 +29,7 @@
 
 - (void) getFriends
 {
+    
     // Get ObjectID of current user
     NSString *friendId = [PFUser currentUser ][@"friendClassId"];
     
@@ -62,6 +65,17 @@
                           // If we have a unique friend, add it to our Friend array
                           if( exists == 0 )
                               [Friends addObject:fobject ];
+                          
+                          PFFile *imagefile = [fobject objectForKey:@"picture"];
+                          if( imagefile != nil )
+                          {
+                              NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
+                              NSData* image = [NSData dataWithContentsOfURL:imageURL ];
+                              [images addObject: [UIImage imageWithData:image]];
+                              
+                          }
+                          else
+                              [images addObject: nil];
                           
                           // This is critical for making sure our cells are correctly up-to-date on screen!
                           [self.myTableView reloadData];
@@ -122,23 +136,32 @@
     
 
 }
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-    // Initialize mutable arrays
-    if(Friends.count <= 0)
-        Friends = [[NSMutableArray alloc] init];
+    if( done_loading == true )
+    {
+        //NSLog(@"viewDidAppear");
+        // Initialize mutable arrays
+        if(Friends.count <= 0)
+            Friends = [[NSMutableArray alloc] init];
     
-    if(Groups.count <= 0)
-        Groups = [[NSMutableArray alloc] init];
+        if(Groups.count <= 0)
+            Groups = [[NSMutableArray alloc] init];
     
+        if(images.count <= 0)
+            images = [[NSMutableArray alloc] init];
     
-    // Refresh array everytime view reloads
-    [Friends removeAllObjects];
-    [Groups removeAllObjects];
+        // Refresh array everytime view reloads
+        [Friends removeAllObjects];
+        [Groups removeAllObjects];
+        [images removeAllObjects];
     
-    // Grab list of friends
-    [self getFriends];
-    [self getGroups];
+        // Grab list of friends
+        [self getFriends];
+        [self getGroups];
+        
+        done_loading = false;
+    }
 }
 
 - (void)viewDidLoad {
@@ -154,6 +177,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //NSLog(@"prepareForSegue");
     // Send current user's info to keep track of friend requests
     if ([[segue identifier] isEqualToString:@"friendRequests"])
     {
@@ -191,12 +215,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    //NSLog(@"numberOfSectionsInTableView");
     //return 2;
     return 1 + Groups.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //NSLog(@"numberOfRowsInSection");
     // In our Friends View Controller, the number of rows in our Table View depends on how many friends we have
 
     if( section == 0 )
@@ -209,15 +235,29 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //NSLog(@"didSelectRowAtIndexPath");
     // Get friend that corresponds to the cell
-    selectedFriend = [Friends objectAtIndex:indexPath.row];
-    
+    if( indexPath.section == 0)
+        selectedFriend = [Friends objectAtIndex:indexPath.row];
+    else
+    {
+        id object = nil;
+        NSString* object_id = [[[Groups objectAtIndex:indexPath.section-1] objectForKey:@"friendClassIdSet"] objectAtIndex:indexPath.row ];
+        
+        for( PFObject *friend_ids in Friends)
+        {
+            if( [[friend_ids objectId] isEqualToString:object_id] )
+                object = friend_ids;
+        }
+        selectedFriend = object;
+    }
     // Perform segue when cell has been clicked. Friend data will be sent
     [self performSegueWithIdentifier:@"friendsInfo" sender:self];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    //NSLog(@"titleForHeaderInSection");
     if( section == 0)
         return @"All Friends";
     else
@@ -226,6 +266,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //NSLog(@"cellForRowAtIndexPath");
     static NSString *CellIdentifier = @"TableCell";
     TableCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath ];
     
@@ -233,8 +274,10 @@
     if( !cell )
     {
         cell = [ [TableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:  CellIdentifier ];
+
     }
     
+    // Grab friend object based on what section we're in.
     id object = nil;
     if( indexPath.section == 0 )
     {
@@ -243,8 +286,7 @@
     }
     else
     {
-        
-        
+        // Populate cell using the appropriate friend object in the Groups array
         NSString* object_id = [[[Groups objectAtIndex:indexPath.section-1] objectForKey:@"friendClassIdSet"] objectAtIndex:indexPath.row ];
         
         for( PFObject *friend_ids in Friends)
@@ -255,18 +297,31 @@
     }
         
     cell.TitleLabel.text = [object objectForKey:@"fullName"];
-    
     cell.DescriptionLabel.text = [object objectForKey:@"aboutMe"];
-    
-    
-    PFFile *imagefile = [object objectForKey:@"picture"];
-    if( imagefile != nil )
+   
+    // Wait until images array loads before we try populating the image in the cell
+    if( [images count] >= indexPath.row )
     {
-        NSURL* imageURL = [[NSURL alloc] initWithString:imagefile.url];
-        NSData* image = [NSData dataWithContentsOfURL:imageURL ];
-        cell.ThumbImage.image = [UIImage imageWithData:image];
-    
+        // For Group array images
+        if( indexPath.section != 0)
+        {
+            // Determine the appropriate image based off friend info
+            for( NSInteger i = 0; i < [Friends count]; ++i)
+            {
+                id j = [Friends objectAtIndex:i];
+                if( [object[@"fullName"] isEqualToString:[j objectForKey:@"fullName"]] )
+                {
+                    //NSLog(@"Number of images: %lu vs row: %lu", [images count], indexPath.row);
+                    cell.ThumbImage.image = [images objectAtIndex:i ];
+                    break;
+                }
+            }
+        }
+        // For 'All Friends' friend aray images
+        else
+            cell.ThumbImage.image = [images objectAtIndex:indexPath.row ];
     }
+
     return cell;
     
 }
@@ -314,12 +369,12 @@
             [groups addObject:new_group.objectId];
             object[@"groupIds"] = groups;
             [object saveInBackground];
+            [myTableView reloadData];
         }
         else
             NSLog(@"Error querying Parse!");
     }];
     groupName.text = @"";
-    [myTableView reloadData];
 }
 
 

@@ -9,6 +9,9 @@
 #import <Parse/Parse.h>
 #import "FriendRequests.h"
 
+BOOL done_loading;
+
+
 @interface FriendRequests ()
 
 @end
@@ -102,6 +105,7 @@
         }
     }];
     
+    // Add friend
     PFQuery *query2 = [PFQuery queryWithClassName:@"Friends"];
     [query2 getObjectInBackgroundWithId:[PFUser currentUser][@"friendClassId"] block:^(PFObject *object, NSError *error) {
         if( !error )
@@ -113,6 +117,7 @@
         }
     }];
     
+    // Remove friend request
     PFQuery *query3 = [PFQuery queryWithClassName:@"Friends"];
     [query3 getObjectInBackgroundWithId:[PFUser currentUser][@"friendClassId"] block:^(PFObject *object, NSError *error) {
         if( !error )
@@ -129,6 +134,7 @@
         }
     }];
     
+    done_loading = TRUE;
     [friend_requests removeObject:accept_user];
     [friendRequestsTableView reloadData];
 }
