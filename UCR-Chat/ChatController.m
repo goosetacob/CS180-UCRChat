@@ -213,16 +213,18 @@
 }
 
 -(void) updateFriendsInMessage {
-    NSLog(@"BEFORE %@", messagesInfo[@"inChat"]);
-    for(int i = 0; i < chatMembersToRemove.count; i++) {
-        NSIndexPath *current = chatMembersToRemove[i];
-        [messagesInfo[@"inChat"] removeObjectAtIndex:(int)current.row];
+    NSMutableArray *currentFriendsInChat = [[NSMutableArray alloc] init];
+    currentFriendsInChat = messagesInfo[@"inChat"];
+    //there must be at least two people left in chat, else nothing happens
+    if((currentFriendsInChat.count - chatMembersToRemove.count) >= 2) {
+        for(int i = 0; i < chatMembersToRemove.count; i++) {
+            NSIndexPath *current = chatMembersToRemove[i];
+            [messagesInfo[@"inChat"] removeObjectAtIndex:(int)current.row];
+        }
+        
+        //save change up to parse
+        [messagesInfo save];
     }
-    NSLog(@"AFTER %@", messagesInfo[@"inChat"]);
-    
-    //save change up to parse
-    [messagesInfo save];
-    
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
